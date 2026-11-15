@@ -1,0 +1,54 @@
+"""Add the unit browser to the offline rulebook."""
+import csv
+import json
+import shutil
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def build_catalog(output, write_page, search):
+    source = ROOT / "units/catalog.json"
+    if not source.exists():
+        return 0
+    catalog = json.loads(source.read_text(encoding="utf-8"))
+    config = json.loads((ROOT / "units/points-config.json").read_text(encoding="utf-8"))
+    if catalog.get("points_formula") != config:
+        raise ValueError("Points configuration changed. Run python build.py to rebuild all costs.")
+    if any("cost" not in unit for unit in catalog["units"]):
+        raise ValueError("Run units/points.py before building the site")
+    (output / "photos").mkdir(exist_ok=True)
+    for unit in catalog["units"]:
+        if unit["photo"]:
+            shutil.copyfile(ROOT / "units" / unit["photo"], output / unit["photo"])
+        search.append({"title": unit["name"] + " · " + unit["id"], "page": "Unit catalog",
+                       "url": "unit.html?id=" + unit["id"],
+                       "text": " ".join([unit["set"], unit["faction"], unit["rank"], unit["category"], str(unit["cost"]["points"]) + " Revived points"])})
+    (output / "catalog-data.js").write_text("window.MW_CATALOG = " + json.dumps(catalog, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+    for asset in ("catalog.js", "catalog.css"):
+        shutil.copyfile(ROOT / "web" / asset, output / asset)
+    with (output / "downloads/unit-catalog.csv").open("w", encoding="utf-8-sig", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(["id", "name", "set", "faction", "rank", "category", "revived_points", "printed_points", "formula_version", "core_legal", "source", "photo_source"])
+        for unit in catalog["units"]:
+            writer.writerow([unit["id"], unit["name"], unit["set"], unit["faction"], unit["rank"], unit["category"], unit["cost"]["points"], unit["printed_points"], unit["cost"]["version"], unit["core_legal"], unit["source_url"], unit["photo_source"]])
+    assets = '<link rel="stylesheet" href="catalog.css"><script src="catalog-data.js"></script><script src="catalog.js" defer></script>'
+    body = f'''<p>Browse {len(catalog['units']):,} unit entries from the original clix releases, including five DropShip turret sections. Each datasheet has a source photo, combat dial, and <a href="points.html">Revived points</a>, plus a heat track for ’Mechs.</p>
+<div class="catalog-tools"><a href="downloads/revived-unit-cards.pdf">Download all unit cards (PDF)</a><a href="downloads/unit-catalog.csv">Download the catalog (CSV)</a></div>
+<form class="unit-filters" id="unit-filters" role="search">
+<label class="unit-search-label">Find a unit<input id="unit-query" type="search" placeholder="Name, collector ID, or variant…" autocomplete="off"></label>
+<label>Set<select id="unit-set"><option value="">All sets</option></select></label>
+<label>Type<select id="unit-category"><option value="">All types</option></select></label>
+<label>Faction<select id="unit-faction"><option value="">All factions</option></select></label>
+<label>Rules<select id="unit-status"><option value="">Full catalog</option><option value="core">Core rules only</option><option value="other">Other unit types</option></select></label>
+<label>Sort<select id="unit-sort"><option value="id">Release / collector ID</option><option value="name">Name</option><option value="points">Points: low to high</option><option value="points-desc">Points: high to low</option></select></label>
+<button type="reset" class="catalog-reset">Clear filters</button></form>
+<p id="unit-count" class="catalog-count" role="status" aria-live="polite"></p>
+<div id="unit-grid" class="unit-grid"></div>
+<nav class="catalog-pagination" aria-label="Catalog pages"><button id="unit-prev" type="button">← Previous</button><span id="unit-page"></span><button id="unit-next" type="button">Next →</button></nav>
+<noscript><p>The unit browser needs JavaScript. Use the PDF cards or CSV above to view the full catalog without it.</p></noscript>
+<p class="catalog-credit">Photographs and original dial data: <a href="https://www.warrenborn.com/UnitSection.html">WarrenBorn’s MechWarrior archive</a>. Every datasheet links to its source. Figures outside the current rules are marked; their calculated costs are estimates for later rules.</p>'''
+    write_page("units.html", "Unit catalog", "Units", "Figures & datasheets", body + assets, [])
+    detail = '<p><a href="units.html">← All units</a></p><div id="unit-detail"><p>Loading the unit…</p></div><noscript><p>Open the <a href="downloads/revived-unit-cards.pdf">printable unit cards</a> to view units without JavaScript.</p></noscript>'
+    write_page("unit.html", "Unit datasheet", "Units", "Figures & datasheets", detail + assets, [])
+    return 2

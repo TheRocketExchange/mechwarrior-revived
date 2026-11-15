@@ -1,0 +1,9 @@
+{
+  "version": "0.2", "limit": 1200,
+  "units": ["AOD108", "AOD050", "AOD030", "D006"],
+  "forces": [
+    {"id": "H", "name": "Mech-heavy", "counts": [8, 4, 2, 4], "battle_armor_squads": [2], "conventional_squads": [2, 2]},
+    {"id": "B", "name": "Balanced", "counts": [6, 5, 4, 6], "battle_armor_squads": [2, 2], "conventional_squads": [3, 3]},
+    {"id": "I", "name": "Infantry-heavy", "counts": [4, 4, 8, 16], "battle_armor_squads": [3, 3, 2], "conventional_squads": [3, 3, 3, 3, 2, 2]}
+  ]
+}

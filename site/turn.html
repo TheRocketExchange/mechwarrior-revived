@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242624">
+  <meta name="description" content="MechWarrior Revived: a playtest rulebook for existing clix miniatures. Rules, scenarios, sample forces, and printable pilot cards.">
+  <title>Turn reference · MechWarrior Revived</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="search-index.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the rules</a>
+  <header class="masthead" id="top">
+    <div class="masthead-inner">
+      <a class="brand" href="index.html" aria-label="MechWarrior Revived home">
+        <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M38 3 72 22v42L38 83 4 64V22Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
+      </a>
+      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.2</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
+    </div>
+  </header>
+  <div class="nav-band">
+    <div class="nav-inner">
+      <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html">Rules</a><a href="units.html">Units</a><a href="forces.html">Forces</a><a href="scenarios.html">Scenarios</a><a href="aids.html" aria-current="page">Game aids</a><a href="design.html">Development</a></nav>
+      <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="Rulebook navigation">
+      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.2 / November 2026</span></div>
+      <details class="toc-panel" open>
+        <summary>On this page</summary>
+        <ol class="contents"><li class="level-h2"><a href="#each-round">Each round</a></li><li class="level-h2"><a href="#actions">Actions</a></li><li class="level-h2"><a href="#attacks">Attacks</a></li><li class="level-h2"><a href="#terrain-and-heat">Terrain and heat</a></li><li class="level-h2"><a href="#transport-and-objectives">Transport and objectives</a></li></ol>
+      </details>
+      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html" aria-current="page">Turn reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
+      <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading">
+        <p class="eyebrow">At the table / 01</p>
+        <h1>Turn reference</h1>
+        <div class="page-toolbar"><span class="version-tag">v0.2 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
+      </div>
+      <article class="rule-content"><p>Version 0.2 · Keep the <a href="equipment.html">equipment sheet</a> and <a href="pilots.html">pilot cards</a> nearby.</p>
+<h2 id="each-round">Each round</h2>
+<ol>
+<li>Clear markers. Roll one die each; reroll ties. Winner chooses who acts first.</li>
+<li>Alternate one ’Mech, vehicle, or squad. Each base takes one action; finish squad members separately.</li>
+<li>Pass only with fewer groups left than your opponent. Pass automatically with none.</li>
+<li>After everyone acts, score the scenario and check for victory. No round-end cooling.</li>
+</ol>
+<p>Squads finish in a chain with neighboring centers at most 4 inches apart. Split squads regroup without attacking.</p>
+<h2 id="actions">Actions</h2>
+<p>Speed = printed speed plus heat, at least zero. Round half speed up, then add equipment bonuses.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>What you do</th>
+<th>’Mech heat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fire</td>
+<td>Stay still; ranged or close attack</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Advance</td>
+<td>Move up to speed; ranged attack</td>
+<td>+2</td>
+</tr>
+<tr>
+<td>Rush</td>
+<td>Move up to twice speed; no attack</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Assault</td>
+<td>Infantry/’Mech: move up to half speed; close attack</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Disengage</td>
+<td>Take 1 unavoidable damage; move up to half speed; no attack</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>Stay still; no attack</td>
+<td>Cool 1</td>
+</tr>
+<tr>
+<td>Vent</td>
+<td>Stay still; no attack</td>
+<td>Cool vent rating, at least 1</td>
+</tr>
+<tr>
+<td>Repair</td>
+<td>Gray attack: heal 1 friendly click</td>
+<td>+1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Turn only during movement actions. In enemy contact, use close Fire, Assault in place, Hold, Vent, or Disengage. Vehicles cannot Assault or fight close. Disengage causes no damage if every touching enemy is shutdown.</p>
+<h2 id="attacks">Attacks</h2>
+<p>Choose one target and weapon. Check arc, sight, and range, including both endpoints.</p>
+<p><strong>Three dice + attack + modifiers ≥ defense = hit.</strong></p>
+<ul>
+<li>White 6/6: automatic hit, +1 damage.</li>
+<li>White 1/1: automatic miss; take 1 unavoidable damage.</li>
+<li>Rear attack: +2 attack, except indirect fire.</li>
+<li>Shutdown target: −2 defense.</li>
+<li>Equipment: at most +1 attack and +1 defense.</li>
+<li>Advance: no extra attack penalty.</li>
+</ul>
+<p><strong>Ballistic:</strong> +1 damage against uncovered infantry. Moving or turning gives −1 attack; Gunner removes it during Advance within half speed, counting terrain.</p>
+<p><strong>Energy:</strong> Piercing; +1 heat for the firing ’Mech; damage against conventional infantry is limited to 2 before armor. No automatic target heat.</p>
+<p><strong>Rocket:</strong> Fire only. Indirect fire ignores blockers: −2 attack, −1 damage, no rear bonus. Keep arc, range, cover, and friendly-contact restrictions.</p>
+<p>Weapon-type effects apply only to shooting.</p>
+<p><strong>Damage:</strong> Printed value + heat → weapon effect → equipment/pilot bonus (maximum +1), battle armor bonus, critical bonus → damage limits → armor after Piercing. Damage may be zero.</p>
+<p>Against vehicles/’Mechs, conventional infantry deal at most 1 before armor. Exposed close assaults raise this to 2 with Piercing: rear contact, shutdown target, or attacker in woods/rubble/fieldworks. Battle armor gets +1 close damage and Piercing. Piercing ignores 1 armor; it does not add together.</p>
+<p>Three bullet holes destroy a unit. Read new dials between attacks. Apply attacker heat last, including after a surviving critical miss.</p>
+<h2 id="terrain-and-heat">Terrain and heat</h2>
+<ul>
+<li><strong>Woods/rubble:</strong> Each inch costs 2. Ranged cover: +2 conventional infantry, +1 others.</li>
+<li><strong>Fieldworks:</strong> Infantry only; normal movement. Ranged cover: +3 conventional, +2 battle armor. Conventional infantry also get +1 close defense.</li>
+<li><strong>Water:</strong> Each inch costs 2, except hover. No cover or cooling.</li>
+<li><strong>Blocking terrain:</strong> Stops movement and direct sight.</li>
+</ul>
+<p>Use only the best cover bonus, up to +3.</p>
+<p>Apply printed heat modifiers. After gaining heat, a colored warning other than green/white means one stress roll: on 1, take 1 unavoidable damage. No roll while cooling or shutdown.</p>
+<p>Stop heating at shutdown. Only Vent is allowed; the ’Mech cannot contest objectives. Cooling past shutdown restarts it without another activation.</p>
+<h2 id="transport-and-objectives">Transport and objectives</h2>
+<p><strong>Board:</strong> Spend the squad’s activation. Move up to speed; finish together, all centers within 3 inches of an empty friendly carrier. Neither may touch an enemy.</p>
+<p><strong>Unload:</strong> Spend the squad’s activation. Carrier must be unengaged. Place everyone together within 3 inches, legally and outside enemy contact. No further action. If all cannot fit, stay aboard. Carrier acts separately.</p>
+<p><strong>Destroyed carrier:</strong> Each passenger takes 1 unavoidable damage. Place survivors legally within 3 inches, outside enemy contact. Save as many as fit; the rest die. Mark the squad activated; regroup next round if split.</p>
+<p><strong>Objectives:</strong> Base centers within 3 inches count. Both sides present = contested. Shutdown, embarked, and escaped units do not count. Follow the scenario’s scoring.</p>
+</article>
+      
+      <div class="page-end"><span>MechWarrior Revived / Version 0.2</span><a href="#top">Back to top ↑</a></div>
+    </main>
+  </div>
+  <footer class="site-footer"><div><a href="index.html" class="footer-brand">MechWarrior <strong>Revived</strong></a><p>An unofficial fan rules project. All game names and trademarks belong to their respective owners.</p></div><div class="footer-links"><a href="design.html">Design notes</a><a href="sources.html">Sources</a><a href="comparison.html">Rules comparison</a><a href="https://www.net-armageddon.org/">Layout inspired by NetEA ↗</a></div></footer>
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-heading"><h2 id="search-title">Search the rulebook</h2><button class="close-search" type="button" aria-label="Close search">×</button></div>
+    <label class="visually-hidden" for="rule-search">Search rules, scenarios, and references</label>
+    <input id="rule-search" type="search" placeholder="Try heat, rockets, or transport…" autocomplete="off" spellcheck="false">
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <div class="search-results"></div>
+    <p class="search-hint">Search works offline. <kbd>Esc</kbd> to close.</p>
+  </dialog>
+</body>
+</html>

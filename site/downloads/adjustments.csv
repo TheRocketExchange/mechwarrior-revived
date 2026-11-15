@@ -1,0 +1,5 @@
+rule_version,formula_version,change,status,evidence,review_after
+0.2,0.2-alpha-1,All units use the shared full-dial formula,initial estimate,No tabletop results recorded,Complete initial paired matrix
+0.2,0.2-alpha-1,One pilot allowance of 6 included in each Mech,initial estimate,All four roles share the allowance,Initial paired matrix
+0.2,0.2-alpha-1,Up to two carriers per army with no surcharge,shared army allowance,Transport access is equal for both players,Transport exercises and paired matrix
+0.2,0.2-alpha-1,Rocket test substitutes recalculated through the same formula,initial estimate,At most one Ballistic weapon on one Mech per force,Weapon comparison pair

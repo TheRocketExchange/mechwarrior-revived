@@ -1,0 +1,29 @@
+{
+  "version": "0.2",
+  "cards": [
+    {
+      "role": "Gunner",
+      "ability": "Measured advance",
+      "text": "During Advance, ignore Ballistic recoil if movement costs no more than half your speed, rounded up. Apply heat to speed first and count terrain costs.",
+      "reminder": "Pay action and Energy heat normally."
+    },
+    {
+      "role": "Skirmisher",
+      "ability": "Clean withdrawal",
+      "text": "Take no damage when you Disengage. Follow the normal movement and contact rules.",
+      "reminder": "Move up to half speed. No attack. Gain 1 heat."
+    },
+    {
+      "role": "Brawler",
+      "ability": "Exploit an opening",
+      "text": "Add 1 close damage against a vehicle or 'Mech when attacking its rear or while it is shutdown. Equipment and pilot damage bonuses together cannot exceed +1.",
+      "reminder": "No bonus to the attack roll."
+    },
+    {
+      "role": "Engineer",
+      "ability": "Cooling discipline",
+      "text": "Vent cools 1 extra click, even while shutdown. Stop at the heat dial's starting position.",
+      "reminder": "Vent uses your whole activation."
+    }
+  ]
+}

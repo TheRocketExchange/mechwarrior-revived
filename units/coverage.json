@@ -1,0 +1,13 @@
+{
+  "expected": 1649,
+  "parsed": 1649,
+  "with_photo": 1649,
+  "categories": {
+    "Conventional Infantry": 161,
+    "Battle Armor": 213,
+    "Vehicle": 519,
+    "Mech": 751,
+    "Turret": 5
+  },
+  "errors": []
+}

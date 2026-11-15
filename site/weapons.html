@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242624">
+  <meta name="description" content="MechWarrior Revived: a playtest rulebook for existing clix miniatures. Rules, scenarios, sample forces, and printable pilot cards.">
+  <title>Weapon reference · MechWarrior Revived</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="search-index.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the rules</a>
+  <header class="masthead" id="top">
+    <div class="masthead-inner">
+      <a class="brand" href="index.html" aria-label="MechWarrior Revived home">
+        <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M38 3 72 22v42L38 83 4 64V22Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
+      </a>
+      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.2</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
+    </div>
+  </header>
+  <div class="nav-band">
+    <div class="nav-inner">
+      <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html" aria-current="page">Rules</a><a href="units.html">Units</a><a href="forces.html">Forces</a><a href="scenarios.html">Scenarios</a><a href="aids.html">Game aids</a><a href="design.html">Development</a></nav>
+      <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="Rulebook navigation">
+      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.2 / November 2026</span></div>
+      <details class="toc-panel" open>
+        <summary>On this page</summary>
+        <ol class="contents"><li class="level-h2"><a href="#three-weapon-types">Three weapon types</a></li><li class="level-h2"><a href="#label-your-weapons">Label your weapons</a></li><li class="level-h2"><a href="#damage-and-heat">Damage and heat</a></li><li class="level-h2"><a href="#examples">Examples</a></li></ol>
+      </details>
+      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html" aria-current="page">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
+      <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading">
+        <p class="eyebrow">Rules / 02</p>
+        <h1>Weapon reference</h1>
+        <div class="page-toolbar"><span class="version-tag">v0.2 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
+      </div>
+      <article class="rule-content"><p>Version 0.2</p>
+<p>Use the damage and range printed on the base. Choose one weapon per attack. These rules apply to shooting only, even if you use the same damage value for a close attack.</p>
+<h2 id="three-weapon-types">Three weapon types</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Strength</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ballistic</td>
+<td>+1 damage against conventional infantry or battle armor with no terrain cover</td>
+<td>−1 attack if you moved or turned before firing</td>
+</tr>
+<tr>
+<td>Energy</td>
+<td>Piercing: ignore 1 point of armor</td>
+<td>A firing ’Mech gains 1 extra heat. Damage against conventional infantry is limited to 2 before armor</td>
+</tr>
+<tr>
+<td>Rocket</td>
+<td>Can shoot indirectly through blocking terrain and intervening bases</td>
+<td>Fire action only. Indirect shots take −2 attack and −1 damage</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ballistic:</strong> Check the target’s terrain cover before equipment reduces or ignores it. Advance adds no extra accuracy penalty. Gunner removes recoil during Advance if movement costs no more than half speed, rounded up; count difficult terrain.</p>
+<p><strong>Energy:</strong> The heat cost applies only to ’Mechs. The infantry damage limit applies to every firer. Energy does not heat its target automatically.</p>
+<p><strong>Rocket:</strong> Includes both missiles and rockets. Declare direct or indirect fire before rolling. Direct shots use normal sight rules. Indirect shots ignore blockers, but keep the printed ranges, front arc, and target’s cover. They get no rear bonus.</p>
+<p>You cannot shoot while engaged or at an enemy touching a friendly unit, even indirectly. Rockets hit one target without a spotter, scatter roll, or blast. No pilot or equipment allows Rockets to fire during Advance.</p>
+<h2 id="label-your-weapons">Label your weapons</h2>
+<p>The original symbols show Energy, Ballistic, and Melee. There is no separate Rocket symbol. Before deployment:</p>
+<ol>
+<li>Mark each Energy damage value <strong>E</strong>. Melee is close-only.</li>
+<li>Mark each Ballistic damage value <strong>B</strong>.</li>
+<li>Change B to <strong>R</strong> only when a printed weapon name or an agreed unit listing identifies that weapon as missiles or rockets. Note the source. Mixed or uncertain weapons stay B; colors and sculpts are not enough.</li>
+<li>For a Rocket test without identified Rocket weapons, each player may use one Ballistic weapon on one ’Mech as a <strong>Rocket test substitute</strong>. Choose the substitute on its datasheet and use that cost. Mark it on the roster and keep it for the return game. Change no other printed values.</li>
+</ol>
+<p>Labels stay fixed through damage, heat, and repair, even if a weapon becomes unusable and later returns. Equipment colors still work normally.</p>
+<h2 id="damage-and-heat">Damage and heat</h2>
+<p>Add heat modifiers to printed damage, then apply the weapon bonus or penalty. Add equipment and pilot bonuses (at most +1 combined), battle armor’s close bonus, and critical damage. Apply damage limits, then armor. Damage may be zero. Extra sources of Piercing do not add together.</p>
+<p>Blue defense armor protects against Ballistic and Rocket shots; red protects against Energy.</p>
+<p>Add Energy heat only when you roll the attack, including a miss or critical miss if the attacker survives. Add it to the action heat and make at most one stress check. Skipping an Advance shot still costs the action’s heat, but no Energy heat.</p>
+<h2 id="examples">Examples</h2>
+<p>These damage examples use a vehicle or ’Mech with damage 3, no other bonuses or heat penalties, and a normal hit.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Ballistic</th>
+<th>Energy</th>
+<th>Rocket</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conventional infantry in the open, no armor</td>
+<td>4</td>
+<td>2</td>
+<td>3 direct / 2 indirect</td>
+</tr>
+<tr>
+<td>Conventional infantry in cover, no armor</td>
+<td>3</td>
+<td>2</td>
+<td>3 direct / 2 indirect</td>
+</tr>
+<tr>
+<td>Vehicle or ’Mech with Armor 1</td>
+<td>2</td>
+<td>3</td>
+<td>2 direct / 1 indirect</td>
+</tr>
+</tbody>
+</table></div>
+<p>Cover still affects the attack roll. Compare moving and stationary fire:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Ballistic</th>
+<th>Energy</th>
+<th>Rocket</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Advance after moving</td>
+<td>−1 attack; Gunner can remove it within half speed</td>
+<td>No movement accuracy penalty; 3 total ’Mech heat</td>
+<td>Cannot shoot</td>
+</tr>
+<tr>
+<td>Fire</td>
+<td>1 ’Mech heat</td>
+<td>2 ’Mech heat</td>
+<td>1 ’Mech heat; indirect fire takes −2 attack</td>
+</tr>
+<tr>
+<td>Target behind blocking terrain</td>
+<td>Cannot shoot</td>
+<td>Cannot shoot</td>
+<td>Indirect fire, if arc, range, and target are legal</td>
+</tr>
+</tbody>
+</table></div>
+</article>
+      <a class="next-page" href="equipment.html"><span>Continue reading<strong>Equipment colors</strong></span><span aria-hidden="true">→</span></a>
+      <div class="page-end"><span>MechWarrior Revived / Version 0.2</span><a href="#top">Back to top ↑</a></div>
+    </main>
+  </div>
+  <footer class="site-footer"><div><a href="index.html" class="footer-brand">MechWarrior <strong>Revived</strong></a><p>An unofficial fan rules project. All game names and trademarks belong to their respective owners.</p></div><div class="footer-links"><a href="design.html">Design notes</a><a href="sources.html">Sources</a><a href="comparison.html">Rules comparison</a><a href="https://www.net-armageddon.org/">Layout inspired by NetEA ↗</a></div></footer>
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-heading"><h2 id="search-title">Search the rulebook</h2><button class="close-search" type="button" aria-label="Close search">×</button></div>
+    <label class="visually-hidden" for="rule-search">Search rules, scenarios, and references</label>
+    <input id="rule-search" type="search" placeholder="Try heat, rockets, or transport…" autocomplete="off" spellcheck="false">
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <div class="search-results"></div>
+    <p class="search-hint">Search works offline. <kbd>Esc</kbd> to close.</p>
+  </dialog>
+</body>
+</html>

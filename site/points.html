@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242624">
+  <meta name="description" content="MechWarrior Revived: a playtest rulebook for existing clix miniatures. Rules, scenarios, sample forces, and printable pilot cards.">
+  <title>Points · MechWarrior Revived</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="search-index.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the rules</a>
+  <header class="masthead" id="top">
+    <div class="masthead-inner">
+      <a class="brand" href="index.html" aria-label="MechWarrior Revived home">
+        <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M38 3 72 22v42L38 83 4 64V22Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
+      </a>
+      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.2</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
+    </div>
+  </header>
+  <div class="nav-band">
+    <div class="nav-inner">
+      <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html" aria-current="page">Rules</a><a href="units.html">Units</a><a href="forces.html">Forces</a><a href="scenarios.html">Scenarios</a><a href="aids.html">Game aids</a><a href="design.html">Development</a></nav>
+      <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="Rulebook navigation">
+      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.2 / November 2026</span></div>
+      <details class="toc-panel" open>
+        <summary>On this page</summary>
+        <ol class="contents"><li class="level-h2"><a href="#the-formula">The formula</a></li><li class="level-h2"><a href="#how-the-ratings-work">How the ratings work</a></li><li class="level-h2"><a href="#special-cases">Special cases</a></li><li class="level-h2"><a href="#changing-costs">Changing costs</a></li></ol>
+      </details>
+      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html" aria-current="page">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
+      <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading">
+        <p class="eyebrow">Building armies</p>
+        <h1>Points</h1>
+        <div class="page-toolbar"><span class="version-tag">v0.2 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
+      </div>
+      <article class="rule-content"><p>Version 0.2 · Formula 0.2-alpha-1</p>
+<p>Build armies with the <strong>Revived points</strong> shown in the <a href="units.html">unit catalog</a>. Pay per base, including every member of a squad. The old printed cost is shown only for reference.</p>
+<p>Every unit uses the same formula. There are no hand-set prices, faction discounts, or rarity premiums. These are starting costs for playtesting, not established balance.</p>
+<h2 id="the-formula">The formula</h2>
+<p><strong>Points = 1.6 × Toughness × (1 + Mobility + 3 × Firepower + Support) + Pilot allowance</strong></p>
+<p>Round the final result to the nearest whole point, with a minimum of 1. The calculation uses the full live combat dial from its starting mark onward, not just its best click.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toughness</td>
+<td>How much incoming fire the damage track can withstand, using defense, armor, and cover</td>
+</tr>
+<tr>
+<td>Mobility</td>
+<td>Average speed, with small bonuses for Jump, easier terrain, hover movement, and safe disengagement</td>
+</tr>
+<tr>
+<td>Firepower</td>
+<td>Expected damage, using attack, weapons, range, arcs, equipment, infantry limits, and heat</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>Repair and equipment that heats a target</td>
+</tr>
+<tr>
+<td>Pilot allowance</td>
+<td>6 points already included in each ’Mech’s cost; no extra charge for choosing its Revived pilot</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each datasheet has a “How the points are calculated” section with its ratings and total.</p>
+<h2 id="how-the-ratings-work">How the ratings work</h2>
+<p><strong>Toughness</strong> adds the value of every live click. Each is compared with a defense-18 target under an attack-8, damage-3 hit. The test mix is 80% ranged attacks, split equally among B/E/R, and 20% close attacks. Half arrive in the open and half in woods. Revived equipment and infantry cover apply.</p>
+<p><strong>Mobility</strong> adds 0.08 per inch of average speed. Jump adds 0.25 while shown; green speed adds 0.15; gray speed adds 0.10; red or blue speed adds 0.08. Hover adds 0.05. These are small allowances for terrain and movement choices, not extra inches during play.</p>
+<p><strong>Firepower</strong> checks all 216 dice results, including white-dice criticals. Its target mix is 40% armored vehicles, 20% unarmored ’Mechs, 10% open conventional infantry, 15% covered conventional infantry, and 15% battle armor. It weighs stationary fire at 65% and moving fire at 35%. Recoil, Energy heat, Rocket restrictions, damage limits, and Piercing all apply.</p>
+<p>Range adds 0.025 per maximum-range inch and subtracts 0.025 per minimum-range inch. Wider arcs get a small bonus. Indirect access adds 15% of its expected damage. Close attacks use a 0.4 reach allowance, split between frontal and rear attacks. The best attack counts fully; a different second choice adds 15%, since it offers a choice rather than another attack.</p>
+<p>For ’Mechs, a 24-action Fire/Vent or Advance/Vent calculation uses the actual heat track and vent rating. Heat damage modifiers and a small stress allowance reduce output. <strong>Support</strong> adds 0.35 for gray attack and 0.15 for yellow damage, averaged across the dial.</p>
+<h2 id="special-cases">Special cases</h2>
+<ul>
+<li>A Rocket test substitute uses the alternate cost on its datasheet. Record that cost before deployment and keep it for the return game.</li>
+<li>Up to two carriers remain a shared army allowance. Designation adds no separate charge in this version.</li>
+<li>Aircraft, artillery-only units, DropShip turrets, and other excluded types still get catalog costs. Those estimates use the same model, but do not make them legal in a core game. Special flight, artillery, and DropShip rules are not priced here.</li>
+<li>Repair stops, exact base size, heat-related movement loss, mission layouts, and pilot combinations are not fully modeled. Test these before treating the costs as settled.</li>
+</ul>
+<h2 id="changing-costs">Changing costs</h2>
+<p>The calculator is <a href="downloads/points.py">units/points.py</a>; all tuning weights are in <a href="downloads/points-config.json">points-config.json</a>. Change the formula version when changing weights, then rebuild the catalog, cards, and sample armies together. Keep one formula version for both games in a test pair.</p>
+<p>Record reasons for changes in the <a href="downloads/adjustments.csv">adjustment log</a>. Prefer a shared formula correction over a special price for one unit.</p>
+</article>
+      
+      <div class="page-end"><span>MechWarrior Revived / Version 0.2</span><a href="#top">Back to top ↑</a></div>
+    </main>
+  </div>
+  <footer class="site-footer"><div><a href="index.html" class="footer-brand">MechWarrior <strong>Revived</strong></a><p>An unofficial fan rules project. All game names and trademarks belong to their respective owners.</p></div><div class="footer-links"><a href="design.html">Design notes</a><a href="sources.html">Sources</a><a href="comparison.html">Rules comparison</a><a href="https://www.net-armageddon.org/">Layout inspired by NetEA ↗</a></div></footer>
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-heading"><h2 id="search-title">Search the rulebook</h2><button class="close-search" type="button" aria-label="Close search">×</button></div>
+    <label class="visually-hidden" for="rule-search">Search rules, scenarios, and references</label>
+    <input id="rule-search" type="search" placeholder="Try heat, rockets, or transport…" autocomplete="off" spellcheck="false">
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <div class="search-results"></div>
+    <p class="search-hint">Search works offline. <kbd>Esc</kbd> to close.</p>
+  </dialog>
+</body>
+</html>

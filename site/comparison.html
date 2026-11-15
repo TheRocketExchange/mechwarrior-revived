@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242624">
+  <meta name="description" content="MechWarrior Revived: a playtest rulebook for existing clix miniatures. Rules, scenarios, sample forces, and printable pilot cards.">
+  <title>Rules &amp; handbook comparison · MechWarrior Revived</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="search-index.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the rules</a>
+  <header class="masthead" id="top">
+    <div class="masthead-inner">
+      <a class="brand" href="index.html" aria-label="MechWarrior Revived home">
+        <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M38 3 72 22v42L38 83 4 64V22Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
+      </a>
+      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.2</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
+    </div>
+  </header>
+  <div class="nav-band">
+    <div class="nav-inner">
+      <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html">Rules</a><a href="units.html">Units</a><a href="forces.html">Forces</a><a href="scenarios.html">Scenarios</a><a href="aids.html">Game aids</a><a href="design.html" aria-current="page">Development</a></nav>
+      <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="Rulebook navigation">
+      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.2 / November 2026</span></div>
+      <details class="toc-panel" open>
+        <summary>On this page</summary>
+        <ol class="contents"><li class="level-h2"><a href="#the-sources">The sources</a></li><li class="level-h2"><a href="#rules-compared">Rules compared</a></li><li class="level-h2"><a href="#ideas-from-the-handbook">Ideas from the handbook</a></li><li class="level-h2"><a href="#choices-for-revived">Choices for Revived</a></li></ol>
+      </details>
+      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
+      <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading">
+        <p class="eyebrow">Development / Community sources</p>
+        <h1>Rules &amp; handbook comparison</h1>
+        <div class="page-toolbar"><span class="version-tag">v0.2 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
+      </div>
+      <article class="rule-content"><p>Revived’s biggest changes are alternating activations and infantry that fight independently. Earlier rules also offer useful ideas for movement, heat, transport, and missions.</p>
+<h2 id="the-sources">The sources</h2>
+<p><strong>Age of Destruction</strong> is WizKids’ official revision of the clix game. A separate fan ruleset under “MechWarrior Revised” or “Age of Destruction (Updated Ruleset)” has not been identified. The comparison below uses the full <a href="https://manualzz.com/doc/27785577/mechwarrior-age-of-destruction-board-game-user-manual">Rules of Warfare</a>, not its quick-start section.</p>
+<p>The downloaded <strong><a href="https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf">Scenario Handbook v2.1</a></strong> is by <strong>Mike “Rimoran” McCarrig</strong>, dated December 15, 2020. Its 116 pages collect scenarios, writing advice, and suggested changes. It is a community compilation, not a replacement rulebook. Page references below use its printed numbers.</p>
+<h2 id="rules-compared">Rules compared</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Age of Destruction</th>
+<th>Revived v0.2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activations</td>
+<td>One order per 150 build points each player turn</td>
+<td>Alternate groups; every group acts once per round</td>
+</tr>
+<tr>
+<td>Infantry</td>
+<td>Temporary formations</td>
+<td>Fixed squads of 2–3 bases; each keeps its own actions, targets, and damage</td>
+</tr>
+<tr>
+<td>Formation shooting</td>
+<td>Eligible supporters add +2 each to the main attacker</td>
+<td>Each base rolls its own attack; no ally accuracy bonus</td>
+</tr>
+<tr>
+<td>Move and attack</td>
+<td>’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty</td>
+<td>Full-speed Advance shooting, with −1 only for Ballistic recoil. Infantry and ’Mechs Assault at half speed</td>
+</tr>
+<tr>
+<td>Heat</td>
+<td>Printed profiles, pushing, cooling, and heat effects</td>
+<td>Printed tracks and numeric modifiers, heat per action, one stress rule for colored warnings</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>Boarding and unloading use carrier movement; passengers are lost when it is destroyed</td>
+<td>Squad spends its activation; carrier acts separately. Passengers may survive a destroyed carrier</td>
+</tr>
+<tr>
+<td>Victory</td>
+<td>Win a majority of three conditions: elimination, battlefield control, and enemy deployment zone</td>
+<td>Each scenario sets one mission and its scoring</td>
+</tr>
+<tr>
+<td>Pilots</td>
+<td>Purchased cards modify ’Mechs</td>
+<td>Four roles; one pilot allowance included in each ’Mech’s cost; no advancement</td>
+</tr>
+<tr>
+<td>Points</td>
+<td>Printed cost on each base</td>
+<td>One shared formula uses the full dial and Revived weapon, equipment, and heat rules</td>
+</tr>
+<tr>
+<td>Weapons</td>
+<td>Energy, Ballistic, and Melee symbols</td>
+<td>Separate Rocket labels; recoil, heat, and indirect fire give different tradeoffs</td>
+</tr>
+</tbody>
+</table></div>
+<p>AoD formation bonuses require a legal formation and line of sight; simple adjacency is not enough. AoD infantry can also capture units, and its victory rules already include objectives beyond kills.</p>
+<p>Revived makes those choices simpler to follow: no combined attacks, and a clear mission for each scenario. More units acting each round may also make combat faster and deadlier.</p>
+<h2 id="ideas-from-the-handbook">Ideas from the handbook</h2>
+<p>These are summaries of the booklet, followed by possible uses in Revived. They are not claims that the new rules have been tested.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>What it offers</th>
+<th>Use in Revived</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Writing a Scenario, pp. 3–5</td>
+<td>Clear forces, setup, objectives, and victory; few special rules</td>
+<td>A consistent short format for the first missions</td>
+</tr>
+<tr>
+<td>Urban Warfare, p. 64</td>
+<td>Foot infantry can capture a factory and must hold it for three full turns; defender reinforcements arrive in stages</td>
+<td>Infantry doing mission work. Hold the Station uses consecutive round-end control</td>
+</tr>
+<tr>
+<td>SC-005 Breaking The Line, p. 105</td>
+<td>600 points face 900 with forward deployment; a unit must remain in the enemy deployment zone</td>
+<td>Breakthrough uses equal points and an escape target so one cheap runner is not enough</td>
+</tr>
+<tr>
+<td>SC-003 Take The HPG Station, p. 104</td>
+<td>Contact with the station may grant an extra attack; normal victory rules remain</td>
+<td>Use the station as the objective, without the extra attack</td>
+</tr>
+<tr>
+<td>SC-008 King of the Hill, p. 105</td>
+<td>Heat depends on actions rather than pushing/order tokens</td>
+<td>Keep printed heat tracks but change when heat is gained</td>
+</tr>
+<tr>
+<td>SC-012 Fast and Furious, p. 106</td>
+<td>Vehicles can move half speed and shoot, with order-token costs</td>
+<td>Test mobile vehicle fire; Revived allows full-speed Advance</td>
+</tr>
+<tr>
+<td>SC-A03 Death March, p. 107</td>
+<td>More non-’Mech orders, with attack/defense penalties instead of pushing damage</td>
+<td>A precedent for more active support units</td>
+</tr>
+<tr>
+<td>M-009 Control the City and M-010 Flush ’em Out, p. 12</td>
+<td>Missions involve reaching terrain and clearing cover</td>
+<td>Possible follow-ups to Seize and Hold</td>
+</tr>
+</tbody>
+</table></div>
+<p>SC-001 Escape the City (p. 104) still uses normal victory rules. Despite its title, it is not an exit mission.</p>
+<h2 id="choices-for-revived">Choices for Revived</h2>
+<p>Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Use action heat, mobile vehicle fire, and terrain worth holding.</p>
+<p>The first missions test holding ground, escaping, and capturing a station. Score at round end so both players can respond. Old “per turn” effects need care: under alternating activations, they could trigger far more often.</p>
+<p>Hold the Station lets any eligible unit contest. Infantry’s advantage is cover and access to fieldworks. If that proves too weak, test infantry-only capture later.</p>
+<p>Leave weather, reserves, faction restrictions, captives, and extra station attacks for later. Test pilots separately from point changes. The handbook gives useful ideas; balance and play time still need games.</p>
+</article>
+      
+      <div class="page-end"><span>MechWarrior Revived / Version 0.2</span><a href="#top">Back to top ↑</a></div>
+    </main>
+  </div>
+  <footer class="site-footer"><div><a href="index.html" class="footer-brand">MechWarrior <strong>Revived</strong></a><p>An unofficial fan rules project. All game names and trademarks belong to their respective owners.</p></div><div class="footer-links"><a href="design.html">Design notes</a><a href="sources.html">Sources</a><a href="comparison.html">Rules comparison</a><a href="https://www.net-armageddon.org/">Layout inspired by NetEA ↗</a></div></footer>
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-heading"><h2 id="search-title">Search the rulebook</h2><button class="close-search" type="button" aria-label="Close search">×</button></div>
+    <label class="visually-hidden" for="rule-search">Search rules, scenarios, and references</label>
+    <input id="rule-search" type="search" placeholder="Try heat, rockets, or transport…" autocomplete="off" spellcheck="false">
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <div class="search-results"></div>
+    <p class="search-hint">Search works offline. <kbd>Esc</kbd> to close.</p>
+  </dialog>
+</body>
+</html>
