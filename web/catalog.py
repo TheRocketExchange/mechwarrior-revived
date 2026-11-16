@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "units"))
-from force_org import unit_family
+from force_org import INFANTRY, LIMITS, PILOTS, POINTS_LIMIT, unit_family
 
 
 def build_catalog(output, write_page, search):
@@ -30,6 +30,7 @@ def build_catalog(output, write_page, search):
     # Source prices remain in the import archive; the site publishes one cost.
     published = dict(catalog, units=[dict({key: value for key, value in unit.items() if key != "printed_points"}, family=unit_family(unit))
                                      for unit in catalog["units"]])
+    published["force_organization"] = {"points_limit": POINTS_LIMIT, "limits": LIMITS, "pilots": PILOTS, "infantry": sorted(INFANTRY)}
     (output / "catalog-data.js").write_text("window.MW_CATALOG = " + json.dumps(published, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     for asset in ("catalog.js", "catalog.css"):
         shutil.copyfile(ROOT / "web" / asset, output / asset)
@@ -41,6 +42,14 @@ def build_catalog(output, write_page, search):
     assets = '<link rel="stylesheet" href="catalog.css"><script src="catalog-data.js"></script><script src="catalog.js" defer></script>'
     body = f'''<p>Browse {len(catalog['units']):,} unit entries from the original clix releases, including five DropShip turret sections. Each datasheet has a source photo, combat dial, and <a href="points.html">points cost</a>, plus a heat track for ’Mechs.</p>
 <div class="catalog-tools"><a href="downloads/revived-unit-cards.pdf">Download all unit cards (PDF)</a><a href="downloads/unit-catalog.csv">Download the catalog (CSV)</a></div>
+<p><a href="builder.html">Build your own force and print cards for just your models.</a></p>
+<p>The PDF prints two cards per Letter page, with every combat-dial position, equipment color, and repair mark. ’Mech cards also include the full heat dial.</p>
+<details class="card-guide" id="reading-a-unit-card"><summary>Reading a unit card</summary>
+<ul><li><strong>Catalog ID</strong> identifies the exact release and variant, such as AOD108. Use it to find the same miniature in the catalog.</li>
+<li><strong>Roster ID</strong> is your own label for one figure: M1 for a ’Mech, V1 for a vehicle, C1a for a conventional infantry base, or A1a for battle armor. It helps distinguish identical figures.</li>
+<li><strong>Squad</strong> records the infantry group, such as C1. <strong>Assigned carrier</strong> records its transport, such as V1. On a vehicle card, mark whether it is a carrier and record its assigned squad. These are roster notes, not proof that the squad is currently aboard; leave unused fields blank.</li>
+<li><strong>Clicks</strong> is the damage needed to reach destruction from the starting position. It stays the same on the card; the current dial position tells you how much remains. Heat uses its own separate track.</li>
+<li><strong>Full combat dial</strong> shows every position in order. Damage moves right one column per point; repairs move left, subject to repair stops. Start is the starting position, Stop is a repair mark, and End is destroyed. X marks a lost value. SD on the heat dial means shutdown. Color letters keep equipment and heat warnings readable in black-and-white prints.</li></ul></details>
 <form class="unit-filters" id="unit-filters" role="search">
 <label class="unit-search-label">Find a unit<input id="unit-query" type="search" placeholder="Name, collector ID, or variant…" autocomplete="off"></label>
 <label>Set<select id="unit-set"><option value="">All sets</option></select></label>

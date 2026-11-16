@@ -23,7 +23,9 @@ Use the rules in this packet. Original abilities, formations, pilots, gear, and 
 
 Once you know the basics, follow [Build your force](https://therocketexchange.github.io/mechwarrior-revived/rules.html#11-build-your-force). It sets out the points limit, force-organization chart, rule of three, squad sizes, and pilot and carrier limits.
 
-The [unit catalog](https://therocketexchange.github.io/mechwarrior-revived/units.html) has 1,649 photo datasheets with full dials and costs from one [points formula](https://therocketexchange.github.io/mechwarrior-revived/points.html). Each datasheet identifies its unit family for the rule of three. [Download the unit cards](https://therocketexchange.github.io/mechwarrior-revived/downloads/revived-unit-cards.pdf), four per page, or the [catalog CSV](https://therocketexchange.github.io/mechwarrior-revived/downloads/unit-catalog.csv).
+Use the [force builder](https://therocketexchange.github.io/mechwarrior-revived/builder.html) to choose models, arrange squads, and assign pilots and carriers. It adds up points, checks the limits, and saves your list in your browser. Export a list to keep a backup or move it to another device. **Generate unit cards** creates a print sheet for just your models, with roster labels and assignments filled in; use **Print / Save as PDF** to keep a copy.
+
+The [unit catalog](https://therocketexchange.github.io/mechwarrior-revived/units.html) has 1,649 photo datasheets with full dials and costs from one [points formula](https://therocketexchange.github.io/mechwarrior-revived/points.html). Each datasheet identifies its unit family for the rule of three. [Download the unit cards](https://therocketexchange.github.io/mechwarrior-revived/downloads/revived-unit-cards.pdf), two per page with complete combat and heat dials, or the [catalog CSV](https://therocketexchange.github.io/mechwarrior-revived/downloads/unit-catalog.csv). The [card guide](https://therocketexchange.github.io/mechwarrior-revived/units.html#reading-a-unit-card) explains IDs, squad and carrier assignments, and clicks.
 
 ## Rules and game aids
 
@@ -55,6 +57,6 @@ Run `python build.py` to rebuild costs, sample armies, card PDFs, the readiness 
 
 Edit the rules in their Markdown source files, starting with [core-rules.md](rules/core-rules.md). Pricing lives in [points.py](units/points.py), with tuning weights in [points-config.json](units/points-config.json). Change the formula version when changing weights. Sample rosters live in [forces.json](playtest/forces.json); [update_forces.py](units/update_forces.py) checks their organization and generates the tables and CSV.
 
-Run `python units/test_catalog.py` and `python web/check_packet.py` after rebuilding. To refresh the public archive cache, run `python units/import_catalog.py --fetch`. Routine builds need no network.
+Run `python units/test_catalog.py`, `node web/test_force_model.js`, and `python web/check_packet.py` after rebuilding. The builder reads the same catalog costs and force limits as the roster generator; it never accepts saved prices from an imported list. To refresh the public archive cache, run `python units/import_catalog.py --fetch`. Routine builds need no network.
 
 For pilot changes, edit both the [card data](pilots/cards.json) and [pilot rules](pilots/pilot-cards.md), then rebuild.

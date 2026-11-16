@@ -15,6 +15,7 @@ from urllib.parse import unquote, urlsplit
 
 from markdown_it import MarkdownIt
 from catalog import build_catalog
+from builder import build_force_builder
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
@@ -44,7 +45,7 @@ PAGES = [
     ("playtest/validation.md", "validation.html", "Checks so far", "Development", "Testing / Progress"),
 ]
 SOURCE_URL = {(ROOT / p[0]).resolve(): p[1] for p in PAGES}
-NAV = [("Rules", "rules.html"), ("Units", "units.html"), ("Forces", "forces.html"),
+NAV = [("Rules", "rules.html"), ("Units", "units.html"), ("Forces", "builder.html"),
        ("Scenarios", "scenarios.html"), ("Game aids", "aids.html"),
        ("Development", "design.html")]
 DOWNLOADS = ["rules/readiness-reference.pdf", "pilots/revived-pilot-cards.pdf", "pilots/revived-pilot-cards-preview.png",
@@ -129,7 +130,7 @@ def resources_html(current):
     links = [("rules.html", "Core rules"), ("weapons.html", "Weapons"),
              ("equipment.html", "Equipment colors"), ("turn.html", "Turn reference"),
              ("readiness.html", "Readiness reference"),
-             ("pilots.html", "Pilot cards"), ("units.html", "Unit cards"),
+             ("pilots.html", "Pilot cards"), ("units.html", "Unit cards"), ("builder.html", "Force builder"),
              ("points.html", "Points"), ("scenarios.html", "Scenarios")]
     return "".join(f'<a href="{url}"' + (' aria-current="page"' if url == current else "")
                    + f'>{label}<span aria-hidden="true">↗</span></a>' for url, label in links)
@@ -148,6 +149,7 @@ def write_page(filename, title, active, eyebrow, body, toc, tools="", next_page=
     }
     for key, value in replacements.items():
         template = template.replace("{{" + key + "}}", value)
+    template = re.sub(r"(?m)^[ \t]+$", "", template)
     (OUT / filename).write_text(template, encoding="utf-8")
 
 
@@ -183,7 +185,7 @@ def main():
         elif filename == "index.html":
             body = '<p class="lead">Combined-arms battles in the BattleTech universe.</p><p>Command BattleMechs, armored vehicles, and infantry. Fight to seize ground, break through enemy lines, or hold a vital position. Take turns moving and attacking as damage, heat, and pushing test your force.</p><p>New in v0.3: pushing and recovery, half-speed Advance, and one order per squad. <a href="combat-rhythm.html">See what changes on the table.</a></p>' + resource_rows([
                 ("01", "rules.html", "Read the rules", "Learn how a battle unfolds, from movement and combat to victory."),
-                ("02", "forces.html", "Assemble a force", "Three legal sample armies, with the force limits explained."),
+                ("02", "builder.html", "Build your force", "Choose models, check your list, and print cards for your army."),
                 ("03", "units.html", "Find your units", "Photos, full dials, printable cards, and points."),
                 ("04", "scenarios.html", "Choose your mission", "Three scenarios with deployment and scoring rules."),
                 ("05", "aids.html", "Prepare the table", "Quick references and printable pilot cards."),
@@ -198,6 +200,7 @@ def main():
     ]) + '<p>Use the <a href="rules.html#10-objectives-and-victory">core rules</a> to check who controls each objective. The scenario tells you when to score and how to win.</p>'
     write_page("scenarios.html", "Scenarios", "Scenarios", "Mission selection", scenario_body, [])
     aids_body = '<p>References and printable cards for the table.</p>' + resource_rows([
+        ("LIST", "builder.html", "Cards for your army", "Build a list, then print only your models with their assignments filled in."),
         ("01", "turn.html", "Turn reference", "Round sequence, actions, attacks, and heat."),
         ("NEW", "readiness.html", "Readiness reference", "Ready, Committed, Spent: recovery, pushing, and a roster tracker."),
         ("PDF", "downloads/readiness-reference.pdf", "Print the readiness sheet", "US Letter · One-page reference and reusable tracker"),
@@ -205,7 +208,7 @@ def main():
         ("03", "equipment.html", "Equipment reference", "The new meanings of your printed combat colors."),
         ("04", "pilots.html", "Pilot cards", "Gunner, Skirmisher, Brawler, and Engineer."),
         ("PDF", "downloads/revived-pilot-cards.pdf", "Print the pilot cards", "US Letter · Four 2.5 × 3.5 inch cards · Print at 100%"),
-        ("PDF", "downloads/revived-unit-cards.pdf", "Print the unit cards", "The full catalog · Four photo cards per Letter page · Print at 100%"),
+        ("PDF", "downloads/revived-unit-cards.pdf", "Print the unit cards", "Complete combat and heat dials · Two photo cards per Letter page · Print at 100%"),
         ("CSV", "downloads/sample-forces.csv", "Sample force data", "Unit counts and costs for all three forces."),
         ("CSV", "downloads/adjustments.csv", "Points change log", "Record formula changes and test results."),
         ("LOG", "log.html", "Playtest log", "A printable record for your games and rules questions."),
@@ -214,6 +217,7 @@ def main():
     for filename, title, body in [("scenarios.html", "Scenarios", scenario_body), ("aids.html", "Game aids", aids_body)]:
         SEARCH.append({"title": title, "page": title, "url": filename, "text": re.sub(r"<[^>]+>", " ", body)})
     extra_pages = build_catalog(OUT, write_page, SEARCH)
+    extra_pages += build_force_builder(OUT, write_page, SEARCH)
     (OUT / "search-index.js").write_text("window.RULEBOOK_INDEX = " + json.dumps(SEARCH, ensure_ascii=False) + ";\n", encoding="utf-8")
     print(f"Built {len(PAGES) + 2 + extra_pages} pages and {len(SEARCH)} searchable sections in {OUT}")
 

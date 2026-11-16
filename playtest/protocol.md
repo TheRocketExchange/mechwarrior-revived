@@ -37,7 +37,7 @@ Use these additional short exercises before the first v0.3 game:
 | Fire, Fire, Move; then Fire, Hold, Fire | First sequence pushes once and recovers; second preserves the dial |
 | Rush or Repair while Committed | State stays Committed; the next combat order pushes |
 | A failed or declined attack while pushing | State becomes Spent; every surviving base still pays |
-| Critical miss while pushing, on two live clicks then one | Two clicks: pay miss then push and die. One click: die on the miss, no extra cost transferred |
+| Critical miss while pushing, with two clicks remaining then one | Two clicks: pay miss then push and die. One click: die on the miss, no extra cost transferred |
 | Committed mixed-weapon squad chooses Advance with one blocked shot and one Rocket | Separate legal moves/shots; all survivors pay pushing damage |
 | Spent squad with one engaged member | Engaged base Holds or Disengages; others Move or Hold; all keep the chain |
 | Split Spent squad near an exit or carrier | Regroup clears readiness but cannot exit or board; repeat regroup if still split |

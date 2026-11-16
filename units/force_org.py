@@ -5,6 +5,7 @@ import re
 
 INFANTRY = {"Conventional Infantry", "Battle Armor"}
 PILOTS = ("Gunner", "Skirmisher", "Brawler", "Engineer")
+POINTS_LIMIT = 1200
 LIMITS = {"mechs_min": 4, "mechs_max": 8, "vehicles_max": 6,
           "squads_max": 9, "family_max": 3, "carriers_max": 2, "pilot_max": 2}
 
@@ -40,7 +41,7 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def validate_force(force, catalog, limit=1200):
+def validate_force(force, catalog, limit=POINTS_LIMIT):
     """Validate an explicit roster; each group lists its individual catalog IDs."""
     groups = force["groups"]
     ids = [group["id"] for group in groups]

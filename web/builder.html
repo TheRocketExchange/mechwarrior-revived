@@ -1,0 +1,31 @@
+<p>Choose models, organize squads, and assign pilots and carriers. Points come from the same formula as every unit card. Follow the <a href="rules.html#11-build-your-force">standard force chart</a>, or start with one of the <a href="forces.html">sample armies</a>.</p>
+<div class="force-toolbar">
+  <label class="force-name-label">Force name<input id="force-name" maxlength="80" value="My force"></label>
+  <button type="button" id="force-new">New list</button>
+  <button type="button" id="force-export">Export list</button>
+  <label class="file-button">Import list<input type="file" id="force-import" accept=".json,application/json"></label>
+  <label>Start from a sample<select id="force-sample"><option value="">Choose an army…</option><option value="H">H · ’Mech-heavy</option><option value="B">B · Balanced</option><option value="I">I · Infantry-heavy</option></select></label>
+  <button type="button" id="force-cards">Generate unit cards</button>
+</div>
+<p class="force-save-note" id="force-save" role="status">Saved automatically in this browser. Export a file to keep a backup or use another device.</p>
+<p id="force-message" class="force-message" role="status" aria-live="polite"></p>
+<section class="force-summary" aria-labelledby="force-summary-heading">
+  <h2 id="force-summary-heading">Your force</h2><div id="force-totals"></div>
+  <details id="force-checks"><summary id="force-check-title">Force checks</summary><ul id="force-errors"></ul></details>
+</section>
+<div class="force-workspace">
+  <section class="force-picker" aria-labelledby="force-picker-heading">
+    <h2 id="force-picker-heading">Add models</h2>
+    <form id="force-filters" class="force-filters" role="search">
+      <label>Find a unit<input type="search" id="force-query" placeholder="Name, catalog ID, or family…" autocomplete="off"></label>
+      <label>Type<select id="force-type"><option value="">All types</option></select></label>
+      <label>Show<select id="force-scope"><option value="core">Core units</option><option value="all">Full catalog</option></select></label>
+    </form>
+    <p id="force-results-count" class="force-save-note" aria-live="polite"></p>
+    <div id="force-results"></div>
+    <div class="force-pagination"><button id="force-prev" type="button">Previous</button><span id="force-page"></span><button id="force-next" type="button">Next</button></div>
+  </section>
+  <section class="force-roster" aria-labelledby="force-roster-heading"><h2 id="force-roster-heading">Roster</h2><div id="force-groups"></div></section>
+</div>
+<p>New infantry squads start with two bases, or one if the figure is Unique. Use the squad selector to add another base or mix ranks and families. A carrier’s assigned squad starts aboard. Generate cards at any stage, then print or choose <strong>Save as PDF</strong> in your browser’s print dialog. Draft lists may still need changes to meet the force limits.</p>
+<noscript><p>The builder needs JavaScript. Use the <a href="forces.html">sample forces</a> and <a href="downloads/revived-unit-cards.pdf">complete card PDF</a> instead.</p></noscript>

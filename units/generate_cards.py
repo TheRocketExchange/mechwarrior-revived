@@ -1,12 +1,16 @@
-"""Print every catalog figure as a photo card, four per US Letter page."""
+"""Print every figure with complete combat and heat dials, two per Letter page."""
 from __future__ import annotations
 
 import io
 import json
 import math
+import zlib
 from pathlib import Path
 
 from PIL import Image
+from reportlab.pdfbase.pdfmetrics import stringWidth
+
+from force_org import unit_family
 
 ROOT = Path(__file__).resolve().parent
 CATALOG = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
@@ -21,7 +25,7 @@ def wrap(text, width, size):
     words, lines, line = safe(text).split(), [], ""
     for word in words:
         candidate = (line + " " + word).strip()
-        if len(candidate) * size * 0.54 > width and line:
+        if stringWidth(candidate, "Helvetica-Bold", size) > width and line:
             lines.append(line)
             line = word
         else:
@@ -59,8 +63,8 @@ class PDF:
         return self.images[path]
 
     def page(self, commands, images):
-        stream = "\n".join(commands).encode("cp1252")
-        content = self.add(f"<< /Length {len(stream)} >>\nstream\n".encode() + stream + b"\nendstream")
+        stream = zlib.compress("\n".join(commands).encode("cp1252"))
+        content = self.add(f"<< /Length {len(stream)} /Filter /FlateDecode >>\nstream\n".encode() + stream + b"\nendstream")
         resources = " ".join(f"/{name} {index} 0 R" for name, index in images.items())
         self.pages.append(self.add(f"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 {self.regular} 0 R /F2 {self.bold} 0 R >> /XObject << {resources} >> >> /Contents {content} 0 R >>".encode()))
 
@@ -88,69 +92,127 @@ def text(commands, x, y, value, size=9, bold=False, color=INK):
     commands.append(f"BT /{'F2' if bold else 'F1'} {size} Tf {rgb(color)} rg 1 0 0 1 {x:.2f} {y:.2f} Tm ({value}) Tj ET")
 
 
+PALETTE = {
+    "white": ((1, 1, 1), ""), "red": ((.96, .82, .79), "R"),
+    "blue": ((.83, .90, .95), "B"), "black": ((.27, .28, .25), "K"),
+    "gray": ((.85, .85, .82), "Gy"), "green": ((.84, .92, .78), "Gn"),
+    "yellow": ((.97, .93, .74), "Y"), "purple": ((.90, .84, .93), "P"),
+}
+
+
+def cell_label(cell, heat=False):
+    if cell.get("shutdown"):
+        return "SD"
+    if cell.get("dead"):
+        return "X"
+    value = cell.get("value")
+    if value is None:
+        return "-"
+    number = f"{value:+d}" if heat and value else str(value)
+    return number + PALETTE[cell.get("color", "white")][1]
+
+
+def grid(commands, x, top, headers, rows, row_height=14):
+    """All columns fit on one card; even the longest dial has 18-point cells."""
+    label_width, width = 72, 516
+    cell_width = (width - label_width) / len(headers)
+    for row_index, (label, cells) in enumerate([("Click", headers)] + rows):
+        bottom = top - (row_index + 1) * row_height
+        commands.append(f"{rgb((.94, .94, .91))} rg {x} {bottom} {label_width} {row_height} re f")
+        text(commands, x+4, bottom+4, label, 7, True)
+        for index, cell in enumerate(cells):
+            value, color = cell if isinstance(cell, tuple) else (str(cell), "white")
+            left = x + label_width + index * cell_width
+            fill = PALETTE[color][0]
+            commands.append(f"{rgb(fill)} rg {left:.3f} {bottom} {cell_width:.3f} {row_height} re f")
+            size = min(8, 7 if row_index == len(rows) and label == "Marks" else 8)
+            while stringWidth(safe(value), "Helvetica", size) > cell_width - 2:
+                size -= .25
+            assert size >= 6, (label, value, cell_width)
+            tw = stringWidth(safe(value), "Helvetica", size)
+            text(commands, left+(cell_width-tw)/2, bottom+4, value, size, color=(1, 1, 1) if color == "black" else INK)
+        commands.append(f"{rgb(LINE)} RG .3 w {x} {bottom} {width} {row_height} re S")
+    bottom = top - (len(rows)+1) * row_height
+    for index in range(len(headers)+1):
+        left = x + label_width + index * cell_width
+        commands.append(f"{rgb(LINE)} RG .3 w {left:.3f} {top} m {left:.3f} {bottom} l S")
+
+
 def card(pdf, commands, images, unit, x, y):
-    commands.append(f"{rgb(LINE)} RG 0.5 w {x} {y} 252 342 re S")
-    text(commands, x+12, y+328, f"{unit['id']}  /  {unit['set']}", 7, color=MUTED)
-    name_size = 13
-    lines = wrap(unit["name"], 225, name_size)
-    while len(lines) > 3 and name_size > 9:
-        name_size -= 1
-        lines = wrap(unit["name"], 225, name_size)
-    assert len(lines) <= 3, unit["id"]
+    commands.append(f"{rgb(LINE)} RG 0.5 w {x} {y} 540 360 re S")
+    text(commands, x+12, y+346, f"Catalog ID: {unit['id']}  /  {unit['set']}", 7, color=MUTED)
+    lines = wrap(unit["name"], 510, 14)
+    assert len(lines) <= 2, unit["id"]
     for i, line in enumerate(lines):
-        text(commands, x+12, y+309-i*14, line, name_size, True)
+        text(commands, x+12, y+329-i*15, line, 14, True)
     if unit["photo"]:
         image_id, width, height = pdf.image(ROOT / unit["photo"])
-        name = f"Im{image_id}"
-        images[name] = image_id
-        scale = min(145/width, 120/height)
+        image_name = f"Im{image_id}"
+        images[image_name] = image_id
+        scale = min(108/width, 80/height)
         w, h = width*scale, height*scale
-        commands.append(f"q {w:.3f} 0 0 {h:.3f} {x+12+(145-w)/2:.3f} {y+146+(120-h)/2:.3f} cm /{name} Do Q")
-    else:
-        text(commands, x+18, y+205, "Photo unavailable", 9, color=MUTED)
-    text(commands, x+173, y+242, unit["cost"]["points"], 27, True, RED)
-    text(commands, x+173, y+228, "POINTS", 6.5, color=MUTED)
-    for i, line in enumerate(wrap(unit["category"], 70, 8)):
-        text(commands, x+173, y+195-i*10, line, 8, True)
-    text(commands, x+173, y+167, unit["rank"], 8, color=MUTED)
-    text(commands, x+173, y+152, "ID: __________", 7, color=MUTED)
-    click = unit["track"][unit["start"]]
-    for i, (label, value) in enumerate([(k.title(), click[k]["value"]) for k in ("speed", "attack", "defense")] + [("Live clicks", len(unit["track"])-unit["start"]) ]):
-        bx = x+12+i*58
-        text(commands, bx, y+132, label.upper(), 6.5, color=MUTED)
-        text(commands, bx, y+114, value, 15, True)
-    for i, weapon in enumerate(unit["weapons"][:2]):
+        commands.append(f"q {w:.3f} 0 0 {h:.3f} {x+12+(108-w)/2:.3f} {y+227+(80-h)/2:.3f} cm /{image_name} Do Q")
+    text(commands, x+132, y+300, "Family: " + unit_family(unit), 8, True)
+    text(commands, x+132, y+287, f"{unit['category']} / {unit['rank']} / {unit['movement']}", 7, color=MUTED)
+    text(commands, x+464, y+285, unit["cost"]["points"], 26, True, RED)
+    text(commands, x+464, y+273, "POINTS", 7, color=MUTED)
+    for i, weapon in enumerate(unit["weapons"]):
         kind = {"E":"Energy", "B":"Ballistic", "R":"Rocket", "M":"Melee", "A":"Artillery"}[weapon["type"]]
-        damage = click.get(weapon["slot"], {}).get("value")
         attack_range = "contact" if weapon["type"] == "M" else f"{weapon['min_range']}-{weapon['max_range']} in"
-        text(commands, x+12, y+94-i*14, f"{weapon['slot'].title()}: {kind} {damage}  |  {attack_range}", 8.5, True)
-    if unit["category"] == "Mech":
-        text(commands, x+12, y+64, f"Vent {unit['vent']}   Pilot: __________________", 8)
+        text(commands, x+132, y+273-i*12, f"{weapon['slot'].title()}: {kind}  |  {attack_range}", 8, True)
+    category = unit["category"]
+    example = {"Mech": "M1", "Vehicle": "V1", "Conventional Infantry": "C1a", "Battle Armor": "A1a"}.get(category, "T1")
+    text(commands, x+132, y+244, f"Roster ID: __________  (e.g. {example})", 8)
+    if category == "Mech":
+        assignment = "Pilot: ____________________"
+    elif category in ("Conventional Infantry", "Battle Armor"):
+        assignment = "Squad: ______    Assigned carrier: ______"
+    elif category == "Vehicle":
+        assignment = "Carrier: Yes / No    Assigned squad: ______"
     else:
-        text(commands, x+12, y+64, "Squad / carrier: ____________________", 8)
-        text(commands, x+12, y+54, "Readiness:  Ready  /  Committed  /  Spent", 6.5, color=MUTED)
-    note = "Starting values. Use the current dial during play." if unit["core_legal"] else "Outside the current core rules. Cost is an estimate."
-    for i,line in enumerate(wrap(note,225,7)):
-        text(commands,x+12,y+47-i*9,line,7,color=MUTED)
-    photo_label = "Photo / dial: WarrenBorn"
+        assignment = "Uses rules beyond this edition."
+    text(commands, x+132, y+231, assignment, 8)
+    text(commands, x+12, y+216, "COMBAT DIAL", 8, True, RED)
+    text(commands, x+112, y+216, f"Clicks: {len(unit['track'])-unit['start']} (damage from Start to End)", 7)
+    if not unit["core_legal"]:
+        text(commands, x+335, y+216, "Outside core rules; cost is an estimate.", 7, color=RED)
+    fields = [(weapon["slot"], weapon["slot"].title()+" dmg") for weapon in unit["weapons"]]
+    fields += [("speed", "Speed"), ("attack", "Attack"), ("defense", "Defense")]
+    rows = [(label, [(cell_label(click.get(key, {})), click.get(key, {}).get("color", "white")) for click in unit["track"]] + [("X", "gray")]) for key, label in fields]
+    marks = ["Start" if i == unit["start"] else "Stop" if click.get("markers", {}).get("repair") else "" for i, click in enumerate(unit["track"])]
+    rows.append(("Marks", marks + ["End"]))
+    grid(commands, x+12, y+207, list(range(1, len(unit["track"])+1)) + ["End"], rows)
+    if unit["heat"]:
+        text(commands, x+12, y+95, f"HEAT DIAL  /  Vent {unit['vent']}", 8, True, RED)
+        fields = [("primary", "Primary dmg"), ("secondary", "Secondary dmg"), ("speed", "Speed")]
+        rows = [(label, [(cell_label(click.get(key, {}), heat=True), click.get(key, {}).get("color", "white")) for click in unit["heat"]]) for key, label in fields if any(key in click for click in unit["heat"])]
+        grid(commands, x+12, y+87, ["Start"] + list(range(1, len(unit["heat"]))), rows, 13)
+    else:
+        if category != "Turret":
+            text(commands, x+12, y+92, "READINESS:  Ready  /  Committed  /  Spent", 8, True)
+        text(commands, x+12, y+72, "Roster ID is your label for this figure. Squad and carrier fields record assignments.", 8)
+        text(commands, x+12, y+56, "Each column is one dial position. Damage moves right; repairs move left.", 8)
+        text(commands, x+12, y+42, "Use the current column. Stop marks limit repairs; End is destroyed.", 8)
+    text(commands, x+12, y+23, "Stop = repair stop; End = destroyed; X = lost value; SD = shutdown. Heat numbers modify the combat dial.", 6.5, color=MUTED)
+    text(commands, x+12, y+13, "Colors: R red / B blue / K black / Gy gray / Gn green / Y yellow / P purple. Use Revived equipment and heat rules.", 6.5, color=MUTED)
+    credit = f"Photo / dial: warrenborn.com/Unit.php?ID={unit['id']}"
     if unit.get("photo_variant"):
-        photo_label += " (photo: " + unit["photo_variant"] + ")"
-    text(commands,x+12,y+20,photo_label,6,color=MUTED)
-    text(commands,x+12,y+9,f"warrenborn.com/Unit.php?ID={unit['id']}  |  Revived 0.3",6,color=MUTED)
+        credit += f" (photo shows {unit['photo_variant']})"
+    text(commands, x+12, y+3, credit + "  |  Revived 0.3", 6, color=MUTED)
 
 
 def main():
     units = CATALOG["units"]
     assert all("cost" in unit for unit in units), "Run points.py first"
     pdf = PDF()
-    positions = [(45,405),(315,405),(45,45),(315,45)]
-    for offset in range(0,len(units),4):
+    positions = [(36,405),(36,27)]
+    for offset in range(0,len(units),2):
         commands, images = [], {}
-        for unit,(x,y) in zip(units[offset:offset+4],positions):
+        for unit,(x,y) in zip(units[offset:offset+2],positions):
             card(pdf,commands,images,unit,x,y)
-        text(commands,45,775,"MECHWARRIOR REVIVED / UNIT CARDS",9,True,RED)
-        text(commands,45,27,"Print at 100%. Cut on borders. Cards: 3.5 x 4.75 inches. Formula "+CATALOG["points_formula"]["version"],7,color=MUTED)
-        text(commands,530,27,f"{offset//4+1}/{math.ceil(len(units)/4)}",7,color=MUTED)
+        text(commands,36,778,"MECHWARRIOR REVIVED / FULL-DIAL UNIT CARDS",9,True,RED)
+        text(commands,36,13,"Print at 100%. Cut on borders. Cards: 7.5 x 5 inches. Formula "+CATALOG["points_formula"]["version"],7,color=MUTED)
+        text(commands,540,13,f"{offset//2+1}/{math.ceil(len(units)/2)}",7,color=MUTED)
         pdf.page(commands,images)
     output=ROOT/"revived-unit-cards.pdf"
     pdf.save(output)

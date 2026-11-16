@@ -1,5 +1,6 @@
 """Check offline HTML links, search destinations, roster costs, and PDF structure."""
 import csv
+import math
 import json
 import re
 import sys
@@ -78,8 +79,48 @@ for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot
         assert data.startswith(f'{object_id} 0 obj'.encode(),offset), (path,object_id)
     assert (SITE / "downloads" / path.name).read_bytes() == data
     reader = PdfReader(path)
-    assert len(reader.pages) == (413 if path.name == "revived-unit-cards.pdf" else 1), path
+    assert len(reader.pages) == (math.ceil(len(units) / 2) if path.name == "revived-unit-cards.pdf" else 1), path
     assert all(tuple(page.mediabox) == (0, 0, 612, 792) for page in reader.pages), path
+    if path.name == "revived-unit-cards.pdf":
+        # Audit the printed output against the source data, including every
+        # dial value and color, instead of trusting the generator's page count.
+        codes = {"white":"", "red":"R", "blue":"B", "black":"K", "gray":"Gy", "green":"Gn", "yellow":"Y", "purple":"P"}
+        compact = lambda value: re.sub(r"\s+", "", value)
+        def expected_cell(cell, heat=False):
+            if cell.get("shutdown"):
+                return "SD"
+            if cell.get("dead"):
+                return "X"
+            value = cell.get("value")
+            if value is None:
+                return "-"
+            return (f"{value:+d}" if heat and value else str(value)) + codes[cell.get("color", "white")]
+        printed_ids = []
+        for page in reader.pages:
+            blocks = page.extract_text().split("Catalog ID: ")[1:]
+            for block in blocks:
+                unit_id = block.split()[0]
+                unit = units[unit_id]
+                printed_ids.append(unit_id)
+                content = compact(block)
+                assert "RosterID:" in content and "Liveclicks" not in content, unit_id
+                assert f"Clicks:{len(unit['track'])-unit['start']}(damagefromStarttoEnd)" in content, unit_id
+                combat = content.split("COMBATDIAL",1)[1].split("HEATDIAL",1)[0]
+                assert "Click" + "".join(str(i+1) for i in range(len(unit["track"]))) + "End" in combat, unit_id
+                fields = [(w["slot"], w["slot"].title()+"dmg") for w in unit["weapons"]] + [(k,k.title()) for k in ("speed","attack","defense")]
+                for key, label in fields:
+                    expected = label + "".join(expected_cell(click.get(key,{})) for click in unit["track"]) + "X"
+                    assert expected in combat, (unit_id, key)
+                repair_count = sum(bool(click.get("markers",{}).get("repair")) for i,click in enumerate(unit["track"]) if i != unit["start"])
+                assert "MarksStart" + "Stop" * repair_count + "End" in combat, unit_id
+                if unit["heat"]:
+                    heat = content.split("HEATDIAL",1)[1]
+                    assert "ClickStart" + "".join(str(i) for i in range(1,len(unit["heat"]))) in heat, unit_id
+                    for key in ("primary", "secondary", "speed"):
+                        if any(key in click for click in unit["heat"]):
+                            label = key.title() + ("dmg" if key != "speed" else "")
+                            assert label + "".join(expected_cell(click.get(key,{}), True) for click in unit["heat"]) in heat, (unit_id,key)
+        assert printed_ids == list(units), "Missing, duplicate, or reordered PDF cards"
     if path.name == "readiness-reference.pdf":
         reference_text = reader.pages[0].extract_text()
         assert all(word in reference_text for word in ("Ready", "Committed", "Spent", "Passengers", "Breakthrough"))
