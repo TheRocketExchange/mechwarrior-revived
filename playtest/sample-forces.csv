@@ -1,13 +1,52 @@
-force,catalog_id,unit_name,edition,rank,category,quantity,points_each,formula_version,squad_sizes,carrier_count
-H,AOD108,Dasher II,Age of Destruction,Elite,Mech,8,94,0.3-alpha-1,,0
-H,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,6,56,0.3-alpha-1,,2
-H,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,2,24,0.3-alpha-1,2,0
-H,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,4,12,0.3-alpha-1,2+2,0
-B,AOD108,Dasher II,Age of Destruction,Elite,Mech,6,94,0.3-alpha-1,,0
-B,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,7,56,0.3-alpha-1,,2
-B,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,6,24,0.3-alpha-1,3+3,0
-B,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,8,12,0.3-alpha-1,3+3+2,0
-I,AOD108,Dasher II,Age of Destruction,Elite,Mech,4,94,0.3-alpha-1,,0
-I,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,6,56,0.3-alpha-1,,2
-I,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,8,24,0.3-alpha-1,3+3+2,0
-I,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,24,12,0.3-alpha-1,3+3+3+3+3+3+3+3,0
+force,group,catalog_id,unit_name,family,edition,rank,category,quantity,points_each,formula_version,pilot,carrier,passengers,rocket_slot
+H,M1,AOD108,Dasher II,Dasher II,Age of Destruction,Elite,Mech,1,94,0.3-alpha-1,Gunner,False,,
+H,M2,AOD108,Dasher II,Dasher II,Age of Destruction,Elite,Mech,1,94,0.3-alpha-1,Skirmisher,False,,
+H,M3,AOD108,Dasher II,Dasher II,Age of Destruction,Elite,Mech,1,94,0.3-alpha-1,Brawler,False,,
+H,M4,AOD112,Ursa,Ursa,Age of Destruction,Elite,Mech,1,145,0.3-alpha-1,Engineer,False,,
+H,M5,AOD112,Ursa,Ursa,Age of Destruction,Elite,Mech,1,145,0.3-alpha-1,Gunner,False,,
+H,M6,AOD112,Ursa,Ursa,Age of Destruction,Elite,Mech,1,145,0.3-alpha-1,Skirmisher,False,,
+H,M7,AOD096,Uziel,Uziel,Age of Destruction,Elite,Mech,1,80,0.3-alpha-1,Brawler,False,,
+H,M8,AOD096,Uziel,Uziel,Age of Destruction,Elite,Mech,1,80,0.3-alpha-1,Engineer,False,,
+H,V1,AOD050,Zibler Fast Strike Tank,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,1,56,0.3-alpha-1,,True,C1,
+H,V2,AOD038,JI2A1 Attack APC,JI2A1 Attack APC,Age of Destruction,Veteran,Vehicle,1,38,0.3-alpha-1,,True,A1,
+H,V3,AOD042,Hadur Fast Support Vehicle,Hadur Fast Support Vehicle,Age of Destruction,Veteran,Vehicle,1,33,0.3-alpha-1,,False,,
+H,V4,AOD066,R10 Mechanized ICV,R10 Mechanized ICV,Age of Destruction,Veteran,Vehicle,1,43,0.3-alpha-1,,False,,
+H,C1,D006,Standard Foot,Standard Foot,Dark Age,Elite,Conventional Infantry,3,12,0.3-alpha-1,,False,,
+H,C2,D009,Hoverbike Squad,Hoverbike Squad,Dark Age,Elite,Conventional Infantry,2,16,0.3-alpha-1,,False,,
+H,A1,AOD026,Salamander Battle Armor,Salamander Battle Armor,Age of Destruction,Veteran,Battle Armor,2,35,0.3-alpha-1,,False,,
+B,M1,AOD108,Dasher II,Dasher II,Age of Destruction,Elite,Mech,1,94,0.3-alpha-1,Gunner,False,,
+B,M2,AOD096,Uziel,Uziel,Age of Destruction,Elite,Mech,1,80,0.3-alpha-1,Skirmisher,False,,
+B,M3,AOD112,Ursa,Ursa,Age of Destruction,Elite,Mech,1,145,0.3-alpha-1,Brawler,False,,
+B,M4,AOD108,Dasher II,Dasher II,Age of Destruction,Elite,Mech,1,94,0.3-alpha-1,Engineer,False,,
+B,M5,AOD096,Uziel,Uziel,Age of Destruction,Elite,Mech,1,80,0.3-alpha-1,Gunner,False,,
+B,M6,AOD112,Ursa,Ursa,Age of Destruction,Elite,Mech,1,145,0.3-alpha-1,Skirmisher,False,,
+B,V1,AOD050,Zibler Fast Strike Tank,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,1,56,0.3-alpha-1,,True,C1,
+B,V2,AOD038,JI2A1 Attack APC,JI2A1 Attack APC,Age of Destruction,Veteran,Vehicle,1,38,0.3-alpha-1,,True,A1,
+B,V3,AOD050,Zibler Fast Strike Tank,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,1,56,0.3-alpha-1,,False,,
+B,V4,AOD066,R10 Mechanized ICV,R10 Mechanized ICV,Age of Destruction,Veteran,Vehicle,1,43,0.3-alpha-1,,False,,
+B,V5,AOD066,R10 Mechanized ICV,R10 Mechanized ICV,Age of Destruction,Veteran,Vehicle,1,43,0.3-alpha-1,,False,,
+B,V6,AOD042,Hadur Fast Support Vehicle,Hadur Fast Support Vehicle,Age of Destruction,Veteran,Vehicle,1,33,0.3-alpha-1,,False,,
+B,C1,D006,Standard Foot,Standard Foot,Dark Age,Elite,Conventional Infantry,3,12,0.3-alpha-1,,False,,
+B,C2,D009,Hoverbike Squad,Hoverbike Squad,Dark Age,Elite,Conventional Infantry,3,16,0.3-alpha-1,,False,,
+B,C3,D003,Peasant Company,Peasant Company,Dark Age,Elite,Conventional Infantry,2,8,0.3-alpha-1,,False,,
+B,A1,AOD030,Fenrir Battle Armor,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,3,24,0.3-alpha-1,,False,,
+B,A2,AOD026,Salamander Battle Armor,Salamander Battle Armor,Age of Destruction,Veteran,Battle Armor,3,35,0.3-alpha-1,,False,,
+I,M1,AOD108,Dasher II,Dasher II,Age of Destruction,Elite,Mech,1,94,0.3-alpha-1,Gunner,False,,
+I,M2,AOD104,Hatchetman,Hatchetman,Age of Destruction,Elite,Mech,1,109,0.3-alpha-1,Skirmisher,False,,
+I,M3,AOD108,Dasher II,Dasher II,Age of Destruction,Elite,Mech,1,94,0.3-alpha-1,Brawler,False,,
+I,M4,AOD104,Hatchetman,Hatchetman,Age of Destruction,Elite,Mech,1,109,0.3-alpha-1,Engineer,False,,
+I,V1,AOD050,Zibler Fast Strike Tank,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,1,56,0.3-alpha-1,,True,C1,
+I,V2,AOD038,JI2A1 Attack APC,JI2A1 Attack APC,Age of Destruction,Veteran,Vehicle,1,38,0.3-alpha-1,,True,A1,
+I,V3,AOD050,Zibler Fast Strike Tank,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,1,56,0.3-alpha-1,,False,,
+I,V4,AOD038,JI2A1 Attack APC,JI2A1 Attack APC,Age of Destruction,Veteran,Vehicle,1,38,0.3-alpha-1,,False,,
+I,V5,AOD066,R10 Mechanized ICV,R10 Mechanized ICV,Age of Destruction,Veteran,Vehicle,1,43,0.3-alpha-1,,False,,
+I,V6,AOD066,R10 Mechanized ICV,R10 Mechanized ICV,Age of Destruction,Veteran,Vehicle,1,43,0.3-alpha-1,,False,,
+I,C1,D006,Standard Foot,Standard Foot,Dark Age,Elite,Conventional Infantry,3,12,0.3-alpha-1,,False,,
+I,C2,D006,Standard Foot,Standard Foot,Dark Age,Elite,Conventional Infantry,3,12,0.3-alpha-1,,False,,
+I,C3,D006,Standard Foot,Standard Foot,Dark Age,Elite,Conventional Infantry,3,12,0.3-alpha-1,,False,,
+I,C4,D009,Hoverbike Squad,Hoverbike Squad,Dark Age,Elite,Conventional Infantry,3,16,0.3-alpha-1,,False,,
+I,C5,D009,Hoverbike Squad,Hoverbike Squad,Dark Age,Elite,Conventional Infantry,3,16,0.3-alpha-1,,False,,
+I,C6,D009,Hoverbike Squad,Hoverbike Squad,Dark Age,Elite,Conventional Infantry,3,16,0.3-alpha-1,,False,,
+I,A1,AOD030,Fenrir Battle Armor,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,3,24,0.3-alpha-1,,False,,
+I,A2,AOD026,Salamander Battle Armor,Salamander Battle Armor,Age of Destruction,Veteran,Battle Armor,3,35,0.3-alpha-1,,False,,
+I,A3,AOD022,PAL Suit,PAL Suit,Age of Destruction,Veteran,Battle Armor,3,24,0.3-alpha-1,,False,,

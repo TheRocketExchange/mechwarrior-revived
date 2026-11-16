@@ -24,7 +24,7 @@ Record how Rocket weapons were identified or marked as substitutes.
 
 ## Compare v0.2 and v0.3
 
-Before the full matrix, use one matchup and map for the four cases in the [combat-rhythm examples](../docs/combat-rhythm.md): v0.2, readiness only, half-speed Advance only, and full v0.3. Play a return game for each case. Keep the exact figures, pilots, squad membership, terrain, and role pairings; do not add models to spend new cheaper prices yet. Use the same recorded v0.2 roster totals and Breakthrough threshold across these fixed-model tests.
+Before the full matrix, use one matchup and map for the four cases in the [combat-rhythm examples](../docs/combat-rhythm.md): v0.2, readiness only, half-speed Advance only, and full v0.3. Start with the current legal sample lists and play a return game for each case. Keep the exact figures, pilots, squad membership, terrain, and role pairings; do not add models to spend new cheaper prices yet. Calculate these figures’ costs with the archived v0.2 formula and use those same totals and Breakthrough thresholds across the four cases. Keep the current force limits in every case so changes in army organization do not affect this comparison.
 
 Cases that introduce readiness also introduce Move and its recovery, passenger, and exit rules. The movement-only case adds Move without readiness. In full v0.3, squads also use a common order. Log situations where that changes choices; if needed, repeat full v0.3 with separate squad orders to measure coordination on its own.
 
@@ -59,7 +59,7 @@ Use the [sample forces](sample-forces.md): H (’Mech-heavy), B (balanced), and 
 
 Add A to the first game’s ID and B to the return match. Roll first-game sides normally. Keep terrain and rosters fixed. If practical, exchange players’ armies too, to reduce the effect of familiarity.
 
-Afterward, repeat at least one pair with mixed chassis and heat tracks. Then change one thing at a time. Try squad size first if waiting remains a problem. To test without pilots, remove them from both armies and label that pair as a separate experiment.
+Afterward, repeat at least one pair with other chassis and heat tracks from your collection, staying within the force limits. Then change one thing at a time. Try squad size first if waiting remains a problem. To test without pilots, remove them from both armies and label that pair as a separate experiment.
 
 ## What to record
 
@@ -76,6 +76,7 @@ Use [one log per game](playtest-log.md). Leave missing measurements as “unknow
 | Does one side have too much advantage? | Compare return matches. Review a role or edge that wins all three matchup pairs without a clear army or tactical reason |
 | Are the rules clear? | Record any transport, heat, equipment, or pilot dispute needed to finish play |
 | Are all weapons worth using? | Record targets, movement, and weapon choices. Check whether Energy feels compulsory or Rockets are too safe behind buildings |
+| Do the force limits help? | Record vehicle and squad counts, repeated families, and legal lists players wanted to field but could not. Check whether the caps produce varied armies without crowding out a unit type |
 
 Measure each player’s longest stretch without a game decision, excluding agreed breaks.
 

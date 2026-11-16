@@ -12,6 +12,7 @@ from PIL import Image
 from parse_catalog import parse_unit
 from points import CONFIG, calculate, expected_damage, heat_output_factor, offensive_rating, readiness_output, shot
 from readiness import Readiness, order, finish_action
+from force_org import PILOTS, unit_family, validate_force
 
 ROOT = Path(__file__).resolve().parent
 CATALOG = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
@@ -79,6 +80,128 @@ class CatalogChecks(unittest.TestCase):
         self.assertEqual([w["type"] for w in unit["weapons"]], ["E","B"])
         self.assertEqual(unit["heat"][3]["speed"]["value"], -1)
         self.assertTrue(all(cell["shutdown"] for cell in unit["heat"][-1].values()))
+
+
+class ForceOrganizationChecks(unittest.TestCase):
+    def force(self, mechs=("AOD108", "AOD112", "AOD096", "AOD104")):
+        return {"groups": [{"id": f"M{i+1}", "members": [key], "pilot": PILOTS[i % 4]}
+                           for i, key in enumerate(mechs)]}
+
+    def add(self, force, key, count=1, **extra):
+        force["groups"].append({"id": f"G{len(force['groups'])}", "members": [key] * count, **extra})
+
+    def test_sample_forces_are_legal_and_close(self):
+        roster = json.loads((ROOT.parent / "playtest/forces.json").read_text(encoding="utf-8"))
+        results = [validate_force(f, UNITS, roster["limit"]) for f in roster["forces"]]
+        self.assertEqual([r["mechs"] for r in results], [8, 6, 4])
+        self.assertEqual([r["squads"] for r in results], [3, 5, 9])
+        self.assertTrue(all(r["carriers"] == 2 for r in results))
+        self.assertLessEqual(max(r["total"] for r in results) - min(r["total"] for r in results), roster["limit"] * .02)
+
+    def test_family_ignores_rank_variant_and_named_version(self):
+        for names, family in [
+            (["Dasher II", "Dasher II 'Vulpes'"], "Dasher II"),
+            (["Atlas", "Dereck Hasbani (Atlas)"], "Atlas"),
+            (["AgroMech", "AgroMech MOD", "AgroMech MOD B"], "AgroMech"),
+            (["AgroMech MkII MOD", "AgroMech Mk II"], "AgroMech Mk II"),
+            (["Kitfox", "Uller"], "Uller"),
+            (["Hellbringer 'Brimstone'", "Loki 'Kaze'"], "Loki"),
+            (["Cave Lion 'Rosse's Revenge'"], "Cave Lion"),
+            (["Hitotsune Kozo 'Kuro Ha (Black Blade)'"], "Hitotsune Kozo"),
+            (["Ti Ts'ang"], "Ti Ts'ang"),
+        ]:
+            for name in names:
+                self.assertEqual(unit_family({"name": name}), family)
+        self.assertNotEqual(unit_family({"name": "Phoenix Hawk"}), unit_family({"name": "Phoenix Hawk IIC"}))
+        force = self.force(("AOD105", "AOD106", "AOD107", "AOD096"))
+        validate_force(force, UNITS)
+        force["groups"][-1]["members"] = ["AOD108"]
+        with self.assertRaisesRegex(ValueError, "Rule of three"):
+            validate_force(force, UNITS)
+
+    def test_infantry_counts_squads_and_each_family_in_mixed_squads(self):
+        force = self.force()
+        for _ in range(3):
+            self.add(force, "D006", 3)
+        self.assertEqual(validate_force(force, UNITS)["conventional"], 9)
+        force["groups"][-1]["members"][0] = "D009"
+        self.add(force, "D009", 2)
+        self.add(force, "D009", 3)
+        validate_force(force, UNITS)
+        self.add(force, "D009", 2)
+        with self.assertRaisesRegex(ValueError, "Rule of three"):
+            validate_force(force, UNITS)
+
+    def test_type_and_squad_size_boundaries(self):
+        for count in (3, 9):
+            force = self.force(("AOD108", "AOD112", "AOD096") * 3)
+            force["groups"] = force["groups"][:count]
+            with self.assertRaisesRegex(ValueError, "4-8"):
+                validate_force(force, UNITS, 10000)
+        force = self.force()
+        for key in ("AOD050", "AOD038", "AOD042"):
+            for _ in range(2):
+                self.add(force, key)
+        validate_force(force, UNITS)
+        self.add(force, "AOD066")
+        with self.assertRaisesRegex(ValueError, "6 vehicles"):
+            validate_force(force, UNITS)
+        force = self.force()
+        for key in ("D006", "D009", "D003"):
+            for _ in range(3):
+                self.add(force, key, 2)
+        validate_force(force, UNITS)
+        self.add(force, "AOD030", 2)
+        with self.assertRaisesRegex(ValueError, "9 infantry squads"):
+            validate_force(force, UNITS)
+        for count in (1, 4):
+            force = self.force()
+            self.add(force, "D006", count)
+            with self.assertRaisesRegex(ValueError, "2-3 bases"):
+                validate_force(force, UNITS)
+        force = self.force()
+        force["groups"].append({"id": "Mixed", "members": ["D006", "AOD030"]})
+        with self.assertRaisesRegex(ValueError, "mix unit categories"):
+            validate_force(force, UNITS)
+
+    def test_unique_and_pilot_limits(self):
+        force = self.force(("D115", "AOD108", "D115", "AOD096"))
+        with self.assertRaisesRegex(ValueError, "Unique"):
+            validate_force(force, UNITS, 10000)
+        force = self.force()
+        for group in force["groups"][:3]:
+            group["pilot"] = "Gunner"
+        with self.assertRaisesRegex(ValueError, "2 of each pilot"):
+            validate_force(force, UNITS)
+
+    def test_carriers_and_passengers(self):
+        force = self.force()
+        self.add(force, "D006", 2)
+        self.add(force, "AOD050", carrier=True, passengers="G4")
+        validate_force(force, UNITS)
+        self.add(force, "AOD038", carrier=True, passengers="G4")
+        with self.assertRaisesRegex(ValueError, "two carriers"):
+            validate_force(force, UNITS)
+        force["groups"][-1]["passengers"] = "M1"
+        with self.assertRaisesRegex(ValueError, "infantry squad"):
+            validate_force(force, UNITS)
+        force["groups"][-1].pop("passengers")
+        self.add(force, "AOD066", carrier=True)
+        with self.assertRaisesRegex(ValueError, "2 carriers"):
+            validate_force(force, UNITS)
+
+    def test_costs_rocket_options_and_catalog_eligibility(self):
+        force = self.force()
+        base = validate_force(force, UNITS)["total"]
+        force["groups"][0]["rocket_slot"] = "secondary"
+        actual = validate_force(force, UNITS)["total"]
+        self.assertEqual(actual, base - UNITS["AOD108"]["cost"]["points"] + UNITS["AOD108"]["rocket_options"]["secondary"]["points"])
+        with self.assertRaisesRegex(ValueError, "above"):
+            validate_force(force, UNITS, actual - 1)
+        force = self.force()
+        self.add(force, "AOD018", 2)
+        with self.assertRaisesRegex(ValueError, "outside the core"):
+            validate_force(force, UNITS)
 
 
 class PricingChecks(unittest.TestCase):

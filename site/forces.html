@@ -32,7 +32,7 @@
       <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.3 / November 2026</span></div>
       <details class="toc-panel" open>
         <summary>On this page</summary>
-        <ol class="contents"><li class="level-h2"><a href="#before-deployment">Before deployment</a></li><li class="level-h2"><a href="#what-to-try">What to try</a></li></ol>
+        <ol class="contents"><li class="level-h2"><a href="#before-deployment">Before deployment</a></li><li class="level-h2"><a href="#h-mech-heavy">H: Mech-heavy</a></li><li class="level-h2"><a href="#b-balanced">B: Balanced</a></li><li class="level-h2"><a href="#i-infantry-heavy">I: Infantry-heavy</a></li><li class="level-h2"><a href="#what-to-try">What to try</a></li></ol>
       </details>
       <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="readiness.html">Readiness reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
       <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
@@ -45,115 +45,469 @@
       </div>
       <article class="rule-content"><p>Version 0.3 · 1,200-point limit · Formula 0.3-alpha-1</p>
 <p>Three starting armies: <strong>H</strong> (’Mech-heavy), <strong>B</strong> (balanced), and <strong>I</strong> (infantry-heavy). Try H against B first. Their totals are close; their balance still needs testing.</p>
-<p>Use the exact catalog IDs below. Each link shows the figure, rank, dial, and cost. Points come from the <a href="points.html">shared formula</a>.</p>
-<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
-<thead>
-<tr>
-<th>Unit</th>
-<th style="text-align:right">H</th>
-<th style="text-align:right">B</th>
-<th style="text-align:right">I</th>
-<th style="text-align:right">Points each</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
-<td style="text-align:right">8</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">4</td>
-<td style="text-align:right">94</td>
-</tr>
-<tr>
-<td><a href="unit.html?id=AOD050">Zibler Fast Strike Tank · AOD050</a></td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">7</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">56</td>
-</tr>
-<tr>
-<td><a href="unit.html?id=AOD030">Fenrir Battle Armor · AOD030</a></td>
-<td style="text-align:right">2</td>
-<td style="text-align:right">6</td>
-<td style="text-align:right">8</td>
-<td style="text-align:right">24</td>
-</tr>
-<tr>
-<td><a href="unit.html?id=D006">Standard Foot · D006</a></td>
-<td style="text-align:right">4</td>
-<td style="text-align:right">8</td>
-<td style="text-align:right">24</td>
-<td style="text-align:right">12</td>
-</tr>
-<tr>
-<td><strong>Total points</strong></td>
-<td style="text-align:right"><strong>1,184</strong></td>
-<td style="text-align:right"><strong>1,196</strong></td>
-<td style="text-align:right"><strong>1,192</strong></td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td>’Mechs / vehicles / infantry</td>
-<td style="text-align:right">8 / 6 / 6</td>
-<td style="text-align:right">6 / 7 / 14</td>
-<td style="text-align:right">4 / 6 / 32</td>
-<td style="text-align:right"></td>
-</tr>
-<tr>
-<td><strong>Activation groups</strong></td>
-<td style="text-align:right">17</td>
-<td style="text-align:right">18</td>
-<td style="text-align:right">21</td>
-<td style="text-align:right"></td>
-</tr>
-</tbody>
-</table></div>
-<p><a href="downloads/sample-forces.csv">Download the counts and costs</a>. Pilots are included in ’Mech costs. Each army may designate two carriers without another charge.</p>
-<h2 id="before-deployment">Before deployment</h2>
-<p>Number ’Mechs M1 onward and vehicles V1 onward. Make V1 and V2 the carriers. Number conventional squads C1 onward and battle armor squads A1 onward. The numbers below are bases in each squad.</p>
+<p>Each follows the <a href="rules.html#11-build-your-force">force organization and rule of three</a>: 4–8 ’Mechs, at most 6 vehicles, and at most 9 infantry squads. No chassis appears more than three times; no infantry family appears in more than three squads. All squads have 2–3 bases.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
 <thead>
 <tr>
 <th>Army</th>
-<th>Conventional squads</th>
-<th>Battle armor squads</th>
-<th>Starting passengers</th>
+<th style="text-align:right">Points</th>
+<th style="text-align:right">’Mechs</th>
+<th style="text-align:right">Vehicles</th>
+<th style="text-align:right">Conventional bases</th>
+<th style="text-align:right">Battle armor bases</th>
+<th style="text-align:right">Squads</th>
+<th style="text-align:right">Activation groups</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>H</td>
-<td>2 + 2</td>
-<td>2</td>
-<td>V1: C1. V2: A1</td>
+<td style="text-align:right"><strong>1,185</strong></td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">15</td>
 </tr>
 <tr>
 <td>B</td>
-<td>3 + 3 + 2</td>
-<td>3 + 3</td>
-<td>V1: C1. V2: A1</td>
+<td style="text-align:right"><strong>1,184</strong></td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">17</td>
 </tr>
 <tr>
 <td>I</td>
-<td>3 + 3 + 3 + 3 + 3 + 3 + 3 + 3</td>
-<td>3 + 3 + 2</td>
-<td>V1: C1. V2: A1</td>
+<td style="text-align:right"><strong>1,181</strong></td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">19</td>
 </tr>
 </tbody>
 </table></div>
-<p>Give squad members IDs such as C1a, C1b, and C1c. Other squads start on foot. Passengers still count as activation groups.</p>
-<p>Assign pilots in this order: <strong>Gunner, Skirmisher, Brawler, Engineer</strong>, then repeat. Keep assignments for the return game.</p>
-<p>Use the weapon labels on each datasheet. For a Rocket test, choose a substitute on the first eligible ’Mech’s datasheet and record its alternate cost. Recalculate the army total and escape target; adjust counts if needed. Keep the same roster for the return game.</p>
+<p>Use the exact catalog IDs in the rosters below. Each link shows the figure, rank, dial, and unit family. Every base costs the points given by the <a href="points.html">shared formula</a>; the points column below totals the whole group. Pilots are included, and carriers have no extra charge.</p>
+<p><a href="downloads/sample-forces.csv">Download the rosters and costs</a>.</p>
+<h2 id="before-deployment">Before deployment</h2>
+<p>Use the group IDs below: M for ’Mechs, V for vehicles, C for conventional squads, and A for battle armor squads. Label individual squad members C1a, C1b, C1c, and so on. Each group takes one activation.</p>
+<p>V1 starts with C1 aboard; V2 starts with A1. All other squads start on foot. Passengers still count as separate groups and are already paid for in the roster. Keep squad membership, pilots, and transport assignments for the return game.</p>
+<h2 id="h-mech-heavy">H: Mech-heavy</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Unit and catalog ID</th>
+<th style="text-align:right">Bases</th>
+<th style="text-align:right">Points</th>
+<th>Pilot / transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">94</td>
+<td>Gunner</td>
+</tr>
+<tr>
+<td>M2</td>
+<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">94</td>
+<td>Skirmisher</td>
+</tr>
+<tr>
+<td>M3</td>
+<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">94</td>
+<td>Brawler</td>
+</tr>
+<tr>
+<td>M4</td>
+<td><a href="unit.html?id=AOD112">Ursa · AOD112</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">145</td>
+<td>Engineer</td>
+</tr>
+<tr>
+<td>M5</td>
+<td><a href="unit.html?id=AOD112">Ursa · AOD112</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">145</td>
+<td>Gunner</td>
+</tr>
+<tr>
+<td>M6</td>
+<td><a href="unit.html?id=AOD112">Ursa · AOD112</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">145</td>
+<td>Skirmisher</td>
+</tr>
+<tr>
+<td>M7</td>
+<td><a href="unit.html?id=AOD096">Uziel · AOD096</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">80</td>
+<td>Brawler</td>
+</tr>
+<tr>
+<td>M8</td>
+<td><a href="unit.html?id=AOD096">Uziel · AOD096</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">80</td>
+<td>Engineer</td>
+</tr>
+<tr>
+<td>V1</td>
+<td><a href="unit.html?id=AOD050">Zibler Fast Strike Tank · AOD050</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">56</td>
+<td>Carrier; starts with C1</td>
+</tr>
+<tr>
+<td>V2</td>
+<td><a href="unit.html?id=AOD038">JI2A1 Attack APC · AOD038</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">38</td>
+<td>Carrier; starts with A1</td>
+</tr>
+<tr>
+<td>V3</td>
+<td><a href="unit.html?id=AOD042">Hadur Fast Support Vehicle · AOD042</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">33</td>
+<td>—</td>
+</tr>
+<tr>
+<td>V4</td>
+<td><a href="unit.html?id=AOD066">R10 Mechanized ICV · AOD066</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">43</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C1</td>
+<td><a href="unit.html?id=D006">Standard Foot · D006</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">36</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C2</td>
+<td><a href="unit.html?id=D009">Hoverbike Squad · D009</a></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">32</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A1</td>
+<td><a href="unit.html?id=AOD026">Salamander Battle Armor · AOD026</a></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">70</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>1,185 points.</strong> Breakthrough escape target: <strong>356 points</strong>.</p>
+<h2 id="b-balanced">B: Balanced</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Unit and catalog ID</th>
+<th style="text-align:right">Bases</th>
+<th style="text-align:right">Points</th>
+<th>Pilot / transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">94</td>
+<td>Gunner</td>
+</tr>
+<tr>
+<td>M2</td>
+<td><a href="unit.html?id=AOD096">Uziel · AOD096</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">80</td>
+<td>Skirmisher</td>
+</tr>
+<tr>
+<td>M3</td>
+<td><a href="unit.html?id=AOD112">Ursa · AOD112</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">145</td>
+<td>Brawler</td>
+</tr>
+<tr>
+<td>M4</td>
+<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">94</td>
+<td>Engineer</td>
+</tr>
+<tr>
+<td>M5</td>
+<td><a href="unit.html?id=AOD096">Uziel · AOD096</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">80</td>
+<td>Gunner</td>
+</tr>
+<tr>
+<td>M6</td>
+<td><a href="unit.html?id=AOD112">Ursa · AOD112</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">145</td>
+<td>Skirmisher</td>
+</tr>
+<tr>
+<td>V1</td>
+<td><a href="unit.html?id=AOD050">Zibler Fast Strike Tank · AOD050</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">56</td>
+<td>Carrier; starts with C1</td>
+</tr>
+<tr>
+<td>V2</td>
+<td><a href="unit.html?id=AOD038">JI2A1 Attack APC · AOD038</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">38</td>
+<td>Carrier; starts with A1</td>
+</tr>
+<tr>
+<td>V3</td>
+<td><a href="unit.html?id=AOD050">Zibler Fast Strike Tank · AOD050</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">56</td>
+<td>—</td>
+</tr>
+<tr>
+<td>V4</td>
+<td><a href="unit.html?id=AOD066">R10 Mechanized ICV · AOD066</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">43</td>
+<td>—</td>
+</tr>
+<tr>
+<td>V5</td>
+<td><a href="unit.html?id=AOD066">R10 Mechanized ICV · AOD066</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">43</td>
+<td>—</td>
+</tr>
+<tr>
+<td>V6</td>
+<td><a href="unit.html?id=AOD042">Hadur Fast Support Vehicle · AOD042</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">33</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C1</td>
+<td><a href="unit.html?id=D006">Standard Foot · D006</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">36</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C2</td>
+<td><a href="unit.html?id=D009">Hoverbike Squad · D009</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">48</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C3</td>
+<td><a href="unit.html?id=D003">Peasant Company · D003</a></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">16</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A1</td>
+<td><a href="unit.html?id=AOD030">Fenrir Battle Armor · AOD030</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">72</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A2</td>
+<td><a href="unit.html?id=AOD026">Salamander Battle Armor · AOD026</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">105</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>1,184 points.</strong> Breakthrough escape target: <strong>356 points</strong>.</p>
+<h2 id="i-infantry-heavy">I: Infantry-heavy</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Unit and catalog ID</th>
+<th style="text-align:right">Bases</th>
+<th style="text-align:right">Points</th>
+<th>Pilot / transport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">94</td>
+<td>Gunner</td>
+</tr>
+<tr>
+<td>M2</td>
+<td><a href="unit.html?id=AOD104">Hatchetman · AOD104</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">109</td>
+<td>Skirmisher</td>
+</tr>
+<tr>
+<td>M3</td>
+<td><a href="unit.html?id=AOD108">Dasher II · AOD108</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">94</td>
+<td>Brawler</td>
+</tr>
+<tr>
+<td>M4</td>
+<td><a href="unit.html?id=AOD104">Hatchetman · AOD104</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">109</td>
+<td>Engineer</td>
+</tr>
+<tr>
+<td>V1</td>
+<td><a href="unit.html?id=AOD050">Zibler Fast Strike Tank · AOD050</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">56</td>
+<td>Carrier; starts with C1</td>
+</tr>
+<tr>
+<td>V2</td>
+<td><a href="unit.html?id=AOD038">JI2A1 Attack APC · AOD038</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">38</td>
+<td>Carrier; starts with A1</td>
+</tr>
+<tr>
+<td>V3</td>
+<td><a href="unit.html?id=AOD050">Zibler Fast Strike Tank · AOD050</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">56</td>
+<td>—</td>
+</tr>
+<tr>
+<td>V4</td>
+<td><a href="unit.html?id=AOD038">JI2A1 Attack APC · AOD038</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">38</td>
+<td>—</td>
+</tr>
+<tr>
+<td>V5</td>
+<td><a href="unit.html?id=AOD066">R10 Mechanized ICV · AOD066</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">43</td>
+<td>—</td>
+</tr>
+<tr>
+<td>V6</td>
+<td><a href="unit.html?id=AOD066">R10 Mechanized ICV · AOD066</a></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">43</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C1</td>
+<td><a href="unit.html?id=D006">Standard Foot · D006</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">36</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C2</td>
+<td><a href="unit.html?id=D006">Standard Foot · D006</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">36</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C3</td>
+<td><a href="unit.html?id=D006">Standard Foot · D006</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">36</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C4</td>
+<td><a href="unit.html?id=D009">Hoverbike Squad · D009</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">48</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C5</td>
+<td><a href="unit.html?id=D009">Hoverbike Squad · D009</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">48</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C6</td>
+<td><a href="unit.html?id=D009">Hoverbike Squad · D009</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">48</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A1</td>
+<td><a href="unit.html?id=AOD030">Fenrir Battle Armor · AOD030</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">72</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A2</td>
+<td><a href="unit.html?id=AOD026">Salamander Battle Armor · AOD026</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">105</td>
+<td>—</td>
+</tr>
+<tr>
+<td>A3</td>
+<td><a href="unit.html?id=AOD022">PAL Suit · AOD022</a></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">72</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>1,181 points.</strong> Breakthrough escape target: <strong>355 points</strong>.</p>
 <h2 id="what-to-try">What to try</h2>
 <ul>
-<li><strong>H:</strong> Pressure several sites with ’Mechs and commit the few infantry squads carefully.</li>
+<li><strong>H:</strong> Use the eight ’Mechs to pressure several sites; protect the three infantry squads.</li>
 <li><strong>B:</strong> Use vehicle fire and the two carried squads to take positions.</li>
-<li><strong>I:</strong> Test whether more infantry can hold ground with fewer ’Mechs, and whether 11 squads slow the game.</li>
+<li><strong>I:</strong> Test whether nine infantry squads can hold ground with fewer ’Mechs, and whether the extra groups slow the game.</li>
 </ul>
-<p>Repeated chassis help compare army composition. You do not need to buy these figures: substitute from your collection, keeping unit counts, infantry types, and squads as close as possible.</p>
-<p>Record each replacement’s catalog ID, points, pilot, weapons, and transport assignment. Recalculate totals and keep them within 2% under the same limit. If necessary, agree on a new limit and note the difference.</p>
-<p>After the first tests, try a return-game pair with mixed light and heavy ’Mechs and different heat tracks.</p>
-<p>For these exact armies, Breakthrough escape targets are <strong>H: 356, B: 359, I: 358 points</strong>.</p>
+<p>For example, H’s three Dasher II figures fill that chassis allowance. I’s nine Standard Foot bases form three squads, filling the Standard Foot allowance. It can also take three Hoverbike squads because they are a different infantry family.</p>
+<p>You can substitute figures from your collection. Keep the intended army roles, check every force limit, and record each replacement’s catalog ID, points, pilot, weapons, and transport assignment. Recalculate totals and keep the armies within 2% under the same limit.</p>
+<p>For a Rocket test, choose a substitute on one eligible ’Mech’s datasheet and use its updated cost. Recheck the army limit and Breakthrough target. Keep the same roster for the return game.</p>
 </article>
       
       <div class="page-end"><span>MechWarrior Revived / Version 0.3</span><a href="#top">Back to top ↑</a></div>

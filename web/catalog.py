@@ -2,9 +2,12 @@
 import csv
 import json
 import shutil
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "units"))
+from force_org import unit_family
 
 
 def build_catalog(output, write_page, search):
@@ -23,18 +26,18 @@ def build_catalog(output, write_page, search):
             shutil.copyfile(ROOT / "units" / unit["photo"], output / unit["photo"])
         search.append({"title": unit["name"] + " · " + unit["id"], "page": "Unit catalog",
                        "url": "unit.html?id=" + unit["id"],
-                       "text": " ".join([unit["set"], unit["faction"], unit["rank"], unit["category"], str(unit["cost"]["points"]) + " points"])})
+                       "text": " ".join([unit_family(unit), unit["set"], unit["faction"], unit["rank"], unit["category"], str(unit["cost"]["points"]) + " points"])})
     # Source prices remain in the import archive; the site publishes one cost.
-    published = dict(catalog, units=[{key: value for key, value in unit.items() if key != "printed_points"}
+    published = dict(catalog, units=[dict({key: value for key, value in unit.items() if key != "printed_points"}, family=unit_family(unit))
                                      for unit in catalog["units"]])
     (output / "catalog-data.js").write_text("window.MW_CATALOG = " + json.dumps(published, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     for asset in ("catalog.js", "catalog.css"):
         shutil.copyfile(ROOT / "web" / asset, output / asset)
     with (output / "downloads/unit-catalog.csv").open("w", encoding="utf-8-sig", newline="") as stream:
         writer = csv.writer(stream)
-        writer.writerow(["id", "name", "set", "faction", "rank", "category", "points", "formula_version", "core_legal", "source", "photo_source"])
+        writer.writerow(["id", "name", "family", "set", "faction", "rank", "category", "points", "formula_version", "core_legal", "source", "photo_source"])
         for unit in catalog["units"]:
-            writer.writerow([unit["id"], unit["name"], unit["set"], unit["faction"], unit["rank"], unit["category"], unit["cost"]["points"], unit["cost"]["version"], unit["core_legal"], unit["source_url"], unit["photo_source"]])
+            writer.writerow([unit["id"], unit["name"], unit_family(unit), unit["set"], unit["faction"], unit["rank"], unit["category"], unit["cost"]["points"], unit["cost"]["version"], unit["core_legal"], unit["source_url"], unit["photo_source"]])
     assets = '<link rel="stylesheet" href="catalog.css"><script src="catalog-data.js"></script><script src="catalog.js" defer></script>'
     body = f'''<p>Browse {len(catalog['units']):,} unit entries from the original clix releases, including five DropShip turret sections. Each datasheet has a source photo, combat dial, and <a href="points.html">points cost</a>, plus a heat track for ’Mechs.</p>
 <div class="catalog-tools"><a href="downloads/revived-unit-cards.pdf">Download all unit cards (PDF)</a><a href="downloads/unit-catalog.csv">Download the catalog (CSV)</a></div>

@@ -1,89 +1,95 @@
-"""Build sample rosters from catalog costs, never a second pricing table."""
+"""Generate legal sample rosters using the catalog's shared points formula."""
+from collections import Counter
 import csv
 import json
-import math
 from pathlib import Path
 
+from force_org import unit_family, validate_force
+
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def group_cost(group, index):
+    return (index[group["members"][0]]["rocket_options"][group["rocket_slot"]]["points"]
+            if group.get("rocket_slot") else sum(index[key]["cost"]["points"] for key in group["members"]))
+
+
+def row(values):
+    return "| " + " | ".join(map(str, values)) + " |"
 
 
 def main():
     catalog = json.loads((ROOT / "units/catalog.json").read_text(encoding="utf-8"))
     roster = json.loads((ROOT / "playtest/forces.json").read_text(encoding="utf-8"))
     index = {unit["id"]: unit for unit in catalog["units"]}
-    units = [index[unit_id] for unit_id in roster["units"]]
     forces = roster["forces"]
-    for force in forces:
-        force["total"] = sum(count * unit["cost"]["points"] for count, unit in zip(force["counts"], units))
-        force["groups"] = sum(force["counts"][:2]) + len(force["battle_armor_squads"]) + len(force["conventional_squads"])
-        force["escape"] = math.ceil(force["total"] * 0.3)
-        assert sum(force["battle_armor_squads"]) == force["counts"][2]
-        assert sum(force["conventional_squads"]) == force["counts"][3]
-        assert all(size in (2, 3) for size in force["battle_armor_squads"] + force["conventional_squads"])
-        assert force["total"] <= roster["limit"], "Rebalance counts after changing the formula"
-        assert 4 <= force["counts"][0] <= 8
-    assert max(f["total"] for f in forces) - min(f["total"] for f in forces) <= roster["limit"] * 0.02
+    results = {force["id"]: validate_force(force, index, roster["limit"]) for force in forces}
+    totals = [result["total"] for result in results.values()]
+    if max(totals) - min(totals) > roster["limit"] * 0.02:
+        raise ValueError("Sample forces must stay within 2% of the common limit of one another")
     with (ROOT / "playtest/sample-forces.csv").open("w", encoding="utf-8", newline="") as stream:
         writer = csv.writer(stream)
-        writer.writerow(["force", "catalog_id", "unit_name", "edition", "rank", "category", "quantity", "points_each", "formula_version", "squad_sizes", "carrier_count"])
+        writer.writerow(["force", "group", "catalog_id", "unit_name", "family", "edition", "rank", "category", "quantity", "points_each", "formula_version", "pilot", "carrier", "passengers", "rocket_slot"])
         for force in forces:
-            for i, unit in enumerate(units):
-                squads = force["battle_armor_squads"] if i == 2 else force["conventional_squads"] if i == 3 else []
-                writer.writerow([force["id"], unit["id"], unit["name"], unit["set"], unit["rank"], unit["category"], force["counts"][i], unit["cost"]["points"], unit["cost"]["version"], "+".join(map(str,squads)), 2 if i == 1 else 0])
-    def row(label, values):
-        return "| " + label + " | " + " | ".join(map(str, values)) + " |"
-    rows = []
-    for i, unit in enumerate(units):
-        rows.append(row(f"[{unit['name']} · {unit['id']}](../site/unit.html?id={unit['id']})", [f["counts"][i] for f in forces] + [unit["cost"]["points"]]))
-    rows.append(row("**Total points**", [f"**{f['total']:,}**" for f in forces] + [""]))
-    rows.append(row("’Mechs / vehicles / infantry", [" / ".join(map(str, f["counts"][:2]+[sum(f["counts"][2:])])) for f in forces] + [""]))
-    rows.append(row("**Activation groups**", [f["groups"] for f in forces] + [""]))
-    squad_rows = [row(f["id"], [" + ".join(map(str,f["conventional_squads"])), " + ".join(map(str,f["battle_armor_squads"])), "V1: C1. V2: A1"]) for f in forces]
-    targets = ", ".join(f"{f['id']}: {f['escape']}" for f in forces)
+            for group in force["groups"]:
+                for key, quantity in Counter(group["members"]).items():
+                    unit = index[key]
+                    cost = unit["rocket_options"][group["rocket_slot"]] if group.get("rocket_slot") else unit["cost"]
+                    writer.writerow([force["id"], group["id"], key, unit["name"], unit_family(unit), unit["set"], unit["rank"], unit["category"], quantity, cost["points"], cost["version"], group.get("pilot", ""), bool(group.get("carrier")), group.get("passengers", ""), group.get("rocket_slot", "")])
+    summary = [row([force["id"], f"**{results[force['id']]['total']:,}**"] +
+                   [results[force["id"]][key] for key in ("mechs", "vehicles", "conventional", "battle_armor", "squads", "groups")]) for force in forces]
+    sections = []
+    for force in forces:
+        lines = [f"## {force['id']}: {force['name']}", "", "| Group | Unit and catalog ID | Bases | Points | Pilot / transport |", "| --- | --- | ---: | ---: | --- |"]
+        for group in force["groups"]:
+            members = Counter(group["members"])
+            names = "; ".join((f"{count} × " if len(members) > 1 else "") + f"[{index[key]['name']} · {key}](../site/unit.html?id={key})" for key, count in members.items())
+            notes = [group["pilot"]] if group.get("pilot") else []
+            if group.get("carrier"):
+                notes.append("Carrier" + ("; starts with " + group["passengers"] if group.get("passengers") else ""))
+            if group.get("rocket_slot"):
+                notes.append(group["rocket_slot"].capitalize() + " as Rocket")
+            lines.append(row([group["id"], names, len(group["members"]), group_cost(group, index), "; ".join(notes) or "—"]))
+        lines += ["", f"**{results[force['id']]['total']:,} points.** Breakthrough escape target: **{results[force['id']]['escape']} points**."]
+        sections.append("\n".join(lines))
     text = f"""# Sample forces
 
 Version {roster['version']} · {roster['limit']:,}-point limit · Formula {catalog['points_formula']['version']}
 
 Three starting armies: **H** (’Mech-heavy), **B** (balanced), and **I** (infantry-heavy). Try H against B first. Their totals are close; their balance still needs testing.
 
-Use the exact catalog IDs below. Each link shows the figure, rank, dial, and cost. Points come from the [shared formula](../rules/points.md).
+Each follows the [force organization and rule of three](../rules/core-rules.md#11-build-your-force): 4–8 ’Mechs, at most 6 vehicles, and at most 9 infantry squads. No chassis appears more than three times; no infantry family appears in more than three squads. All squads have 2–3 bases.
 
-| Unit | H | B | I | Points each |
-| --- | ---: | ---: | ---: | ---: |
-{chr(10).join(rows)}
+| Army | Points | ’Mechs | Vehicles | Conventional bases | Battle armor bases | Squads | Activation groups |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+{chr(10).join(summary)}
 
-[Download the counts and costs](sample-forces.csv). Pilots are included in ’Mech costs. Each army may designate two carriers without another charge.
+Use the exact catalog IDs in the rosters below. Each link shows the figure, rank, dial, and unit family. Every base costs the points given by the [shared formula](../rules/points.md); the points column below totals the whole group. Pilots are included, and carriers have no extra charge.
+
+[Download the rosters and costs](sample-forces.csv).
 
 ## Before deployment
 
-Number ’Mechs M1 onward and vehicles V1 onward. Make V1 and V2 the carriers. Number conventional squads C1 onward and battle armor squads A1 onward. The numbers below are bases in each squad.
+Use the group IDs below: M for ’Mechs, V for vehicles, C for conventional squads, and A for battle armor squads. Label individual squad members C1a, C1b, C1c, and so on. Each group takes one activation.
 
-| Army | Conventional squads | Battle armor squads | Starting passengers |
-| --- | --- | --- | --- |
-{chr(10).join(squad_rows)}
+V1 starts with C1 aboard; V2 starts with A1. All other squads start on foot. Passengers still count as separate groups and are already paid for in the roster. Keep squad membership, pilots, and transport assignments for the return game.
 
-Give squad members IDs such as C1a, C1b, and C1c. Other squads start on foot. Passengers still count as activation groups.
-
-Assign pilots in this order: **Gunner, Skirmisher, Brawler, Engineer**, then repeat. Keep assignments for the return game.
-
-Use the weapon labels on each datasheet. For a Rocket test, choose a substitute on the first eligible ’Mech’s datasheet and record its alternate cost. Recalculate the army total and escape target; adjust counts if needed. Keep the same roster for the return game.
+{chr(10).join(chr(10) + section + chr(10) for section in sections)}
 
 ## What to try
 
-- **H:** Pressure several sites with ’Mechs and commit the few infantry squads carefully.
+- **H:** Use the eight ’Mechs to pressure several sites; protect the three infantry squads.
 - **B:** Use vehicle fire and the two carried squads to take positions.
-- **I:** Test whether more infantry can hold ground with fewer ’Mechs, and whether {len(forces[2]['battle_armor_squads']) + len(forces[2]['conventional_squads'])} squads slow the game.
+- **I:** Test whether nine infantry squads can hold ground with fewer ’Mechs, and whether the extra groups slow the game.
 
-Repeated chassis help compare army composition. You do not need to buy these figures: substitute from your collection, keeping unit counts, infantry types, and squads as close as possible.
+For example, H’s three Dasher II figures fill that chassis allowance. I’s nine Standard Foot bases form three squads, filling the Standard Foot allowance. It can also take three Hoverbike squads because they are a different infantry family.
 
-Record each replacement’s catalog ID, points, pilot, weapons, and transport assignment. Recalculate totals and keep them within 2% under the same limit. If necessary, agree on a new limit and note the difference.
+You can substitute figures from your collection. Keep the intended army roles, check every force limit, and record each replacement’s catalog ID, points, pilot, weapons, and transport assignment. Recalculate totals and keep the armies within 2% under the same limit.
 
-After the first tests, try a return-game pair with mixed light and heavy ’Mechs and different heat tracks.
-
-For these exact armies, Breakthrough escape targets are **{targets} points**.
+For a Rocket test, choose a substitute on one eligible ’Mech’s datasheet and use its updated cost. Recheck the army limit and Breakthrough target. Keep the same roster for the return game.
 """
     (ROOT / "playtest/sample-forces.md").write_text(text, encoding="utf-8")
-    print("Sample forces:", "; ".join(f"{f['id']} {f['total']} points, {f['groups']} groups, escape {f['escape']}" for f in forces))
+    print("Sample forces:", "; ".join(f"{key} {result['total']} points, {result['groups']} groups, escape {result['escape']}" for key, result in results.items()))
 
 
 if __name__ == "__main__":

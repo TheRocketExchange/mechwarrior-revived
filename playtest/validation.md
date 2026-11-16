@@ -10,12 +10,13 @@ The checks below cover written rules, arithmetic, and generated files. **No tabl
 | --- | --- |
 | Packet contents | Core rules, references, three scenarios, three sample armies, pilots, game log, playtest plan, and point-adjustment table are present |
 | Earlier material | Compared Age of Destruction and the downloaded scenario handbook; source notes identify both |
-| Army totals | H: 1,184 points / 17 groups. B: 1,196 / 18. I: 1,192 / 21. Each has two carriers and 4–8 ’Mechs; totals differ by about 1% |
-| Breakthrough targets | 30% rounded up: H 356, B 359, I 358 |
+| Army totals | H: 1,185 points / 15 groups. B: 1,184 / 17. I: 1,181 / 19. The totals differ by four points. Each has two carriers and follows the force chart |
+| Force organization | All three rosters pass automated checks for unit-type caps, 2–3-base squads, repeated families, Unique IDs, pilots, carriers, passenger assignments, Rocket substitutions, and points. Mixed squads count toward every family they contain |
+| Breakthrough targets | 30% rounded up: H 356, B 356, I 355 |
 | Catalog coverage | All 1,649 miniature entries in the source index parsed; all 1,649 local photos decoded successfully. Includes five DropShip turret sections |
 | Unit types | 751 ’Mechs including quads and colossi, 519 vehicles, 213 battle armor, 161 conventional infantry, and five turrets. 114 entries are marked outside the core rules |
 | Points | Every cost and Rocket substitute reproduces from formula 0.3-alpha-1. Faction, name, and rarity do not affect pricing |
-| Pricing and readiness tests | Nineteen automated tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, and readiness. Short schedules were also exhaustively enumerated to check the optimizer independently |
+| Automated tests | Twenty-six tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters. Short schedules were also exhaustively enumerated to check the optimizer independently |
 | Unit PDF | 1,649 photo cards on 413 US Letter pages. All IDs extracted from the PDF; sampled pages independently rendered and visually checked |
 | Seize and Hold score | 5 scoring rounds × 3 sites = 15 available points |
 | Critical dice | The two white dice decide critical results; the third does not. Check target legality before rolling |
@@ -30,7 +31,7 @@ The checks below cover written rules, arithmetic, and generated files. **No tabl
 | Pilot layout | The PDF was independently rendered and visually checked; ability text, name fields, and reminders fit |
 | Fieldworks objectives | Objectives sit on the edge. A 3-inch-diameter large base can stay outside and within control range |
 | Handbook identity | Local file: 116 pages, v2.1, Mike “Rimoran” McCarrig, December 15, 2020. File hash is in the source notes |
-| HTML | 23 offline pages and 1,753 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, and JavaScript syntax checked |
+| HTML | 23 offline pages and 1,764 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads |
 | Browser | The isolated v0.3 readiness preview opened. Full interactive inspection could not finish because browser access was unavailable and native-window inspection timed out. Earlier v0.2 interaction checks are not counted as v0.3 results |
 | Datasheet printing | v0.2’s representative ’Mech HTML datasheet fit one Letter page in Chrome. Recheck v0.3 HTML printing when browser access is available; the generated card PDFs have been checked separately |
 
@@ -66,7 +67,7 @@ The hit percentages isolate cover; they do not predict how a whole battle will p
 
 ## Still to check
 
-Run the short exercises and eighteen-game plan, then a pair with mixed chassis. Check archive dials against the bases and record weapon labels or Rocket substitutes. The pricing model is a starting estimate; automated checks do not establish game balance.
+Run the short exercises and eighteen-game plan, then a pair with other chassis from your collection. Check archive dials against the bases and record weapon labels or Rocket substitutes. The pricing model and force limits are starting estimates; automated checks do not establish game balance.
 
 The PDFs have not been physically printed. Print one sheet at 100% to check card size and legibility on your printer.
 

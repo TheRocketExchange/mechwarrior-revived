@@ -1,52 +1,60 @@
 # MechWarrior Revived
 
-Tabletop rules for your MechWarrior clix collection: 4–8 ’Mechs per side, plus vehicles and infantry. Players alternate activations, and each scenario sets the objective.
+MechWarrior Revived is a tabletop wargame of combined-arms battles in the BattleTech universe. Command BattleMechs, armored vehicles, and infantry as you fight to seize ground, break through enemy lines, or hold a vital position.
 
-**Version 0.3 is ready for playtesting.** Balance and the roughly two-hour play target still need testing.
+Players take turns moving and fighting with one unit or squad at a time. A damaged combat dial changes what a unit can do. Heat and pushing force you to decide when another attack is worth the strain, and when to pull back or recover.
 
-New in this edition: pushing and recovery for vehicles and squads, half-speed Advance, and one order per squad. See the [worked examples](docs/combat-rhythm.md) and [readiness reference](rules/readiness-reference.md). The [v0.2 tag](https://github.com/TheRocketExchange/mechwarrior-revived/tree/v0.2) preserves the previous rules and prices.
+Play with your existing MechWarrior clix miniatures and their combat dials. These fan-made rules include scenarios, photo datasheets, and printable game aids.
 
-## Start playing
+**[Open the rulebook](https://therocketexchange.github.io/mechwarrior-revived/) · [Read the rules](https://therocketexchange.github.io/mechwarrior-revived/rules.html) · [Browse the units](https://therocketexchange.github.io/mechwarrior-revived/units.html)**
 
-Open the [HTML rulebook](site/rules.html) or browse the [rules hub](site/index.html). Both work offline, with search, print styles, and card downloads. The navigation is inspired by [NetEA](https://www.net-armageddon.org/).
+**Version 0.3 is ready for playtesting.** Balance and the roughly two-hour play target still need testing. The [worked examples](https://therocketexchange.github.io/mechwarrior-revived/combat-rhythm.html) explain pushing, recovery, and moving fire. The [v0.2 tag](https://github.com/TheRocketExchange/mechwarrior-revived/tree/v0.2) preserves the previous edition.
 
-The [unit catalog](site/units.html) has 1,649 source-linked photo datasheets, full dials, and costs from one [points formula](rules/points.md). [Printable unit cards](units/revived-unit-cards.pdf) cover the whole catalog, four per page.
+## Your first game
 
-1. Read the [core rules](rules/core-rules.md) and choose a [sample force](playtest/sample-forces.md).
-2. Start with [Seize and Hold](scenarios/01-seize-and-hold.md). Place terrain before choosing sides.
-3. Keep the [turn reference](rules/turn-reference.md), [equipment sheet](rules/equipment-reference.md), and [pilot cards](pilots/pilot-cards.md) nearby.
-4. Record the game in the [playtest log](playtest/playtest-log.md), then play again with sides reversed.
+1. Read [how the game works](https://therocketexchange.github.io/mechwarrior-revived/rules.html#1-how-the-game-works), then choose one of the [sample forces](https://therocketexchange.github.io/mechwarrior-revived/forces.html).
+2. Start with [Seize and Hold](https://therocketexchange.github.io/mechwarrior-revived/seize-and-hold.html). Set out the terrain and objectives before deploying.
+3. Keep the [turn reference](https://therocketexchange.github.io/mechwarrior-revived/turn.html), [readiness sheet](https://therocketexchange.github.io/mechwarrior-revived/readiness.html), [equipment sheet](https://therocketexchange.github.io/mechwarrior-revived/equipment.html), and [pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) nearby.
+4. Record the game in the [playtest log](https://therocketexchange.github.io/mechwarrior-revived/log.html), then play again with sides reversed.
 
 Use the rules in this packet. Original abilities, formations, pilots, gear, and expansion rules apply only where restated here.
 
-## In the packet
+## Build your own force
 
-| Rules and game aids | Background and testing |
+Once you know the basics, follow [Build your force](https://therocketexchange.github.io/mechwarrior-revived/rules.html#11-build-your-force). It sets out the points limit, force-organization chart, rule of three, squad sizes, and pilot and carrier limits.
+
+The [unit catalog](https://therocketexchange.github.io/mechwarrior-revived/units.html) has 1,649 photo datasheets with full dials and costs from one [points formula](https://therocketexchange.github.io/mechwarrior-revived/points.html). Each datasheet identifies its unit family for the rule of three. [Download the unit cards](https://therocketexchange.github.io/mechwarrior-revived/downloads/revived-unit-cards.pdf), four per page, or the [catalog CSV](https://therocketexchange.github.io/mechwarrior-revived/downloads/unit-catalog.csv).
+
+## Rules and game aids
+
+| At the table | Background and testing |
 | --- | --- |
-| [Core rules](rules/core-rules.md) | [Design notes](docs/design-brief.md) |
-| [Weapons](rules/weapon-reference.md) | [Earlier rules and handbook comparison](docs/comparison.md) |
-| [Equipment](rules/equipment-reference.md) | [Sources](docs/sources.md) |
-| [Turn reference](rules/turn-reference.md) | [Sample forces](playtest/sample-forces.md) |
-| [Pilot cards](pilots/pilot-cards.md) | [Playtest plan](playtest/protocol.md) |
-| [Seize and Hold](scenarios/01-seize-and-hold.md) | [Game log](playtest/playtest-log.md) |
-| [Breakthrough](scenarios/02-breakthrough.md) | [Point adjustments](playtest/adjustments.csv) |
-| [Hold the Station](scenarios/03-hold-the-station.md) | [Checks so far](playtest/validation.md) |
+| [Core rules](https://therocketexchange.github.io/mechwarrior-revived/rules.html) | [Design notes](https://therocketexchange.github.io/mechwarrior-revived/design.html) |
+| [Weapons](https://therocketexchange.github.io/mechwarrior-revived/weapons.html) | [Earlier rules and handbook comparison](https://therocketexchange.github.io/mechwarrior-revived/comparison.html) |
+| [Equipment](https://therocketexchange.github.io/mechwarrior-revived/equipment.html) | [Sources](https://therocketexchange.github.io/mechwarrior-revived/sources.html) |
+| [Turn reference](https://therocketexchange.github.io/mechwarrior-revived/turn.html) | [Sample forces](https://therocketexchange.github.io/mechwarrior-revived/forces.html) |
+| [Readiness reference](https://therocketexchange.github.io/mechwarrior-revived/readiness.html) | [Combat examples](https://therocketexchange.github.io/mechwarrior-revived/combat-rhythm.html) |
+| [Pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) | [Playtest plan](https://therocketexchange.github.io/mechwarrior-revived/playtest.html) |
+| [Seize and Hold](https://therocketexchange.github.io/mechwarrior-revived/seize-and-hold.html) | [Game log](https://therocketexchange.github.io/mechwarrior-revived/log.html) |
+| [Breakthrough](https://therocketexchange.github.io/mechwarrior-revived/breakthrough.html) | [Points adjustments](https://therocketexchange.github.io/mechwarrior-revived/downloads/adjustments.csv) |
+| [Hold the Station](https://therocketexchange.github.io/mechwarrior-revived/hold-the-station.html) | [Checks so far](https://therocketexchange.github.io/mechwarrior-revived/validation.html) |
+
+All [game aids and downloads](https://therocketexchange.github.io/mechwarrior-revived/aids.html) are collected on the site. For offline play, download this repository and open [site/index.html](site/index.html). Search, printing, and card downloads also work locally. The navigation is inspired by [NetEA](https://www.net-armageddon.org/).
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/pages.yml` rebuilds and checks the packet, then publishes only `site/`. Pushes to the repository’s default branch deploy automatically. Pull requests run the same build and checks without deploying. You can also run it from the Actions tab.
+The live rulebook is at **[therocketexchange.github.io/mechwarrior-revived](https://therocketexchange.github.io/mechwarrior-revived/)**.
 
-When this folder is uploaded to a GitHub repository, open **Settings → Pages → Build and deployment**, and choose **GitHub Actions** as the source. Keep the cached records in `units/source/` and photos in `units/photos/` in the repository so builds work without fetching the archive. The workflow’s deployment shows the published URL.
+The [Pages workflow](.github/workflows/pages.yml) rebuilds and checks the packet, then publishes `site/`. Pushes to `main` deploy automatically; pull requests run the build and checks without deploying. View deployments or run a manual build on the [Actions page](https://github.com/TheRocketExchange/mechwarrior-revived/actions/workflows/pages.yml).
 
-The site uses relative links, so it works under a repository path such as `https://USERNAME.github.io/REPOSITORY/`. Temporary browser profiles and preview dependencies are excluded by `.gitignore`.
+Keep the cached records in `units/source/` and photos in `units/photos/` in the repository so builds work without fetching the archive. The generated site uses relative links. Temporary browser profiles and preview dependencies are excluded by `.gitignore`.
 
 ## Editing the packet
 
-Run `python build.py` to rebuild costs, sample armies, both card PDFs, the readiness PDF, and the HTML from cached source records. Install dependencies from [web requirements](web/requirements.txt) and [catalog requirements](units/requirements.txt).
+Run `python build.py` to rebuild costs, sample armies, card PDFs, the readiness PDF, and HTML from cached records. Install dependencies from [web requirements](web/requirements.txt) and [catalog requirements](units/requirements.txt).
 
-Edit rules in the Markdown files. Pricing lives in [points.py](units/points.py), with all tuning weights in [points-config.json](units/points-config.json). Change the formula version when changing weights. Sample force counts live in [forces.json](playtest/forces.json); their Markdown and CSV are generated. Adjust counts if a formula change puts a force over the limit.
+Edit the rules in their Markdown source files, starting with [core-rules.md](rules/core-rules.md). Pricing lives in [points.py](units/points.py), with tuning weights in [points-config.json](units/points-config.json). Change the formula version when changing weights. Sample rosters live in [forces.json](playtest/forces.json); [update_forces.py](units/update_forces.py) checks their organization and generates the tables and CSV.
 
-Run `python units/test_catalog.py` to check data and pricing. To refresh the public archive cache, run `python units/import_catalog.py --fetch`, then rebuild. Routine builds need no network.
+Run `python units/test_catalog.py` and `python web/check_packet.py` after rebuilding. To refresh the public archive cache, run `python units/import_catalog.py --fetch`. Routine builds need no network.
 
 For pilot changes, edit both the [card data](pilots/cards.json) and [pilot rules](pilots/pilot-cards.md), then rebuild.
-

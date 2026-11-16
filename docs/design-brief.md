@@ -1,6 +1,6 @@
 # Design notes
 
-Revived brings existing MechWarrior clix figures into larger battles: 4–8 ’Mechs per side, with vehicles and infantry. The aim is a game of about two hours in which infantry matter for the ground they hold and the attacks they make.
+Revived is a combined-arms game of BattleMechs, vehicles, and infantry fighting for ground. It uses existing MechWarrior clix figures and their changing combat dials. The aim is a game of about two hours in which infantry matter for the ground they hold and the attacks they make.
 
 ## Roles on the table
 
@@ -35,6 +35,7 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Scenario-specific victory | Keep attention on the mission |
 | Four pilot roles, one included in each ’Mech’s cost | Add character without advancement |
 | One points formula for every unit | Price the full dial under Revived’s rules |
+| A standard force chart and three choices per chassis or infantry family | Keep a recognizable ’Mech core and limit repetition across ranks and variants |
 
 There are no campaigns, pilot levels, custom units, or expansion rules in this version.
 
@@ -44,6 +45,16 @@ Every unit still activates each round, but vehicles and infantry now need recove
 
 The [combat examples](combat-rhythm.md) explain the expected effects and the four-case comparison. Expanded original heat effects, equipment meanings, and more pilot abilities belong in a later pass.
 
-The shared points formula is a starting estimate. Test wider ranges of chassis and heat tracks after the first sample armies, then adjust the shared weights if results show a consistent problem.
+The shared points formula is a starting estimate. The sample armies now use several chassis and follow the force limits. Test other chassis and heat tracks too, then adjust the shared weights if results show a consistent problem. The six-vehicle and nine-squad caps are starting limits for the standard 1,200-point game; test their effect on force variety, activation counts, and play time.
 
 Use the [playtest plan](../playtest/protocol.md), repeat games with sides reversed, and record time and rules lookups. Balance and the two-hour target remain untested.
+
+## Introducing the game
+
+The opening explains the battle, player decisions, and turn sequence before asking readers to build an army. The full force chart follows the play rules; sample armies let a new player start sooner.
+
+Presentation references:
+
+- [Mantic’s Firefight introduction](https://www.manticgames.com/what-is-firefight/) establishes the setting and alternating actions before its getting-started material.
+- [The NetEA Tournament Pack](https://tp.net-armageddon.org/tournament-pack/) teaches core play and training scenarios before its army-list sections.
+- [Warhammer 40,000’s March 2023 army-building guide](https://www.warhammer-community.com/en-gb/articles/z6UkH6T3/how-army-building-works-in-the-new-edition-of-warhammer-40000/) gives a clear sequence from battle size to unit selection and states repetition limits. Revived applies its own limits to chassis and infantry squads.

@@ -64,11 +64,15 @@
 </tr>
 <tr>
 <td>Army totals</td>
-<td>H: 1,184 points / 17 groups. B: 1,196 / 18. I: 1,192 / 21. Each has two carriers and 4–8 ’Mechs; totals differ by about 1%</td>
+<td>H: 1,185 points / 15 groups. B: 1,184 / 17. I: 1,181 / 19. The totals differ by four points. Each has two carriers and follows the force chart</td>
+</tr>
+<tr>
+<td>Force organization</td>
+<td>All three rosters pass automated checks for unit-type caps, 2–3-base squads, repeated families, Unique IDs, pilots, carriers, passenger assignments, Rocket substitutions, and points. Mixed squads count toward every family they contain</td>
 </tr>
 <tr>
 <td>Breakthrough targets</td>
-<td>30% rounded up: H 356, B 359, I 358</td>
+<td>30% rounded up: H 356, B 356, I 355</td>
 </tr>
 <tr>
 <td>Catalog coverage</td>
@@ -83,8 +87,8 @@
 <td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-1. Faction, name, and rarity do not affect pricing</td>
 </tr>
 <tr>
-<td>Pricing and readiness tests</td>
-<td>Nineteen automated tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, and readiness. Short schedules were also exhaustively enumerated to check the optimizer independently</td>
+<td>Automated tests</td>
+<td>Twenty-six tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters. Short schedules were also exhaustively enumerated to check the optimizer independently</td>
 </tr>
 <tr>
 <td>Unit PDF</td>
@@ -144,7 +148,7 @@
 </tr>
 <tr>
 <td>HTML</td>
-<td>23 offline pages and 1,753 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, and JavaScript syntax checked</td>
+<td>23 offline pages and 1,764 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
 </tr>
 <tr>
 <td>Browser</td>
@@ -261,7 +265,7 @@
 </tbody>
 </table></div>
 <h2 id="still-to-check">Still to check</h2>
-<p>Run the short exercises and eighteen-game plan, then a pair with mixed chassis. Check archive dials against the bases and record weapon labels or Rocket substitutes. The pricing model is a starting estimate; automated checks do not establish game balance.</p>
+<p>Run the short exercises and eighteen-game plan, then a pair with other chassis from your collection. Check archive dials against the bases and record weapon labels or Rocket substitutes. The pricing model and force limits are starting estimates; automated checks do not establish game balance.</p>
 <p>The PDFs have not been physically printed. Print one sheet at 100% to check card size and legibility on your printer.</p>
 <p>Finish the v0.3 browser interaction and mobile checks when browser access is available. The printable PDFs were visually reviewed, but this does not replace an interactive HTML check.</p>
 <p>Repeat the data checks with <code>python units/test_catalog.py</code>, then <code>python web/check_packet.py</code> after rebuilding. Optional browser checks use <code>web/preview_check.py</code> with a separate Chrome debugging profile and <code>websocket-client</code>.</p>

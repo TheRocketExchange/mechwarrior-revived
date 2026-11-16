@@ -2,27 +2,21 @@
 
 Version 0.3 · Playtest rules
 
-Use your existing MechWarrior clix figures and the numbers on their dials. These rules cover a two-player game with 4–8 ’Mechs per side, plus vehicles and infantry.
+MechWarrior Revived is a tabletop wargame of combined-arms battles in the BattleTech universe. You command BattleMechs, armored vehicles, and infantry, fighting to seize ground, break through enemy lines, or hold a vital position.
+
+Play with existing MechWarrior clix miniatures. Their combat dials record damage as the battle unfolds, while heat and pushing make each extra attack a decision.
+
+## 1 How the game works
+
+Two players fight over a battlefield of terrain and objectives. Choose a scenario: it tells you where to deploy, what you are trying to achieve, and when the battle ends. Destroying the enemy helps, but the mission decides the winner.
+
+You take turns activating one ’Mech, vehicle, or infantry squad. Move into position, fire, assault, or recover. Every surviving group acts once per round, so your opponent can respond before you move your whole army.
+
+Each miniature is one **unit**, also called a **base**. Infantry move in fixed squads but keep their own dials and attack rolls. A squad activates together; each ’Mech and vehicle activates on its own. Damage turns a combat dial toward destruction and may change its speed, weapons, or defenses. ’Mechs also track heat. Vehicles and squads track readiness, taking damage if they push for a second combat action before recovering.
+
+For your first game, choose a [sample force](../playtest/sample-forces.md) and [Seize and Hold](../scenarios/01-seize-and-hold.md), then prepare the table below. To select your own units, use [Build your force](#11-build-your-force) after the play rules.
 
 If rules disagree, follow the scenario for deployment and victory, then any specific pilot or equipment rule, then the core rules.
-
-## 1 Assemble forces
-
-Start with a 1,200-point limit. Add the **points** from the [unit catalog](../site/units.html), stay under the limit, and aim for opposing totals within 2%. Pay for every base in a squad. All costs use the same [points formula](points.md). Use one formula version for both armies.
-
-You may mix factions and take duplicates. A figure marked Unique is limited to one of that collector’s number per side.
-
-Use ordinary or quad ’Mechs, ground vehicles, conventional infantry, and battle armor. Treat quads as ’Mechs. Identify battle armor by the unit’s name or listing, not its equipment colors; other infantry count as conventional.
-
-Leave out aircraft, artillery-only and aquatic-only units, colossal ’Mechs, DropShips, and units that need expansion rules. Both players may agree to use an artillery-marked unit as a ground vehicle if it has ordinary printed ranges. It gets no artillery attack.
-
-**Infantry squads.** Group each infantry type into squads of two or three bases. Keep conventional infantry and battle armor separate. A one-base squad is allowed only if you have just one base of that type. Record each squad’s members; they cannot split, merge, or switch squads during play. Casualties may leave a lone survivor.
-
-**Carriers.** Choose up to two ground vehicles as carriers, at no extra cost. Each holds one squad of up to three bases, including battle armor. Ignore printed transport ratings. Record the carriers and any starting passengers.
-
-**Pilots.** Give each ’Mech one [Revived pilot](../pilots/pilot-cards.md), with at most two of each role per force. Its cost already includes the pilot allowance. A pilot affects only its own ’Mech and is lost with it. Use the new cards, without original pilot or gear cards.
-
-**Weapons.** Label each ranged damage value Energy, Ballistic, or Rocket before deployment. Use the [weapon reference](weapon-reference.md) to identify them or mark a Rocket test substitute. A substitute uses its alternate cost on the datasheet. Keep labels and costs for the whole game. There is no ammunition tracking.
 
 ## 2 Prepare the table
 
@@ -263,3 +257,51 @@ Shutdown ’Mechs, passengers, and units that have left the board do not count. 
 The scenario sets when to score, how the game ends, and how to handle ties. Destroying units earns no points unless the scenario says so. Read the victory conditions before deployment.
 
 If you run out of time, finish the round only if both players can. Otherwise record an unfinished game and the last fully scored round. Record concessions as concessions, not completed games.
+
+## 11 Build your force
+
+### Choose the battle size
+
+The standard game is **1,200 points per side**. Add the points shown in the [unit catalog](../site/units.html), paying for every base, including each member of a squad. Stay at or below the limit. Both armies use the same [points formula](points.md). For a close test matchup, aim for totals within 2%.
+
+Use the organization below for all three core scenarios. For a different battle size, agree on any changes to these limits before choosing units.
+
+### Force organization
+
+| Part of the force | Limit | What counts |
+| --- | --- | --- |
+| BattleMechs | 4–8 | One ordinary or quad ’Mech per choice |
+| Ground vehicles | 0–6 | One vehicle per choice; carriers count here too |
+| Infantry | 0–9 squads | Conventional infantry and battle armor combined; 2–3 bases per squad |
+| Repeated unit family | At most 3 | Three ’Mechs or vehicles of that family, or three squads containing that infantry family |
+| Unique figure | At most 1 of each catalog ID | Also counts toward its family and unit-type limits |
+| Carriers | At most 2 | Designate vehicles already in the force; no extra cost or extra vehicle slots |
+| Pilots | One per ’Mech; at most 2 of each role | Included in the ’Mech’s points |
+
+You may mix factions. Use ordinary or quad ’Mechs, ground vehicles, conventional infantry, and battle armor. Treat quads as ’Mechs. Identify battle armor by its name or catalog category, not its equipment colors.
+
+Leave out aircraft, artillery-only and aquatic-only units, colossal ’Mechs, DropShips, and units that need expansion rules. An artillery-marked ground vehicle with ordinary ranges may be used only by prior agreement; it still occupies a vehicle slot and gets no artillery attack.
+
+### Rule of three
+
+Check the **unit family** on each catalog datasheet. Ranks, factions, variant codes, named versions, and Rocket substitutions do not reset the limit. Three Dasher II figures fill the Dasher II allowance, even if each has a different rank or weapon profile.
+
+For infantry, count **squads**, not bases. A family may appear in up to three squads. A squad of three Standard Foot bases uses one of those three choices. A mixed squad counts once toward every infantry family it contains. All infantry squads together must still fit the nine-squad limit.
+
+A Unique figure is limited to one of its catalog ID in the whole force, even when placed in a squad. Its family limit still applies. For example, a named Atlas and two other Atlas figures fill the three-Atlas allowance.
+
+### Organize infantry squads
+
+Each squad starts with two or three bases. Keep conventional infantry and battle armor in separate squads; members may have different ranks or families within that category. Record every member’s catalog ID and pay its points. Squads cannot split, merge, or exchange members during play. Casualties may leave a lone survivor.
+
+### Assign carriers, pilots, and weapons
+
+Choose up to two of your ground vehicles as carriers. Each holds one whole squad of up to three bases, including battle armor. Ignore printed transport ratings. Record the carriers and any starting passengers. Embarked squads still count toward all infantry and family limits.
+
+Give each ’Mech one [Revived pilot](../pilots/pilot-cards.md), with at most two of each role per force. A pilot affects only its own ’Mech and is lost with it. Use these cards without original pilot or gear cards.
+
+Label each ranged damage value Energy, Ballistic, or Rocket before deployment. Follow the [weapon reference](weapon-reference.md), including the limit of one Rocket test substitute on one ’Mech per force. Use that substitute’s cost. Keep labels, pilots, and costs for the whole game. There is no ammunition tracking.
+
+### Check the roster
+
+Before deployment, exchange rosters and check the points total, unit-type limits, rule of three, Unique figures, squad members, pilots, and carriers. The [sample forces](../playtest/sample-forces.md) show three legal ways to organize a force.

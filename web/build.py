@@ -181,9 +181,9 @@ def main():
             next_page = ("seize-and-hold.html", "Your first scenario")
             body += '<figure class="pilot-preview"><a href="downloads/revived-pilot-cards.pdf"><img src="downloads/revived-pilot-cards-preview.png" alt="Four printable Revived pilot cards: Gunner, Skirmisher, Brawler, and Engineer" loading="lazy" width="1224" height="1584"></a><figcaption>Four roles. Print the PDF at 100% on US Letter paper.</figcaption></figure>'
         elif filename == "index.html":
-            body = '<p class="lead">Rules for your MechWarrior clix collection.</p><p>Build an army of 4–8 ’Mechs with vehicles and infantry. Take turns activating your units, manage heat and readiness, and fight for the scenario’s objectives.</p><p>New in v0.3: pushing and recovery, half-speed Advance, and one order per squad. <a href="combat-rhythm.html">See what changes on the table.</a></p>' + resource_rows([
-                ("01", "rules.html", "Read the rules", "Force assembly, movement, combat, heat, and victory."),
-                ("02", "forces.html", "Assemble a force", "Three starting armies under a 1,200-point ceiling."),
+            body = '<p class="lead">Combined-arms battles in the BattleTech universe.</p><p>Command BattleMechs, armored vehicles, and infantry. Fight to seize ground, break through enemy lines, or hold a vital position. Take turns moving and attacking as damage, heat, and pushing test your force.</p><p>New in v0.3: pushing and recovery, half-speed Advance, and one order per squad. <a href="combat-rhythm.html">See what changes on the table.</a></p>' + resource_rows([
+                ("01", "rules.html", "Read the rules", "Learn how a battle unfolds, from movement and combat to victory."),
+                ("02", "forces.html", "Assemble a force", "Three legal sample armies, with the force limits explained."),
                 ("03", "units.html", "Find your units", "Photos, full dials, printable cards, and points."),
                 ("04", "scenarios.html", "Choose your mission", "Three scenarios with deployment and scoring rules."),
                 ("05", "aids.html", "Prepare the table", "Quick references and printable pilot cards."),
