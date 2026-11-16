@@ -55,3 +55,6 @@
 }
 
 @media print{.unit-builder-link{display:none}}
+.rule-content .cost-clicks th,.rule-content .cost-clicks td{min-width:0;padding:10px 8px}.rule-content .cost-clicks thead th{white-space:normal}
+@media(max-width:740px){.rule-content .cost-curve svg text{font-size:22px}}
+.cost-curve{margin:20px 0;padding:16px;background:#eeefe5;border:1px solid var(--line)}.cost-curve figcaption{font:600 13px var(--sans);color:var(--olive)}.cost-curve svg{display:block;width:100%;height:auto;overflow:visible;margin-top:12px}.cost-curve svg text{font:12px var(--sans);fill:var(--muted)}.cost-axis{fill:none;stroke:var(--muted);stroke-width:1}.cost-area{fill:var(--olive);opacity:.12}.cost-line{fill:none;stroke:var(--olive);stroke-width:2.5}.cost-curve circle{fill:var(--accent)}.rule-content .cost-curve p{font:11px/1.6 var(--sans);color:var(--muted);margin:10px 0 0}.cost-clicks,.cost-ratings{margin:16px 0}.cost-clicks td{text-align:right;font-variant-numeric:tabular-nums}.cost-clicks th{white-space:nowrap}.cost-clicks table{font:12px/1.5 var(--sans)}

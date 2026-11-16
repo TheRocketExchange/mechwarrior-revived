@@ -38,7 +38,7 @@ test("Rocket cost uses catalog and only one substitute is allowed",()=>{
   force.groups[3].rocket_slot=Object.keys(model.units.get("AOD104").rocket_options)[0];fails(force,/one Rocket/);
 });
 test("save format never imports prices and rejects broken records",()=>{
-  const force=base();const before=model.validate(force).points;force.points=1;force.groups[0].cost=1;assert.equal(model.validate(model.parse(force)).points,before);
+  const force=base();const before=model.validate(force).points;force.points=1;force.groups[0].cost=1;force.formula_version="0.3-alpha-1";const updated=model.parse(force);assert.equal(model.validate(updated).points,before);assert.equal(updated.formula_version,catalog.points_formula.version);assert.deepEqual(updated.groups,model.parse(base()).groups);
   assert.throws(()=>model.parse({groups:[{id:"M1",members:["NOT-REAL"]}]}),/unknown catalog ID/);
   assert.throws(()=>model.parse({groups:[{id:"M1",members:[]}]}));
   assert.throws(()=>model.parse({groups:[force.groups[0],force.groups[0]]}),/different roster ID/);

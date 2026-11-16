@@ -1,6 +1,6 @@
 # Sample forces
 
-Version 0.3 · 1,200-point limit · Formula 0.3-alpha-1
+Version 0.3 · 1,200-point limit · Formula 0.3-alpha-2
 
 Three starting armies: **H** (’Mech-heavy), **B** (balanced), and **I** (infantry-heavy). Try H against B first. Their totals are close; their balance still needs testing.
 
@@ -8,9 +8,9 @@ Each follows the [force organization and rule of three](../rules/core-rules.md#1
 
 | Army | Points | ’Mechs | Vehicles | Conventional bases | Battle armor bases | Squads | Activation groups |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| H | **1,185** | 8 | 4 | 5 | 2 | 3 | 15 |
-| B | **1,184** | 6 | 6 | 8 | 6 | 5 | 17 |
-| I | **1,181** | 4 | 6 | 18 | 9 | 9 | 19 |
+| H | **1,178** | 8 | 4 | 5 | 2 | 3 | 15 |
+| B | **1,187** | 6 | 6 | 8 | 6 | 5 | 17 |
+| I | **1,171** | 4 | 6 | 18 | 9 | 9 | 19 |
 
 Use the exact catalog IDs in the rosters below. Each link shows the figure, rank, dial, and unit family. Every base costs the points given by the [shared formula](../rules/points.md); the points column below totals the whole group. Pilots are included, and carriers have no extra charge.
 
@@ -27,75 +27,75 @@ V1 starts with C1 aboard; V2 starts with A1. All other squads start on foot. Pas
 
 | Group | Unit and catalog ID | Bases | Points | Pilot / transport |
 | --- | --- | ---: | ---: | --- |
-| M1 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 94 | Gunner |
-| M2 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 94 | Skirmisher |
-| M3 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 94 | Brawler |
-| M4 | [Ursa · AOD112](../site/unit.html?id=AOD112) | 1 | 145 | Engineer |
-| M5 | [Ursa · AOD112](../site/unit.html?id=AOD112) | 1 | 145 | Gunner |
-| M6 | [Ursa · AOD112](../site/unit.html?id=AOD112) | 1 | 145 | Skirmisher |
-| M7 | [Uziel · AOD096](../site/unit.html?id=AOD096) | 1 | 80 | Brawler |
-| M8 | [Uziel · AOD096](../site/unit.html?id=AOD096) | 1 | 80 | Engineer |
-| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 56 | Carrier; starts with C1 |
-| V2 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 38 | Carrier; starts with A1 |
-| V3 | [Hadur Fast Support Vehicle · AOD042](../site/unit.html?id=AOD042) | 1 | 33 | — |
-| V4 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 43 | — |
-| C1 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 36 | — |
-| C2 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 2 | 32 | — |
-| A1 | [Salamander Battle Armor · AOD026](../site/unit.html?id=AOD026) | 2 | 70 | — |
+| M1 | [Dasher II · AOD106](../site/unit.html?id=AOD106) | 1 | 100 | Gunner |
+| M2 | [Uziel · AOD094](../site/unit.html?id=AOD094) | 1 | 98 | Skirmisher |
+| M3 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Brawler |
+| M4 | [Ursa · AOD112](../site/unit.html?id=AOD112) | 1 | 195 | Engineer |
+| M5 | [Dasher II · AOD106](../site/unit.html?id=AOD106) | 1 | 100 | Gunner |
+| M6 | [Uziel · AOD094](../site/unit.html?id=AOD094) | 1 | 98 | Skirmisher |
+| M7 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Brawler |
+| M8 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Engineer |
+| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 75 | Carrier; starts with C1 |
+| V2 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 50 | Carrier; starts with A1 |
+| V3 | [Hadur Fast Support Vehicle · AOD042](../site/unit.html?id=AOD042) | 1 | 43 | — |
+| V4 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 60 | — |
+| C1 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 39 | — |
+| C2 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 2 | 38 | — |
+| A1 | [Salamander Battle Armor · AOD026](../site/unit.html?id=AOD026) | 2 | 72 | — |
 
-**1,185 points.** Breakthrough escape target: **356 points**.
+**1,178 points.** Breakthrough escape target: **354 points**.
 
 
 ## B: Balanced
 
 | Group | Unit and catalog ID | Bases | Points | Pilot / transport |
 | --- | --- | ---: | ---: | --- |
-| M1 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 94 | Gunner |
-| M2 | [Uziel · AOD096](../site/unit.html?id=AOD096) | 1 | 80 | Skirmisher |
-| M3 | [Ursa · AOD112](../site/unit.html?id=AOD112) | 1 | 145 | Brawler |
-| M4 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 94 | Engineer |
-| M5 | [Uziel · AOD096](../site/unit.html?id=AOD096) | 1 | 80 | Gunner |
-| M6 | [Ursa · AOD112](../site/unit.html?id=AOD112) | 1 | 145 | Skirmisher |
-| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 56 | Carrier; starts with C1 |
-| V2 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 38 | Carrier; starts with A1 |
-| V3 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 56 | — |
-| V4 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 43 | — |
-| V5 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 43 | — |
-| V6 | [Hadur Fast Support Vehicle · AOD042](../site/unit.html?id=AOD042) | 1 | 33 | — |
-| C1 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 36 | — |
-| C2 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 48 | — |
+| M1 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 124 | Gunner |
+| M2 | [Uziel · AOD093](../site/unit.html?id=AOD093) | 1 | 90 | Skirmisher |
+| M3 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Brawler |
+| M4 | [Uziel · AOD093](../site/unit.html?id=AOD093) | 1 | 90 | Engineer |
+| M5 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Gunner |
+| M6 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Skirmisher |
+| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 75 | Carrier; starts with C1 |
+| V2 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 50 | Carrier; starts with A1 |
+| V3 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 75 | — |
+| V4 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 60 | — |
+| V5 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 60 | — |
+| V6 | [Hadur Fast Support Vehicle · AOD042](../site/unit.html?id=AOD042) | 1 | 43 | — |
+| C1 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 39 | — |
+| C2 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 57 | — |
 | C3 | [Peasant Company · D003](../site/unit.html?id=D003) | 2 | 16 | — |
-| A1 | [Fenrir Battle Armor · AOD030](../site/unit.html?id=AOD030) | 3 | 72 | — |
-| A2 | [Salamander Battle Armor · AOD026](../site/unit.html?id=AOD026) | 3 | 105 | — |
+| A1 | [Fenrir Battle Armor · AOD030](../site/unit.html?id=AOD030) | 3 | 90 | — |
+| A2 | [Salamander Battle Armor · AOD026](../site/unit.html?id=AOD026) | 3 | 108 | — |
 
-**1,184 points.** Breakthrough escape target: **356 points**.
+**1,187 points.** Breakthrough escape target: **357 points**.
 
 
 ## I: Infantry-heavy
 
 | Group | Unit and catalog ID | Bases | Points | Pilot / transport |
 | --- | --- | ---: | ---: | --- |
-| M1 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 94 | Gunner |
-| M2 | [Hatchetman · AOD104](../site/unit.html?id=AOD104) | 1 | 109 | Skirmisher |
-| M3 | [Dasher II · AOD108](../site/unit.html?id=AOD108) | 1 | 94 | Brawler |
-| M4 | [Hatchetman · AOD104](../site/unit.html?id=AOD104) | 1 | 109 | Engineer |
-| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 56 | Carrier; starts with C1 |
-| V2 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 38 | Carrier; starts with A1 |
-| V3 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 56 | — |
-| V4 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 38 | — |
-| V5 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 43 | — |
-| V6 | [R10 Mechanized ICV · AOD066](../site/unit.html?id=AOD066) | 1 | 43 | — |
-| C1 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 36 | — |
-| C2 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 36 | — |
-| C3 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 36 | — |
-| C4 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 48 | — |
-| C5 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 48 | — |
-| C6 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 48 | — |
-| A1 | [Fenrir Battle Armor · AOD030](../site/unit.html?id=AOD030) | 3 | 72 | — |
-| A2 | [Salamander Battle Armor · AOD026](../site/unit.html?id=AOD026) | 3 | 105 | — |
-| A3 | [PAL Suit · AOD022](../site/unit.html?id=AOD022) | 3 | 72 | — |
+| M1 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Gunner |
+| M2 | [Uziel · AOD093](../site/unit.html?id=AOD093) | 1 | 90 | Skirmisher |
+| M3 | [Mongoose · AOD082](../site/unit.html?id=AOD082) | 1 | 70 | Brawler |
+| M4 | [Uziel · AOD093](../site/unit.html?id=AOD093) | 1 | 90 | Engineer |
+| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 75 | Carrier; starts with C1 |
+| V2 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 50 | Carrier; starts with A1 |
+| V3 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 1 | 75 | — |
+| V4 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) | 1 | 50 | — |
+| V5 | [Saxon APC · AOD056](../site/unit.html?id=AOD056) | 1 | 20 | — |
+| V6 | [Saxon APC · AOD056](../site/unit.html?id=AOD056) | 1 | 20 | — |
+| C1 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 39 | — |
+| C2 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 39 | — |
+| C3 | [Standard Foot · D006](../site/unit.html?id=D006) | 3 | 39 | — |
+| C4 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 57 | — |
+| C5 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 57 | — |
+| C6 | [Hoverbike Squad · D009](../site/unit.html?id=D009) | 3 | 57 | — |
+| A1 | [Fenrir Battle Armor · AOD030](../site/unit.html?id=AOD030) | 3 | 90 | — |
+| A2 | [Salamander Battle Armor · AOD026](../site/unit.html?id=AOD026) | 3 | 108 | — |
+| A3 | [PAL Suit · AOD022](../site/unit.html?id=AOD022) | 3 | 75 | — |
 
-**1,181 points.** Breakthrough escape target: **355 points**.
+**1,171 points.** Breakthrough escape target: **352 points**.
 
 
 ## What to try
@@ -104,7 +104,7 @@ V1 starts with C1 aboard; V2 starts with A1. All other squads start on foot. Pas
 - **B:** Use vehicle fire and the two carried squads to take positions.
 - **I:** Test whether nine infantry squads can hold ground with fewer ’Mechs, and whether the extra groups slow the game.
 
-For example, H’s three Dasher II figures fill that chassis allowance. I’s nine Standard Foot bases form three squads, filling the Standard Foot allowance. It can also take three Hoverbike squads because they are a different infantry family.
+For example, H’s three Mongoose figures fill that chassis allowance. I’s nine Standard Foot bases form three squads, filling the Standard Foot allowance. It can also take three Hoverbike squads because they are a different infantry family.
 
 You can substitute figures from your collection. Keep the intended army roles, check every force limit, and record each replacement’s catalog ID, points, pilot, weapons, and transport assignment. Recalculate totals and keep the armies within 2% under the same limit.
 

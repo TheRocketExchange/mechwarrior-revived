@@ -77,6 +77,7 @@ Use [one log per game](playtest-log.md). Leave missing measurements as “unknow
 | Are the rules clear? | Record any transport, heat, equipment, or pilot dispute needed to finish play |
 | Are all weapons worth using? | Record targets, movement, and weapon choices. Check whether Energy feels compulsory or Rockets are too safe behind buildings |
 | Do the force limits help? | Record vehicle and squad counts, repeated families, and legal lists players wanted to field but could not. Check whether the caps produce varied armies without crowding out a unit type |
+| Does the dial pricing fit actual play? | Record clicks used for attacks, how soon strong starting values are lost, and any late recovery in performance. Compare quick decline with steady dials at similar costs; check whether the 1.5-to-0.5 weighting overvalues opening strength |
 
 Measure each player’s longest stretch without a game decision, excluding agreed breaks.
 

@@ -53,10 +53,13 @@ assert len(published["units"]) == len(units)
 for unit in published["units"]:
     assert unit["family"] == unit_family(units[unit["id"]]), unit["id"]
     assert "printed_points" not in unit, unit["id"]
+    assert unit["cost"] == units[unit["id"]]["cost"], unit["id"]
+    assert unit["rocket_options"] == units[unit["id"]]["rocket_options"], unit["id"]
 with (SITE / "downloads/unit-catalog.csv").open(encoding="utf-8-sig", newline="") as stream:
     catalog_rows = list(csv.DictReader(stream))
 assert len(catalog_rows) == len(units)
 assert all(row["family"] == unit_family(units[row["id"]]) for row in catalog_rows)
+assert all(int(row["points"]) == units[row["id"]]["cost"]["points"] and row["formula_version"] == catalog["points_formula"]["version"] for row in catalog_rows)
 with (ROOT / "playtest/sample-forces.csv").open(encoding="utf-8",newline="") as stream:
     rows = list(csv.DictReader(stream))
 totals = {}
@@ -97,12 +100,15 @@ for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot
             return (f"{value:+d}" if heat and value else str(value)) + codes[cell.get("color", "white")]
         printed_ids = []
         for page in reader.pages:
-            blocks = page.extract_text().split("Catalog ID: ")[1:]
+            page_text = page.extract_text()
+            assert "Formula " + catalog["points_formula"]["version"] in page_text
+            blocks = page_text.split("Catalog ID: ")[1:]
             for block in blocks:
                 unit_id = block.split()[0]
                 unit = units[unit_id]
                 printed_ids.append(unit_id)
                 content = compact(block)
+                assert re.search(r"\b" + str(unit["cost"]["points"]) + r"\s+POINTS", block), unit_id
                 assert "RosterID:" in content and "Liveclicks" not in content, unit_id
                 assert f"Clicks:{len(unit['track'])-unit['start']}(damagefromStarttoEnd)" in content, unit_id
                 combat = content.split("COMBATDIAL",1)[1].split("HEATDIAL",1)[0]

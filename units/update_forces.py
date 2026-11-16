@@ -82,7 +82,7 @@ V1 starts with C1 aboard; V2 starts with A1. All other squads start on foot. Pas
 - **B:** Use vehicle fire and the two carried squads to take positions.
 - **I:** Test whether nine infantry squads can hold ground with fewer ’Mechs, and whether the extra groups slow the game.
 
-For example, H’s three Dasher II figures fill that chassis allowance. I’s nine Standard Foot bases form three squads, filling the Standard Foot allowance. It can also take three Hoverbike squads because they are a different infantry family.
+For example, H’s three Mongoose figures fill that chassis allowance. I’s nine Standard Foot bases form three squads, filling the Standard Foot allowance. It can also take three Hoverbike squads because they are a different infantry family.
 
 You can substitute figures from your collection. Keep the intended army roles, check every force limit, and record each replacement’s catalog ID, points, pilot, weapons, and transport assignment. Recalculate totals and keep the armies within 2% under the same limit.
 

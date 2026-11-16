@@ -27,6 +27,8 @@ Use the [force builder](https://therocketexchange.github.io/mechwarrior-revived/
 
 The [unit catalog](https://therocketexchange.github.io/mechwarrior-revived/units.html) has 1,649 photo datasheets with full dials and costs from one [points formula](https://therocketexchange.github.io/mechwarrior-revived/points.html). Each datasheet identifies its unit family for the rule of three. [Download the unit cards](https://therocketexchange.github.io/mechwarrior-revived/downloads/revived-unit-cards.pdf), two per page with complete combat and heat dials, or the [catalog CSV](https://therocketexchange.github.io/mechwarrior-revived/downloads/unit-catalog.csv). The [card guide](https://therocketexchange.github.io/mechwarrior-revived/units.html#reading-a-unit-card) explains IDs, squad and carrier assignments, and clicks.
 
+Points value every click as a complete profile. Early strength carries more weight, and units that keep their performance through damage cost more than those that fade quickly. Open a datasheet’s cost breakdown to see its curve and each click’s contribution. The [force builder](https://therocketexchange.github.io/mechwarrior-revived/builder.html) recalculates saved lists with current costs; review your total and regenerate cards after a formula update.
+
 ## Rules and game aids
 
 | At the table | Background and testing |

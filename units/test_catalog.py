@@ -10,7 +10,7 @@ from unittest.mock import patch
 from PIL import Image
 
 from parse_catalog import parse_unit
-from points import CONFIG, calculate, expected_damage, heat_output_factor, offensive_rating, readiness_output, shot
+from points import CONFIG, calculate, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot
 from readiness import Readiness, order, finish_action
 from force_org import PILOTS, unit_family, validate_force
 
@@ -205,6 +205,77 @@ class ForceOrganizationChecks(unittest.TestCase):
 
 
 class PricingChecks(unittest.TestCase):
+    def profile(self, damage, defenses=None, category="Mech"):
+        unit = basic(category)
+        unit["track"] = [copy.deepcopy(unit["track"][0]) for _ in damage]
+        for i, value in enumerate(damage):
+            unit["track"][i]["primary"]["value"] = value
+            if defenses:
+                unit["track"][i]["defense"]["value"] = defenses[i]
+        return unit
+
+    def test_strong_opening_and_slower_degradation_are_worth_more(self):
+        # Same values and average, different order: earlier power is worth more.
+        for category in ("Mech", "Vehicle", "Conventional Infantry", "Battle Armor"):
+            opening = self.profile([4, 1, 1, 1, 1, 1], category=category)
+            late = self.profile([1, 1, 1, 1, 1, 4], category=category)
+            self.assertGreater(calculate(opening)["breakdown"]["raw"], calculate(late)["breakdown"]["raw"])
+        # Both open at 4 and contain the same values; one keeps its good
+        # second click, while the other's recovery comes near destruction.
+        sustained = self.profile([4, 4, 1, 1, 1, 1])
+        late_rebound = self.profile([4, 1, 1, 1, 1, 4])
+        self.assertGreater(calculate(sustained)["points"], calculate(late_rebound)["points"])
+        steady = self.profile([4] * 6)
+        self.assertGreater(calculate(steady)["points"], calculate(sustained)["points"])
+
+    def test_defense_and_firepower_are_valued_on_the_same_click(self):
+        protected_power = self.profile([4, 4, 1, 1], [20, 20, 16, 16])
+        protected_tail = self.profile([4, 4, 1, 1], [16, 16, 20, 20])
+        # Disable the early-click preference to isolate the interaction.
+        with patch.dict(CONFIG, dial_start_weight=1, dial_end_weight=1):
+            self.assertGreater(calculate(protected_power)["points"], calculate(protected_tail)["points"])
+
+    def test_dial_weights_preserve_a_flat_profile_and_keep_the_tail(self):
+        for length in (1, 2, 6, 23):
+            weights = dial_weights(length)
+            self.assertAlmostEqual(sum(weights), length)
+            self.assertTrue(all(value > 0 for value in weights))
+        unit = self.profile([3] * 6)
+        preferred = calculate(unit)["breakdown"]["raw"]
+        with patch.dict(CONFIG, dial_start_weight=1, dial_end_weight=1):
+            self.assertEqual(calculate(unit)["breakdown"]["raw"], preferred)
+        # Even a weak last click adds survival and never removes earlier value.
+        for category in ("Mech", "Vehicle", "Conventional Infantry", "Battle Armor"):
+            unit = self.profile([4, 3, 1], category=category)
+            before = calculate(unit)["breakdown"]["raw"]
+            tail = copy.deepcopy(unit["track"][-1])
+            for key in ("primary", "speed", "attack"):
+                tail[key]["value"] = 0
+            unit["track"].append(tail)
+            self.assertGreater(calculate(unit)["breakdown"]["raw"], before)
+
+    def test_each_click_and_printed_contribution_reconciles(self):
+        unit = self.profile([4, 3, 2, 1])
+        before = calculate(unit)
+        for position in range(len(unit["track"])):
+            for key in ("primary", "attack", "defense", "speed"):
+                changed = copy.deepcopy(unit)
+                changed["track"][position][key]["value"] += 1
+                self.assertGreaterEqual(calculate(changed)["breakdown"]["raw"], before["breakdown"]["raw"])
+        self.assertAlmostEqual(sum(before["dial"]["points"]) + before["breakdown"]["pilot_allowance"], before["breakdown"]["raw"], places=3)
+        self.assertEqual(len(before["dial"]["values"]), len(unit["track"]))
+        with patch.dict(CONFIG, dial_start_weight=0.5, dial_end_weight=1.5):
+            with self.assertRaises(ValueError):
+                calculate(unit)
+
+    def test_later_improvements_are_not_charged_to_earlier_clicks(self):
+        ratings = [0, 1, 4]
+        capped = readiness_profile(ratings, cap_at_start=True)
+        self.assertEqual(capped[0], 0)
+        self.assertLessEqual(capped[1], 1)
+        self.assertGreater(capped[2], capped[1])
+        self.assertGreater(readiness_profile(ratings)[0], 0)
+
     def test_half_speed_only_changes_moving_fire_reach(self):
         unit = basic()
         unit["track"][0]["speed"]["value"] = 7

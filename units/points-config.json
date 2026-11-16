@@ -1,5 +1,7 @@
 {
-  "version": "0.3-alpha-1",
+  "version": "0.3-alpha-2",
+  "dial_start_weight": 1.5,
+  "dial_end_weight": 0.5,
   "scale": 1.6,
   "base": 1.0,
   "mobility_per_inch": 0.08,

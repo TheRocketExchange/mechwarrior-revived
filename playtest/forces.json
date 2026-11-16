@@ -9,21 +9,21 @@
         {
           "id": "M1",
           "members": [
-            "AOD108"
+            "AOD106"
           ],
           "pilot": "Gunner"
         },
         {
           "id": "M2",
           "members": [
-            "AOD108"
+            "AOD094"
           ],
           "pilot": "Skirmisher"
         },
         {
           "id": "M3",
           "members": [
-            "AOD108"
+            "AOD082"
           ],
           "pilot": "Brawler"
         },
@@ -37,28 +37,28 @@
         {
           "id": "M5",
           "members": [
-            "AOD112"
+            "AOD106"
           ],
           "pilot": "Gunner"
         },
         {
           "id": "M6",
           "members": [
-            "AOD112"
+            "AOD094"
           ],
           "pilot": "Skirmisher"
         },
         {
           "id": "M7",
           "members": [
-            "AOD096"
+            "AOD082"
           ],
           "pilot": "Brawler"
         },
         {
           "id": "M8",
           "members": [
-            "AOD096"
+            "AOD082"
           ],
           "pilot": "Engineer"
         },
@@ -128,35 +128,35 @@
         {
           "id": "M2",
           "members": [
-            "AOD096"
+            "AOD093"
           ],
           "pilot": "Skirmisher"
         },
         {
           "id": "M3",
           "members": [
-            "AOD112"
+            "AOD082"
           ],
           "pilot": "Brawler"
         },
         {
           "id": "M4",
           "members": [
-            "AOD108"
+            "AOD093"
           ],
           "pilot": "Engineer"
         },
         {
           "id": "M5",
           "members": [
-            "AOD096"
+            "AOD082"
           ],
           "pilot": "Gunner"
         },
         {
           "id": "M6",
           "members": [
-            "AOD112"
+            "AOD082"
           ],
           "pilot": "Skirmisher"
         },
@@ -248,28 +248,28 @@
         {
           "id": "M1",
           "members": [
-            "AOD108"
+            "AOD082"
           ],
           "pilot": "Gunner"
         },
         {
           "id": "M2",
           "members": [
-            "AOD104"
+            "AOD093"
           ],
           "pilot": "Skirmisher"
         },
         {
           "id": "M3",
           "members": [
-            "AOD108"
+            "AOD082"
           ],
           "pilot": "Brawler"
         },
         {
           "id": "M4",
           "members": [
-            "AOD104"
+            "AOD093"
           ],
           "pilot": "Engineer"
         },
@@ -304,13 +304,13 @@
         {
           "id": "V5",
           "members": [
-            "AOD066"
+            "AOD056"
           ]
         },
         {
           "id": "V6",
           "members": [
-            "AOD066"
+            "AOD056"
           ]
         },
         {

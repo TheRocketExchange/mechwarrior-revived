@@ -64,7 +64,7 @@
 </tr>
 <tr>
 <td>Army totals</td>
-<td>H: 1,185 points / 15 groups. B: 1,184 / 17. I: 1,181 / 19. The totals differ by four points. Each has two carriers and follows the force chart</td>
+<td>H: 1,178 points / 15 groups. B: 1,187 / 17. I: 1,171 / 19. The totals differ by 16 points. Each has two carriers and follows the force chart</td>
 </tr>
 <tr>
 <td>Force organization</td>
@@ -72,7 +72,7 @@
 </tr>
 <tr>
 <td>Breakthrough targets</td>
-<td>30% rounded up: H 356, B 356, I 355</td>
+<td>30% rounded up: H 354, B 357, I 352</td>
 </tr>
 <tr>
 <td>Catalog coverage</td>
@@ -84,11 +84,11 @@
 </tr>
 <tr>
 <td>Points</td>
-<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-1. Faction, name, and rarity do not affect pricing</td>
+<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-2. Each complete click is priced separately, with weights from 1.5 to 0.5. Faction, name, and rarity do not affect pricing</td>
 </tr>
 <tr>
 <td>Automated tests</td>
-<td>Twenty-six tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters. Short schedules were also exhaustively enumerated to check the optimizer independently</td>
+<td>Thirty-one tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters. New checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness optimizer independently</td>
 </tr>
 <tr>
 <td>Unit PDF</td>
@@ -148,11 +148,11 @@
 </tr>
 <tr>
 <td>HTML</td>
-<td>25 offline pages and 1,766 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
+<td>25 offline pages and 1,767 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
 </tr>
 <tr>
 <td>Browser</td>
-<td>Isolated headless Chrome checks passed for catalog search, filters, photos, paging, dials, Rocket pricing, readiness, and missing units. Catalog, rules, readiness, unit cards, long dials, and the force builder fit a 390-pixel viewport without page overflow</td>
+<td>Isolated headless Chrome checks passed for catalog search, filters, photos, paging, dials, Rocket pricing, readiness, and missing units. Click-value curves and contribution tables match the catalog. Catalog, rules, readiness, unit cards, long dials, pricing details, and the force builder fit a 390-pixel viewport without page overflow</td>
 </tr>
 <tr>
 <td>Datasheet printing</td>
@@ -160,7 +160,7 @@
 </tr>
 <tr>
 <td>Force builder</td>
-<td>Eight model checks cover sample-list parity, family limits, mixed squads, unit caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover editing, reload persistence, JSON export/import, rejected broken imports, and generated cards</td>
+<td>Eight model checks cover sample-list parity, family limits, mixed squads, unit caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover editing, reload persistence, JSON export/import, rejected broken imports, generated cards, and recalculating an older saved list with a notice</td>
 </tr>
 <tr>
 <td>Selected-model cards</td>

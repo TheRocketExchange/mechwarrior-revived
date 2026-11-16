@@ -7,7 +7,15 @@
   const empty=()=>model.parse({name:"My force",groups:[]});
   let force=empty(), page=0, saveFailed=false;
   const message=text=>{$("force-message").textContent=text;};
-  try {const saved=localStorage.getItem(key); if(saved) force=model.parse(JSON.parse(saved));}
+  try {
+    const saved=localStorage.getItem(key);
+    if(saved) {
+      const previous=JSON.parse(saved);
+      force=model.parse(previous);
+      if(previous.formula_version && previous.formula_version!==force.formula_version)
+        message(`Points updated to formula ${force.formula_version}. Your models are unchanged; check the total and generate fresh cards.`);
+    }
+  }
   catch {message("The saved list could not be loaded. Import a backup or start a new list.");}
   function save() {
     force.formula_version=MW_CATALOG.points_formula.version;

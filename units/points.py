@@ -184,58 +184,96 @@ def toughness(unit, click):
     return reference / max(incoming, 1 / 216)
 
 
-def readiness_output(ratings, horizon=None):
-    """Best attack/recover output, averaged over every live starting click.
+def readiness_profile(ratings, horizon=None, cap_at_start=False):
+    """Best attack/recover output at each possible starting click.
 
-Pushing uses the current click's attack, then advances the actual dial.
-Recovering costs one opportunity and never repairs that damage. Starting at
-each click separately matches the heat model's rating-per-dial convention.
-"""
+    Pushing uses the current click's attack, then advances the actual dial.
+    Recovering costs one opportunity and never repairs that damage. Starting at
+    each click separately prices its output alongside that click's defense.
+    The pricing cap prevents later upgrades from inflating earlier profiles;
+    leave it off to model actual attack/recover schedules in isolation.
+    """
     horizon = CONFIG["readiness_actions"] if horizon is None else horizon
     if horizon < 1 or not ratings:
         raise ValueError("Readiness needs live clicks and a positive horizon")
 
     @lru_cache(maxsize=None)
-    def best(remaining, click, state):
+    def best(remaining, click, state, ceiling):
         if not remaining or click >= len(ratings):
             return 0.0
         recover_state, _ = order(state, "Hold")
-        recover = best(remaining - 1, click, recover_state)
+        recover = best(remaining - 1, click, recover_state, ceiling)
         if state == Readiness.SPENT:
             return recover
         next_state, push = order(state, "Fire")
-        attack = ratings[click] + best(remaining - 1, click + push, next_state)
+        attack = min(ratings[click], ceiling) + best(remaining - 1, click + push, next_state, ceiling)
         return max(recover, attack)
 
-    return mean(best(horizon, click, Readiness.READY) / horizon for click in range(len(ratings)))
+    # In per-click prices, a later improvement is paid for on its own click.
+    # Capping that improvement here prevents borrowing its value backwards.
+    return [best(horizon, click, Readiness.READY, ratings[click] if cap_at_start else math.inf) / horizon
+            for click in range(len(ratings))]
+
+
+def readiness_output(ratings, horizon=None):
+    """Unweighted mean retained for the independent readiness checks."""
+    return mean(readiness_profile(ratings, horizon))
+
+
+def dial_weights(length):
+    """Earlier clicks count more; mean weight stays one for a flat dial."""
+    start, end = CONFIG["dial_start_weight"], CONFIG["dial_end_weight"]
+    if length < 1 or not (math.isfinite(start) and math.isfinite(end) and start >= end > 0):
+        raise ValueError("Dial weights need a positive length and finite start >= end > 0")
+    if length == 1:
+        return [1.0]
+    scale = 2 / (start + end)
+    return [scale * (start + (end - start) * i / (length - 1)) for i in range(length)]
 
 
 def calculate(unit):
     live = unit["track"][unit["start"]:]
     if not live:
         raise ValueError("Cannot price an empty damage track")
-    durability = sum(toughness(unit, click) for click in live)
+    weights = dial_weights(len(live))
+    toughnesses = [toughness(unit, click) for click in live]
+    exposure = [weight * value for weight, value in zip(weights, toughnesses)]
+    durability = sum(exposure)
+    # Value each profile where it occurs. Strong armor on a later weak click
+    # must not amplify an earlier weapon by multiplying unrelated dial means.
+    weighted = lambda values: sum(w * value for w, value in zip(exposure, values)) / durability
     ratings = [offensive_rating(unit, click) for click in live]
-    unrestricted = mean(ratings)
-    firepower = unrestricted if unit["category"] == "Mech" else readiness_output(ratings)
+    outputs = ratings if unit["category"] == "Mech" else readiness_profile(ratings, cap_at_start=True)
+    unrestricted = weighted(ratings)
+    firepower = weighted(outputs)
     readiness_factor = firepower / unrestricted if unrestricted else 1.0
-    mobility = mean(max(0, number(click, "speed")) * CONFIG["mobility_per_inch"]
+    movements = [max(0, number(click, "speed")) * CONFIG["mobility_per_inch"]
                     + (CONFIG["hover_mobility"] if unit["movement"].lower() == "hover" else 0)
                     + (CONFIG["jump_mobility"] if color(click, "speed") == "yellow" else 0)
                     + (CONFIG["terrain_mobility"] if color(click, "speed") == "green" else 0)
                     + (CONFIG["free_disengage_mobility"] if color(click, "speed") == "gray" else 0)
                     + (CONFIG["mobility_per_inch"] if color(click, "speed") in ("blue", "red") else 0)
-                    for click in live)
-    support = mean((CONFIG["repair_support"] if color(click, "attack") == "gray" else 0)
+                    for click in live]
+    supports = [(CONFIG["repair_support"] if color(click, "attack") == "gray" else 0)
                    + (CONFIG["target_heat_support"] if any(color(click, weapon["slot"]) == "yellow" for weapon in unit["weapons"]) else 0)
-                   for click in live)
+                   for click in live]
+    mobility, support = weighted(movements), weighted(supports)
+    profiles = [t * (CONFIG["base"] + m + CONFIG["firepower_weight"] * f + s)
+                for t, m, f, s in zip(toughnesses, movements, outputs, supports)]
+    contributions = [CONFIG["scale"] * weight * value for weight, value in zip(weights, profiles)]
     pilot = CONFIG["pilot_allowance"] if unit["category"] == "Mech" else 0
-    raw = CONFIG["scale"] * durability * (CONFIG["base"] + mobility + CONFIG["firepower_weight"] * firepower + support) + pilot
+    raw = sum(contributions) + pilot
     return {"points": max(1, math.floor(raw + 0.5)), "version": CONFIG["version"],
+            "dial": {"weights": [round(value, 6) for value in weights],
+                     "values": [round(value, 4) for value in profiles],
+                     "points": [round(value, 4) for value in contributions]},
             "breakdown": {"durability": round(durability, 4), "mobility": round(mobility, 4),
                           "firepower": round(firepower, 4),
                           "firepower_before_readiness": round(unrestricted, 4),
                           "readiness_factor": round(readiness_factor, 4), "support": round(support, 4),
+                          "starting_profile": round(profiles[0], 4),
+                          "average_profile": round(mean(profiles), 4),
+                          "weighted_profile": round(sum(w*v for w,v in zip(weights,profiles)) / len(live), 4),
                           "pilot_allowance": pilot, "raw": round(raw, 4)}}
 
 

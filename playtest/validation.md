@@ -10,13 +10,13 @@ The checks below cover written rules, arithmetic, and generated files. **No tabl
 | --- | --- |
 | Packet contents | Core rules, references, three scenarios, three sample armies, pilots, game log, playtest plan, and point-adjustment table are present |
 | Earlier material | Compared Age of Destruction and the downloaded scenario handbook; source notes identify both |
-| Army totals | H: 1,185 points / 15 groups. B: 1,184 / 17. I: 1,181 / 19. The totals differ by four points. Each has two carriers and follows the force chart |
+| Army totals | H: 1,178 points / 15 groups. B: 1,187 / 17. I: 1,171 / 19. The totals differ by 16 points. Each has two carriers and follows the force chart |
 | Force organization | All three rosters pass automated checks for unit-type caps, 2–3-base squads, repeated families, Unique IDs, pilots, carriers, passenger assignments, Rocket substitutions, and points. Mixed squads count toward every family they contain |
-| Breakthrough targets | 30% rounded up: H 356, B 356, I 355 |
+| Breakthrough targets | 30% rounded up: H 354, B 357, I 352 |
 | Catalog coverage | All 1,649 miniature entries in the source index parsed; all 1,649 local photos decoded successfully. Includes five DropShip turret sections |
 | Unit types | 751 ’Mechs including quads and colossi, 519 vehicles, 213 battle armor, 161 conventional infantry, and five turrets. 114 entries are marked outside the core rules |
-| Points | Every cost and Rocket substitute reproduces from formula 0.3-alpha-1. Faction, name, and rarity do not affect pricing |
-| Automated tests | Twenty-six tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters. Short schedules were also exhaustively enumerated to check the optimizer independently |
+| Points | Every cost and Rocket substitute reproduces from formula 0.3-alpha-2. Each complete click is priced separately, with weights from 1.5 to 0.5. Faction, name, and rarity do not affect pricing |
+| Automated tests | Thirty-one tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters. New checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness optimizer independently |
 | Unit PDF | 1,649 photo cards on 825 US Letter pages, two 7.5 × 5 inch cards per page. Every combat and heat value, color code, repair-mark count, and catalog ID checked against the extracted PDF. Sampled infantry, ’Mech, turret, longest-dial, and long-name cards independently rendered and visually checked |
 | Seize and Hold score | 5 scoring rounds × 3 sites = 15 available points |
 | Critical dice | The two white dice decide critical results; the third does not. Check target legality before rolling |
@@ -31,10 +31,10 @@ The checks below cover written rules, arithmetic, and generated files. **No tabl
 | Pilot layout | The PDF was independently rendered and visually checked; ability text, name fields, and reminders fit |
 | Fieldworks objectives | Objectives sit on the edge. A 3-inch-diameter large base can stay outside and within control range |
 | Handbook identity | Local file: 116 pages, v2.1, Mike “Rimoran” McCarrig, December 15, 2020. File hash is in the source notes |
-| HTML | 25 offline pages and 1,766 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads |
-| Browser | Isolated headless Chrome checks passed for catalog search, filters, photos, paging, dials, Rocket pricing, readiness, and missing units. Catalog, rules, readiness, unit cards, long dials, and the force builder fit a 390-pixel viewport without page overflow |
+| HTML | 25 offline pages and 1,767 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads |
+| Browser | Isolated headless Chrome checks passed for catalog search, filters, photos, paging, dials, Rocket pricing, readiness, and missing units. Click-value curves and contribution tables match the catalog. Catalog, rules, readiness, unit cards, long dials, pricing details, and the force builder fit a 390-pixel viewport without page overflow |
 | Datasheet printing | Both a 14-click ’Mech and the 23-click longest dial print on one Letter page with complete combat and heat tracks. Independently rendered and visually checked |
-| Force builder | Eight model checks cover sample-list parity, family limits, mixed squads, unit caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover editing, reload persistence, JSON export/import, rejected broken imports, and generated cards |
+| Force builder | Eight model checks cover sample-list parity, family limits, mixed squads, unit caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover editing, reload persistence, JSON export/import, rejected broken imports, generated cards, and recalculating an older saved list with a notice |
 | Selected-model cards | An eight-model list produced exactly eight cards on four Letter pages, including the chosen Rocket cost, pilot names, squad labels, and assigned carrier. Representative output independently rendered and visually checked. Draft lists can also print |
 
 The hit percentages isolate cover; they do not predict how a whole battle will play.

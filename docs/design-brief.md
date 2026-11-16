@@ -34,7 +34,7 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Up to two free carriers, each holding one squad | Make transport easy to test with existing figures |
 | Scenario-specific victory | Keep attention on the mission |
 | Four pilot roles, one included in each ’Mech’s cost | Add character without advancement |
-| One points formula for every unit | Price the full dial under Revived’s rules |
+| One points formula for every unit | Price each complete click, giving early strength more weight while charging for how well the unit holds up |
 | A standard force chart and three choices per chassis or infantry family | Keep a recognizable ’Mech core and limit repetition across ranks and variants |
 
 There are no campaigns, pilot levels, custom units, or expansion rules in this version.

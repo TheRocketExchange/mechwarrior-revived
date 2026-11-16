@@ -54,7 +54,7 @@ Spent units still contest objectives and count when checking whether a player ca
 
 ## What the points model can tell us
 
-The [calculator](../rules/points.md) compares attack and recovery choices over 24 actions, following each actual damage dial. It can recover early to save a strong click, push through a weak one, or spend a final click on one last attack. It averages across live starting clicks so a unit is valued beyond its opening profile.
+The [calculator](../rules/points.md) compares attack and recovery choices over 24 actions, following pushing damage along the dial. It can recover early to save a strong click or spend a final click on one last attack. It prices every click alongside its own defense, speed, and equipment, with earlier clicks carrying more weight. A unit that loses strength quickly costs less than one that holds onto it. Later improvements are paid for on their own clicks rather than also raising the price of earlier weak ones.
 
 This estimates sustained firepower. It does not know where objectives are, what an enemy will do, or whether three squad members can all get a shot. More affordable support units may also mean more bodies and activations at the same points limit. Test fixed armies first to isolate the rules, then rebuilt armies to see the effect of prices.
 
