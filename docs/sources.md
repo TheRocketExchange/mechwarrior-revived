@@ -7,10 +7,10 @@ Revived uses existing miniatures with new playtest rules. These sources explain 
 | Source | Used for |
 | --- | --- |
 | Approved First Playtest Scope | Army size, alternating activations, infantry roles, and the first set of rules and scenarios |
-| [Dark Age Rules of Warfare](https://cf.sarna.net/docs/products/mwda/rule_book.pdf), pp. 4–7, 14–19 | Combat and heat dials, three attack dice, and white-dice critical results |
+| [Dark Age Rules of Warfare](https://cf.sarna.net/docs/products/mwda/rule_book.pdf), pp. 4–7, 14–19, 21–22 | Combat and heat dials, three attack dice, white-dice critical results, and the basis for Death from Above |
 | [Age of Destruction Rules of Warfare](https://manualzz.com/doc/27785577/mechwarrior-age-of-destruction-board-game-user-manual), pp. 12–15, 19–23, 27, 29–31, 40–41 | Orders, formations, assault, heat, transport, and victory. Unit costs from p. 12 |
 | [Age of Destruction PDF](https://www.warrenborn.com/Files/Rules/MWAD_Rulebook_lo.pdf) | Original file; the text mirror above was used because this PDF exceeded the reader’s size limit |
-| [Age of Destruction equipment card](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf) | Color placement and heat markings. Revived replaces the ability text |
+| [Age of Destruction equipment card](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf) | Color placement and heat markings, including blue speed for Jump Jets. Revived replaces the ability text |
 | [Local Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHandbookv21.pdf) | Mike “Rimoran” McCarrig’s 116-page compilation, December 15, 2020 |
 | [Public Scenario Handbook v2.1](https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf) | Online copy of the booklet |
 | [WarrenBorn unit archive](https://www.warrenborn.com/UnitSection.html) and [full index](https://www.warrenborn.com/Search.php) | Miniature photos, collector IDs, combat dials, and heat tracks for the unit catalog |
@@ -25,6 +25,8 @@ The local handbook is 2,040,496 bytes. Its SHA-256 is `3E0822C0C44E61CE1F16AAFEB
 Use current dial values and printed ranges. Roll three dice plus attack against defense. The two white dice decide critical hits and misses. See Dark Age pp. 14–19.
 
 Terrain bonuses, damage limits, heat timing, transports, pilots, and scoring in this packet are new Revived rules.
+
+Death from Above retains Dark Age’s Jump requirement, unengaged start, non-infantry target, +2 target defense, +2 damage, and 1/2 landing damage on a hit/miss. Revived treats it as a close attack with its own action and 2 total heat; its normal equipment and armor apply. It grants no reactive pivot. Use the [Revived rule](../rules/core-rules.md#death-from-above), not the original timing or equipment exceptions.
 
 ## Using older figures
 

@@ -74,11 +74,12 @@ Each group chooses one action per activation. **Speed** means its current printe
 
 | Action | What you do | ’Mech heat |
 | --- | --- | --- |
-| Fire | Stay still; make one ranged or close attack | +1 |
+| Fire | Stay in place; make one ranged or close attack; may pivot before a close attack | +1 |
 | Advance | Move up to half speed, then make one ranged attack | +2 |
 | Move | Move up to your speed; no attack; non-’Mechs recover | +1 |
 | Rush | Move up to twice your speed; no attack | +1 |
 | Assault | Infantry or ’Mech: move up to half speed, then make one close attack | +1 |
+| Death from Above | ’Mech with Jump: jump up to speed; make one risky close attack against a vehicle or ’Mech | +2 total |
 | Disengage | Leave enemy contact; move up to half speed; no attack | +1 |
 | Hold | Stay still; no attack; non-’Mechs recover | Cool 1 |
 | Vent | ’Mech: stay still; cool by your printed vent rating, at least 1 | Cooling only |
@@ -95,7 +96,7 @@ You may check whether an action is possible before choosing it. If you declare a
 
 Measure distances between base centers unless a rule says the bases must touch. Measure movement along the route taken. Your whole base must fit along that route: it cannot overlap another base, cross blocking terrain, or squeeze through a gap narrower than itself. This includes friendly bases.
 
-You may turn during any action that allows movement, even if you move no distance. You cannot turn during Fire, Hold, Vent, or Repair, or in response to an enemy action.
+You may turn during any action that allows movement, even if you move no distance. **Before a close attack with Fire, you may pivot in place:** keep your base center fixed, keep all existing enemy contacts, and do not overlap other bases or illegal terrain. This needs no Assault action or extra heat. You cannot pivot before a ranged Fire attack, during Hold, Vent, or Repair, or in response to an enemy action.
 
 Infantry can attack in any direction and have no rear arc. Vehicles and ’Mechs use their printed front and rear arcs. If a rear arc is missing, agree on a rear 90-degree arc before play. A line exactly on its boundary gets no rear bonus.
 
@@ -103,11 +104,11 @@ Infantry can attack in any direction and have no rear arc. Vehicles and ’Mechs
 
 Stop when your base touches an enemy. You are now **engaged**.
 
-While engaged, you may Fire a close attack, Assault in place, Hold, Vent, or Disengage, subject to readiness or shutdown limits. An Assault may turn to face the enemy but cannot move away. Vehicles cannot make close attacks. You cannot shoot, repair, Move, Advance, Rush, board, or unload normally while engaged. In a recovering squad, engaged members may Hold or Disengage while the others Move or Hold.
+While engaged, you may Fire a close attack, Assault in place, Hold, Vent, or Disengage, subject to readiness or shutdown limits. Fire and Assault may pivot to face the enemy before a close attack, but cannot move away. Vehicles cannot make close attacks. You cannot shoot, repair, Move, Advance, Rush, use Death from Above, board, or unload normally while engaged. In a recovering squad, engaged members may Hold or Disengage while the others Move or Hold.
 
 To **Disengage**, take 1 unavoidable damage before moving if any touching enemy is not shutdown. Pay once, however many enemies touch you. If destroyed, remove the unit. Otherwise move up to half speed, without touching a new enemy. A pilot or equipment may remove the damage cost. There is no damage cost if all touching enemies are shutdown.
 
-A unit with zero speed cannot change position. It may turn with Assault; if it has no legal attack, Hold or Vent instead.
+A unit with zero speed cannot change position. It may still pivot and make a close attack with Fire or Assault; if it has no legal attack, Hold or Vent instead.
 
 Stay on the board unless a scenario allows an exit. If the sculpts prevent bases from touching, agree where the bases would meet; use the bases, not overhanging models, for measurements.
 
@@ -137,7 +138,7 @@ Never shoot at a friendly unit or an enemy touching a friendly unit, even with i
 
 ## 7 Combat
 
-Each base makes its own attacks. Every attack has one enemy target and one roll; ignore extra target symbols. Units never improve another unit’s accuracy. There are no combined attacks, spotting bonuses, reaction shots, captures, rams, charge damage, or death-from-above attacks.
+Each base makes its own attacks. Every attack has one enemy target and one roll; ignore extra target symbols. Units never improve another unit’s accuracy. There are no combined attacks, spotting bonuses, reaction shots, captures, rams, or charge damage.
 
 For a ranged attack, choose one printed damage value and its matching range and weapon type. A target exactly at minimum or maximum range is in range. Melee weapons cannot shoot.
 
@@ -167,7 +168,7 @@ See the [weapon reference](weapon-reference.md) for labels and examples.
 2. Roll all three dice. Add their total to your attack value and modifiers. Equal or beat the target’s defense to hit.
 3. **Both white dice show 6:** hit automatically and add 1 damage. **Both show 1:** miss automatically and take 1 unavoidable damage. The third die does not change either result.
 4. On a hit, work out damage below and click the target’s combat dial. Stop at three bullet holes: the unit is destroyed. Remove it; never click past destruction.
-5. Apply any heat dealt to the target by equipment, including its stress check. Then apply the attacker’s heat or pushing damage. A surviving attacker still pays after a critical miss. Finish this before starting the next squad member.
+5. Apply any heat dealt to the target by equipment, including its stress check. Then apply the attacker’s heat or pushing damage. For Death from Above, pay landing damage before attacker heat. A surviving attacker still pays after a critical miss. Finish this before starting the next squad member.
 
 | Situation | Modifier |
 | --- | --- |
@@ -176,17 +177,18 @@ See the [weapon reference](weapon-reference.md) for labels and examples.
 | Indirect Rocket shot | −2 attack |
 | Shot enters a vehicle or ’Mech’s rear arc, or close attack touches its rear | +2 attack; not for indirect fire |
 | Shutdown target | −2 defense |
+| Death from Above | Target gets +2 defense |
 | Target in cover | Use the terrain table |
 | Your pilot or equipment | Use its card or reference |
 
-Rear and shutdown modifiers add together. There are no extra modifiers for range bands, a moving target, nearby allies, or squad size.
+Rear, shutdown, and Death from Above modifiers add together. There are no extra modifiers for range bands, a moving target, nearby allies, or squad size.
 
 ### Damage and infantry assaults
 
 Work out damage in this order:
 
 1. Printed damage plus its heat modifier, at least zero.
-2. Weapon bonus or penalty, then equipment and pilot bonuses (**+1 combined maximum**). Add battle armor’s close bonus and any critical-hit bonus separately. Damage cannot fall below zero.
+2. Weapon bonus or penalty, then equipment and pilot bonuses (**+1 combined maximum**). Add battle armor’s close bonus, Death from Above’s +2, and any critical-hit bonus separately. Damage cannot fall below zero.
 3. Apply the damage limits below, including any critical bonus.
 4. Subtract armor, after Piercing. Armor reduces damage by at most 1. Piercing ignores that 1; extra sources of Piercing add nothing. Damage may be zero.
 
@@ -200,6 +202,17 @@ Work out damage in this order:
 An infantry close assault is **exposed** if the attacker touches the target’s rear, the target is shutdown, or the attacker stands in woods, rubble, or fieldworks when attacking. Other attacks have no damage limit based on unit type. Energy does not heat the target automatically.
 
 **Example:** Conventional infantry with damage 3 hit an armored ’Mech’s open front. The limit of 1, then Armor 1, leaves no damage. Attacking from the rear raises the limit to 2 and adds Piercing: 2 damage. Battle armor with damage 2 deals 3 in close combat against that ’Mech, even from the front.
+
+### Death from Above
+
+A ’Mech with **Jump (blue or yellow speed)** may leap onto an enemy vehicle or ’Mech. It must start its activation unengaged, with speed above zero, printed attack above zero, and primary damage above zero after heat. Infantry and vehicles cannot make this attack; infantry cannot be its target.
+
+1. **Declare DFA and its target before moving.** Jump up to your current speed, ignoring bases and terrain along the route. Move some distance and land legally, with your front arc touching the target and no other enemy. Place your base beside the target, never on top of it. You cannot land in fieldworks.
+2. **Make one close attack.** The target gets **+2 defense** for this attack. Use your primary damage with **+2 damage** on a hit. Normal rear, shutdown, close equipment, pilot, critical, and armor rules apply. The +2 damage is separate from the equipment/pilot limit. Ranged weapon effects do not apply.
+3. **Pay for the landing.** After resolving the attack and any heat dealt to the target, take **1 unavoidable damage on a hit or 2 on a miss**. This is additional to critical-miss damage: white 1/1 can cost 3 damage in all. A hit that deals zero damage still uses the hit cost. Skipping the attack after jumping uses the miss cost.
+4. **If still alive, gain 2 heat total.** This includes Jump heat; do not add it again. Stop at destruction if the landing damage destroys you. There is no extra attack, target pivot, or displacement. Surviving units stay where they landed, even on a miss.
+
+**Example:** A speed-8 ’Mech jumps 6 inches into a vehicle’s front. Attack 8 plus a dice total of 12 reaches its defense 18 + 2, so it hits. Primary damage 3 becomes 5; Armor 1 reduces that to 4. The attacker takes 1 unavoidable damage, then gains 2 heat if it survives. On a miss, the target takes no damage and the attacker takes 2 landing damage instead.
 
 ## 8 Heat
 

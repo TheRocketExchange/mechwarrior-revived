@@ -1,6 +1,6 @@
 # Sample forces
 
-Version 0.3 · Standard · 1,200-point limit · Formula 0.3-alpha-2
+Version 0.3 · Standard · 1,200-point limit · Formula 0.3-alpha-3
 
 Three starting armies: **H** (’Mech-heavy), **B** (balanced), and **I** (infantry-heavy). Try H against B first. Their totals are close; their balance still needs testing.
 

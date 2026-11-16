@@ -25,17 +25,18 @@ Speed = printed speed plus heat, at least zero. Round half speed up, then add eq
 
 | Action | What you do | ’Mech heat |
 | --- | --- | --- |
-| Fire | Stay still; ranged or close attack | +1 |
+| Fire | Stay in place; ranged or close attack; may pivot for close | +1 |
 | Advance | Move up to half speed; ranged attack | +2 |
 | Move | Move up to speed; no attack; non-’Mechs recover | +1 |
 | Rush | Move up to twice speed; no attack | +1 |
 | Assault | Infantry/’Mech: move up to half speed; close attack | +1 |
+| Death from Above | Unengaged ’Mech with Jump: jump up to speed; one close attack against a vehicle/’Mech | +2 total |
 | Disengage | Take 1 unavoidable damage; move up to half speed; no attack | +1 |
 | Hold | Stay still; no attack; non-’Mechs recover | Cool 1 |
 | Vent | Stay still; no attack | Cool vent rating, at least 1 |
 | Repair | Gray attack: heal 1 friendly click | +1 |
 
-Turn only during movement actions. In enemy contact, use close Fire, Assault in place, Hold, Vent, or Disengage. Vehicles cannot Assault or fight close. Disengage causes no damage if every touching enemy is shutdown.
+Movement actions allow turning. Fire also allows a pivot before a close attack: keep the base center fixed and retain enemy contacts, with no overlap. This works at zero speed. Ranged Fire, Hold, Vent, and Repair do not allow turning; never pivot in response to an enemy action. In contact, use close Fire, Assault in place, Hold, Vent, or Disengage. Vehicles cannot fight close. Disengage causes no damage if every touching enemy is shutdown.
 
 ## Attacks
 
@@ -58,7 +59,9 @@ Choose one target and weapon. Check arc, sight, and range, including both endpoi
 
 Weapon-type effects apply only to shooting.
 
-**Damage:** Printed value + heat → weapon effect → equipment/pilot bonus (maximum +1), battle armor bonus, critical bonus → damage limits → armor after Piercing. Damage may be zero.
+**Damage:** Printed value + heat → weapon effect → equipment/pilot bonus (maximum +1), battle armor bonus, DFA +2, critical bonus → damage limits → armor after Piercing. Damage may be zero.
+
+**Death from Above:** Declare before moving. Need blue or yellow speed, speed above zero, printed attack above zero, and primary damage above zero after heat. Jump some distance and land legally beside one enemy vehicle/’Mech, front arc touching; no other enemy contact. Target gets +2 defense. Deal primary damage +2; apply normal close modifiers, criticals, and armor. The +2 is outside the equipment/pilot cap. Take 1 unavoidable landing damage on a hit, or 2 on a miss or skipped attack after jumping; critical-miss damage is additional. Resolve target effects and landing damage before gaining 2 total heat if alive. No extra Jump heat, target pivot, displacement, or second attack. [Full DFA rule](core-rules.md#death-from-above).
 
 Against vehicles/’Mechs, conventional infantry deal at most 1 before armor. Exposed close assaults raise this to 2 with Piercing: rear contact, shutdown target, or attacker in woods/rubble/fieldworks. Battle armor gets +1 close damage and Piercing. Piercing ignores 1 armor; it does not add together.
 

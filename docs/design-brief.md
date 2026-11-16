@@ -24,6 +24,8 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Alternate one ’Mech, vehicle, or squad; everyone acts once per round | Keep both players involved |
 | Fixed squads of 2–3 infantry bases, with one shared order | Reduce waiting and make weapon positions a squad decision |
 | Advance shoots after a half-speed move, with no general attack penalty | Keep mobile fire while making prepared positions matter |
+| Fire allows a pivot before close combat; ranged Fire keeps its facing | Let engaged units face their opponent without choosing Assault |
+| Death from Above trades a full-speed jump and +2 damage for +2 target defense, landing damage, and heat | Bring back a risky jump attack with one roll and no displacement |
 | Combat orders commit then push vehicles and squads; Move or Hold recovers | Restore pauses and decisions about spending the damage dial |
 | Each base attacks separately, without ally accuracy bonuses | Let infantry earn their place through their own actions |
 | Stronger infantry cover and close assaults against exposed armor | Make terrain and timing matter |

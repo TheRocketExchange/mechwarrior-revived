@@ -14,6 +14,9 @@ Use real bases and current dials. Reset damage and heat between exercises.
 | --- | --- |
 | The same conventional squad in the open, woods, fieldworks, and close combat from the rear | Hits, damage, survival, and whether the position is reachable |
 | Battle armor making the same close attacks | Its advantage against armor and shutdown targets; Piercing and critical hits |
+| Fire while engaged with an enemy behind you, including at zero speed | Pivot without moving the center or breaking contact; no Assault needed; ranged Fire still cannot pivot |
+| Ordinary jumping Assault versus DFA against the same vehicle or ’Mech | Half-speed versus full-speed reach; DFA +2 defense/+2 damage; landing damage on a hit, miss, or critical miss; 2 total heat |
+| DFA on the last live click; a miss beside a surviving target; blocked landing; Jump lost on the dial | Finish target effects before landing damage; no heat after destruction; no displacement or reactive pivot; legal start and landing required |
 | Two rounds with six infantry in two-base squads, then three-base squads | Passes, waiting time, and how long a squad takes |
 | Board then move; move then unload; destroy a loaded carrier before and after passengers act; block the unloading area | Placement, losses, and whether anyone accidentally gets an extra action |
 | Repeated Advance with two different heat tracks, then Vent from shutdown | Heat modifiers, stress rolls, and restart timing |

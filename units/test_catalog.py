@@ -10,7 +10,7 @@ from unittest.mock import patch
 from PIL import Image
 
 from parse_catalog import parse_unit
-from points import CONFIG, calculate, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot
+from points import CONFIG, calculate, dfa_eligible, dfa_landing_risk, dfa_rating, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot
 from readiness import Readiness, order, finish_action
 from force_org import DEFAULT_SIZE, GAME_SIZES, INFANTRY, PILOTS, unit_family, validate_force
 
@@ -483,6 +483,74 @@ class PricingChecks(unittest.TestCase):
         self.assertGreater(shot(unit, click, weapon, target, close=True, exposed=True), 0)
         unit["category"] = "Battle Armor"
         self.assertGreater(shot(unit, click, weapon, target, close=True), 0)
+
+    def test_dfa_hit_damage_and_landing_risk_include_critical_results(self):
+        unit = basic("Mech")
+        click, weapon = unit["track"][0], unit["weapons"][0]
+        click["speed"]["color"] = "yellow"
+        target = {"category":"Vehicle", "defense":18, "armor":1, "cover":0}
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True, dfa=True), expected_damage(8, 20, 5, armor=1))
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True, exposed=True, dfa=True), expected_damage(10, 20, 5, armor=1))
+        # Independently enumerate hits: a critical miss fails regardless of total.
+        rolls = list(itertools.product(range(1,7), repeat=3))
+        hits = sum((a == b == 6) or (not a == b == 1 and a+b+c+8 >= 20) for a,b,c in rolls)
+        self.assertAlmostEqual(dfa_landing_risk(click, target), (hits + 2*(216-hits))/216)
+        click["primary"]["color"] = "gray"
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True, dfa=True), expected_damage(8, 20, 6, armor=1))
+        # A high defense still allows white 6/6; armor does not change hit cost.
+        target["defense"] = 100
+        self.assertAlmostEqual(dfa_landing_risk(click, target), 71/36)
+
+    def test_dfa_requires_a_mobile_jump_mech_and_a_large_target(self):
+        unit = basic("Mech")
+        click, weapon = unit["track"][0], unit["weapons"][0]
+        click["speed"]["color"] = "yellow"
+        target = {"category":"Mech", "defense":18, "armor":0, "cover":0}
+        self.assertTrue(dfa_eligible(unit, click, weapon, target))
+        for field in ("speed", "attack", "primary"):
+            changed = copy.deepcopy(click)
+            changed[field]["value"] = 0
+            self.assertEqual(shot(unit, changed, weapon, target, close=True, dfa=True), 0)
+            self.assertEqual(dfa_rating(unit, changed), 0)
+        for category in ("Vehicle", "Battle Armor", "Conventional Infantry"):
+            self.assertFalse(dfa_eligible(dict(unit, category=category), click, weapon, target))
+        for category in ("Battle Armor", "Conventional Infantry"):
+            self.assertEqual(shot(unit, click, weapon, dict(target, category=category), close=True, dfa=True), 0)
+        self.assertFalse(dfa_eligible(unit, click, dict(weapon, slot="secondary"), target))
+        click["speed"]["color"] = "white"
+        self.assertEqual(dfa_rating(unit, click), 0)
+
+    def test_dfa_price_uses_current_click_damage_risk_heat_and_availability(self):
+        unit = basic("Mech")
+        click = unit["track"][0]
+        click["speed"]["color"] = "yellow"
+        click["attack"]["value"] = 10
+        click["primary"]["value"] = 5
+        allowance = dfa_rating(unit, click)
+        self.assertGreater(allowance, 0)
+        normal = offensive_rating(unit, click)
+        with patch.dict(CONFIG, dfa_access_weight=0):
+            self.assertAlmostEqual(normal - offensive_rating(unit, click), allowance)
+        with patch("points.dfa_landing_risk", return_value=0):
+            self.assertGreater(dfa_rating(unit, click), allowance)
+        with patch("points.heat_output_factor", return_value=0.5) as heat:
+            self.assertAlmostEqual(dfa_rating(unit, click), allowance / 2)
+            heat.assert_called_once_with(unit, "M", "primary", action_heat=2)
+        damaged = copy.deepcopy(click)
+        damaged["primary"]["value"] = 1
+        self.assertLess(dfa_rating(unit, damaged), allowance)
+
+    def test_real_blue_speed_mechs_can_jump_and_use_dfa(self):
+        unit = UNITS["AOD104"]  # Starter Hatchetman; original Jump Jets are blue.
+        primary = next(w for w in unit["weapons"] if w["slot"] == "primary")
+        target = {"category":"Mech", "defense":18, "armor":0, "cover":0}
+        blue = [c for c in unit["track"][unit["start"]:] if c["speed"]["color"] == "blue"]
+        self.assertTrue(blue)
+        self.assertTrue(any(dfa_eligible(unit, click, primary, target) for click in blue))
+        self.assertTrue(any(dfa_rating(unit, click) > 0 for click in blue))
+        with_jump = calculate(unit)
+        with patch.dict(CONFIG, jump_mobility=0):
+            self.assertGreater(with_jump["breakdown"]["mobility"], calculate(unit)["breakdown"]["mobility"])
 
     def test_energy_heat_and_vent(self):
         unit = copy.deepcopy(UNITS["AOD108"])

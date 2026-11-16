@@ -60,7 +60,7 @@
 </tr>
 <tr>
 <td>Starter scenario</td>
-<td>Four rounds with one relay; scoring in rounds 2–4 gives three available points. Patrols A/B cost 589/590 points, each with seven models in five groups. Both pass Skirmish limits. Symmetric terrain, clear control area, source coordinates, and measured map geometry are checked</td>
+<td>Four rounds with one relay; scoring in rounds 2–4 gives three available points. Patrols A/B cost 596/600 points, each with seven models in five groups. Both pass Skirmish limits. Symmetric terrain, clear control area, source coordinates, and measured map geometry are checked</td>
 </tr>
 <tr>
 <td>Teaching diagrams</td>
@@ -96,7 +96,7 @@
 </tr>
 <tr>
 <td>Points</td>
-<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-2. Each complete click is priced separately, with weights from 1.5 to 0.5. Faction, name, and rarity do not affect pricing</td>
+<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-3. Each complete click is priced separately, with weights from 1.5 to 0.5. Eligible Jump clicks include a DFA allowance after landing risk and heat. Faction, name, and rarity do not affect pricing</td>
 </tr>
 <tr>
 <td>Automated tests</td>
@@ -121,6 +121,10 @@
 <tr>
 <td>Close damage examples</td>
 <td>Conventional infantry: 0 through Armor 1 from the open front, 2 in an exposed assault. Battle armor with damage 2: 3 in close combat</td>
+</tr>
+<tr>
+<td>Close pivots and DFA</td>
+<td>Fire may pivot for a close attack while keeping center and contacts fixed. DFA uses full speed with Jump, +2 target defense, +2 primary damage, 1/2 landing damage, and 2 total heat. Blue-speed catalog ’Mechs can Jump and use DFA; the original equipment card confirms the color. The formula checks legal profiles, all 216 rolls, armor, rear attacks, landing risk, heat, and current-click eligibility; tabletop balance is untested</td>
 </tr>
 <tr>
 <td>Weapon examples</td>
@@ -160,7 +164,7 @@
 </tr>
 <tr>
 <td>HTML</td>
-<td>27 offline pages and 1,780 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, game-size charts, SVG assets, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
+<td>27 offline pages and 1,781 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, game-size charts, SVG assets, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
 </tr>
 <tr>
 <td>Browser</td>
@@ -277,6 +281,26 @@
 <tr>
 <td>Indirect Rocket fire crosses a building</td>
 <td>Allowed, but arc, range, cover, and friendly-contact rules still apply</td>
+</tr>
+<tr>
+<td>Engaged ’Mech uses close Fire against an enemy behind it</td>
+<td>May pivot before attacking, even at zero speed; center and existing contacts stay fixed. Ranged Fire cannot pivot</td>
+</tr>
+<tr>
+<td>DFA hits with attack 8 plus dice 12 against defense 18</td>
+<td>Meets defense 20; primary damage 3 becomes 5, or 4 through Armor 1; attacker pays 1 landing damage then 2 total heat if alive</td>
+</tr>
+<tr>
+<td>DFA misses or rolls white 1/1</td>
+<td>Miss costs 2 landing damage; a critical miss also deals its usual 1 first. Target stays in place and cannot pivot in response</td>
+</tr>
+<tr>
+<td>DFA landing damage destroys its attacker</td>
+<td>Finish the target’s damage and equipment heat first; remove the attacker and apply no further heat</td>
+</tr>
+<tr>
+<td>DFA starts engaged, lacks current Jump, targets infantry, or has no legal landing</td>
+<td>Not allowed; an ordinary close attack or legal movement must use its own action</td>
 </tr>
 <tr>
 <td>Seize and Hold return game</td>

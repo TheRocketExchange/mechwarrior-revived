@@ -70,16 +70,36 @@ def heat_output_factor(unit, weapon_type, slot="primary", action_heat=1):
     return best(CONFIG["heat_rounds"], 0) / CONFIG["heat_rounds"]
 
 
-def shot(unit, click, weapon, target, moving=False, indirect=False, close=False, exposed=False):
+def dfa_eligible(unit, click, weapon, target):
+    return (unit["category"] == "Mech" and color(click, "speed") in ("blue", "yellow")
+            and number(click, "speed") > 0 and number(click, "attack") > 0
+            and weapon["slot"] == "primary" and number(click, "primary") > 0
+            and target["category"] in ("Mech", "Vehicle"))
+
+
+def dfa_landing_risk(click, target, exposed=False):
+    """Expected 1/2 landing damage; general critical-miss damage is not priced."""
+    attack = number(click, "attack") + int(color(click, "attack") == "red") + 2 * exposed
+    defense = target["defense"] - target["cover"] + 2
+    hit_chance = expected_damage(attack, defense, 1, cap=1)
+    return 2 - hit_chance
+
+
+def shot(unit, click, weapon, target, moving=False, indirect=False, close=False, exposed=False, dfa=False):
     attack = number(click, "attack")
     damage = number(click, weapon["slot"])
     if attack <= 0 or damage <= 0:
+        return 0.0
+    if dfa and (not close or not dfa_eligible(unit, click, weapon, target)):
         return 0.0
     kind = weapon["type"]
     if not close and (kind == "M" or (moving and kind in ("R", "A"))):
         return 0.0
     terrain_cover = target["cover"] if not close else 0
     defense = target["defense"] - (target["cover"] if close else 0)
+    if dfa:
+        defense += 2
+        damage += 2
     damage_color = color(click, weapon["slot"])
     attack_color = color(click, "attack")
     piercing = damage_color == "red" or (kind == "E" and not close)
@@ -123,6 +143,24 @@ def shot(unit, click, weapon, target, moving=False, indirect=False, close=False,
     return expected_damage(attack, defense, max(0, damage), target["armor"], piercing, cap)
 
 
+def dfa_rating(unit, click):
+    """A limited-use attack option, after expected landing damage and heat."""
+    primary = next((w for w in unit["weapons"] if w["slot"] == "primary"), None)
+    if primary is None:
+        return 0.0
+    net = 0.0
+    for target in CONFIG["targets"]:
+        if not dfa_eligible(unit, click, primary, target):
+            continue
+        for rear in (False, True):
+            damage = shot(unit, click, primary, target, close=True, exposed=rear, dfa=True)
+            net += target["weight"] * max(0, damage - dfa_landing_risk(click, target, rear)) / 2
+    if not net:
+        return 0.0
+    reach = CONFIG["close_reach_factor"] + CONFIG["range_per_inch"] * max(0, number(click, "speed"))
+    return CONFIG["dfa_access_weight"] * net * reach * heat_output_factor(unit, "M", "primary", action_heat=2)
+
+
 def offensive_rating(unit, click):
     choices = []
     seen = set()
@@ -161,7 +199,9 @@ def offensive_rating(unit, click):
             value = sum(target["weight"] * (shot(unit, click, weapon, target, close=True) + shot(unit, click, weapon, target, close=True, exposed=True)) / 2 for target in CONFIG["targets"])
             choices.append(value * CONFIG["close_reach_factor"] * heat_output_factor(unit, "M", weapon["slot"]))
     choices.sort(reverse=True)
-    return (choices[0] if choices else 0) + CONFIG["alternative_attack_weight"] * (choices[1] if len(choices) > 1 else 0)
+    return ((choices[0] if choices else 0)
+            + CONFIG["alternative_attack_weight"] * (choices[1] if len(choices) > 1 else 0)
+            + dfa_rating(unit, click))
 
 
 def toughness(unit, click):
@@ -249,7 +289,7 @@ def calculate(unit):
     readiness_factor = firepower / unrestricted if unrestricted else 1.0
     movements = [max(0, number(click, "speed")) * CONFIG["mobility_per_inch"]
                     + (CONFIG["hover_mobility"] if unit["movement"].lower() == "hover" else 0)
-                    + (CONFIG["jump_mobility"] if color(click, "speed") == "yellow" else 0)
+                    + (CONFIG["jump_mobility"] if color(click, "speed") == "yellow" or (unit["category"] == "Mech" and color(click, "speed") == "blue") else 0)
                     + (CONFIG["terrain_mobility"] if color(click, "speed") == "green" else 0)
                     + (CONFIG["free_disengage_mobility"] if color(click, "speed") == "gray" else 0)
                     + (CONFIG["mobility_per_inch"] if color(click, "speed") in ("blue", "red") else 0)

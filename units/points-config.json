@@ -1,5 +1,5 @@
 {
-  "version": "0.3-alpha-2",
+  "version": "0.3-alpha-3",
   "dial_start_weight": 1.5,
   "dial_end_weight": 0.5,
   "scale": 1.6,
@@ -17,6 +17,7 @@
   "minimum_range_cost": 0.025,
   "firing_arc_weight": 0.1,
   "close_reach_factor": 0.4,
+  "dfa_access_weight": 0.25,
   "repair_support": 0.35,
   "target_heat_support": 0.15,
   "jump_mobility": 0.25,

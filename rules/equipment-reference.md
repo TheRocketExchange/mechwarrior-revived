@@ -11,7 +11,7 @@ Equipment affects only the unit showing it. Read it at the start of each attack 
 | Color | Speed | Attack | Defense | Damage |
 | --- | --- | --- | --- | --- |
 | Red | Rush: +2 inches | +1 close attack | Armor 1 against Energy shots | Piercing: ignore 1 armor |
-| Blue | Advance: +2 inches after halving speed | Fire: +1 ranged attack | Armor 1 against Ballistic or Rocket shots | +1 damage against either infantry type |
+| Blue | Advance: +2 inches after halving speed; ’Mechs may also Jump | Fire: +1 ranged attack | Armor 1 against Ballistic or Rocket shots | +1 damage against either infantry type |
 | Black | +1 ranged defense while in terrain cover | Ignore 1 point of ranged terrain cover | Armor 1 against any attack | +1 damage against a target’s rear or a shutdown target |
 | Gray | Disengage without taking damage | May Repair | +1 close defense | +1 close damage |
 | Green | Ignore difficult terrain except water | +1 ranged attack against a target with no terrain cover | +1 ranged defense while in terrain cover | +1 damage against vehicles and ’Mechs; conventional infantry instead get +1 against infantry |
@@ -43,9 +43,13 @@ No equipment here removes Ballistic recoil or allows Rocket fire during Advance.
 
 ### Jump
 
+Blue speed grants Jump to ’Mechs, matching the Jump Jets color on the original figures. Yellow speed grants Jump to any unit. Blue keeps its +2-inch Advance bonus whether or not you Jump; a blue-speed jumping Assault still uses half speed, and DFA uses full speed without that bonus.
+
 You may choose whether to Jump. Ignore bases and terrain costs along the jumped route, but your whole base must fit where you land. Vehicles and ’Mechs still cannot land in fieldworks.
 
 Jump does not let you escape enemy contact for free: use Disengage and pay its damage unless another effect removes that cost.
+
+An unengaged ’Mech with Jump may choose [Death from Above](core-rules.md#death-from-above): jump up to full speed into a vehicle or ’Mech, with +2 target defense and +2 primary damage. The attacker takes 1 unavoidable landing damage on a hit or 2 on a miss, then gains 2 total heat if alive. The total already includes Jump heat. An ordinary jumping Assault still uses half speed and has no DFA bonus or landing damage.
 
 ## Repair
 

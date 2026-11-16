@@ -15,7 +15,7 @@ The downloaded **[Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHan
 | Activations | One order per 150 build points each player turn | Alternate groups; every group acts once per round |
 | Infantry | Temporary formations | Fixed squads of 2–3 bases share one order; each keeps its own targets, rolls, and damage |
 | Formation shooting | Eligible supporters add +2 each to the main attacker | Each base rolls its own attack; no ally accuracy bonus |
-| Move and attack | ’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty | Half-speed Advance shooting, with −1 only for Ballistic recoil. Move travels full speed without an attack. Infantry and ’Mechs Assault at half speed |
+| Move and attack | ’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty | Half-speed Advance shooting, with −1 only for Ballistic recoil. Move travels full speed without an attack. Infantry and ’Mechs Assault at half speed. Close Fire allows an in-place pivot; Jump ’Mechs may use full-speed DFA |
 | Pushing and recovery | Non-’Mechs normally take pushing damage for a second order token and cannot take orders with two tokens; a turn without an order clears tokens | Combat orders commit, then push. Move or Hold recovers. Spent units must recover; they still contest and count for passes |
 | Heat | Printed profiles, pushing, cooling, and heat effects | Printed tracks and numeric modifiers, heat per action, one stress rule for colored warnings |
 | Transport | Boarding and unloading use carrier movement; passengers are lost when it is destroyed | Squad spends its activation; carrier acts separately. Passengers may survive a destroyed carrier |
