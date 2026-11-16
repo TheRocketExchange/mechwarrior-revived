@@ -153,13 +153,14 @@ def card(pdf, commands, images, unit, x, y):
         w, h = width*scale, height*scale
         commands.append(f"q {w:.3f} 0 0 {h:.3f} {x+12+(108-w)/2:.3f} {y+227+(80-h)/2:.3f} cm /{image_name} Do Q")
     text(commands, x+132, y+300, "Family: " + unit_family(unit), 8, True)
-    text(commands, x+132, y+287, f"{unit['category']} / {unit['rank']} / {unit['movement']}", 7, color=MUTED)
+    text(commands, x+132, y+289, f"{unit['category']} / {unit['rank']} / {unit['movement']}", 7, color=MUTED)
+    text(commands, x+132, y+278, "Faction: " + unit['faction'], 7, color=MUTED)
     text(commands, x+464, y+285, unit["cost"]["points"], 26, True, RED)
     text(commands, x+464, y+273, "POINTS", 7, color=MUTED)
     for i, weapon in enumerate(unit["weapons"]):
         kind = {"E":"Energy", "B":"Ballistic", "R":"Rocket", "M":"Melee", "A":"Artillery"}[weapon["type"]]
         attack_range = "contact" if weapon["type"] == "M" else f"{weapon['min_range']}-{weapon['max_range']} in"
-        text(commands, x+132, y+273-i*12, f"{weapon['slot'].title()}: {kind}  |  {attack_range}", 8, True)
+        text(commands, x+132, y+266-i*10, f"{weapon['slot'].title()}: {kind}  |  {attack_range}", 8, True)
     category = unit["category"]
     example = {"Mech": "M1", "Vehicle": "V1", "Conventional Infantry": "C1a", "Battle Armor": "A1a"}.get(category, "T1")
     text(commands, x+132, y+244, f"Roster ID: __________  (e.g. {example})", 8)

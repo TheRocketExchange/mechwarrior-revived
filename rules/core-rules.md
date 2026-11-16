@@ -32,6 +32,8 @@ Unless the scenario says otherwise:
 
 Deployment order does not decide who acts first.
 
+Groups with [Infiltrate](equipment-reference.md#speed) may deploy later and farther forward. All other deployment limits still apply.
+
 ## 3 Rounds and activation
 
 An **activation group** is one ’Mech, one vehicle, or one infantry squad. Each surviving group acts once per round.
@@ -50,7 +52,7 @@ There is no automatic recovery or cooling at round end. If neither side has unit
 
 Each vehicle and each infantry squad has one readiness state. ’Mechs use heat instead.
 
-| Before a Fire, Advance, or Assault order | After declaring it | Cost |
+| Before a Fire, Advance, Assault, or Bypass order | After declaring it | Cost |
 | --- | --- | --- |
 | Ready | Committed | None |
 | Committed | Spent | Each surviving base takes 1 unavoidable damage after finishing its action |
@@ -60,7 +62,7 @@ The second combat order is **pushing**. It need not happen in the very next roun
 
 To **recover**, choose Move or Hold. After the group finishes, set it to Ready. Move uses full speed with no attack; Hold stays still. While engaged, use Hold or Disengage instead. In a recovering squad, each member may Move or Hold; an engaged member must Hold or Disengage. Keep the squad together. Disengage keeps its normal damage cost and half-speed limit.
 
-A Spent group must recover on its next activation. Rush, Repair, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery never heals damage, grants another activation, or prevents a unit from contesting objectives.
+A Spent group must recover on its next activation. Rush, Repair, Coolant Flush, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery never heals damage, grants another activation, or prevents a unit from contesting objectives. Black Attack means **Salvage**: that unit may only Move, Hold, Vent, or Disengage. See [equipment](equipment-reference.md#attack) for salvaged squad members and Command's linked activations.
 
 ### Keeping squads together
 
@@ -83,7 +85,9 @@ Each group chooses one action per activation. **Speed** means its current printe
 | Disengage | Leave enemy contact; move up to half speed; no attack | +1 |
 | Hold | Stay still; no attack; non-’Mechs recover | Cool 1 |
 | Vent | ’Mech: stay still; cool by your printed vent rating, at least 1 | Cooling only |
-| Repair | Use gray attack equipment; stay still and repair one friendly unit | +1 |
+| Repair | Green Attack: stay still and repair one friendly unit | +1 |
+| Coolant Flush | Purple Attack: stay still and remove 2 heat from a friendly ’Mech | +1 |
+| Bypass | Red Attack: move up to half speed and attempt to take over a crippled enemy | +1 |
 | Embark or Disembark | Board or leave a carrier with the whole squad; see Transport | None |
 
 Advance has no attack penalty of its own. Moving or turning before a Ballistic shot causes −1 attack for recoil. Gunner removes it if movement costs no more than half speed, rounded up; equipment may allow an Advance beyond that limit. Rockets can shoot only with Fire.
@@ -104,7 +108,7 @@ Infantry can attack in any direction and have no rear arc. Vehicles and ’Mechs
 
 Stop when your base touches an enemy. You are now **engaged**.
 
-While engaged, you may Fire a close attack, Assault in place, Hold, Vent, or Disengage, subject to readiness or shutdown limits. Fire and Assault may pivot to face the enemy before a close attack, but cannot move away. Vehicles cannot make close attacks. You cannot shoot, repair, Move, Advance, Rush, use Death from Above, board, or unload normally while engaged. In a recovering squad, engaged members may Hold or Disengage while the others Move or Hold.
+While engaged, you may Fire a close attack, Assault in place, attempt Bypass in place, Hold, Vent, or Disengage, subject to equipment, readiness, or shutdown limits. Fire, Assault, and Bypass may pivot to face the enemy, but cannot move away. Vehicles can make close attacks only with Flamers or Bypass. You cannot shoot, repair, use Coolant Flush, Move, Advance, Rush, use Death from Above, board, or unload normally while engaged. In a recovering squad, engaged members may Hold or Disengage while the others Move or Hold.
 
 To **Disengage**, take 1 unavoidable damage before moving if any touching enemy is not shutdown. Pay once, however many enemies touch you. If destroyed, remove the unit. Otherwise move up to half speed, without touching a new enemy. A pilot or equipment may remove the damage cost. There is no damage cost if all touching enemies are shutdown.
 
@@ -138,13 +142,13 @@ Never shoot at a friendly unit or an enemy touching a friendly unit, even with i
 
 ## 7 Combat
 
-Each base makes its own attacks. Every attack has one enemy target and one roll; ignore extra target symbols. Units never improve another unit’s accuracy. There are no combined attacks, spotting bonuses, reaction shots, captures, rams, or charge damage.
+Each base makes its own attacks. Normally an attack has one enemy target and one roll; ignore extra target symbols. Named equipment can grant an extra attack, affect nearby enemies, or support a friendly unit. [Bypass](equipment-reference.md#bypass) is the only way to capture a unit. There are no combined attacks, ordinary spotting bonuses, reaction shots, rams, or charge damage.
 
 For a ranged attack, choose one printed damage value and its matching range and weapon type. A target exactly at minimum or maximum range is in range. Melee weapons cannot shoot.
 
-For a close attack, infantry use their damage value. ’Mechs use primary damage or a value marked melee. The front arc must touch the target; infantry may attack in any direction. Vehicles cannot make close attacks. Ranged weapon benefits and costs do not apply to close attacks.
+For a close attack, infantry use their damage value. ’Mechs use primary damage or a value marked melee. The front arc must touch the target; infantry may attack in any direction. Vehicles need Flamers or Bypass to make a close attack. Ranged weapon benefits and costs do not apply to close attacks. Melee damage colors apply only to a printed Melee weapon; Flamers has its own close rule.
 
-You need printed attack above zero and damage above zero after heat to attack. A unit with zero attack or damage may still move, carry troops, and contest objectives.
+You need printed attack above zero and damage above zero after heat to attack, and cannot attack in Salvage. Bypass needs positive attack but no damage value. A unit with zero attack or damage may still move, carry troops, and contest objectives.
 
 Read values and equipment when declaring an attack. Use them for that whole attack, then read the dials again for the next one.
 
@@ -190,7 +194,7 @@ Work out damage in this order:
 1. Printed damage plus its heat modifier, at least zero.
 2. Weapon bonus or penalty, then equipment and pilot bonuses (**+1 combined maximum**). Add battle armor’s close bonus, Death from Above’s +2, and any critical-hit bonus separately. Damage cannot fall below zero.
 3. Apply the damage limits below, including any critical bonus.
-4. Subtract armor, after Piercing. Armor reduces damage by at most 1. Piercing ignores that 1; extra sources of Piercing add nothing. Damage may be zero.
+4. Subtract the best armor, up to 2. Ordinary Piercing ignores 1; Armor Piercing equipment ignores all armor. Extra sources of ordinary Piercing add nothing. Then apply anti-missile protection and Agility if applicable. Damage may be zero. See [equipment](equipment-reference.md#defense).
 
 | Attack | Damage limit or bonus |
 | --- | --- |
@@ -205,7 +209,7 @@ An infantry close assault is **exposed** if the attacker touches the target’s 
 
 ### Death from Above
 
-A ’Mech with **Jump (blue or yellow speed)** may leap onto an enemy vehicle or ’Mech. It must start its activation unengaged, with speed above zero, printed attack above zero, and primary damage above zero after heat. Infantry and vehicles cannot make this attack; infantry cannot be its target.
+A ’Mech with **Jump Jets (blue speed)** may leap onto an enemy vehicle or ’Mech. It must start its activation unengaged and not in Salvage, with speed above zero, printed attack above zero, and primary damage above zero after heat. Infantry and vehicles cannot make this attack; infantry cannot be its target. DFA always has one target and one attack: Full Strike and Rapid Strike do not apply.
 
 1. **Declare DFA and its target before moving.** Jump up to your current speed, ignoring bases and terrain along the route. Move some distance and land legally, with your front arc touching the target and no other enemy. Place your base beside the target, never on top of it. You cannot land in fieldworks.
 2. **Make one close attack.** The target gets **+2 defense** for this attack. Use your primary damage with **+2 damage** on a hit. Normal rear, shutdown, close equipment, pilot, critical, and armor rules apply. The +2 damage is separate from the equipment/pilot limit. Ranged weapon effects do not apply.
@@ -304,7 +308,11 @@ A ’Mech or vehicle uses one choice. Infantry combine conventional and battle a
 
 At **every size**, the rule of three applies across the whole force, each Unique catalog ID appears at most once, and at most one ’Mech may take one Rocket test substitute. Larger games do not reset these limits for separate detachments.
 
-You may mix factions. Use ordinary or quad ’Mechs, ground vehicles, conventional infantry, and battle armor. Treat quads as ’Mechs. Identify battle armor by its name or catalog category, not its equipment colors.
+Use ordinary or quad ’Mechs, ground vehicles, conventional infantry, and battle armor. Treat quads as ’Mechs. Identify battle armor by its name or catalog category, not its equipment colors.
+
+### Choose a faction
+
+Choose **Mixed factions** or one faction in the builder. A single-faction army uses only models with that exact faction on their profiles, including every infantry base and carrier. Mercenary and Gunslinger are their own factions, not automatic allies. You may field mixed armies if you prefer. Factions do not change points, pilots, or force limits. Captures during play do not change whether your starting roster was legal.
 
 Leave out aircraft, artillery-only and aquatic-only units, colossal ’Mechs, DropShips, and units that need expansion rules. An artillery-marked ground vehicle with ordinary ranges may be used only by prior agreement; it still occupies a vehicle slot and gets no artillery attack.
 

@@ -60,6 +60,9 @@ def validate_force(force, catalog, limit=None):
     size = GAME_SIZES[size_id]
     limits = size["limits"]
     limit = size["points_limit"] if limit is None else limit
+    faction = force.get("faction", "")
+    require(isinstance(faction, str) and (not faction or faction in {u["faction"] for u in catalog.values()}),
+            "Choose a catalog faction or Mixed factions")
     groups = force["groups"]
     ids = [group["id"] for group in groups]
     require(all(ids) and len(ids) == len(set(ids)), "Group IDs must be nonempty and unique")
@@ -69,6 +72,8 @@ def validate_force(force, catalog, limit=None):
         require(bool(group["members"]), f"{group['id']}: empty group")
         require(all(key in catalog for key in group["members"]), f"{group['id']}: unknown catalog ID")
         members = [catalog[key] for key in group["members"]]
+        require(not faction or all(unit["faction"] == faction for unit in members),
+                f"{group['id']}: every model must belong to {faction}")
         kinds = {unit["category"] for unit in members}
         require(len(kinds) == 1, f"{group['id']}: do not mix unit categories in a squad")
         category = members[0]["category"]

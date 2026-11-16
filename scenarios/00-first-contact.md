@@ -34,7 +34,7 @@ Use a **48 × 48 inch** table. The southwest corner is (0, 0); x runs east and y
 
 Mark terrain edges with paper or felt if you do not have scenery. Everything outside those footprints is open ground. The relay marker is a point, not a building or an obstacle; leave its control area open. Use the normal terrain rules for woods, rubble, and blocking structures.
 
-Roll one die each, rerolling ties. The winner chooses north or south. The other player deploys one group first; alternate until both patrols are placed. Keep each entire base inside its zone, and infantry in their 4-inch chain. Either patrol can take either side.
+Roll one die each, rerolling ties. The winner chooses north or south. The other player deploys one group first; alternate until both patrols are placed. Keep each entire base inside its zone, and infantry in their 4-inch chain. Either patrol can take either side. Infiltrate follows its equipment rule after ordinary deployment.
 
 ## Play and score
 

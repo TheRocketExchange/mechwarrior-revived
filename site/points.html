@@ -32,7 +32,7 @@
       <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.3 / November 2026</span></div>
       <details class="toc-panel" open>
         <summary>On this page</summary>
-        <ol class="contents"><li class="level-h2"><a href="#why-the-whole-dial-matters">Why the whole dial matters</a></li><li class="level-h2"><a href="#the-formula">The formula</a></li><li class="level-h2"><a href="#how-the-ratings-work">How the ratings work</a></li><li class="level-h2"><a href="#special-cases">Special cases</a></li><li class="level-h2"><a href="#changing-costs">Changing costs</a></li></ol>
+        <ol class="contents"><li class="level-h2"><a href="#why-the-whole-dial-matters">Why the whole dial matters</a></li><li class="level-h2"><a href="#the-formula">The formula</a></li><li class="level-h2"><a href="#how-the-ratings-work">How the ratings work</a></li><li class="level-h3"><a href="#equipment-costs">Equipment costs</a></li><li class="level-h2"><a href="#special-cases">Special cases</a></li><li class="level-h2"><a href="#changing-costs">Changing costs</a></li></ol>
       </details>
       <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="readiness.html">Readiness reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="builder.html">Force builder<span aria-hidden="true">↗</span></a><a href="points.html" aria-current="page">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
       <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
@@ -43,7 +43,7 @@
         <h1>Points</h1>
         <div class="page-toolbar"><span class="version-tag">v0.3 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
       </div>
-      <article class="rule-content"><p>Version 0.3 · Formula 0.3-alpha-4</p>
+      <article class="rule-content"><p>Version 0.3 · Formula 0.3-alpha-5</p>
 <p>Build armies with the <strong>points</strong> shown in the <a href="units.html">unit catalog</a>. Pay per base, including every member of a squad.</p>
 <p>Every unit uses the same formula. There are no hand-set prices, faction discounts, or rarity premiums. These are starting costs for playtesting, not established balance.</p>
 <h2 id="why-the-whole-dial-matters">Why the whole dial matters</h2>
@@ -63,21 +63,21 @@
 <tr>
 <td>3, 3, 3, 3, 3, 3</td>
 <td>Holds its strength</td>
-<td style="text-align:right">58</td>
+<td style="text-align:right">55</td>
 </tr>
 <tr>
 <td>3, 3, 2, 2, 1, 1</td>
 <td>Gradual decline</td>
-<td style="text-align:right">45</td>
+<td style="text-align:right">43</td>
 </tr>
 <tr>
 <td>3, 1, 1, 1, 1, 1</td>
 <td>Sharp early drop</td>
-<td style="text-align:right">35</td>
+<td style="text-align:right">34</td>
 </tr>
 </tbody>
 </table></div>
-<p>Order also matters. A damage track of <strong>3, 3, 1, 1, 1, 1</strong> costs <strong>40 points</strong>; <strong>3, 1, 1, 1, 1, 3</strong> costs <strong>37</strong>. They have the same starting damage and average, but the first keeps its strength through the next hit. These are pricing examples, not additional catalog units.</p>
+<p>Order also matters. A damage track of <strong>3, 3, 1, 1, 1, 1</strong> costs <strong>39 points</strong>; <strong>3, 1, 1, 1, 1, 3</strong> costs <strong>36</strong>. They have the same starting damage and average, but the first keeps its strength through the next hit. These are pricing examples, not additional catalog units.</p>
 <h2 id="the-formula">The formula</h2>
 <p><strong>Each click contributes: 1.6 × Click weight × Toughness × (1 + Mobility + 3 × Firepower + Support)</strong></p>
 <p>Add every click’s contribution, then add the pilot allowance. Round once to the nearest whole point, with a minimum of 1. All ratings below are calculated on that click.</p>
@@ -95,7 +95,7 @@
 </tr>
 <tr>
 <td>Mobility</td>
-<td>Speed, with small bonuses for Jump, easier terrain, hover movement, and safe disengagement</td>
+<td>Speed, Jump Jets, safe disengagement, scouting, deployment, and hover movement</td>
 </tr>
 <tr>
 <td>Firepower</td>
@@ -103,7 +103,7 @@
 </tr>
 <tr>
 <td>Support</td>
-<td>Repair and equipment that heats a target</td>
+<td>Repair, command, cooling, disruption, capture, and protection of nearby allies</td>
 </tr>
 <tr>
 <td>Pilot allowance</td>
@@ -114,12 +114,65 @@
 <p>Each datasheet has a “How the points are calculated” section with a profile-value chart, each click’s contribution, and the total. Profile value is a pricing estimate, not another stat used during play. Choosing a later click on the datasheet does not change the model’s purchase cost.</p>
 <h2 id="how-the-ratings-work">How the ratings work</h2>
 <p><strong>Toughness</strong> compares a click with a defense-18 target under an attack-8, damage-3 hit. The test mix is 80% ranged attacks, split equally among B/E/R, and 20% close attacks. For infantry, terrain is 50% open, 35% woods, and 15% fieldworks. Other units use 50% open and 50% woods. Conventional infantry get +3 ranged defense in woods and +4 ranged/+2 close in fieldworks; battle armor gets +2 and +3/+1 respectively. Equipment applies separately. These terrain shares estimate access to cover across a game, rather than assuming infantry always occupy their best position.</p>
-<p><strong>Mobility</strong> adds 0.08 per inch of speed. Jump adds 0.25 while shown: yellow speed on any unit, or blue speed on a ’Mech. Green speed adds 0.15; gray speed adds 0.10; red or blue speed adds 0.08. A blue-speed ’Mech gets both Jump and the Advance allowance. Hover adds 0.05. These are small allowances for terrain and movement choices, not extra inches during play.</p>
-<p><strong>Firepower</strong> checks all 216 dice results, including white-dice criticals. Its target mix is 40% armored vehicles, 20% unarmored ’Mechs, 10% open conventional infantry, 15% conventional infantry in woods with +3 cover, and 15% battle armor in the open. It weighs stationary fire at 65% and moving fire at 35%. Recoil, Energy heat, Rocket restrictions, damage limits, and Piercing all apply. Fieldworks improve infantry’s Toughness estimate; this offensive target mix does not include them.</p>
-<p>Range adds 0.025 per maximum-range inch and subtracts 0.025 per minimum-range inch. For moving fire, add the half-speed Advance allowance, rounded up, plus 2 inches for blue speed equipment. This estimates how far a unit can reach with a shot; full speed still sets its separate Mobility rating. Wider arcs get a small bonus. Indirect access adds 15% of its expected damage. Close attacks use a 0.4 reach allowance, split between frontal and rear attacks. The best attack counts fully; a different second choice adds 15%, since it offers a choice rather than another attack.</p>
-<p>For ’Mechs, a 24-action Fire/Vent or Advance/Vent calculation uses the actual heat track and vent rating. Heat damage modifiers and a small stress allowance reduce output. <strong>Support</strong> adds 0.35 for gray attack and 0.15 for yellow damage while shown.</p>
-<p><strong>Death from Above</strong> adds an attack allowance only on ’Mech clicks with blue or yellow speed, positive speed and attack, and positive primary damage. It uses the same target mix and equal front/rear weighting, with no DFA against infantry. Expected damage includes +2 target defense, +2 primary damage, equipment, criticals, and armor. Subtract expected landing damage—1 on a hit or 2 on a miss—and count no negative result. Value each self-damage click as one enemy damage click for this estimate. Multiply by the 2-heat output factor, reach of <strong>0.4 + 0.025 × speed</strong>, and <strong>0.25 availability</strong>. Add this to Firepower as an occasional attack option: the ’Mech must start unengaged and cannot repeat DFA from contact. The availability weight and damage trade are playtest estimates, not a simulation of landing positions or the attacker’s later dial.</p>
-<p>For <strong>vehicles and infantry</strong>, a separate 24-action calculation chooses between attacking and recovering. A first attack commits the unit. A second attacks at its current values, then pushes it one click down its actual combat dial. Spent units must recover, and destruction ends their output. The calculation can recover early when preserving a good click is worth more than another immediate attack. It starts Ready at each click in turn and uses the result per action to price that click.</p>
+<p><strong>Mobility</strong> adds 0.08 per inch of speed. Jump Jets adds 0.45 and safe disengagement from blue or red speed adds 0.15 while mobile. Reconnaissance adds 0.16. Infiltrate adds 0.6 only to the starting click; later appearances have no deployment value. Hover adds 0.05. Camouflage and Evade's protection count under Toughness, not movement. These ratings are pricing allowances, not extra inches during play.</p>
+<p><strong>Firepower</strong> checks all 216 dice results, including white-dice criticals. Its target mix is 25% Armor-1 vehicles, 15% Armor-2 vehicles, 20% unarmored ’Mechs, 10% open conventional infantry, 15% conventional infantry in woods with +3 cover, and 15% battle armor in the open. It weighs stationary fire at 65% and moving fire at 35%. Recoil, Energy heat, Rocket restrictions, damage limits, and Piercing all apply. Fieldworks improve infantry's Toughness estimate; the offensive mix does not include them.</p>
+<p>Range adds 0.025 per maximum-range inch and subtracts 0.025 per minimum-range inch. Moving fire adds half-speed Advance reach, rounded up. Jump Jets does not add distance. Wider arcs get a small bonus. Indirect access, including Streak Missiles, adds 15% of its expected damage. Close attacks use a 0.4 reach allowance, split between front and rear attacks. The best attack counts fully; a different second choice adds 15% for flexibility.</p>
+<p>For ’Mechs, a 24-action Fire/Vent or Advance/Vent calculation uses the actual heat track and vent rating. Heat damage modifiers and a small stress allowance reduce output. Pulse, Rapid Strike, and PPC Capacitor include their extra heat; the calculator can decline an optional ability if ordinary fire performs better. Alpha Strike is an alternative attack whose heat schedule goes straight to shutdown after firing.</p>
+<h3 id="equipment-costs">Equipment costs</h3>
+<p>Equipment is valued on the clicks where it appears, using its weapon-specific identity. Strong protection raises the value of that click's offense and mobility too. There is no blanket surcharge for a colored square: <strong>Salvage removes all Firepower</strong>, rather than adding a bonus.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Equipment</th>
+<th>How it enters the formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Armor, Decoy, Camouflage, Evade, Agility</td>
+<td>Expected incoming damage, including armor grades, defense bonuses, and Agility's final close-damage limit</td>
+</tr>
+<tr>
+<td>Electronic Camouflage</td>
+<td>Treat 5% of incoming Ballistic and 15% of Rocket attacks as blocked guided/indirect opportunities</td>
+</tr>
+<tr>
+<td>Anti-missile system</td>
+<td>Its own damage reduction in Toughness; 0.2 Support for protecting allies</td>
+</tr>
+<tr>
+<td>Armor Piercing, Improved Targeting, Artemis V, Brawling</td>
+<td>Their actual damage or accuracy effects</td>
+</tr>
+<tr>
+<td>Pulse and Rapid Strike</td>
+<td>First-hit chance multiplied by the second attack's expected damage; extra heat applies</td>
+</tr>
+<tr>
+<td>Hand-to-Hand Weapon</td>
+<td>Mean of all six replacement damage results, choosing it only when better than printed damage</td>
+</tr>
+<tr>
+<td>Anti-Personnel and Full Strike</td>
+<td>An estimated extra target on 25% and 35% of opportunities, respectively</td>
+</tr>
+<tr>
+<td>Repair / Command / Coolant Flush / Bypass</td>
+<td>0.6 / 0.4 / 0.45 / 0.15 Support; Bypass needs positive attack</td>
+</tr>
+<tr>
+<td>Homing Beacon / TSEMP / Flamer heat / Grapple</td>
+<td>0.25 / 0.25 / 0.2 / 0.1 Support while usable</td>
+</tr>
+<tr>
+<td>Point Defense</td>
+<td>0.3 Support per 2 printed defense above 16; no allowance at 16 or below</td>
+</tr>
+</tbody>
+</table></div>
+<p>Support and extra-target rates are shared estimates of opportunity, not guaranteed damage or extra actions. Duplicate systems on one unit do not stack their Support allowance. Playtests should record actual use before changing these common weights.</p>
+<p><strong>Death from Above</strong> adds an attack allowance only on non-Salvage ’Mech clicks with blue speed, positive speed and attack, and positive primary damage. It uses the same target mix and equal front/rear weighting, with no DFA against infantry. Expected damage includes +2 target defense, +2 primary damage, legal equipment, criticals, and armor, without Rapid Strike or Full Strike. Subtract expected landing damage—1 on a hit or 2 on a miss—and count no negative result. Value each self-damage click as one enemy damage click for this estimate. Multiply by the 2-heat output factor, reach of <strong>0.4 + 0.025 × speed</strong>, and <strong>0.25 availability</strong>. Add this as an occasional attack option, since it requires an unengaged start.</p>
+<p>For <strong>vehicles and infantry</strong>, a separate 24-action calculation chooses between attacking and recovering. A first attack commits the unit. A second attacks at its current values, then pushes it one click down its actual combat dial. Spent units must recover, and destruction ends their output. Salvage cannot attack or push through to another click. The calculation can recover early to preserve a good click. It starts Ready at each click in turn and uses the result per action to price that click.</p>
 <p>Some dials improve after taking damage. To price a particular click, this readiness estimate caps later attacks at that click’s firepower. Later improvements still add value on their own clicks; they are not also charged to earlier, weaker ones. This is a pricing convention and does not limit attacks during play.</p>
 <p>Datasheets show firepower before readiness, a <strong>readiness multiplier</strong>, and the firepower used in the price. These summary ratings are weighted by click weight and toughness, matching the contributions above. This estimates sustained output; the multiplier is not a fixed discount. ’Mechs use heat instead. Both models use 24 actions, but neither predicts a whole battle.</p>
 <h2 id="special-cases">Special cases</h2>
@@ -127,7 +180,7 @@
 <li>A Rocket test substitute uses the alternate cost on its datasheet. Record that cost before deployment and keep it for the return game.</li>
 <li>Carriers use the allowance for the chosen <a href="rules.html#force-organization">game size</a>. Designation adds no separate charge in this version.</li>
 <li>Aircraft, artillery-only units, DropShip turrets, and other excluded types still get catalog costs. Those estimates use the same model, but do not make them legal in a core game. Special flight, artillery, and DropShip rules are not priced here.</li>
-<li>Repair stops, exact base size, pivoting, heat-related movement loss, mission layouts, squad coordination, and pilot combinations are not fully modeled. The readiness model includes pushing damage but not critical-miss self-damage, enemy attacks, or repairs. The DFA allowance subtracts landing damage, but does not model critical-miss self-damage or lost future output from those clicks. Click weights express an early-strength preference, not measured survival odds. Test these before treating the costs as settled.</li>
+<li>Repair stops, exact base size, pivoting, heat-related movement loss, mission layouts, squad coordination, and pilot combinations are not fully modeled. Support uses allowances rather than simulating captures, linked activations, or an army's need for repair and cooling. Extra attacks assume the target survives and retains its reference defense; heat schedules conservatively charge the second-roll heat on each use. Readiness excludes enemy attacks, repairs, and critical-miss self-damage. DFA subtracts landing damage but not lost future output or critical-miss self-damage. Click weights express an early-strength preference, not measured survival odds.</li>
 </ul>
 <h2 id="changing-costs">Changing costs</h2>
 <p>The calculator is <a href="downloads/points.py">units/points.py</a>, with shared transitions in <a href="downloads/readiness.py">readiness.py</a>; all tuning weights are in <a href="downloads/points-config.json">points-config.json</a>. Change the formula version when changing weights, then rebuild the catalog, cards, and sample armies together. Keep one formula version for both games in a test pair.</p>

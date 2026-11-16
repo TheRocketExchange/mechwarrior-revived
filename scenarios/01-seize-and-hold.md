@@ -22,7 +22,7 @@ Agree on a [game size](../rules/core-rules.md#choose-the-battle-size). This layo
 | Southeast rubble | x 31–37, y 13–19 |
 | Northwest rubble | x 11–17, y 29–35 |
 
-Deploy south in y 0–6 or north in y 42–48, with bases entirely inside the zone. Use the normal side-choice and alternating deployment rules. Choose sides after placing terrain; leave the center objective in open ground.
+Deploy south in y 0–6 or north in y 42–48, with bases entirely inside the zone. Use the normal side-choice and alternating deployment rules. Choose sides after placing terrain; leave the center objective in open ground. Infiltrate follows its equipment rule after ordinary deployment.
 
 Vehicles and ’Mechs can contest the western site from outside the fieldworks if their centers are within 3 inches. They cannot enter the fieldworks.
 

@@ -16,17 +16,17 @@
   ],
   "forces": [
     {"id": "S1", "name": "First Contact — Patrol A", "game_size": "skirmish", "groups": [
-      {"id": "M1", "members": ["AOD108"], "pilot": "Gunner"},
+      {"id": "M1", "members": ["AOD106"], "pilot": "Gunner"},
       {"id": "M2", "members": ["AOD104"], "pilot": "Brawler"},
       {"id": "M3", "members": ["AOD112"], "pilot": "Engineer"},
       {"id": "V1", "members": ["AOD050"]},
       {"id": "C1", "members": ["D006", "D006", "D006"]}
     ]},
     {"id": "S2", "name": "First Contact — Patrol B", "game_size": "skirmish", "groups": [
-      {"id": "M1", "members": ["AOD105"], "pilot": "Gunner"},
+      {"id": "M1", "members": ["AOD107"], "pilot": "Gunner"},
       {"id": "M2", "members": ["AOD102"], "pilot": "Brawler"},
-      {"id": "M3", "members": ["AOD111"], "pilot": "Engineer"},
-      {"id": "V1", "members": ["AOD038"]},
+      {"id": "M3", "members": ["AOD110"], "pilot": "Engineer"},
+      {"id": "V1", "members": ["AOD040"]},
       {"id": "C1", "members": ["D006", "D006", "D006"]}
     ]}
   ]

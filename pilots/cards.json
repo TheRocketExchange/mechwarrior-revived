@@ -10,7 +10,7 @@
     {
       "role": "Skirmisher",
       "ability": "Clean withdrawal",
-      "text": "Take no damage when you Disengage. Follow the normal movement and contact rules.",
+      "text": "Take no damage when you Disengage, unless an enemy uses Grapple. Follow the normal movement and contact rules.",
       "reminder": "Move up to half speed. No attack. Gain 1 heat."
     },
     {

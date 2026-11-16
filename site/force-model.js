@@ -3,6 +3,12 @@
 function createForceModel(catalog) {
   const units = new Map(catalog.units.map(unit => [unit.id, unit]));
   const config = catalog.force_organization;
+  const factions = [...new Set(catalog.units.map(unit=>unit.faction).filter(Boolean))].sort();
+  function faction(force) {
+    const value=force.faction===undefined?"":force.faction;
+    if(typeof value!=="string" || (value && !factions.includes(value))) throw new Error("Choose a catalog faction or Mixed factions.");
+    return value;
+  }
   function size(force) {
     const id=force.game_size===undefined?config.default_size:force.game_size;
     if (typeof id!=="string" || !Object.hasOwn(config.sizes,id)) throw new Error("Choose a supported game size.");
@@ -16,6 +22,7 @@ function createForceModel(catalog) {
   function parse(value) {
     if (!value || typeof value !== "object" || !Array.isArray(value.groups) || value.groups.length > 200) throw new Error("Choose a Revived list JSON file with up to 200 groups.");
     size(value);
+    faction(value);
     let models = 0;
     const ids = new Set();
     const groups = value.groups.map(raw => {
@@ -37,10 +44,10 @@ function createForceModel(catalog) {
     });
     for (const group of groups) if(group.passengers&&!groups.some(squad=>squad.id===group.passengers&&infantry.has(units.get(squad.members[0]).category))) throw new Error(`${group.id}: its assigned squad is missing or is not infantry.`);
     if (models > 1000) throw new Error("A saved list can contain up to 1,000 models.");
-    return {version: 1, name: typeof value.name === "string" ? value.name.slice(0,80).trim() || "My force" : "My force", game_size: value.game_size===undefined?config.default_size:value.game_size, formula_version: catalog.points_formula.version, groups};
+    return {version: 1, name: typeof value.name === "string" ? value.name.slice(0,80).trim() || "My force" : "My force", game_size: value.game_size===undefined?config.default_size:value.game_size, faction:faction(value), formula_version: catalog.points_formula.version, groups};
   }
   function validate(force) {
-    const selected=size(force), limits=selected.limits;
+    const selected=size(force), limits=selected.limits, selectedFaction=faction(force);
     const errors = [], counts = {Mech:0, Vehicle:0, squads:0, carriers:0, models:0};
     const families = new Map(), uniques = new Map(), pilots = new Map(), passengers = new Set();
     const add = (map, key) => map.set(key, (map.get(key) || 0)+1);
@@ -53,6 +60,7 @@ function createForceModel(catalog) {
       const category = members[0].category;
       if (members.some(unit => unit.category !== category)) errors.push(`${group.id}: keep conventional infantry and battle armor in separate squads.`);
       if (members.some(unit => !unit.core_legal)) errors.push(`${group.id}: contains a unit outside the core rules.`);
+      for(const unit of members) if(selectedFaction && unit.faction!==selectedFaction) errors.push(`${group.id}: ${unit.id} belongs to ${unit.faction}, not ${selectedFaction}.`);
       if (infantry.has(category)) {
         counts.squads++;
         if (members.length < 2 || members.length > 3) errors.push(`${group.id}: a squad needs 2–3 bases.`);
@@ -125,7 +133,7 @@ function createForceModel(catalog) {
       return {unit, rosterId:group.id+(isSquad?String.fromCharCode(97+index):""), squad:isSquad?group.id:"", carrier:carrier?.id||"", pilot:group.pilot||"", isCarrier:!!group.carrier, passengers:group.passengers||"", rocketSlot:group.rocket_slot||""};
     }));
   }
-  return {units, config, infantry, cost, size, parse, validate, addUnit, cards};
+  return {units, config, infantry, factions, faction, cost, size, parse, validate, addUnit, cards};
 }
 if (typeof module !== "undefined") module.exports = createForceModel;
 else window.createForceModel = createForceModel;

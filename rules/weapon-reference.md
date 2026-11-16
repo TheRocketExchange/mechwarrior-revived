@@ -18,7 +18,7 @@ Use the damage and range printed on the base. Choose one weapon per attack. Thes
 
 **Rocket:** Includes both missiles and rockets. Declare direct or indirect fire before rolling. Direct shots use normal sight rules. Indirect shots ignore blockers, but keep the printed ranges, front arc, and target’s cover. They get no rear bonus.
 
-You cannot shoot while engaged or at an enemy touching a friendly unit, even indirectly. Rockets hit one target without a spotter, scatter roll, or blast. No pilot or equipment allows Rockets to fire during Advance.
+You cannot shoot while engaged or at an enemy touching a friendly unit, even indirectly. Ordinary Rockets hit one target without a spotter, scatter roll, or blast. Named equipment can add effects: Anti-Personnel hits nearby infantry, Streak Missiles offers guided fire, and Electronic Camouflage blocks indirect fire and Streak. No pilot or equipment allows Rockets to fire during Advance.
 
 ## Label your weapons
 
@@ -35,9 +35,9 @@ Labels stay fixed through damage, heat, and repair, even if a weapon becomes unu
 
 Add heat modifiers to printed damage, then apply the weapon bonus or penalty. Add equipment and pilot bonuses (at most +1 combined), battle armor’s close bonus, and critical damage. Apply damage limits, then armor. Damage may be zero. Extra sources of Piercing do not add together.
 
-Blue defense armor protects against Ballistic and Rocket shots; red protects against Energy.
+Blue defense gives Armor 2 against Ballistic and Rocket shots; red gives Armor 2 against Energy. Ordinary Piercing ignores 1 armor; red Ballistic/Rocket damage (Armor Piercing) ignores all armor. Equipment colors keep their original weapon-specific identities: use the [equipment reference](equipment-reference.md).
 
-Add Energy heat only when you roll the attack, including a miss or critical miss if the attacker survives. Add it to the action heat and make at most one stress check. Skipping an Advance shot still costs the action’s heat, but no Energy heat.
+Add Energy heat only when you roll the attack, including a miss or critical miss if the attacker survives. Add it to the action heat and make at most one stress check. Skipping an Advance shot still costs the action’s heat, but no Energy heat. Pulse adds one more heat if its second roll is made, paying ordinary Energy heat only once for the action. PPC Capacitor adds 1 heat when used. Alpha Strike replaces the action's heating with shutdown.
 
 ## Examples
 

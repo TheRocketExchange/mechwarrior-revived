@@ -60,7 +60,7 @@
 </tr>
 <tr>
 <td>Starter scenario</td>
-<td>Four rounds with one relay; scoring in rounds 2–4 gives three available points. Patrols A/B cost 590/595 points, each with seven models in five groups. Both pass Skirmish limits. Symmetric terrain, clear control area, source coordinates, and measured map geometry are checked</td>
+<td>Four rounds with one relay; scoring in rounds 2–4 gives three available points. Patrols A/B cost 594/590 points, each with seven models in five groups. Both pass Skirmish limits. Symmetric terrain, clear control area, source coordinates, and measured map geometry are checked</td>
 </tr>
 <tr>
 <td>Teaching diagrams</td>
@@ -72,7 +72,7 @@
 </tr>
 <tr>
 <td>Army totals</td>
-<td>H: 1,189 points / 15 groups. B: 1,195 / 17. I: 1,199 / 19. The totals differ by 10 points. Each has two carriers and follows the force chart</td>
+<td>H: 1,192 points / 15 groups. B: 1,192 / 17. I: 1,196 / 19. The totals differ by 4 points. Each has two carriers and follows the force chart</td>
 </tr>
 <tr>
 <td>Force organization</td>
@@ -84,7 +84,7 @@
 </tr>
 <tr>
 <td>Breakthrough targets</td>
-<td>30% rounded up: H 357, B 359, I 360</td>
+<td>30% rounded up: H 358, B 358, I 359</td>
 </tr>
 <tr>
 <td>Catalog coverage</td>
@@ -96,11 +96,19 @@
 </tr>
 <tr>
 <td>Points</td>
-<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-4. Each complete click is priced separately, with weights from 1.5 to 0.5. Eligible Jump clicks include a DFA allowance after landing risk and heat. Infantry Toughness includes stronger woods and fieldworks protection. Faction, name, and rarity do not affect pricing</td>
+<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-5. Each complete click is priced separately, with weights from 1.5 to 0.5. Eligible Jump clicks include a DFA allowance after landing risk and heat. Infantry Toughness includes stronger woods and fieldworks protection. Faction, name, and rarity do not affect pricing</td>
 </tr>
 <tr>
 <td>Automated tests</td>
-<td>Forty-two tests cover starter patrols and map geometry, all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, infantry terrain defense, DFA, and legal and illegal rosters at all four sizes. Dial checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness optimizer independently</td>
+<td>Forty-seven tests cover starter patrols and map geometry, all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, infantry terrain defense, DFA, and legal and illegal rosters at all four sizes. Dial checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness optimizer independently</td>
+</tr>
+<tr>
+<td>Restored equipment</td>
+<td>Named colors match the original stat and weapon categories, including purple. Tests cover Salvage, armor grades, Piercing, Agility, Pulse, Rapid Strike, Flamers, Streak and ECM, starting-only Infiltrate value, and positive costs for useful equipment. Datasheets display ability names and every master-PDF card includes its faction</td>
+</tr>
+<tr>
+<td>Factions</td>
+<td>All 22 catalog factions are available. Mixed remains the default for older lists. Every base is checked in single-faction armies; Mercenary is not a wildcard. Model tests cover JSON round trips and invalid factions. Browser tests cover filtering, changing faction without deleting models, mismatch messages, reload, mobile layout, and faction labels on generated cards</td>
 </tr>
 <tr>
 <td>Unit PDF</td>
@@ -116,7 +124,7 @@
 </tr>
 <tr>
 <td>Cover example</td>
-<td>For attack 8 against base defense 18, all 216 dice results give: open 62.50%, +2 cover 37.50%, +3 cover 25.93%, +4 cover 16.67%, including criticals. Fieldworks close defense and black attack ignoring only ranged cover are checked. The terrain chart matches the pricing inputs</td>
+<td>For attack 8 against base defense 18, all 216 dice results give: open 62.50%, +2 cover 37.50%, +3 cover 25.93%, +4 cover 16.67%, including criticals. Fieldworks close defense and Salvage preventing attacks are checked. The terrain chart matches the pricing inputs</td>
 </tr>
 <tr>
 <td>Close damage examples</td>
@@ -164,7 +172,7 @@
 </tr>
 <tr>
 <td>HTML</td>
-<td>27 offline pages and 1,781 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, game-size charts, SVG assets, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
+<td>27 offline pages and 1,790 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, game-size charts, SVG assets, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
 </tr>
 <tr>
 <td>Browser</td>
@@ -176,7 +184,7 @@
 </tr>
 <tr>
 <td>Force builder</td>
-<td>Thirteen model checks cover starter patrols, sample-list parity, family limits, mixed squads, forces with zero ’Mechs, size-specific budgets and caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover vehicle-only and infantry-only forces, zero ’Mechs at every size, switching sizes without losing models, loading Standard and starter samples, preserving size on reload and JSON export/import, rejected broken imports, generated cards, and recalculating an older saved list with a notice. Starter links respect a declined replacement; unknown sample links preserve the saved roster. Older lists without a size use Standard</td>
+<td>Fourteen model checks cover starter patrols, sample-list parity, family limits, mixed squads, forces with zero ’Mechs, size-specific budgets and caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover vehicle-only and infantry-only forces, zero ’Mechs at every size, switching sizes without losing models, loading Standard and starter samples, preserving size on reload and JSON export/import, rejected broken imports, generated cards, and recalculating an older saved list with a notice. Starter links respect a declined replacement; unknown sample links preserve the saved roster. Older lists without a size use Standard</td>
 </tr>
 <tr>
 <td>Selected-model cards</td>
@@ -248,7 +256,7 @@
 </tr>
 <tr>
 <td>Speed 7 with blue speed equipment</td>
-<td>Advance allowance 6; Gunner still limits movement cost to 4, including terrain</td>
+<td>Advance allowance 4; Jump ignores route terrain and adds 1 heat, without extra distance</td>
 </tr>
 <tr>
 <td>Spent group in Breakthrough</td>

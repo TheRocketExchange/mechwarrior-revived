@@ -155,6 +155,7 @@ for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot
                 content = compact(block)
                 assert re.search(r"\b" + str(unit["cost"]["points"]) + r"\s+POINTS", block), unit_id
                 assert "RosterID:" in content and "Liveclicks" not in content, unit_id
+                assert compact("Faction: " + unit["faction"]) in content, unit_id
                 assert f"Clicks:{len(unit['track'])-unit['start']}(damagefromStarttoEnd)" in content, unit_id
                 combat = content.split("COMBATDIAL",1)[1].split("HEATDIAL",1)[0]
                 assert "Click" + "".join(str(i+1) for i in range(len(unit["track"]))) + "End" in combat, unit_id

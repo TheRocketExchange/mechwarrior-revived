@@ -1,0 +1,8 @@
+{
+  "speed": {"green":"Camouflage","red":"Evade","blue":"Jump Jets","black":"Electronic Camouflage","gray":"Infiltrate","purple":"Reconnaissance"},
+  "attack": {"green":"Repair","red":"Bypass","blue":"Improved Targeting","black":"Salvage","gray":"Command","purple":"Coolant Flush"},
+  "defense": {"green":"Decoy","red":"Reflective Armor","blue":"Reactive Armor","black":"Hardened Armor","gray":"Heavy Armor","purple":"Advanced Anti-Missile System"},
+  "B": {"green":"Homing Beacon","red":"Armor Piercing","blue":"Anti-Personnel","black":"Streak Missiles","gray":"Point Defense System","purple":"Artemis V Fire-Control System"},
+  "E": {"green":"TSEMP","red":"Pulse","blue":"Grapple","black":"Alpha Strike","gray":"Flamers","purple":"PPC Capacitor"},
+  "M": {"green":"Full Strike","red":"Hand-to-Hand Weapon","blue":"Rapid Strike","black":"Agility","gray":"Brawling"}
+}

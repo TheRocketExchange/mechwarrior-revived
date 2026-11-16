@@ -18,7 +18,7 @@ Agree on a [game size](../rules/core-rules.md#choose-the-battle-size). This layo
 | Defender’s western fieldworks | x 5–11, y 33–39 |
 | Defender’s eastern fieldworks | x 37–43, y 33–39 |
 
-The defender deploys first, entirely in **y 30–42**. The attacker then deploys entirely in **y 0–6**. Keep squads together and use legal terrain.
+The defender deploys first, entirely in **y 30–42**. The attacker then deploys entirely in **y 0–6**. Keep squads together and use legal terrain. Infiltrate follows its equipment rule after ordinary deployment.
 
 The attacker chooses who acts first in round 1. Roll initiative normally afterward. The whole north edge, y = 48, is the exit.
 

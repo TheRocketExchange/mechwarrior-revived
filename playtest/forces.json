@@ -30,7 +30,7 @@
         {
           "id": "M4",
           "members": [
-            "AOD112"
+            "AOD093"
           ],
           "pilot": "Engineer"
         },
@@ -58,14 +58,14 @@
         {
           "id": "M8",
           "members": [
-            "AOD084"
+            "AOD082"
           ],
           "pilot": "Engineer"
         },
         {
           "id": "V1",
           "members": [
-            "AOD050"
+            "AOD052"
           ],
           "carrier": true,
           "passengers": "C1"
@@ -81,13 +81,13 @@
         {
           "id": "V3",
           "members": [
-            "AOD042"
+            "AOD041"
           ]
         },
         {
           "id": "V4",
           "members": [
-            "AOD066"
+            "AOD067"
           ]
         },
         {
@@ -108,8 +108,8 @@
         {
           "id": "A1",
           "members": [
-            "AOD026",
-            "AOD026"
+            "AOD025",
+            "AOD025"
           ]
         }
       ],
@@ -122,7 +122,7 @@
         {
           "id": "M1",
           "members": [
-            "AOD108"
+            "AOD106"
           ],
           "pilot": "Gunner"
         },
@@ -164,7 +164,7 @@
         {
           "id": "V1",
           "members": [
-            "AOD050"
+            "AOD052"
           ],
           "carrier": true,
           "passengers": "C1"
@@ -172,7 +172,7 @@
         {
           "id": "V2",
           "members": [
-            "AOD038"
+            "AOD037"
           ],
           "carrier": true,
           "passengers": "A1"
@@ -186,13 +186,13 @@
         {
           "id": "V4",
           "members": [
-            "AOD066"
+            "AOD056"
           ]
         },
         {
           "id": "V5",
           "members": [
-            "AOD066"
+            "AOD056"
           ]
         },
         {
@@ -235,9 +235,9 @@
         {
           "id": "A2",
           "members": [
-            "AOD026",
-            "AOD026",
-            "AOD026"
+            "AOD025",
+            "AOD025",
+            "AOD025"
           ]
         }
       ],
@@ -278,7 +278,7 @@
         {
           "id": "V1",
           "members": [
-            "AOD050"
+            "AOD052"
           ],
           "carrier": true,
           "passengers": "C1"
@@ -294,7 +294,7 @@
         {
           "id": "V3",
           "members": [
-            "AOD050"
+            "AOD052"
           ]
         },
         {
@@ -343,14 +343,12 @@
           "id": "C4",
           "members": [
             "D009",
-            "D009",
             "D009"
           ]
         },
         {
           "id": "C5",
           "members": [
-            "D009",
             "D009",
             "D009"
           ]
@@ -359,32 +357,31 @@
           "id": "C6",
           "members": [
             "D009",
-            "D009",
             "D009"
           ]
         },
         {
           "id": "A1",
           "members": [
-            "AOD030",
-            "AOD030",
-            "AOD030"
+            "AOD029",
+            "AOD029",
+            "AOD029"
           ]
         },
         {
           "id": "A2",
           "members": [
-            "AOD026",
-            "AOD026",
-            "AOD026"
+            "AOD025",
+            "AOD025",
+            "AOD025"
           ]
         },
         {
           "id": "A3",
           "members": [
-            "AOD022",
-            "AOD022",
-            "AOD022"
+            "AOD023",
+            "AOD023",
+            "AOD023"
           ]
         }
       ],

@@ -83,6 +83,20 @@ class CatalogChecks(unittest.TestCase):
 
 
 class ForceOrganizationChecks(unittest.TestCase):
+    def test_single_faction_checks_every_model_and_legacy_mixed_lists(self):
+        unit = UNITS["D006"]
+        force = {"faction": unit["faction"], "groups": [{"id":"C1", "members":["D006", "D006"]}]}
+        self.assertGreater(validate_force(force, UNITS)["total"], 0)
+        other = next(u for u in UNITS.values() if u["core_legal"] and u["category"] == unit["category"] and u["faction"] != unit["faction"])
+        force["groups"][0]["members"][1] = other["id"]
+        with self.assertRaisesRegex(ValueError, "every model"):
+            validate_force(force, UNITS)
+        mixed = dict(force, faction="")
+        self.assertEqual(validate_force(mixed, UNITS), validate_force({"groups":force["groups"]}, UNITS))
+        for invalid in (None, {}, "Invented", 12):
+            with self.assertRaisesRegex(ValueError, "faction"):
+                validate_force(dict(force, faction=invalid), UNITS)
+
     def force(self, mechs=("AOD108", "AOD112", "AOD096", "AOD104")):
         return {"groups": [{"id": f"M{i+1}", "members": [key], "pilot": PILOTS[i % 4]}
                            for i, key in enumerate(mechs)]}
@@ -337,6 +351,91 @@ class StarterScenarioChecks(unittest.TestCase):
 
 
 class PricingChecks(unittest.TestCase):
+    def test_original_equipment_identities_and_salvage(self):
+        names = json.loads((ROOT / "equipment.json").read_text())
+        self.assertEqual([names["attack"][c] for c in ("green", "gray", "black")], ["Repair", "Command", "Salvage"])
+        self.assertEqual([names[k]["red"] for k in ("B", "E", "M")], ["Armor Piercing", "Pulse", "Hand-to-Hand Weapon"])
+        unit = basic("Mech")
+        before = calculate(unit)
+        for click in unit["track"]:
+            click["attack"]["color"] = "black"
+            click["speed"]["color"] = "blue"
+            self.assertEqual(offensive_rating(unit, click), 0)
+            self.assertEqual(dfa_rating(unit, click), 0)
+        self.assertEqual(calculate(unit)["breakdown"]["firepower"], 0)
+        self.assertLess(calculate(unit)["points"], before["points"])
+        self.assertGreater(calculate(unit)["points"], 1)  # Survivability and movement still matter.
+        self.assertEqual(readiness_profile([10, 0, 10], horizon=6, can_attack=[True, False, True])[1], 0)
+
+    def test_armor_grades_piercing_and_agility(self):
+        unit = basic("Mech", "M")
+        click = unit["track"][0]
+        none = toughness(unit, click)
+        click["defense"]["color"] = "gray"
+        heavy = toughness(unit, click)
+        click["defense"]["color"] = "black"
+        self.assertGreater(toughness(unit, click), heavy)
+        self.assertGreater(heavy, none)
+        click["primary"]["color"] = "black"
+        agile = toughness(unit, click)
+        click["primary"]["color"] = "white"
+        self.assertGreater(agile, toughness(unit, click))
+        target = {"category":"Vehicle", "defense":18, "armor":2, "cover":0}
+        weapon = unit["weapons"][0]
+        weapon["type"] = "B"
+        click["primary"]["color"] = "red"
+        self.assertAlmostEqual(shot(unit, click, weapon, target), expected_damage(8,18,3))
+        weapon["type"] = "E"
+        click["primary"]["color"] = "white"
+        self.assertAlmostEqual(shot(unit, click, weapon, target), expected_damage(8,18,3,armor=2,piercing=1))
+        self.assertAlmostEqual(expected_damage(8,18,3,armor=1,final_cap=1), expected_damage(8,18,1,cap=1))
+
+    def test_weapon_symbols_control_red_blue_and_gray_equipment(self):
+        unit = basic("Mech", "E")
+        click, weapon = unit["track"][0], unit["weapons"][0]
+        target = {"category":"Vehicle", "defense":18, "armor":0, "cover":0}
+        click["primary"]["color"] = "red"
+        hit = expected_damage(8,18,1,cap=1)
+        self.assertAlmostEqual(shot(unit, click, weapon, target), expected_damage(8,18,3)+hit*expected_damage(6,18,3))
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True), expected_damage(8,18,3))
+        weapon["type"] = "M"
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True), sum(expected_damage(8,18,d) for d in range(1,7))/6)
+        click["primary"]["color"] = "blue"
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True), (1+hit)*expected_damage(8,18,3))
+        click["speed"]["color"] = "blue"
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True,dfa=True), expected_damage(8,20,5))
+        unit["category"] = "Vehicle"
+        weapon["type"] = "E"
+        click["primary"]["color"] = "gray"
+        self.assertEqual(shot(unit, click, weapon, target, close=True), 0)
+        self.assertAlmostEqual(shot(unit, click, weapon, target, close=True,flamers=True), expected_damage(8,18,4))
+        self.assertEqual(shot(unit, click, weapon, dict(target,category="Mech"), close=True,flamers=True), 0)
+
+    def test_streak_ecm_and_equipment_cost_premiums(self):
+        unit = basic()
+        click, weapon = unit["track"][0], unit["weapons"][0]
+        target = {"category":"Vehicle", "defense":18, "armor":0, "cover":0}
+        click["primary"]["color"] = "black"
+        self.assertAlmostEqual(shot(unit, click, weapon, target, indirect=True), expected_damage(8,18,2))
+        for extra in ({"electronic_camouflage":True}, {"shutdown":True}):
+            self.assertEqual(shot(unit, click, weapon, dict(target, **extra), indirect=True), 0)
+            self.assertGreater(shot(unit, click, weapon, dict(target, **extra)), 0)
+        for field, shades in (("speed", ("red","blue","green","black","gray","purple")),
+                              ("attack", ("red","blue","green","gray","purple")),
+                              ("defense", ("red","blue","green","black","gray","purple"))):
+            baseline = basic()
+            price = calculate(baseline)["breakdown"]["raw"]
+            for shade in shades:
+                changed = copy.deepcopy(baseline)
+                for row in changed["track"]:
+                    row[field]["color"] = shade
+                with self.subTest(field=field, shade=shade):
+                    self.assertGreater(calculate(changed)["breakdown"]["raw"], price)
+        early, late = basic(), basic()
+        early["track"][0]["speed"]["color"] = "gray"
+        late["track"][-1]["speed"]["color"] = "gray"
+        self.assertGreater(calculate(early)["points"], calculate(late)["points"])
+
     def profile(self, damage, defenses=None, category="Mech"):
         unit = basic(category)
         unit["track"] = [copy.deepcopy(unit["track"][0]) for _ in damage]
@@ -418,7 +517,7 @@ class PricingChecks(unittest.TestCase):
         with patch.dict(CONFIG, advance_speed_fraction=1.0):
             self.assertGreater(offensive_rating(unit, click), half)
         click["speed"]["color"] = "blue"
-        self.assertGreater(offensive_rating(unit, click), half)
+        self.assertEqual(offensive_rating(unit, click), half)
         unit["weapons"][0]["type"] = "R"
         rocket = offensive_rating(unit, click)
         with patch.dict(CONFIG, advance_speed_fraction=1.0):
@@ -512,8 +611,8 @@ class PricingChecks(unittest.TestCase):
         self.assertAlmostEqual(shot(unit, click, weapon, fieldworks, close=True), expected_damage(8,20,3))
         self.assertAlmostEqual(shot(unit, click, weapon, fieldworks), expected_damage(8,22,3))
         click["attack"]["color"] = "black"
-        self.assertAlmostEqual(shot(unit, click, weapon, fieldworks), expected_damage(8,21,3))
-        self.assertAlmostEqual(shot(unit, click, weapon, fieldworks, close=True), expected_damage(8,20,3))
+        self.assertEqual(shot(unit, click, weapon, fieldworks), 0)
+        self.assertEqual(shot(unit, click, weapon, fieldworks, close=True), 0)
         click["attack"]["color"] = "white"
         weapon["type"] = "R"
         self.assertAlmostEqual(shot(unit, click, weapon, fieldworks, indirect=True), expected_damage(6,22,2))
@@ -526,7 +625,7 @@ class PricingChecks(unittest.TestCase):
     def test_dfa_hit_damage_and_landing_risk_include_critical_results(self):
         unit = basic("Mech")
         click, weapon = unit["track"][0], unit["weapons"][0]
-        click["speed"]["color"] = "yellow"
+        click["speed"]["color"] = "blue"
         target = {"category":"Vehicle", "defense":18, "armor":1, "cover":0}
         self.assertAlmostEqual(shot(unit, click, weapon, target, close=True, dfa=True), expected_damage(8, 20, 5, armor=1))
         self.assertAlmostEqual(shot(unit, click, weapon, target, close=True, exposed=True, dfa=True), expected_damage(10, 20, 5, armor=1))
@@ -535,6 +634,7 @@ class PricingChecks(unittest.TestCase):
         hits = sum((a == b == 6) or (not a == b == 1 and a+b+c+8 >= 20) for a,b,c in rolls)
         self.assertAlmostEqual(dfa_landing_risk(click, target), (hits + 2*(216-hits))/216)
         click["primary"]["color"] = "gray"
+        weapon["type"] = "M"
         self.assertAlmostEqual(shot(unit, click, weapon, target, close=True, dfa=True), expected_damage(8, 20, 6, armor=1))
         # A high defense still allows white 6/6; armor does not change hit cost.
         target["defense"] = 100
@@ -543,7 +643,7 @@ class PricingChecks(unittest.TestCase):
     def test_dfa_requires_a_mobile_jump_mech_and_a_large_target(self):
         unit = basic("Mech")
         click, weapon = unit["track"][0], unit["weapons"][0]
-        click["speed"]["color"] = "yellow"
+        click["speed"]["color"] = "blue"
         target = {"category":"Mech", "defense":18, "armor":0, "cover":0}
         self.assertTrue(dfa_eligible(unit, click, weapon, target))
         for field in ("speed", "attack", "primary"):
@@ -562,7 +662,7 @@ class PricingChecks(unittest.TestCase):
     def test_dfa_price_uses_current_click_damage_risk_heat_and_availability(self):
         unit = basic("Mech")
         click = unit["track"][0]
-        click["speed"]["color"] = "yellow"
+        click["speed"]["color"] = "blue"
         click["attack"]["value"] = 10
         click["primary"]["value"] = 5
         allowance = dfa_rating(unit, click)
@@ -606,7 +706,7 @@ class ReadinessChecks(unittest.TestCase):
             state, push = order(state, action)
             damage += push
         self.assertEqual((state, damage), (Readiness.COMMITTED, 1))
-        for action in ("Fire", "Advance", "Assault", "Rush", "Repair", "Embark", "Disembark"):
+        for action in ("Fire", "Advance", "Assault", "Bypass", "Rush", "Repair", "Coolant Flush", "Embark", "Disembark"):
             with self.assertRaises(ValueError):
                 order(Readiness.SPENT, action)
         for action in ("Move", "Hold", "Disengage", "Regroup"):

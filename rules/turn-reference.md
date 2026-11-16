@@ -13,11 +13,11 @@ Squads finish in a chain with neighboring centers at most 4 inches apart. Split 
 
 ## Readiness: vehicles and squads
 
-Start **Ready**. Declaring Fire, Advance, or Assault changes Ready → Committed → Spent. On the second combat order, each surviving base takes **1 unavoidable damage after its own action**, even if it cannot attack or misses. A surviving critical miss pays both costs.
+Start **Ready**. Declaring Fire, Advance, Assault, or Bypass changes Ready → Committed → Spent. On the second combat order, each surviving base takes **1 unavoidable damage after its own action**, even if it cannot attack or misses. A surviving critical miss pays both costs.
 
 **Spent must recover next activation.** Move or Hold clears readiness. Engaged bases Hold or Disengage; other squad members may Move or Hold. Normal Disengage costs apply. Completing a forced regroup also clears readiness, but never permits an exit.
 
-Rush, Repair, Embark, and Disembark do not change readiness and are forbidden while Spent. Spent groups still count for passes and objectives. Recovery neither heals nor grants an extra activation. ’Mechs use heat instead.
+Rush, Repair, Coolant Flush, Embark, and Disembark do not change readiness and are forbidden while Spent. Spent groups still count for passes and objectives. Recovery neither heals nor grants an extra activation. ’Mechs use heat instead.
 
 ## Actions
 
@@ -34,13 +34,15 @@ Speed = printed speed plus heat, at least zero. Round half speed up, then add eq
 | Disengage | Take 1 unavoidable damage; move up to half speed; no attack | +1 |
 | Hold | Stay still; no attack; non-’Mechs recover | Cool 1 |
 | Vent | Stay still; no attack | Cool vent rating, at least 1 |
-| Repair | Gray attack: heal 1 friendly click | +1 |
+| Repair | Green Attack: heal 1 friendly click | +1 |
+| Coolant Flush | Purple Attack: remove 2 friendly heat | +1 |
+| Bypass | Red Attack: attempt to take over a crippled enemy; half-speed move | +1 |
 
-Movement actions allow turning. Fire also allows a pivot before a close attack: keep the base center fixed and retain enemy contacts, with no overlap. This works at zero speed. Ranged Fire, Hold, Vent, and Repair do not allow turning; never pivot in response to an enemy action. In contact, use close Fire, Assault in place, Hold, Vent, or Disengage. Vehicles cannot fight close. Disengage causes no damage if every touching enemy is shutdown.
+Movement actions allow turning. Fire also allows a pivot before a close attack: keep the base center fixed and retain enemy contacts, with no overlap. This works at zero speed. Ranged Fire, Hold, Vent, Repair, and Coolant Flush do not allow turning; never pivot in response to an enemy action. In contact, use close Fire, Assault in place, Hold, Vent, or Disengage. Vehicles need Flamers or Bypass to fight close. Disengage causes no damage if every touching enemy is shutdown.
 
 ## Attacks
 
-Choose one target and weapon. Check arc, sight, and range, including both endpoints.
+Choose one target and weapon unless named equipment permits more. Black Attack is Salvage: no attacks. Use the equipment sheet for Command, Bypass, support, and extra attacks. Check arc, sight, and range, including both endpoints.
 
 **Three dice + attack + modifiers ≥ defense = hit.**
 
@@ -59,9 +61,9 @@ Choose one target and weapon. Check arc, sight, and range, including both endpoi
 
 Weapon-type effects apply only to shooting.
 
-**Damage:** Printed value + heat → weapon effect → equipment/pilot bonus (maximum +1), battle armor bonus, DFA +2, critical bonus → damage limits → armor after Piercing. Damage may be zero.
+**Damage:** Printed value + heat → weapon effect → equipment/pilot bonus (maximum +1), battle armor bonus, DFA +2, critical bonus → damage limits → armor after Piercing. Then apply anti-missile protection and Agility. Armor is at most 2; ordinary Piercing ignores 1, Armor Piercing equipment ignores all. Damage may be zero.
 
-**Death from Above:** Declare before moving. Need blue or yellow speed, speed above zero, printed attack above zero, and primary damage above zero after heat. Jump some distance and land legally beside one enemy vehicle/’Mech, front arc touching; no other enemy contact. Target gets +2 defense. Deal primary damage +2; apply normal close modifiers, criticals, and armor. The +2 is outside the equipment/pilot cap. Take 1 unavoidable landing damage on a hit, or 2 on a miss or skipped attack after jumping; critical-miss damage is additional. Resolve target effects and landing damage before gaining 2 total heat if alive. No extra Jump heat, target pivot, displacement, or second attack. [Full DFA rule](core-rules.md#death-from-above).
+**Death from Above:** Declare before moving. Need blue speed, no Salvage, speed above zero, printed attack above zero, and primary damage above zero after heat. Jump some distance and land legally beside one enemy vehicle/’Mech, front arc touching; no other enemy contact. Target gets +2 defense. Deal primary damage +2; apply normal close modifiers, criticals, and armor. The +2 is outside the equipment/pilot cap. Take 1 unavoidable landing damage on a hit, or 2 on a miss or skipped attack after jumping; critical-miss damage is additional. Resolve target effects and landing damage before gaining 2 total heat if alive. No extra Jump heat, target pivot, displacement, or second attack. [Full DFA rule](core-rules.md#death-from-above).
 
 Against vehicles/’Mechs, conventional infantry deal at most 1 before armor. Exposed close assaults raise this to 2 with Piercing: rear contact, shutdown target, or attacker in woods/rubble/fieldworks. Battle armor gets +1 close damage and Piercing. Piercing ignores 1 armor; it does not add together.
 

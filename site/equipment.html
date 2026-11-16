@@ -32,7 +32,7 @@
       <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.3 / November 2026</span></div>
       <details class="toc-panel" open>
         <summary>On this page</summary>
-        <ol class="contents"><li class="level-h2"><a href="#combat-colors">Combat colors</a></li><li class="level-h2"><a href="#limits-and-exceptions">Limits and exceptions</a></li><li class="level-h3"><a href="#jump">Jump</a></li><li class="level-h2"><a href="#repair">Repair</a></li><li class="level-h2"><a href="#heat-colors">Heat colors</a></li></ol>
+        <ol class="contents"><li class="level-h2"><a href="#speed">Speed</a></li><li class="level-h3"><a href="#jump">Jump</a></li><li class="level-h2"><a href="#attack">Attack</a></li><li class="level-h3"><a href="#repair-and-coolant-flush">Repair and Coolant Flush</a></li><li class="level-h3"><a href="#bypass">Bypass</a></li><li class="level-h2"><a href="#defense">Defense</a></li><li class="level-h2"><a href="#ballistic-and-rocket-damage">Ballistic and Rocket damage</a></li><li class="level-h2"><a href="#energy-damage">Energy damage</a></li><li class="level-h2"><a href="#melee-damage">Melee damage</a></li><li class="level-h2"><a href="#limits">Limits</a></li><li class="level-h2"><a href="#heat-colors">Heat colors</a></li></ol>
       </details>
       <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html" aria-current="page">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="readiness.html">Readiness reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="builder.html">Force builder<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
       <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
@@ -43,118 +43,291 @@
         <h1>Equipment reference</h1>
         <div class="page-toolbar"><span class="version-tag">v0.3 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
       </div>
-      <article class="rule-content"><p>Version 0.3</p>
-<p>Look at the color behind the current number and use that number’s column below. For damage, use only the weapon you chose. These meanings replace the original equipment card.</p>
-<p>Equipment affects only the unit showing it. Read it at the start of each attack and keep those effects for that attack, even if damage changes the dial.</p>
-<h2 id="combat-colors">Combat colors</h2>
+      <article class="rule-content"><p>Version 0.3 · Restored equipment identities</p>
+<p>Read the color behind the current number. Speed, Attack, and Defense each have their own table. For damage, also check the <strong>printed weapon symbol</strong>: Ballistic and Rocket use the Ballistic table; Energy and Melee have separate tables. Changing a Ballistic weapon to a Rocket does not change its equipment.</p>
+<p>These are shorter Revived rules for the original named abilities, including purple equipment from Domination. Use the effects below, not the original rule text. White, yellow, and unlisted combat colors give no ability. Heat colors follow the separate heat rules. Circle and square backgrounds still work alike in Revived, with no consumable damage cost.</p>
+<p>Abilities apply while showing. Read equipment before each attack and keep it for that attack. A second attack reads the new dials. An ability is optional unless it is Salvage. Passive protection still works during Salvage or shutdown; shutdown prevents active abilities and Grapple.</p>
+<h2 id="speed">Speed</h2>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
 <thead>
 <tr>
 <th>Color</th>
-<th>Speed</th>
-<th>Attack</th>
-<th>Defense</th>
-<th>Damage</th>
+<th>Ability</th>
+<th>Effect</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Green</td>
+<td>Camouflage</td>
+<td>+1 ranged defense while in terrain cover.</td>
+</tr>
+<tr>
 <td>Red</td>
-<td>Rush: +2 inches</td>
-<td>+1 close attack</td>
-<td>Armor 1 against Energy shots</td>
-<td>Piercing: ignore 1 armor</td>
+<td>Evade</td>
+<td>+1 ranged defense; Disengage without damage.</td>
 </tr>
 <tr>
 <td>Blue</td>
-<td>Advance: +2 inches after halving speed; ’Mechs may also Jump</td>
-<td>Fire: +1 ranged attack</td>
-<td>Armor 1 against Ballistic or Rocket shots</td>
-<td>+1 damage against either infantry type</td>
+<td>Jump Jets</td>
+<td>May Jump; Disengage without damage.</td>
 </tr>
 <tr>
 <td>Black</td>
-<td>+1 ranged defense while in terrain cover</td>
-<td>Ignore 1 point of ranged terrain cover</td>
-<td>Armor 1 against any attack</td>
-<td>+1 damage against a target’s rear or a shutdown target</td>
+<td>Electronic Camouflage</td>
+<td>Cannot be targeted by indirect fire or Streak Missiles. Ordinary direct shots still work.</td>
 </tr>
 <tr>
 <td>Gray</td>
-<td>Disengage without taking damage</td>
-<td>May Repair</td>
-<td>+1 close defense</td>
-<td>+1 close damage</td>
+<td>Infiltrate</td>
+<td>Deploy after ordinary groups, up to 4 inches beyond your deployment zone.</td>
 </tr>
 <tr>
-<td>Green</td>
-<td>Ignore difficult terrain except water</td>
-<td>+1 ranged attack against a target with no terrain cover</td>
-<td>+1 ranged defense while in terrain cover</td>
-<td>+1 damage against vehicles and ’Mechs; conventional infantry instead get +1 against infantry</td>
-</tr>
-<tr>
-<td>Yellow</td>
-<td>Jump over terrain and bases; land in a legal position</td>
-<td>Ignore your weapon’s minimum range</td>
-<td>+1 ranged defense</td>
-<td>After a hit deals at least 1 damage to a surviving ’Mech, give it 1 heat</td>
+<td>Purple</td>
+<td>Reconnaissance</td>
+<td>If speed is above zero, add 2 inches to Move. This remains a normal activation and recovers readiness.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Unlisted or unreadable colors have no effect. Circle and square backgrounds work the same way; circles are not used up and cause no damage. Ignore printed ability names and letters. Note unfamiliar markings for later review.</p>
-<h2 id="limits-and-exceptions">Limits and exceptions</h2>
+<p><strong>Infiltrate:</strong> Every member of a group must show it at Start to use it. Place all ordinary groups first, then alternate infiltrating groups, starting with the player who deployed first. Keep every base at least 8 inches from enemies and outside the enemy deployment zone, in legal terrain. A loaded carrier cannot Infiltrate. A group may choose ordinary deployment instead. Use the starting click's allowance only; later Infiltrate clicks do not grant another deployment.</p>
+<h3 id="jump">Jump</h3>
+<p>Blue speed grants Jump to any unit. Ignore bases and terrain along the route, but your whole base must fit where you land. Vehicles and ’Mechs cannot land in fieldworks. Jump cannot be used with Rush. Other actions keep their usual movement allowance; Jump grants no extra distance.</p>
+<p>A ’Mech gains 1 extra heat when it Jumps. Death from Above already includes that heat in its total of 2. Infantry and vehicles ignore heat. Jump Jets and Evade waive Disengage damage even when you walk; Grapple overrides that benefit.</p>
+<p>An unengaged ’Mech with Jump may use <a href="rules.html#death-from-above">Death from Above</a>. An ordinary jumping Assault uses half speed, with no DFA damage bonus or landing damage.</p>
+<h2 id="attack">Attack</h2>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
 <thead>
 <tr>
+<th>Color</th>
+<th>Ability</th>
 <th>Effect</th>
-<th>Limit</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Equipment attack or defense bonus</td>
-<td>+1 each per attack, even if several colors apply</td>
+<td>Green</td>
+<td>Repair</td>
+<td>Use Repair to restore 1 click to an eligible friendly unit in base contact.</td>
 </tr>
 <tr>
-<td>Equipment and pilot damage bonuses</td>
-<td>+1 combined</td>
+<td>Red</td>
+<td>Bypass</td>
+<td>Use Bypass to take control of an empty enemy vehicle or ’Mech in Salvage or shutdown.</td>
 </tr>
 <tr>
-<td>Armor</td>
-<td>Reduce damage by at most 1</td>
+<td>Blue</td>
+<td>Improved Targeting</td>
+<td>+1 attack, ranged or close. Also applies to Bypass.</td>
 </tr>
 <tr>
-<td>Piercing</td>
-<td>Ignore at most 1 armor; extra sources add nothing</td>
+<td>Black</td>
+<td>Salvage</td>
+<td>May only Move, Hold, Vent, or Disengage. No attacks or active support abilities.</td>
 </tr>
 <tr>
-<td>Equipment movement bonus</td>
-<td>+2 inches per action</td>
+<td>Gray</td>
+<td>Command</td>
+<td>Once per army per round, link one nearby friendly group's activation to this group's activation.</td>
+</tr>
+<tr>
+<td>Purple</td>
+<td>Coolant Flush</td>
+<td>Use Coolant Flush to remove 2 heat from a friendly ’Mech in base contact.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Cover, rear attacks, shutdown, and weapon penalties are separate from equipment bonuses. Weapon damage bonuses, battle armor’s close bonus, and critical damage are separate from the +1 equipment/pilot limit.</p>
-<p>Infantry terrain defense is separate from the +1 equipment limit. Conventional infantry get +3 ranged defense in woods/rubble, or +4 ranged and +2 close defense in fieldworks. Battle armor gets +2 ranged in woods/rubble, or +3 ranged and +1 close in fieldworks. Use one terrain bonus, then apply equipment.</p>
-<p><strong>Conventional infantry:</strong> Red, blue, and black defense give +1 defense against the listed attack type instead of Armor 1. Their damage against vehicles and ’Mechs still follows the core limits.</p>
-<p><strong>Battle armor:</strong> Use the colors as written, plus its close-combat bonus and Piercing against vehicles and ’Mechs.</p>
-<p><strong>Vehicles:</strong> Equipment does not allow close attacks or improve unloaded passengers.</p>
-<p><strong>’Mechs:</strong> Using Jump adds 1 heat to the action. Infantry and vehicles ignore heat.</p>
-<p>No equipment here removes Ballistic recoil or allows Rocket fire during Advance.</p>
-<h3 id="jump">Jump</h3>
-<p>Blue speed grants Jump to ’Mechs, matching the Jump Jets color on the original figures. Yellow speed grants Jump to any unit. Blue keeps its +2-inch Advance bonus whether or not you Jump; a blue-speed jumping Assault still uses half speed, and DFA uses full speed without that bonus.</p>
-<p>You may choose whether to Jump. Ignore bases and terrain costs along the jumped route, but your whole base must fit where you land. Vehicles and ’Mechs still cannot land in fieldworks.</p>
-<p>Jump does not let you escape enemy contact for free: use Disengage and pay its damage unless another effect removes that cost.</p>
-<p>An unengaged ’Mech with Jump may choose <a href="rules.html#death-from-above">Death from Above</a>: jump up to full speed into a vehicle or ’Mech, with +2 target defense and +2 primary damage. The attacker takes 1 unavoidable landing damage on a hit or 2 on a miss, then gains 2 total heat if alive. The total already includes Jump heat. An ordinary jumping Assault still uses half speed and has no DFA bonus or landing damage.</p>
-<h2 id="repair">Repair</h2>
-<p>With gray attack, spend your action to heal one friendly unit touching your base. Neither unit may touch an enemy.</p>
-<p>Conventional infantry can repair only conventional infantry. Battle armor, vehicles, and ’Mechs can repair those three types. You cannot repair yourself, passengers, or destroyed units.</p>
-<p>Heal 1 combat-dial click, stopping at the starting position or a black repair mark. If a black mark is already visible, you cannot repair. You may heal onto a black mark, but not past it.</p>
-<p>Repair needs no attack roll. It does not cool heat, change squads, clear activation markers, or grant an action. A ’Mech using Repair gains 1 heat.</p>
+<p><strong>Salvage in squads:</strong> A salvaged member cannot attack or use active equipment. If the squad chooses an action it cannot perform, that member stays still and skips it. It still pays any squad pushing damage. A squad can recover normally. Salvage does not prevent contesting objectives or passive protection.</p>
+<p><strong>Command:</strong> After this group finishes its activation, one friendly, unactivated group within 6 inches of the commander may activate immediately. Then the opponent takes their turn. Every base of the chosen group must be within 6 inches. Both groups spend their normal activation; Command grants no second activation and cannot chain. The commander must be on the battlefield, not shutdown, and still show Command. Spent groups must still recover. One use per army per round, however many commanders it has.</p>
+<h3 id="repair-and-coolant-flush">Repair and Coolant Flush</h3>
+<p>Both actions stay still and require base contact. Neither unit may touch an enemy. You cannot target yourself or passengers. A ’Mech using either action gains 1 heat. Non-’Mechs leave readiness unchanged and cannot use either while Spent.</p>
+<p>Repair restores 1 combat click, stopping at Start or a black repair mark. If a repair mark is already showing, no repair is possible. Conventional infantry repair only conventional infantry; battle armor, vehicles, and ’Mechs repair those three types. Repair cannot restore a destroyed unit or cool heat.</p>
+<p>Coolant Flush removes 2 heat, stopping at the green heat Start. It can restart a shutdown ’Mech, but does not remove its activation marker. Neither action needs a roll, clears readiness, or grants an activation.</p>
+<h3 id="bypass">Bypass</h3>
+<p>Choose an enemy vehicle or ’Mech showing Salvage, or a shutdown ’Mech. It must carry no passengers and must not touch another unit friendly to its owner. The attacker needs Bypass and printed attack above zero, but needs no damage value. Any unit type may attempt it.</p>
+<p>Move up to half speed and finish in front-arc contact, or pivot in existing contact. Make one close attack using normal attack, rear, shutdown, and defense modifiers. On a hit, deal no damage: take control of the target. A critical hit gives no extra effect; a critical miss still deals 1 unavoidable damage to the attacker. Bypass is a combat order for readiness, or costs a ’Mech 1 heat, plus Jump heat if used.</p>
+<p>Mark the captured unit as already activated this round. Keep its dial, heat, readiness, and pilot; next round it is a separate group in its new army. It cannot immediately attack its former allies. Existing contacts remain until someone Disengages. Capture does not change either starting roster, force limits, or escape quota. For casualty scoring, a captured unit counts as lost by its original owner while enemy-controlled, or if later destroyed; count its points only once. If recaptured, it stops counting as lost until lost again. It contests and scores objectives for its current controller.</p>
+<h2 id="defense">Defense</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Ability</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>Decoy</td>
+<td>+1 ranged defense, in or out of cover.</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Reflective Armor</td>
+<td>Armor 2 against Energy shots.</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Reactive Armor</td>
+<td>Armor 2 against Ballistic and Rocket shots.</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>Hardened Armor</td>
+<td>Armor 2 against ranged and close attacks.</td>
+</tr>
+<tr>
+<td>Gray</td>
+<td>Heavy Armor</td>
+<td>Armor 1 against ranged and close attacks.</td>
+</tr>
+<tr>
+<td>Purple</td>
+<td>Advanced Anti-Missile System</td>
+<td>After armor, reduce Ballistic or Rocket damage to this unit or a friendly unit within 6 inches by 1.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Use only the best armor, up to 2. Ordinary Piercing ignores 1 armor; Armor Piercing equipment ignores all armor. Armor never reduces unavoidable damage. Conventional infantry replace any armor benefit with +1 defense against the same attack types.</p>
+<p>Only one anti-missile system may protect a target from each attack. It needs no sight, works after Piercing and armor, and can reduce damage to zero. It does not protect passengers separately while they are aboard or reduce close or unavoidable damage.</p>
+<h2 id="ballistic-and-rocket-damage">Ballistic and Rocket damage</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Ability</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>Homing Beacon</td>
+<td>Instead of damage, mark a vehicle or ’Mech you hit. Friendly Ballistic and Rocket shots ignore its terrain cover until round end.</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Armor Piercing</td>
+<td>Ranged attacks ignore all armor.</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Anti-Personnel</td>
+<td>After a ranged hit, one other enemy infantry base within 2 inches of the target takes 1 damage, reduced by its armor.</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>Streak Missiles</td>
+<td>With Fire, may ignore sight blockers at −1 damage. Keep range, arc, and cover; cannot target shutdown or Electronic Camouflage.</td>
+</tr>
+<tr>
+<td>Gray</td>
+<td>Point Defense System</td>
+<td>A friendly unit touching this unit may use this unit's printed defense if higher.</td>
+</tr>
+<tr>
+<td>Purple</td>
+<td>Artemis V Fire-Control System</td>
+<td>+1 ranged damage.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Homing Beacon is declared before rolling and deals no damage, including critical damage. The shot otherwise follows its weapon's normal rules. It does not grant sight, range, extra attacks, or another activation. Marking the same target again adds nothing. Remove the mark at round end, even if the firing unit is destroyed earlier.</p>
+<p>Anti-Personnel affects only one extra enemy infantry base, never the original target or a friendly base. Choose it after the hit; it need not be in sight or weapon range, but cannot touch a friendly unit. Apply its own armor and anti-missile protection. There is no extra roll, critical bonus, weapon bonus, or further splash.</p>
+<p>Streak is an alternative to a normal shot. It ignores blocking terrain and intervening bases, but not the prohibition on shooting into friendly contact. It takes no indirect-fire attack penalty and gets no rear bonus. Electronic Camouflage and shutdown block only the Streak option, not an otherwise legal ordinary shot. Rocket weapons still require Fire.</p>
+<p>Point Defense uses the donor's printed defense, never a value borrowed from another unit. The target then applies its own modifiers and equipment. It does not borrow armor. Passengers cannot provide or receive it while aboard.</p>
+<h2 id="energy-damage">Energy damage</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Ability</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>TSEMP</td>
+<td>After a ranged hit damages a surviving target, raise a non-’Mech group's readiness by one step, or give a ’Mech 1 heat.</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Pulse</td>
+<td>After a ranged hit, may make one more shot at the same target with −2 attack. A ’Mech gains 1 extra heat if it makes the second roll.</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Grapple</td>
+<td>Touching enemy vehicles and ’Mechs must pay Disengage damage, even if a pilot or equipment would waive it.</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>Alpha Strike</td>
+<td>’Mech only: with Fire, add 2 damage, then shut down.</td>
+</tr>
+<tr>
+<td>Gray</td>
+<td>Flamers</td>
+<td>May make a close attack with this weapon, even on a vehicle: +1 damage against infantry or vehicles; against ’Mechs, deal 2 heat instead of damage.</td>
+</tr>
+<tr>
+<td>Purple</td>
+<td>PPC Capacitor</td>
+<td>+1 ranged damage. A ’Mech gains 1 extra heat if used.</td>
+</tr>
+</tbody>
+</table></div>
+<p>TSEMP changes Ready to Committed or Committed to Spent; Spent stays Spent. It causes no pushing damage or immediate activation. A squad shares the changed state. Apply target heat normally, including shutdown and stress.</p>
+<p>Pulse's second attack uses the same weapon and requires a surviving, legal target and attacker. Read their new dials; loss of Pulse after the first attack prevents the second. It cannot trigger another Pulse. Pay action heat once and ordinary Energy heat once for the whole action, plus 1 for the second roll. Resolve critical-miss damage after each roll. A miss on the first attack grants no second attack.</p>
+<p>Grapple works while its Energy damage color is showing, even when using another weapon. It never increases Disengage damage beyond the usual 1 and does not operate while the grappler is shutdown or in Salvage. Multiple grapplers do not stack.</p>
+<p>Alpha Strike requires a functioning heat dial and is declared before rolling. Use damage at the current heat position; its +2 is outside the equipment/pilot bonus limit. Resolve the attack and any critical-miss damage, then turn the surviving attacker to its first shutdown position, even on a miss. This replaces all heat from that action. It gives no extra shot. A unit already shutdown cannot use it.</p>
+<p>Flamers may be used with Fire or Assault. Against a ’Mech, a hit deals only 2 heat, even on a critical hit; shutdown ’Mechs ignore it. Other close attacks remain available to units normally allowed to make them. No Energy shooting bonus or extra weapon heat applies to a close Flamer attack. Its +1 damage shares the equipment/pilot limit.</p>
+<h2 id="melee-damage">Melee damage</h2>
+<p>These abilities require a printed Melee damage symbol. Using an ordinary Ballistic or Energy value for a close attack does not turn its color into Melee equipment.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Ability</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>Full Strike</td>
+<td>With Fire or Assault, may attack all enemies touching your front arc. Roll once and compare against each target.</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Hand-to-Hand Weapon</td>
+<td>Before rolling, may choose to replace printed damage with one D6 on a hit; then apply heat and normal damage modifiers.</td>
+</tr>
+<tr>
+<td>Blue</td>
+<td>Rapid Strike</td>
+<td>After a close hit with Fire or Assault, may attack the same target once more. A ’Mech gains 1 extra heat if it makes the second roll.</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>Agility</td>
+<td>Damage received from a close attack is at most 1, after armor and all modifiers.</td>
+</tr>
+<tr>
+<td>Gray</td>
+<td>Brawling</td>
+<td>+1 close damage, including Death from Above.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Full Strike uses the same weapon against every target. Apply each target's modifiers separately; each hit deals the weapon's damage. Resolve targets in the attacker's chosen order, but use the equipment and values read before the roll. Pay critical-miss damage only once. It cannot be combined with another extra-attack effect or used with DFA.</p>
+<p>Rapid Strike follows Pulse's second-attack rules, without its −2 attack penalty or Energy heat. It cannot repeat itself or be used with DFA. Hand-to-Hand Weapon still requires a positive printed damage value before the attack. Agility is passive while showing on a Melee weapon, even if another weapon is used; it never limits pushing, landing, or other unavoidable damage.</p>
+<h2 id="limits">Limits</h2>
+<p>Equipment attack and defense bonuses each cap at +1 per attack. Flat equipment and pilot damage bonuses share a +1 cap. Alpha Strike's +2, replacement damage, extra attacks, weapon bonuses, battle armor's close bonus, DFA, and criticals are separate. Terrain, rear attacks, shutdown, and weapon penalties also apply separately.</p>
+<p>No equipment removes Ballistic recoil or allows Rockets to shoot during Advance. Most attacks still have one target and one roll; only the abilities above make exceptions. Borrowed defense, Command, and Homing Beacon are the specific exceptions to units supporting another unit's combat.</p>
 <h2 id="heat-colors">Heat colors</h2>
-<p>Apply printed heat modifiers to speed and the matching damage value. Ignore the original named heat abilities.</p>
-<p>After a heat gain, check for a colored warning other than green or plain white. If present, roll once for the ’Mech: on 1, take 1 unavoidable damage. A number alone is not a warning. Do not roll while cooling or shutdown.</p>
-<p>Three shutdown symbols stop further heating. Only Vent is allowed until cooling removes those symbols. See the <a href="rules.html#8-heat">core rules</a> for the full heat sequence and the <a href="pilots.html">pilot cards</a> for Engineer.</p>
+<p>Apply printed heat modifiers to speed and the matching damage. Revived still uses its simpler heat warnings, not the original named heat failures: after gaining heat, if a warning other than green or white is showing, roll once. On 1, take 1 unavoidable damage. Do not roll while cooling or shutdown. Three shutdown symbols allow only Vent until cooling removes them. See the <a href="rules.html#8-heat">heat rules</a>.</p>
 </article>
       <a class="next-page" href="pilots.html"><span>Continue reading<strong>Choose your pilots</strong></span><span aria-hidden="true">→</span></a>
       <div class="page-end"><span>MechWarrior Revived / Version 0.3</span><a href="#top">Back to top ↑</a></div>

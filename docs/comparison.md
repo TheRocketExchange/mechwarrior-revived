@@ -22,6 +22,7 @@ The downloaded **[Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHan
 | Victory | Win a majority of three conditions: elimination, battlefield control, and enemy deployment zone | Each scenario sets one mission and its scoring |
 | Pilots | Purchased cards modify ’Mechs | Four roles; one pilot allowance included in each ’Mech’s cost; no advancement |
 | Weapons | Energy, Ballistic, and Melee symbols | Separate Rocket labels; recoil, heat, and indirect fire give different tradeoffs |
+| Equipment | Colors name specific systems; damage colors depend on weapon type | Original identities restored, including purple equipment, with shorter effects. Command links existing activations; Bypass takes over crippled units |
 
 AoD formation bonuses require a legal formation and line of sight; simple adjacency is not enough. AoD infantry can also capture units, and its victory rules already include objectives beyond kills.
 
@@ -52,4 +53,4 @@ The first missions test holding ground, escaping, and capturing a station. Score
 
 Hold the Station lets any eligible unit contest. Infantry’s advantage is cover and access to fieldworks. If that proves too weak, test infantry-only capture later.
 
-Leave weather, reserves, faction restrictions, captives, and extra station attacks for later. Test pilots separately from point changes. The handbook gives useful ideas; balance and play time still need games.
+Single-faction lists and limited Bypass capture are now supported. Leave weather, reserves, escorting captives, and extra station attacks for later. The handbook gives useful ideas; balance and play time still need games.

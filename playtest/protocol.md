@@ -48,10 +48,14 @@ Use these additional short exercises before the first v0.3 game:
 | Spent squad with one engaged member | Engaged base Holds or Disengages; others Move or Hold; all keep the chain |
 | Split Spent squad near an exit or carrier | Regroup clears readiness but cannot exit or board; repeat regroup if still split |
 | Hold aboard, failed unload, forced evacuation | Only Hold clears passenger readiness; carrier state stays separate |
-| Speed 7 with blue speed; 2 or 3 inches through woods | Advance allowance 6; Gunner works at cost 4, not cost 6 |
+| Speed 7 with Jump Jets; walk or jump through woods | Advance allowance 4; walking 2 inches or jumping 4 both cost 4; Jump adds 1 heat |
 | Spent squad exits with Move | Allowed only when unengaged and all survivors can leave together; no regroup exit |
 
 Log actual attack rolls, recovery activations, pushing damage, losses caused by pushing, objective results, and minutes. Write each vehicle or squad’s action sequence so repeated Fire/Move and Fire/Fire/Hold patterns are visible. Include useful recovery moves and turns spent with no legal shot. These exercises and model outputs are not completed tabletop games.
+
+## Equipment exercises
+
+Check Salvage on a damaged attacker; a green-Attack repair crew; Command linking two unused activations without granting a second turn; Bypass capture and recapture; armor grades against Energy and Armor Piercing; and Pulse/Rapid Strike losing their second attack when the target dies. Try ECM against Streak, Flamers against infantry and a shutdown Mech, and infantry squads hit by TSEMP. Log how often support abilities and extra targets are actually available.
 
 ## Full games
 

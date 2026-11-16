@@ -8,7 +8,7 @@ Revived is a modernized, fan-made take on MechWarrior: Dark Age, using existing 
 | --- | --- | --- |
 | Conventional infantry | Hold cover and objectives; assault exposed armor | Vulnerable in the open; little damage against larger targets |
 | Battle armor | Fight vehicles and ’Mechs up close | Must reach them; gains less from fieldworks |
-| Vehicles | Move and fire; carry infantry | Cannot fight in close combat |
+| Vehicles | Move and fire; carry infantry | Need Flamers or Bypass to fight close |
 | ’Mechs | Bring firepower where it is needed | Heat forces pauses; damage weakens the dial |
 
 ## What stays
@@ -32,13 +32,14 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Infantry close assaults against exposed armor | Make terrain and timing matter |
 | Heat comes from actions; Hold and Vent cool | Fit heat to alternating activations |
 | Printed heat modifiers and one stress roll for colored warnings | Keep different heat tracks with fewer lookups |
-| Six equipment colors with new meanings | Use one reference across collections |
+| Original equipment identities with shorter effects and separate weapon tables | Keep repair crews, commanders, jump units, armor, and weapons recognizable |
 | Ballistic recoil, Energy heat, and stationary Rocket fire | Give each weapon a strength and a cost |
 | Up to two free carriers, each holding one squad | Make transport easy to test with existing figures |
 | Scenario-specific victory | Keep attention on the mission |
 | Four pilot roles, one included in each ’Mech’s cost | Add character without advancement |
 | One points formula for every unit | Price each complete click, giving early strength more weight while charging for how well the unit holds up |
 | Four game sizes with upper limits by unit type and three choices per chassis or infantry family | Support smaller and larger collections, including forces without ’Mechs, while limiting repetition |
+| Mixed or single-faction armies, using each figure's listed faction | Let players build a themed force without changing its points |
 
 There are no campaigns, pilot levels, custom units, or expansion rules in this version.
 
@@ -46,7 +47,7 @@ There are no campaigns, pilot levels, custom units, or expansion rules in this v
 
 Every unit still activates each round, but vehicles and infantry now need recovery. Check whether pushing creates useful urgent attacks and whether Move lets recovery serve the mission. Cheaper support units may increase army size. Cheap squads may still let a player delay important activations. Check cover, transport survival, and two- versus three-base squads.
 
-The [combat examples](combat-rhythm.md) explain the expected effects and the four-case comparison. Expanded original heat effects, equipment meanings, and more pilot abilities belong in a later pass.
+The [combat examples](combat-rhythm.md) explain the expected effects and the four-case comparison. Equipment now retains its original identity. Test Command timing, Bypass captures, extra attacks, and support opportunities before tuning their common point allowances. Expanded original heat effects and more pilot abilities belong in a later pass.
 
 The shared points formula is a starting estimate. The sample armies use several chassis and follow the Standard force limits. Test other chassis and heat tracks too, then adjust the shared weights if results show a consistent problem. Games at 600, 1,200, 1,800, and 2,400 points have their own unit, carrier, and pilot limits. The rule of three stays fixed. Larger tables gain width while retaining the 48-inch depth, so mission travel distances stay the same. Test each size’s force variety, activation counts, flank use, and play time.
 

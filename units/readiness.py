@@ -12,9 +12,9 @@ class Readiness(IntEnum):
     SPENT = 2
 
 
-COMBAT = {"Fire", "Advance", "Assault"}
+COMBAT = {"Fire", "Advance", "Assault", "Bypass"}
 RECOVERY = {"Move", "Hold", "Disengage", "Regroup"}
-OTHER = {"Rush", "Repair", "Embark", "Disembark"}
+OTHER = {"Rush", "Repair", "Coolant Flush", "Embark", "Disembark"}
 
 
 def order(state, action):

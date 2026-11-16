@@ -21,7 +21,7 @@ Agree on a [game size](../rules/core-rules.md#choose-the-battle-size). This layo
 | West flank rubble | x 3–9, y 27–33 |
 | East flank rubble | x 39–45, y 27–33 |
 
-The defender deploys first, entirely in **y 30–48**. The attacker then deploys entirely in **y 0–8**. Keep squads together and use legal terrain; vehicles and ’Mechs cannot enter fieldworks or the station.
+The defender deploys first, entirely in **y 30–48**. The attacker then deploys entirely in **y 0–8**. Keep squads together and use legal terrain; vehicles and ’Mechs cannot enter fieldworks or the station. Infiltrate follows its equipment rule after ordinary deployment.
 
 The attacker chooses who acts first in round 1. Roll initiative normally afterward. There are no reserves.
 

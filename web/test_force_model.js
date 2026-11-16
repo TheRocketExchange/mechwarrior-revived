@@ -127,4 +127,21 @@ test("starter patrols are legal Skirmish lists and produce seven assigned cards"
   for(const patrol of starter.forces){const force=model.parse(patrol),result=model.validate(force);assert.equal(force.game_size,"skirmish");assert.deepEqual(result.errors,[]);assert.equal(result.counts.models,7);assert.equal(force.groups.length,5);assert.equal(model.cards(force).length,7);assert.equal(result.counts.carriers,0);assert.equal(model.cards(force).filter(card=>card.squad==="C1").length,3);totals.push(result.points);}
   assert(Math.max(...totals)-Math.min(...totals)<=12);
 });
+test("factions persist, filter legality per base, and preserve mixed legacy lists",()=>{
+  assert.equal(model.parse({groups:[]}).faction,"");
+  const unit=model.units.get('D006'), force=model.parse({faction:unit.faction,groups:[{id:'C1',members:['D006','D006']}]});
+  assert.deepEqual(model.validate(force).errors,[]);
+  assert.equal(model.parse(JSON.parse(JSON.stringify(force))).faction,unit.faction);
+  const other=[...model.units.values()].find(u=>u.core_legal&&u.category===unit.category&&u.faction!==unit.faction);
+  force.groups[0].members[1]=other.id;
+  const groups=JSON.stringify(force.groups);
+  fails(force,/belongs to/);
+  assert.equal(model.cards(force)[1].unit.faction,other.faction);
+  force.faction='';assert.deepEqual(model.validate(force).errors,[]);
+  assert.equal(JSON.stringify(force.groups),groups);
+  for(const invalid of [null,{},12,'Invented','__proto__']) assert.throws(()=>model.parse({faction:invalid,groups:[]}),/faction/);
+  const mercenary=[...model.units.values()].find(u=>u.core_legal&&u.category==='Vehicle'&&u.faction==='Mercenary');
+  const single=model.parse({faction:'Spirit Cats',groups:[{id:'V1',members:[mercenary.id]}]});
+  fails(single,/Mercenary/);
+});
 console.log(`${tests} force-builder model checks passed.`);

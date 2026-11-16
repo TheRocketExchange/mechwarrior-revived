@@ -106,6 +106,7 @@ assert js("[...document.querySelectorAll('.unit-tile')].every(a=>{const u=MW_CAT
 input_value('#unit-sort','points')
 assert js("(()=>{const p=[...document.querySelectorAll('.unit-points')].map(p=>parseInt(p.textContent));return p.every((n,i)=>!i||n>=p[i-1])})()")
 open_page('unit.html?id=AOD108',"Boolean(document.querySelector('#dial-forward'))")
+assert js("document.querySelector('.weapon-table').textContent.includes('Pulse') && document.querySelector('.profile-summary').textContent.includes('Faction: Spirit Cats')")
 assert js("document.querySelector('h1').textContent==='Dasher II'")
 assert js("document.querySelector('.unit-assignment').textContent.includes('Roster ID') && document.querySelector('.unit-assignment').textContent.includes('Pilot:')")
 assert js("document.querySelector('.full-track').tagName==='SECTION' && getComputedStyle(document.querySelector('.full-track')).display!=='none'")
@@ -333,6 +334,32 @@ for patrol in (patrol_a,patrol_b):
     target_pdf.write_bytes(base64.b64decode(printout['data']))
     reader=PdfReader(target_pdf)
     assert len(reader.pages)==4 and sum(page.extract_text().count('Catalog ID:') for page in reader.pages)==7
+open_page('builder.html',"Boolean(document.querySelector('#force-faction'))")
+js("window.confirm=()=>true;document.querySelector('#force-new').click()")
+js("document.querySelector('#force-faction').value='Spirit Cats';document.querySelector('#force-faction').dispatchEvent(new Event('change'))")
+input_value('#force-query','AOD108')
+assert js("document.querySelectorAll('[data-add]').length===1 && document.querySelector('.force-unit').textContent.includes('Spirit Cats')")
+js("document.querySelector('[data-add]').click()")
+faction_roster=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
+assert faction_roster['faction']=='Spirit Cats' and len(faction_roster['groups'])==1
+js("document.querySelector('#force-faction').value='House Liao';document.querySelector('#force-faction').dispatchEvent(new Event('change'))")
+assert js("document.querySelector('#force-errors').textContent.includes('belongs to Spirit Cats') && document.querySelectorAll('[data-add]').length===0")
+assert js("JSON.parse(localStorage.getItem('mw-revived-force-v1')).groups")==faction_roster['groups']
+js("document.querySelector('#force-faction').value='Spirit Cats';document.querySelector('#force-faction').dispatchEvent(new Event('change'))")
+call('Page.reload');wait("document.readyState==='complete' && document.querySelector('#force-faction')?.value==='Spirit Cats'")
+assert js("document.querySelector('#force-check-title').textContent==='Within force limits'")
+call('Emulation.setDeviceMetricsOverride',{'width':390,'height':844,'deviceScaleFactor':1,'mobile':True})
+assert js("document.documentElement.scrollWidth<=innerWidth"),'Faction builder mobile overflow'
+screenshot('faction-builder-mobile')
+open_page('equipment.html',"document.body.textContent.includes('Salvage')")
+assert js("document.documentElement.scrollWidth<=innerWidth"),'Equipment mobile overflow'
+screenshot('restored-equipment-mobile')
+call('Emulation.setDeviceMetricsOverride',{'width':1100,'height':1100,'deviceScaleFactor':1,'mobile':False})
+call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#list='+quote(json.dumps(faction_roster))})
+wait("document.querySelector('.print-unit-card') && document.readyState==='complete'")
+assert js("document.querySelector('.pc-meta').textContent.includes('Faction: Spirit Cats') && document.querySelector('.card-sheet-label').textContent.includes('Spirit Cats')")
+assert js("document.querySelector('.pc-meta').getBoundingClientRect().bottom <= document.querySelector('.pc-profile').getBoundingClientRect().bottom+1"),'Faction metadata overlaps dial'
+screenshot('faction-unit-card')
 assert not exceptions,exceptions
 ws.close()
 print('Browser checks passed: catalog, dials, printing, mobile layouts, force building, assignments, saving, JSON export/import, invalid imports, and selected-card PDFs. No JavaScript exceptions.')

@@ -4,7 +4,7 @@ Version 0.3 · Vehicles and infantry squads · ’Mechs use heat instead.
 
 Start Ready. Track one state per vehicle or whole squad, separately from its activation marker. Keep readiness between rounds. [Print this sheet](readiness-reference.pdf) on US Letter paper.
 
-## Combat orders: Fire, Advance, Assault
+## Combat orders: Fire, Advance, Assault, Bypass
 
 | Before | After declaring | Pushing cost |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ One squad order; separate targets and rolls. Pay pushing damage even if a base s
 
 Choose Move (full speed, no attack) or Hold (stay still). Clear readiness after the group finishes. An engaged base must Hold or Disengage; other squad members may Move or Hold. Disengage keeps its damage cost and half-speed limit. Keep the squad together.
 
-Spent groups must recover next activation. Rush, Repair, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery does not heal damage or grant another activation. Spent units still count for passes and objectives.
+Spent groups must recover next activation. Rush, Repair, Coolant Flush, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery does not heal damage or grant another activation. Spent units still count for passes and objectives.
 
 ## Reminders
 

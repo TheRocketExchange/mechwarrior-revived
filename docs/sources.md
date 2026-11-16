@@ -11,6 +11,7 @@ Revived uses existing miniatures with new playtest rules. These sources explain 
 | [Age of Destruction Rules of Warfare](https://manualzz.com/doc/27785577/mechwarrior-age-of-destruction-board-game-user-manual), pp. 12–15, 19–23, 27, 29–31, 40–41 | Orders, formations, assault, heat, transport, and victory. Unit costs from p. 12 |
 | [Age of Destruction PDF](https://www.warrenborn.com/Files/Rules/MWAD_Rulebook_lo.pdf) | Original file; the text mirror above was used because this PDF exceeded the reader’s size limit |
 | [Age of Destruction equipment card](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf) | Color placement and heat markings, including blue speed for Jump Jets. Revived replaces the ability text |
+| [Domination rules](https://www.warrenborn.com/Files/Rules/MWDO_rules.pdf), pp. 1–2 | Purple Reconnaissance, Coolant Flush, Advanced Anti-Missile System, PPC Capacitor, and Artemis V Fire-Control System |
 | [Local Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHandbookv21.pdf) | Mike “Rimoran” McCarrig’s 116-page compilation, December 15, 2020 |
 | [Public Scenario Handbook v2.1](https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf) | Online copy of the booklet |
 | [WarrenBorn unit archive](https://www.warrenborn.com/UnitSection.html) and [full index](https://www.warrenborn.com/Search.php) | Miniature photos, collector IDs, combat dials, and heat tracks for the unit catalog |
@@ -30,7 +31,7 @@ Death from Above retains Dark Age’s Jump requirement, unengaged start, non-inf
 
 ## Using older figures
 
-The equipment sheet covers six colors. Unlisted markings have no effect; note them during tests. Original named heat effects and circle-use costs do not apply.
+Equipment retains the original names and color assignments, with shorter Revived effects. Ballistic/Rocket, Energy, and Melee damage use separate tables. Purple Domination equipment is included; white, yellow, and unlisted combat colors have no effect. Original named heat effects and circle-use costs still do not apply.
 
 Old symbols do not identify Rockets separately. Use fixed labels from an agreed source, or mark a Rocket test substitute. That label does not establish the figure’s original armament.
 
@@ -42,6 +43,6 @@ The catalog includes all **1,649 miniature entries** in WarrenBorn’s full inde
 
 Each collector variant keeps its own dial, photo, and cost. Quad ’Mechs use ’Mech rules. Gray Death Scout Armor and PAL suits use battle armor rules. Aircraft, aquatic units, colossal ’Mechs, artillery-only units, and DropShip sections are included for catalog completeness and marked as outside the core rules.
 
-For old Ballistic symbols, only an unambiguous single-weapon missile/LRM/SRM unit name identifies a Rocket. Other weapons remain Ballistic unless documented otherwise. Purple and other unlisted combat colors remain visible on the datasheets but give no Revived equipment effect.
+For old Ballistic symbols, only an unambiguous single-weapon missile/LRM/SRM unit name identifies a Rocket. Other weapons remain Ballistic unless documented otherwise. Named equipment is shown on the datasheets at the selected click; unlisted combat colors give no effect.
 
-Cached source pages, the import manifest, and the coverage report are in `units/`. This establishes coverage of the archive index; it is not an independent audit of every promotional release. Check an archive discrepancy against the physical dial before playing.
+Cached source pages, the import manifest, and the coverage report are in `units/`. This establishes coverage of the archive index; it is not an independent audit of every promotional release. Check an archive discrepancy against the physical dial before playing. The faction on each profile is the archive's allegiance for that exact figure; single-faction lists use that label without inferred allies.

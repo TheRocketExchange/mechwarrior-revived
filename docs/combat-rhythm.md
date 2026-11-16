@@ -36,7 +36,7 @@ This is a straight-line reach example, not a circular zone of guaranteed hits. B
 
 There is no new accuracy penalty. Moving Ballistics still have -1 recoil; Energy still trades penetration for heat; Rockets still require Fire. ’Mechs gain 1 heat for Move or 2 for Advance, plus any Energy or Jump heat.
 
-**Odd speed and equipment:** Speed 7 gives Advance 4. Blue speed raises that allowance to 6. Gunner still removes recoil only if movement costs 4 or less. Moving 2 inches through woods costs 4; moving 3 costs 6 and loses Gunner’s benefit. Blue speed does not increase Move.
+**Odd speed and equipment:** Speed 7 gives Advance 4. Blue speed grants Jump Jets, not extra distance. Walking 2 inches through woods costs 4; jumping 4 inches costs 4 and ignores the woods along the route. Gunner removes Ballistic recoil in either case. A jumping ’Mech also pays 1 Jump heat.
 
 ## A squad commits together
 
