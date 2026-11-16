@@ -1,6 +1,6 @@
 # Playtest plan
 
-Version 0.2
+Version 0.3
 
 Keep the rules, points formula, rosters, squads, and pilots the same for each game and its return match. Save proposed changes until both games are finished. No tabletop results have been recorded yet.
 
@@ -21,6 +21,31 @@ Use real bases and current dials. Reset damage and heat between exercises.
 | Fire versus Advance; Gunner just within and just beyond half speed, counting terrain | No general Advance penalty; Ballistic −1 recoil unless Gunner applies; Energy Advance costs 3 heat; Rockets cannot Advance-fire |
 
 Record how Rocket weapons were identified or marked as substitutes.
+
+## Compare v0.2 and v0.3
+
+Before the full matrix, use one matchup and map for the four cases in the [combat-rhythm examples](../docs/combat-rhythm.md): v0.2, readiness only, half-speed Advance only, and full v0.3. Play a return game for each case. Keep the exact figures, pilots, squad membership, terrain, and role pairings; do not add models to spend new cheaper prices yet. Use the same recorded v0.2 roster totals and Breakthrough threshold across these fixed-model tests.
+
+Cases that introduce readiness also introduce Move and its recovery, passenger, and exit rules. The movement-only case adds Move without readiness. In full v0.3, squads also use a common order. Log situations where that changes choices; if needed, repeat full v0.3 with separate squad orders to measure coordination on its own.
+
+Then rebuild to the v0.3 limit using the new costs and repeat the v0.2/v0.3 comparison, with each edition’s own roster totals and escape threshold. This separates the rule changes from the extra models a new price may buy. Keep a single formula version within each game and return pair.
+
+Use these additional short exercises before the first v0.3 game:
+
+| Try | Expected result |
+| --- | --- |
+| Fire, Fire, Move; then Fire, Hold, Fire | First sequence pushes once and recovers; second preserves the dial |
+| Rush or Repair while Committed | State stays Committed; the next combat order pushes |
+| A failed or declined attack while pushing | State becomes Spent; every surviving base still pays |
+| Critical miss while pushing, on two live clicks then one | Two clicks: pay miss then push and die. One click: die on the miss, no extra cost transferred |
+| Committed mixed-weapon squad chooses Advance with one blocked shot and one Rocket | Separate legal moves/shots; all survivors pay pushing damage |
+| Spent squad with one engaged member | Engaged base Holds or Disengages; others Move or Hold; all keep the chain |
+| Split Spent squad near an exit or carrier | Regroup clears readiness but cannot exit or board; repeat regroup if still split |
+| Hold aboard, failed unload, forced evacuation | Only Hold clears passenger readiness; carrier state stays separate |
+| Speed 7 with blue speed; 2 or 3 inches through woods | Advance allowance 6; Gunner works at cost 4, not cost 6 |
+| Spent squad exits with Move | Allowed only when unengaged and all survivors can leave together; no regroup exit |
+
+Log actual attack rolls, recovery activations, pushing damage, losses caused by pushing, objective results, and minutes. Write each vehicle or squad’s action sequence so repeated Fire/Move and Fire/Fire/Hold patterns are visible. Include useful recovery moves and turns spent with no legal shot. These exercises and model outputs are not completed tabletop games.
 
 ## Full games
 

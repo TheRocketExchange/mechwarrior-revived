@@ -10,12 +10,13 @@ The downloaded **[Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHan
 
 ## Rules compared
 
-| Topic | Age of Destruction | Revived v0.2 |
+| Topic | Age of Destruction | Revived v0.3 |
 | --- | --- | --- |
 | Activations | One order per 150 build points each player turn | Alternate groups; every group acts once per round |
-| Infantry | Temporary formations | Fixed squads of 2–3 bases; each keeps its own actions, targets, and damage |
+| Infantry | Temporary formations | Fixed squads of 2–3 bases share one order; each keeps its own targets, rolls, and damage |
 | Formation shooting | Eligible supporters add +2 each to the main attacker | Each base rolls its own attack; no ally accuracy bonus |
-| Move and attack | ’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty | Full-speed Advance shooting, with −1 only for Ballistic recoil. Infantry and ’Mechs Assault at half speed |
+| Move and attack | ’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty | Half-speed Advance shooting, with −1 only for Ballistic recoil. Move travels full speed without an attack. Infantry and ’Mechs Assault at half speed |
+| Pushing and recovery | Non-’Mechs normally take pushing damage for a second order token and cannot take orders with two tokens; a turn without an order clears tokens | Combat orders commit, then push. Move or Hold recovers. Spent units must recover; they still contest and count for passes |
 | Heat | Printed profiles, pushing, cooling, and heat effects | Printed tracks and numeric modifiers, heat per action, one stress rule for colored warnings |
 | Transport | Boarding and unloading use carrier movement; passengers are lost when it is destroyed | Squad spends its activation; carrier acts separately. Passengers may survive a destroyed carrier |
 | Victory | Win a majority of three conditions: elimination, battlefield control, and enemy deployment zone | Each scenario sets one mission and its scoring |
@@ -38,7 +39,7 @@ These are summaries of the booklet, followed by possible uses in Revived. They a
 | SC-005 Breaking The Line, p. 105 | 600 points face 900 with forward deployment; a unit must remain in the enemy deployment zone | Breakthrough uses equal points and an escape target so one cheap runner is not enough |
 | SC-003 Take The HPG Station, p. 104 | Contact with the station may grant an extra attack; normal victory rules remain | Use the station as the objective, without the extra attack |
 | SC-008 King of the Hill, p. 105 | Heat depends on actions rather than pushing/order tokens | Keep printed heat tracks but change when heat is gained |
-| SC-012 Fast and Furious, p. 106 | Vehicles can move half speed and shoot, with order-token costs | Test mobile vehicle fire; Revived allows full-speed Advance |
+| SC-012 Fast and Furious, p. 106 | Vehicles can move half speed and shoot, with order-token costs | Revived v0.3 also uses half-speed Advance, with combat orders advancing readiness |
 | SC-A03 Death March, p. 107 | More non-’Mech orders, with attack/defense penalties instead of pushing damage | A precedent for more active support units |
 | M-009 Control the City and M-010 Flush ’em Out, p. 12 | Missions involve reaching terrain and clearing cover | Possible follow-ups to Seize and Hold |
 
@@ -46,7 +47,7 @@ SC-001 Escape the City (p. 104) still uses normal victory rules. Despite its tit
 
 ## Choices for Revived
 
-Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Use action heat, mobile vehicle fire, and terrain worth holding.
+Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Version 0.3 adds pushing, recovery, half-speed Advance, and a common squad order. See the [worked examples](combat-rhythm.md) for their effects and the test comparison. These adapt the original rhythm without copying its order budget or combined-fire bonuses.
 
 The first missions test holding ground, escaping, and capturing a station. Score at round end so both players can respond. Old “per turn” effects need care: under alternating activations, they could trigger far more often.
 

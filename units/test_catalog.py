@@ -3,12 +3,15 @@ import copy
 import json
 import math
 import unittest
+import itertools
 from pathlib import Path
+from unittest.mock import patch
 
 from PIL import Image
 
 from parse_catalog import parse_unit
-from points import CONFIG, calculate, expected_damage, heat_output_factor, shot
+from points import CONFIG, calculate, expected_damage, heat_output_factor, offensive_rating, readiness_output, shot
+from readiness import Readiness, order, finish_action
 
 ROOT = Path(__file__).resolve().parent
 CATALOG = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
@@ -79,6 +82,29 @@ class CatalogChecks(unittest.TestCase):
 
 
 class PricingChecks(unittest.TestCase):
+    def test_half_speed_only_changes_moving_fire_reach(self):
+        unit = basic()
+        unit["track"][0]["speed"]["value"] = 7
+        click = unit["track"][0]
+        half = offensive_rating(unit, click)
+        click["speed"]["value"] = 8
+        self.assertEqual(offensive_rating(unit, click), half)
+        with patch.dict(CONFIG, advance_speed_fraction=1.0):
+            self.assertGreater(offensive_rating(unit, click), half)
+        click["speed"]["color"] = "blue"
+        self.assertGreater(offensive_rating(unit, click), half)
+        unit["weapons"][0]["type"] = "R"
+        rocket = offensive_rating(unit, click)
+        with patch.dict(CONFIG, advance_speed_fraction=1.0):
+            self.assertEqual(offensive_rating(unit, click), rocket)
+
+    def test_readiness_only_applies_to_non_mechs(self):
+        for category in ("Vehicle", "Conventional Infantry", "Battle Armor", "Mech"):
+            b = calculate(basic(category))["breakdown"]
+            self.assertEqual(b["readiness_factor"] == 1, category == "Mech")
+            if category != "Mech":
+                self.assertLess(b["firepower"], b["firepower_before_readiness"])
+
     def test_only_stats_affect_price(self):
         unit = copy.deepcopy(UNITS["AOD050"])
         before = calculate(unit)
@@ -138,6 +164,73 @@ class PricingChecks(unittest.TestCase):
         before = heat_output_factor(unit,"E")
         unit["vent"] += 2
         self.assertGreaterEqual(heat_output_factor(unit,"E"), before)
+
+
+class ReadinessChecks(unittest.TestCase):
+    def test_combat_push_and_recovery_sequences(self):
+        state, damage = Readiness.READY, 0
+        for action in ("Fire", "Fire", "Move", "Fire", "Hold", "Fire"):
+            state, push = order(state, action)
+            damage += push
+        self.assertEqual((state, damage), (Readiness.COMMITTED, 1))
+        for action in ("Fire", "Advance", "Assault", "Rush", "Repair", "Embark", "Disembark"):
+            with self.assertRaises(ValueError):
+                order(Readiness.SPENT, action)
+        for action in ("Move", "Hold", "Disengage", "Regroup"):
+            self.assertEqual(order(Readiness.SPENT, action), (Readiness.READY, 0))
+
+    def test_other_orders_preserve_readiness_and_passengers_are_separate(self):
+        passenger, carrier = Readiness.COMMITTED, Readiness.COMMITTED
+        for action in ("Embark", "Disembark", "Repair", "Rush"):
+            passenger, push = order(passenger, action)
+            self.assertEqual((passenger, push), (Readiness.COMMITTED, 0))
+        passenger, _ = order(passenger, "Hold")
+        self.assertEqual(passenger, Readiness.READY)
+        self.assertEqual(carrier, Readiness.COMMITTED)
+
+    def test_skipped_shots_critical_misses_and_push_deaths(self):
+        state, push = order(Readiness.COMMITTED, "Advance")
+        # Shared order, three independent bases: legal shot, no shot, critical miss.
+        live_after = [finish_action(live, miss, push) for live, miss in [(3, 0), (3, 0), (2, 1)]]
+        self.assertEqual((state, live_after), (Readiness.SPENT, [2, 2, 0]))
+        self.assertEqual(finish_action(1, 0, push), 0)  # final attack resolves, then death
+        self.assertEqual(finish_action(1, 1, push), 0)  # dies before pushing, no negative dial
+        self.assertEqual(finish_action(3, 0, 0), 3)  # another member never inherits a cost
+
+    def test_optimizer_matches_exhaustive_small_schedules(self):
+        # Independent oracle enumerates every attack/rest sequence, including
+        # weak later clicks, improving dials, and death during a push.
+        horizon = 7
+        for ratings in ([1], [10, 0], [0, 2, 4], [4, 2, 1], [0, 0]):
+            totals = []
+            for start in range(len(ratings)):
+                best = 0
+                for actions in itertools.product((False, True), repeat=horizon):
+                    click, state, value, legal = start, 0, 0, True
+                    for attack in actions:
+                        if click >= len(ratings):
+                            break
+                        if not attack:
+                            state = 0
+                        elif state == 2:
+                            legal = False
+                            break
+                        else:
+                            value += ratings[click]
+                            click += int(state == 1)
+                            state += 1
+                    if legal:
+                        best = max(best, value)
+                totals.append(best / horizon)
+            self.assertAlmostEqual(readiness_output(ratings, horizon), sum(totals) / len(totals))
+
+    def test_recovering_early_preserves_a_strong_click(self):
+        # F/H/F/H/F/F earns 40 on the good click, then pushes onto the dead weapon.
+        self.assertAlmostEqual(readiness_output([10, 0], 6), (40 / 6 + 0) / 2)
+        self.assertAlmostEqual(readiness_output([1], 24), 13 / 24)
+        self.assertEqual(readiness_output([0, 0]), 0)
+        with self.assertRaises(ValueError):
+            readiness_output([], 24)
 
 
 if __name__ == "__main__":

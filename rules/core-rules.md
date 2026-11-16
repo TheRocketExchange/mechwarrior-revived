@@ -1,6 +1,6 @@
 # MechWarrior Revived core rules
 
-Version 0.2 · Playtest rules
+Version 0.3 · Playtest rules
 
 Use your existing MechWarrior clix figures and the numbers on their dials. These rules cover a two-player game with 4–8 ’Mechs per side, plus vehicles and infantry.
 
@@ -26,9 +26,9 @@ Leave out aircraft, artillery-only and aquatic-only units, colossal ’Mechs, Dr
 
 ## 2 Prepare the table
 
-You need a 48 × 48 inch table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Each [scenario](../scenarios/01-seize-and-hold.md) gives its terrain layout and deployment zones.
+You need a 48 × 48 inch table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use separate markers or the [readiness sheet](readiness-reference.md) for vehicles and squads. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Each [scenario](../scenarios/01-seize-and-hold.md) gives its terrain layout and deployment zones.
 
-Set combat dials to their starting marks and heat dials to their green starting positions. If a dial is jammed, use a written copy of its track. Agree on terrain boundaries and unclear colors before deploying.
+Set combat dials to their starting marks and heat dials to their green starting positions. All vehicles and squads start Ready. If a dial is jammed, use a written copy of its track. Agree on terrain boundaries and unclear colors before deploying.
 
 Unless the scenario says otherwise:
 
@@ -42,43 +42,60 @@ Deployment order does not decide who acts first.
 
 An **activation group** is one ’Mech, one vehicle, or one infantry squad. Each surviving group acts once per round.
 
-1. Remove activation markers. Roll one die each and reroll ties. The winner chooses who goes first.
+1. Remove activation markers; keep readiness and heat. Roll one die each and reroll ties. The winner chooses who goes first.
 2. Take turns activating one group that has not acted. Mark it when finished.
 3. Once every group has acted, score the scenario, check for victory, and begin the next round.
 
-For a squad, finish one base’s action before starting the next. Each may choose its own action and target. Read the target’s new dial after every attack. Destroyed units cannot act.
+Choose **one action for the whole squad**, then finish one base before starting the next. Each base uses its own speed, weapon, and target, and rolls its own attack. A base unable to carry out part of the action skips that part; it cannot choose a different action. Read the target’s new dial after every attack. Destroyed units cannot act. Recovery and regrouping have an exception for bases that must Disengage, described below.
 
-**Passing:** You may pass only when you have fewer groups left to activate than your opponent. If you have none, you must pass. Count passengers and shutdown ’Mechs: they can Hold aboard or Vent. Passing does not use a group’s activation.
+**Passing:** You may pass only when you have fewer groups left to activate than your opponent. If you have none, you must pass. Count Spent groups, passengers, and shutdown ’Mechs: they can recover, Hold aboard, or Vent. Passing does not use a group’s activation or change readiness.
 
-There is no pushing damage for acting in consecutive rounds, and no cooling at round end. If neither side has units left on the board or aboard carriers, score that round and use the scenario’s final result.
+There is no automatic recovery or cooling at round end. If neither side has units left on the board or aboard carriers, score that round and use the scenario’s final result.
+
+### Readiness and pushing
+
+Each vehicle and each infantry squad has one readiness state. ’Mechs use heat instead.
+
+| Before a Fire, Advance, or Assault order | After declaring it | Cost |
+| --- | --- | --- |
+| Ready | Committed | None |
+| Committed | Spent | Each surviving base takes 1 unavoidable damage after finishing its action |
+| Spent | Must recover | No combat order allowed |
+
+The second combat order is **pushing**. It need not happen in the very next round: readiness stays until the group recovers. Pay pushing damage even if a base misses, skips its attack, or has no legal target. A critical miss deals its own damage first; a surviving attacker still pays pushing damage. Stop at destruction and never transfer a casualty’s cost to another base.
+
+To **recover**, choose Move or Hold. After the group finishes, set it to Ready. Move uses full speed with no attack; Hold stays still. While engaged, use Hold or Disengage instead. In a recovering squad, each member may Move or Hold; an engaged member must Hold or Disengage. Keep the squad together. Disengage keeps its normal damage cost and half-speed limit.
+
+A Spent group must recover on its next activation. Rush, Repair, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery never heals damage, grants another activation, or prevents a unit from contesting objectives.
 
 ### Keeping squads together
 
 At deployment and at the end of an activation, a squad must form one connected chain. Neighboring base centers can be no more than 4 inches apart. Bases may move out of that chain while the squad is acting, but must finish together.
 
-If casualties or a destroyed carrier leave a squad split, it must **regroup** next activation. Each base may move up to its speed, or Disengage if touching an enemy. It cannot attack, repair, board, or score an exit. Rejoin the chain if possible; otherwise close the gaps as much as possible. No one takes damage for being out of formation. A lone survivor always counts as together.
+If casualties or a destroyed carrier leave a squad split, it must **regroup** next activation, even if Spent. Each base may move up to its speed, Hold if already in place, or Disengage if touching an enemy. It cannot attack, repair, board, or score an exit. Rejoin the chain if possible; otherwise close the gaps as much as possible. Finishing this activation clears readiness, even if the gaps cannot all close; a squad still split must regroup again next time. No one takes damage just for being out of formation. A lone survivor always counts as together.
 
 ## 4 Actions
 
-Each base takes one action per activation. **Speed** means its current printed speed plus any heat modifier, never less than zero. Round half speed up. Add movement bonuses from equipment after halving or doubling speed. You may move less than the allowance.
+Each group chooses one action per activation. **Speed** means its current printed speed plus any heat modifier, never less than zero. Round half speed up. Add movement bonuses from equipment after halving or doubling speed. You may move less than the allowance.
 
 | Action | What you do | ’Mech heat |
 | --- | --- | --- |
 | Fire | Stay still; make one ranged or close attack | +1 |
-| Advance | Move up to your speed, then make one ranged attack | +2 |
+| Advance | Move up to half speed, then make one ranged attack | +2 |
+| Move | Move up to your speed; no attack; non-’Mechs recover | +1 |
 | Rush | Move up to twice your speed; no attack | +1 |
 | Assault | Infantry or ’Mech: move up to half speed, then make one close attack | +1 |
 | Disengage | Leave enemy contact; move up to half speed; no attack | +1 |
-| Hold | Stay still; no attack | Cool 1 |
+| Hold | Stay still; no attack; non-’Mechs recover | Cool 1 |
 | Vent | ’Mech: stay still; cool by your printed vent rating, at least 1 | Cooling only |
 | Repair | Use gray attack equipment; stay still and repair one friendly unit | +1 |
 | Embark or Disembark | Board or leave a carrier with the whole squad; see Transport | None |
 
-Advance has no attack penalty of its own. Moving or turning before a Ballistic shot causes −1 attack for recoil; Gunner can remove it during a half-speed Advance. Rockets can shoot only with Fire.
+Advance has no attack penalty of its own. Moving or turning before a Ballistic shot causes −1 attack for recoil. Gunner removes it if movement costs no more than half speed, rounded up; equipment may allow an Advance beyond that limit. Rockets can shoot only with Fire.
 
 A ’Mech adds **1 extra heat** if it rolls an Energy attack. Add this to the action heat, even on a miss. Pay the action’s heat even if you skip a shot or cannot make it; add no Energy heat without a roll. Destroyed ’Mechs take no further heat.
 
-You may check whether an action is possible before choosing it. If you declare an action you cannot finish, carry out the legal parts, lose any unavailable attack, and pay its heat.
+You may check whether an action is possible before choosing it. If you declare an action you cannot finish, carry out the legal parts, lose any unavailable attack, and pay its heat or pushing cost. Readiness still changes.
 
 ## 5 Movement and facing
 
@@ -92,7 +109,7 @@ Infantry can attack in any direction and have no rear arc. Vehicles and ’Mechs
 
 Stop when your base touches an enemy. You are now **engaged**.
 
-While engaged, you may Fire a close attack, Assault in place, Hold, Vent, or Disengage. An Assault may turn to face the enemy but cannot move away. Vehicles cannot make close attacks. You cannot shoot, repair, Advance, Rush, board, or unload normally while engaged.
+While engaged, you may Fire a close attack, Assault in place, Hold, Vent, or Disengage, subject to readiness or shutdown limits. An Assault may turn to face the enemy but cannot move away. Vehicles cannot make close attacks. You cannot shoot, repair, Move, Advance, Rush, board, or unload normally while engaged. In a recovering squad, engaged members may Hold or Disengage while the others Move or Hold.
 
 To **Disengage**, take 1 unavoidable damage before moving if any touching enemy is not shutdown. Pay once, however many enemies touch you. If destroyed, remove the unit. Otherwise move up to half speed, without touching a new enemy. A pilot or equipment may remove the damage cost. There is no damage cost if all touching enemies are shutdown.
 
@@ -156,7 +173,7 @@ See the [weapon reference](weapon-reference.md) for labels and examples.
 2. Roll all three dice. Add their total to your attack value and modifiers. Equal or beat the target’s defense to hit.
 3. **Both white dice show 6:** hit automatically and add 1 damage. **Both show 1:** miss automatically and take 1 unavoidable damage. The third die does not change either result.
 4. On a hit, work out damage below and click the target’s combat dial. Stop at three bullet holes: the unit is destroyed. Remove it; never click past destruction.
-5. Apply any heat dealt to the target by equipment, including its stress check. Then apply the attacker’s heat. A surviving attacker still pays heat after a critical miss.
+5. Apply any heat dealt to the target by equipment, including its stress check. Then apply the attacker’s heat or pushing damage. A surviving attacker still pays after a critical miss. Finish this before starting the next squad member.
 
 | Situation | Modifier |
 | --- | --- |
@@ -209,9 +226,9 @@ Roll only once, even with several colored warnings. A number without a colored b
 
 ## 9 Transport
 
-Each carrier holds one whole infantry squad. No partial squads, mixed squads, vehicles, or ’Mechs may ride. Keep passengers beside the roster with their current dials.
+Each carrier holds one whole infantry squad. No partial squads, mixed squads, vehicles, or ’Mechs may ride. Keep passengers beside the roster with their current dials and readiness. Carrier and squad always track readiness separately.
 
-Passengers may Hold or Disembark on their squad’s activation. They cannot attack, repair, be targeted, use equipment, or control objectives while aboard. The carrier moves and fires normally.
+Passengers may Hold or Disembark on their squad’s activation. Hold clears their readiness. A Spent squad must Hold before it can unload on a later activation. Boarding, unloading, and forced evacuation never clear readiness. Passengers cannot attack, repair, be targeted, use equipment, or control objectives while aboard. The carrier follows its own action and readiness rules.
 
 ### Embark
 
@@ -227,13 +244,13 @@ Remove the squad and mark it activated. If any condition fails, the bases stay w
 
 Activate the passenger squad. Its carrier must not touch an enemy. Place the whole squad within 3 inches of the carrier’s center, in legal terrain, in its 4-inch chain, and outside enemy contact.
 
-This uses the squad’s activation: no further move, attack, or boarding. If the whole squad cannot fit, it stays aboard and Holds. The carrier’s activation is unaffected.
+This uses the squad’s activation: no further move, attack, or boarding. If the whole squad cannot fit, it stays aboard; the failed Disembark still uses its activation and leaves readiness unchanged. The carrier’s activation is unaffected.
 
 ### Carrier destroyed
 
 Finish the attack, then give each passenger 1 unavoidable damage. Remove casualties and the carrier. Place survivors within 3 inches of the carrier’s former center, in legal terrain and outside enemy contact; you may use the space the carrier occupied.
 
-Save as many bases as can fit. Remove any that cannot be placed. Mark the surviving squad activated, even if it had not acted. If it is split, it must regroup next round. Leave no wreck.
+Save as many bases as can fit. Remove any that cannot be placed. Mark the surviving squad activated, even if it had not acted, and keep its readiness. If it is split, it must regroup next round. Leave no wreck.
 
 A squad cannot board and unload in the same round or gain another activation when its carrier is destroyed. In Breakthrough, passengers exit with their carrier and score their own Revived points once.
 
@@ -241,7 +258,7 @@ A squad cannot board and unload in the same round or gain another activation whe
 
 You control an objective when at least one of your base centers is within 3 inches and no enemy base center is. If both sides are present, it is **contested** and neither controls it.
 
-Shutdown ’Mechs, passengers, and units that have left the board do not count. Engaged units and units with zero attack or damage still count. Squad members may contest different sites if they keep their 4-inch chain. Moving away gives up control.
+Shutdown ’Mechs, passengers, and units that have left the board do not count. Spent and engaged units, and units with zero attack or damage, still count. Squad members may contest different sites if they keep their 4-inch chain. Moving away gives up control.
 
 The scenario sets when to score, how the game ends, and how to handle ties. Destroying units earns no points unless the scenario says so. Read the victory conditions before deployment.
 

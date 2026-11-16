@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242624">
+  <meta name="description" content="MechWarrior Revived: a playtest rulebook for existing clix miniatures. Rules, scenarios, sample forces, and printable pilot cards.">
+  <title>How v0.3 changes a battle · MechWarrior Revived</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="search-index.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the rules</a>
+  <header class="masthead" id="top">
+    <div class="masthead-inner">
+      <a class="brand" href="index.html" aria-label="MechWarrior Revived home">
+        <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M38 3 72 22v42L38 83 4 64V22Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
+      </a>
+      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.3</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
+    </div>
+  </header>
+  <div class="nav-band">
+    <div class="nav-inner">
+      <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html">Rules</a><a href="units.html">Units</a><a href="forces.html">Forces</a><a href="scenarios.html">Scenarios</a><a href="aids.html">Game aids</a><a href="design.html" aria-current="page">Development</a></nav>
+      <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="Rulebook navigation">
+      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.3 / November 2026</span></div>
+      <details class="toc-panel" open>
+        <summary>On this page</summary>
+        <ol class="contents"><li class="level-h2"><a href="#push-now-or-preserve-the-dial">Push now or preserve the dial</a></li><li class="level-h2"><a href="#the-moving-firing-line-gets-shorter">The moving firing line gets shorter</a></li><li class="level-h2"><a href="#a-squad-commits-together">A squad commits together</a></li><li class="level-h2"><a href="#passengers-and-objectives">Passengers and objectives</a></li><li class="level-h2"><a href="#what-the-points-model-can-tell-us">What the points model can tell us</a></li><li class="level-h2"><a href="#compare-four-cases">Compare four cases</a></li></ol>
+      </details>
+      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="readiness.html">Readiness reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
+      <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading">
+        <p class="eyebrow">Development / Worked examples</p>
+        <h1>How v0.3 changes a battle</h1>
+        <div class="page-toolbar"><span class="version-tag">v0.3 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
+      </div>
+      <article class="rule-content"><p>Version 0.3 · Worked examples, not playtest results.</p>
+<p>Vehicles and infantry now have a reason to pause, and moving into firing range takes more commitment. Squads choose a common order while keeping their separate attacks. These changes bring back some of the original game’s pacing within Revived’s alternating activations.</p>
+<h2 id="push-now-or-preserve-the-dial">Push now or preserve the dial</h2>
+<p>Consider a vehicle with a target available throughout six activations. Ignore enemy damage and critical misses for this example.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Schedule</th>
+<th style="text-align:right">Attacks</th>
+<th style="text-align:right">Recovery actions</th>
+<th style="text-align:right">Pushing damage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0.2: Fire six times</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>v0.3: Fire, Hold, Fire, Hold, Fire, Hold</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>v0.3: Fire, Fire, Hold, Fire, Fire, Hold</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td>v0.3: Fire, Hold, Fire, Hold, Fire, Fire</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>The last two patterns make the same number of attacks, but at different times and costs. Pushing early can remove a threat before it acts or help win an objective this round. Waiting preserves good dial values. Near the end of a game, future recovery matters less. These are illustrative schedules, not a claim that one is always best.</p>
+<p>Move can replace Hold when unengaged. Recovery can therefore advance toward cover or an objective. Rush goes farther but leaves readiness unchanged. A Committed unit that Rushes is still Committed when it next fires.</p>
+<p>Pushing uses the dial <strong>before</strong> taking its damage. A vehicle on its last live click can make that final attack, then be destroyed by its push. If a critical miss destroys it first, it does not pay a second damage or pass damage to an ally.</p>
+<h2 id="the-moving-firing-line-gets-shorter">The moving firing line gets shorter</h2>
+<p>For speed 8 and range 12 on open ground, with clear sight and no equipment bonus:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Choice</th>
+<th style="text-align:right">Movement</th>
+<th style="text-align:right">Furthest shot from the starting center</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fire</td>
+<td style="text-align:right">0 inches</td>
+<td style="text-align:right">12 inches</td>
+</tr>
+<tr>
+<td>v0.2 Advance</td>
+<td style="text-align:right">8 inches</td>
+<td style="text-align:right">20 inches</td>
+</tr>
+<tr>
+<td>v0.3 Advance</td>
+<td style="text-align:right">4 inches</td>
+<td style="text-align:right">16 inches</td>
+</tr>
+<tr>
+<td>v0.3 Move</td>
+<td style="text-align:right">8 inches</td>
+<td style="text-align:right">No shot</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is a straight-line reach example, not a circular zone of guaranteed hits. Bases, arcs, terrain, and blockers still matter. Half-speed Advance gives an opponent more room to approach without immediately entering a moving shot. It also makes a firing position worth preparing with a Move or Rush.</p>
+<p>There is no new accuracy penalty. Moving Ballistics still have -1 recoil; Energy still trades penetration for heat; Rockets still require Fire. ’Mechs gain 1 heat for Move or 2 for Advance, plus any Energy or Jump heat.</p>
+<p><strong>Odd speed and equipment:</strong> Speed 7 gives Advance 4. Blue speed raises that allowance to 6. Gunner still removes recoil only if movement costs 4 or less. Moving 2 inches through woods costs 4; moving 3 costs 6 and loses Gunner’s benefit. Blue speed does not increase Move.</p>
+<h2 id="a-squad-commits-together">A squad commits together</h2>
+<p>A Committed three-base squad chooses Advance. The first base fires, the second has a blocked shot, and the third carries only Rockets. Each may move its own half-speed allowance. Only the first can shoot; all three surviving bases take 1 pushing damage after their own actions. The squad ends Spent.</p>
+<p>With Fire instead, the Rocket base could shoot if it had a legal target. The other members would stay still and could choose different targets. No member adds to another member’s attack roll. The decision is now about coordinating positions and weapon needs, without building combined-fire bonuses.</p>
+<p>On recovery, a member touching an enemy may Hold or Disengage while the others Move or Hold. A split squad must follow regroup movement and cannot use that activation to board or score an exit. A sole survivor keeps the squad’s readiness.</p>
+<h2 id="passengers-and-objectives">Passengers and objectives</h2>
+<p>A Committed squad can board and later unload, but both leave it Committed. Hold aboard clears it while the carrier takes its own action. A Spent squad aboard must Hold before unloading on a later activation. Destruction of the carrier forces evacuation without clearing passenger readiness.</p>
+<p>Spent units still contest objectives and count when checking whether a player can pass. In Breakthrough, Move lets an unengaged Spent group recover while exiting; an on-foot squad must leave together. A group cannot score an exit while regrouping.</p>
+<h2 id="what-the-points-model-can-tell-us">What the points model can tell us</h2>
+<p>The <a href="points.html">calculator</a> compares attack and recovery choices over 24 actions, following each actual damage dial. It can recover early to save a strong click, push through a weak one, or spend a final click on one last attack. It averages across live starting clicks so a unit is valued beyond its opening profile.</p>
+<p>This estimates sustained firepower. It does not know where objectives are, what an enemy will do, or whether three squad members can all get a shot. More affordable support units may also mean more bodies and activations at the same points limit. Test fixed armies first to isolate the rules, then rebuilt armies to see the effect of prices.</p>
+<h2 id="compare-four-cases">Compare four cases</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Readiness</th>
+<th>Advance</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: v0.2 baseline</td>
+<td>None</td>
+<td>Full speed</td>
+<td>Previous rules</td>
+</tr>
+<tr>
+<td>B: readiness only</td>
+<td>v0.3</td>
+<td>Full speed</td>
+<td>Isolate pauses and pushing</td>
+</tr>
+<tr>
+<td>C: movement only</td>
+<td>None</td>
+<td>Half speed</td>
+<td>Isolate moving shot reach</td>
+</tr>
+<tr>
+<td>D: v0.3 core</td>
+<td>v0.3</td>
+<td>Half speed</td>
+<td>Test the combined change</td>
+</tr>
+</tbody>
+</table></div>
+<p>Keep the exact miniatures, pilots, squads, map, and deployment roles for the first comparison. Cases B and C are test variants, not alternate published core rules. Keep v0.2 squad action choices in A, B, and C; in D use the shared squad order. Record when that extra change matters, since D is not a pure two-variable comparison. If it seems important, repeat D once with separate squad orders to isolate coordination.</p>
+<p>Use the same fixed roster costs and Breakthrough threshold across that first comparison; do not mix formula editions within a game. Then rebuild to the v0.3 points limit and repeat A/D with each edition’s own costs. Play return games with sides exchanged. Log attacks, recovery actions, pushing damage and losses, objective results, time, and each group’s action sequence. Full instructions and blank tables are in the <a href="playtest.html">playtest plan</a> and <a href="log.html">game log</a>.</p>
+<p><a href="https://github.com/TheRocketExchange/mechwarrior-revived/tree/v0.2">The v0.2 release</a> preserves the previous rules and costs. Equipment meanings, expanded original heat effects, and additional pilots are reserved for a later review.</p>
+</article>
+      
+      <div class="page-end"><span>MechWarrior Revived / Version 0.3</span><a href="#top">Back to top ↑</a></div>
+    </main>
+  </div>
+  <footer class="site-footer"><div><a href="index.html" class="footer-brand">MechWarrior <strong>Revived</strong></a><p>An unofficial fan rules project. All game names and trademarks belong to their respective owners.</p></div><div class="footer-links"><a href="design.html">Design notes</a><a href="sources.html">Sources</a><a href="comparison.html">Rules comparison</a><a href="https://www.net-armageddon.org/">Layout inspired by NetEA ↗</a></div></footer>
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-heading"><h2 id="search-title">Search the rulebook</h2><button class="close-search" type="button" aria-label="Close search">×</button></div>
+    <label class="visually-hidden" for="rule-search">Search rules, scenarios, and references</label>
+    <input id="rule-search" type="search" placeholder="Try heat, rockets, or transport…" autocomplete="off" spellcheck="false">
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <div class="search-results"></div>
+    <p class="search-hint">Search works offline. <kbd>Esc</kbd> to close.</p>
+  </dialog>
+</body>
+</html>

@@ -22,8 +22,9 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Rule | Purpose |
 | --- | --- |
 | Alternate one ’Mech, vehicle, or squad; everyone acts once per round | Keep both players involved |
-| Fixed squads of 2–3 infantry bases | Reduce waiting through many cheap activations |
-| Advance allows movement and shooting without a general attack penalty | Encourage maneuver and mobile vehicle support |
+| Fixed squads of 2–3 infantry bases, with one shared order | Reduce waiting and make weapon positions a squad decision |
+| Advance shoots after a half-speed move, with no general attack penalty | Keep mobile fire while making prepared positions matter |
+| Combat orders commit then push vehicles and squads; Move or Hold recovers | Restore pauses and decisions about spending the damage dial |
 | Each base attacks separately, without ally accuracy bonuses | Let infantry earn their place through their own actions |
 | Stronger infantry cover and close assaults against exposed armor | Make terrain and timing matter |
 | Heat comes from actions; Hold and Vent cool | Fit heat to alternating activations |
@@ -39,7 +40,9 @@ There are no campaigns, pilot levels, custom units, or expansion rules in this v
 
 ## What needs testing
 
-Every unit acting each round may make fights much deadlier. Cheap squads may still let a player delay important activations. Check cover, transport survival, and two- versus three-base squads.
+Every unit still activates each round, but vehicles and infantry now need recovery. Check whether pushing creates useful urgent attacks and whether Move lets recovery serve the mission. Cheaper support units may increase army size. Cheap squads may still let a player delay important activations. Check cover, transport survival, and two- versus three-base squads.
+
+The [combat examples](combat-rhythm.md) explain the expected effects and the four-case comparison. Expanded original heat effects, equipment meanings, and more pilot abilities belong in a later pass.
 
 The shared points formula is a starting estimate. Test wider ranges of chassis and heat tracks after the first sample armies, then adjust the shared weights if results show a consistent problem.
 

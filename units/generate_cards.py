@@ -129,6 +129,7 @@ def card(pdf, commands, images, unit, x, y):
         text(commands, x+12, y+64, f"Vent {unit['vent']}   Pilot: __________________", 8)
     else:
         text(commands, x+12, y+64, "Squad / carrier: ____________________", 8)
+        text(commands, x+12, y+54, "Readiness:  Ready  /  Committed  /  Spent", 6.5, color=MUTED)
     note = "Starting values. Use the current dial during play." if unit["core_legal"] else "Outside the current core rules. Cost is an estimate."
     for i,line in enumerate(wrap(note,225,7)):
         text(commands,x+12,y+47-i*9,line,7,color=MUTED)
@@ -136,7 +137,7 @@ def card(pdf, commands, images, unit, x, y):
     if unit.get("photo_variant"):
         photo_label += " (photo: " + unit["photo_variant"] + ")"
     text(commands,x+12,y+20,photo_label,6,color=MUTED)
-    text(commands,x+12,y+9,f"warrenborn.com/Unit.php?ID={unit['id']}  |  Revived 0.2",6,color=MUTED)
+    text(commands,x+12,y+9,f"warrenborn.com/Unit.php?ID={unit['id']}  |  Revived 0.3",6,color=MUTED)
 
 
 def main():

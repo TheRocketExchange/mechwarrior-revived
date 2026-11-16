@@ -161,7 +161,7 @@ def main():
             units.append(parse_unit(path))
         except Exception as exc:
             errors.append({"id": unit_id, "error": str(exc)})
-    catalog = {"version": "0.2", "source": manifest["source"], "expected_count": len(manifest["figure_ids"]),
+    catalog = {"version": "0.3", "source": manifest["source"], "expected_count": len(manifest["figure_ids"]),
                "units": units, "errors": errors}
     (ROOT / "catalog.json").write_text(json.dumps(catalog, separators=(",", ":"), ensure_ascii=False), encoding="utf-8")
     summary = {"expected": catalog["expected_count"], "parsed": len(units),

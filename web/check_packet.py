@@ -6,6 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit, parse_qs
 
 from lxml import html
+from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -46,7 +47,7 @@ for row in rows:
     assert int(row["revived_points_each"]) == unit["cost"]["points"]
     assert row["formula_version"] == unit["cost"]["version"]
     totals[row["force"]] = totals.get(row["force"],0) + int(row["quantity"]) * int(row["revived_points_each"])
-for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot-cards.pdf"):
+for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot-cards.pdf", ROOT / "rules/readiness-reference.pdf"):
     data=path.read_bytes()
     start=int(re.search(rb'startxref\s+(\d+)',data).group(1))
     assert data[start:start+4] == b'xref', path
@@ -56,6 +57,12 @@ for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot
         offset=int(line.split()[0])
         assert data.startswith(f'{object_id} 0 obj'.encode(),offset), (path,object_id)
     assert (SITE / "downloads" / path.name).read_bytes() == data
+    reader = PdfReader(path)
+    assert len(reader.pages) == (413 if path.name == "revived-unit-cards.pdf" else 1), path
+    assert all(tuple(page.mediabox) == (0, 0, 612, 792) for page in reader.pages), path
+    if path.name == "readiness-reference.pdf":
+        reference_text = reader.pages[0].extract_text()
+        assert all(word in reference_text for word in ("Ready", "Committed", "Spent", "Passengers", "Breakthrough"))
 pilot_data=json.loads((ROOT / "pilots/cards.json").read_text(encoding="utf-8"))
 pilot_rules=(ROOT / "pilots/pilot-cards.md").read_text(encoding="utf-8").replace('’',"'")
 for card in pilot_data["cards"]:

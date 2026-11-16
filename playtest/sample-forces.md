@@ -1,6 +1,6 @@
 # Sample forces
 
-Version 0.2 · 1,200-point limit · Formula 0.2-alpha-1
+Version 0.3 · 1,200-point limit · Formula 0.3-alpha-1
 
 Three starting armies: **H** (’Mech-heavy), **B** (balanced), and **I** (infantry-heavy). Try H against B first. Their totals are close; their balance still needs testing.
 
@@ -8,13 +8,13 @@ Use the exact catalog IDs below. Each link shows the figure, rank, dial, and cos
 
 | Unit | H | B | I | Revived points each | Original cost |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| [Dasher II · AOD108](../site/unit.html?id=AOD108) | 8 | 6 | 4 | 93 | 144 |
-| [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 4 | 5 | 4 | 82 | 50 |
-| [Fenrir Battle Armor · AOD030](../site/unit.html?id=AOD030) | 2 | 4 | 8 | 34 | 17 |
-| [Standard Foot · D006](../site/unit.html?id=D006) | 4 | 6 | 16 | 14 | 13 |
-| **Total Revived points** | **1,196** | **1,188** | **1,196** |  |  |
-| ’Mechs / vehicles / infantry | 8 / 4 / 6 | 6 / 5 / 10 | 4 / 4 / 24 |  |  |
-| **Activation groups** | 15 | 15 | 17 |  |  |
+| [Dasher II · AOD108](../site/unit.html?id=AOD108) | 8 | 6 | 4 | 94 | 144 |
+| [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) | 6 | 7 | 6 | 56 | 50 |
+| [Fenrir Battle Armor · AOD030](../site/unit.html?id=AOD030) | 2 | 6 | 8 | 24 | 17 |
+| [Standard Foot · D006](../site/unit.html?id=D006) | 4 | 8 | 24 | 12 | 13 |
+| **Total Revived points** | **1,184** | **1,196** | **1,192** |  |  |
+| ’Mechs / vehicles / infantry | 8 / 6 / 6 | 6 / 7 / 14 | 4 / 6 / 32 |  |  |
+| **Activation groups** | 17 | 18 | 21 |  |  |
 
 [Download the counts and costs](sample-forces.csv). Pilots are included in ’Mech costs. Each army may designate two carriers without another charge.
 
@@ -25,8 +25,8 @@ Number ’Mechs M1 onward and vehicles V1 onward. Make V1 and V2 the carriers. N
 | Army | Conventional squads | Battle armor squads | Starting passengers |
 | --- | --- | --- | --- |
 | H | 2 + 2 | 2 | V1: C1. V2: A1 |
-| B | 3 + 3 | 2 + 2 | V1: C1. V2: A1 |
-| I | 3 + 3 + 3 + 3 + 2 + 2 | 3 + 3 + 2 | V1: C1. V2: A1 |
+| B | 3 + 3 + 2 | 3 + 3 | V1: C1. V2: A1 |
+| I | 3 + 3 + 3 + 3 + 3 + 3 + 3 + 3 | 3 + 3 + 2 | V1: C1. V2: A1 |
 
 Give squad members IDs such as C1a, C1b, and C1c. Other squads start on foot. Passengers still count as activation groups.
 
@@ -38,7 +38,7 @@ Use the weapon labels on each datasheet. For a Rocket test, choose a substitute 
 
 - **H:** Pressure several sites with ’Mechs and commit the few infantry squads carefully.
 - **B:** Use vehicle fire and the two carried squads to take positions.
-- **I:** Test whether more infantry can hold ground with fewer ’Mechs, and whether nine squads slow the game.
+- **I:** Test whether more infantry can hold ground with fewer ’Mechs, and whether 11 squads slow the game.
 
 Repeated chassis help compare army composition. You do not need to buy these figures: substitute from your collection, keeping unit counts, infantry types, and squads as close as possible.
 
@@ -46,4 +46,4 @@ Record each replacement’s catalog ID, Revived points, pilot, weapons, and tran
 
 After the first tests, try a return-game pair with mixed light and heavy ’Mechs and different heat tracks.
 
-For these exact armies, Breakthrough escape targets are **H: 359, B: 357, I: 359 points**.
+For these exact armies, Breakthrough escape targets are **H: 356, B: 359, I: 358 points**.

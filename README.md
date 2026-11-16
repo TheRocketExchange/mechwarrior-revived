@@ -2,7 +2,9 @@
 
 Tabletop rules for your MechWarrior clix collection: 4–8 ’Mechs per side, plus vehicles and infantry. Players alternate activations, and each scenario sets the objective.
 
-**Version 0.2 is ready for playtesting.** Balance and the roughly two-hour play target still need testing.
+**Version 0.3 is ready for playtesting.** Balance and the roughly two-hour play target still need testing.
+
+New in this edition: pushing and recovery for vehicles and squads, half-speed Advance, and one order per squad. See the [worked examples](docs/combat-rhythm.md) and [readiness reference](rules/readiness-reference.md). The [v0.2 tag](https://github.com/TheRocketExchange/mechwarrior-revived/tree/v0.2) preserves the previous rules and prices.
 
 ## Start playing
 
@@ -40,7 +42,7 @@ The site uses relative links, so it works under a repository path such as `https
 
 ## Editing the packet
 
-Run `python build.py` to rebuild costs, sample armies, both card PDFs, and the HTML from cached source records. Install dependencies from [web requirements](web/requirements.txt) and [catalog requirements](units/requirements.txt).
+Run `python build.py` to rebuild costs, sample armies, both card PDFs, the readiness PDF, and the HTML from cached source records. Install dependencies from [web requirements](web/requirements.txt) and [catalog requirements](units/requirements.txt).
 
 Edit rules in the Markdown files. Pricing lives in [points.py](units/points.py), with all tuning weights in [points-config.json](units/points-config.json). Change the formula version when changing weights. Sample force counts live in [forces.json](playtest/forces.json); their Markdown and CSV are generated. Adjust counts if a formula change puts a force over the limit.
 

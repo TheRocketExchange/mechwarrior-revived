@@ -46,6 +46,16 @@ For Breakthrough, record total escaped points. For Hold the Station, record the 
 
 ## What mattered
 
+For the v0.3 comparison, record case A/B/C/D, fixed-model or repriced armies, and the formula used. Count attacks as rolls actually made, not orders declared. Record pushing damage separately from critical misses and enemy attacks.
+
+| Round | A/B attack rolls | A/B recovery activations | A/B pushing damage | A/B bases lost to pushing | Useful recovery moves / objectives | Shared squad order changed a choice? |
+| --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | |
+
+| Vehicle / squad | Actions by round | Ready / Committed / Spent after each | Failed or skipped shots | Mission effect |
+| --- | --- | --- | --- | --- |
+| | | | | |
+
 Record useful actions: taking or denying an objective, escaping, delivering troops, removing a threat, or blocking a needed route. Include units that helped without dealing damage.
 
 | Unit/squad | Category | Open / cover / assault | What happened / round | Damage or casualties | Survived? |

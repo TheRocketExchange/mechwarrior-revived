@@ -1,6 +1,6 @@
 # Hold the Station
 
-Two players · 1,200 points each · 6 rounds · Version 0.2
+Two players · 1,200 points each · 6 rounds · Version 0.3
 
 The attacker must hold both access sites long enough to capture a communications station. The building is terrain; it cannot attack or be destroyed.
 

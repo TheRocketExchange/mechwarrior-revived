@@ -1,6 +1,6 @@
 # Seize and Hold
 
-Two players · 1,200 points each · 6 rounds · Version 0.2
+Two players · 1,200 points each · 6 rounds · Version 0.3
 
 Hold three relay sites and score points each round. Use the [core rules](../rules/core-rules.md) for objective control.
 

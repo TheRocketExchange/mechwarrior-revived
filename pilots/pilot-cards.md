@@ -1,6 +1,6 @@
 # Pilot cards
 
-Version 0.2
+Version 0.3
 
 Give each ’Mech one pilot before deployment; its Revived cost includes the pilot allowance. Use at most two of each role per force. Write the ’Mech’s ID on its card.
 
@@ -15,6 +15,6 @@ Give each ’Mech one pilot before deployment; its Revived cost includes the pil
 
 Abilities work whenever their conditions are met; there are no use counters. They affect only the assigned ’Mech and remain through combat-dial damage. Pilots cannot transfer and are lost when their ’Mech is destroyed. Only Engineer works during shutdown.
 
-Gunner removes recoil, not cover or heat, and cannot let Rockets fire during Advance. No pilot adds an attack or activation. Do not apply the same benefit twice: Skirmisher and gray speed both remove the same Disengage damage.
+Gunner’s limit covers an ordinary half-speed Advance. If blue speed gives extra movement, stay within the half-speed cost to keep the benefit. Gunner removes recoil, not cover or heat, and cannot let Rockets fire during Advance. No pilot adds an attack or activation. Do not apply the same benefit twice: Skirmisher and gray speed both remove the same Disengage damage.
 
 Use these cards without original pilots, gear, or advancement rules. Record their effects before changing the shared pilot allowance in the [points formula](../rules/points.md).

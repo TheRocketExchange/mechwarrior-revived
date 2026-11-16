@@ -29,6 +29,7 @@ PAGES = [
     ("rules/equipment-reference.md", "equipment.html", "Equipment reference", "Rules", "Rules / 03"),
     ("rules/points.md", "points.html", "Points", "Rules", "Building armies"),
     ("rules/turn-reference.md", "turn.html", "Turn reference", "Game aids", "At the table / 01"),
+    ("rules/readiness-reference.md", "readiness.html", "Readiness reference", "Game aids", "At the table / Readiness"),
     ("pilots/pilot-cards.md", "pilots.html", "Pilot cards", "Game aids", "At the table / 02"),
     ("playtest/sample-forces.md", "forces.html", "Sample forces", "Forces", "Build your force"),
     ("scenarios/01-seize-and-hold.md", "seize-and-hold.html", "Seize and Hold", "Scenarios", "Mission / 01"),
@@ -37,6 +38,7 @@ PAGES = [
     ("playtest/protocol.md", "playtest.html", "Playtest plan", "Development", "Testing / Plan"),
     ("playtest/playtest-log.md", "log.html", "Game log", "Development", "Testing / Record a game"),
     ("docs/design-brief.md", "design.html", "Design notes", "Development", "About the rules"),
+    ("docs/combat-rhythm.md", "combat-rhythm.html", "How v0.3 changes a battle", "Development", "Development / Worked examples"),
     ("docs/comparison.md", "comparison.html", "Rules & handbook comparison", "Development", "Development / Community sources"),
     ("docs/sources.md", "sources.html", "Sources", "Development", "Background reading"),
     ("playtest/validation.md", "validation.html", "Checks so far", "Development", "Testing / Progress"),
@@ -45,9 +47,9 @@ SOURCE_URL = {(ROOT / p[0]).resolve(): p[1] for p in PAGES}
 NAV = [("Rules", "rules.html"), ("Units", "units.html"), ("Forces", "forces.html"),
        ("Scenarios", "scenarios.html"), ("Game aids", "aids.html"),
        ("Development", "design.html")]
-DOWNLOADS = ["pilots/revived-pilot-cards.pdf", "pilots/revived-pilot-cards-preview.png",
+DOWNLOADS = ["rules/readiness-reference.pdf", "pilots/revived-pilot-cards.pdf", "pilots/revived-pilot-cards-preview.png",
              "playtest/sample-forces.csv", "playtest/adjustments.csv", "units/revived-unit-cards.pdf",
-             "units/points-config.json", "units/points.py"]
+             "units/points-config.json", "units/points.py", "units/readiness.py"]
 SEARCH = []
 
 
@@ -126,6 +128,7 @@ def contents_html(toc):
 def resources_html(current):
     links = [("rules.html", "Core rules"), ("weapons.html", "Weapons"),
              ("equipment.html", "Equipment colors"), ("turn.html", "Turn reference"),
+             ("readiness.html", "Readiness reference"),
              ("pilots.html", "Pilot cards"), ("units.html", "Unit cards"),
              ("points.html", "Points"), ("scenarios.html", "Scenarios")]
     return "".join(f'<a href="{url}"' + (' aria-current="page"' if url == current else "")
@@ -178,7 +181,7 @@ def main():
             next_page = ("seize-and-hold.html", "Your first scenario")
             body += '<figure class="pilot-preview"><a href="downloads/revived-pilot-cards.pdf"><img src="downloads/revived-pilot-cards-preview.png" alt="Four printable Revived pilot cards: Gunner, Skirmisher, Brawler, and Engineer" loading="lazy" width="1224" height="1584"></a><figcaption>Four roles. Print the PDF at 100% on US Letter paper.</figcaption></figure>'
         elif filename == "index.html":
-            body = '<p class="lead">Rules for your MechWarrior clix collection.</p><p>Build an army of 4–8 ’Mechs with vehicles and infantry. Take turns activating your units, manage heat, and fight for the scenario’s objectives.</p>' + resource_rows([
+            body = '<p class="lead">Rules for your MechWarrior clix collection.</p><p>Build an army of 4–8 ’Mechs with vehicles and infantry. Take turns activating your units, manage heat and readiness, and fight for the scenario’s objectives.</p><p>New in v0.3: pushing and recovery, half-speed Advance, and one order per squad. <a href="combat-rhythm.html">See what changes on the table.</a></p>' + resource_rows([
                 ("01", "rules.html", "Read the rules", "Force assembly, movement, combat, heat, and victory."),
                 ("02", "forces.html", "Assemble a force", "Three starting armies under a 1,200-point ceiling."),
                 ("03", "units.html", "Find your units", "Photos, full dials, printable cards, and Revived points."),
@@ -196,6 +199,8 @@ def main():
     write_page("scenarios.html", "Scenarios", "Scenarios", "Mission selection", scenario_body, [])
     aids_body = '<p>References and printable cards for the table.</p>' + resource_rows([
         ("01", "turn.html", "Turn reference", "Round sequence, actions, attacks, and heat."),
+        ("NEW", "readiness.html", "Readiness reference", "Ready, Committed, Spent: recovery, pushing, and a roster tracker."),
+        ("PDF", "downloads/readiness-reference.pdf", "Print the readiness sheet", "US Letter · One-page reference and reusable tracker"),
         ("02", "weapons.html", "Weapon reference", "Ballistic, Energy, and Rocket strengths and costs."),
         ("03", "equipment.html", "Equipment reference", "The new meanings of your printed combat colors."),
         ("04", "pilots.html", "Pilot cards", "Gunner, Skirmisher, Brawler, and Engineer."),

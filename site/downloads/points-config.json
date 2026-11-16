@@ -1,5 +1,5 @@
 {
-  "version": "0.2-alpha-1",
+  "version": "0.3-alpha-1",
   "scale": 1.6,
   "base": 1.0,
   "mobility_per_inch": 0.08,
@@ -7,6 +7,9 @@
   "alternative_attack_weight": 0.15,
   "stationary_share": 0.65,
   "moving_share": 0.35,
+  "advance_speed_fraction": 0.5,
+  "advance_equipment_bonus": 2,
+  "readiness_actions": 24,
   "indirect_access_weight": 0.15,
   "range_per_inch": 0.025,
   "minimum_range_cost": 0.025,

@@ -1,6 +1,6 @@
 # Equipment reference
 
-Version 0.2
+Version 0.3
 
 Look at the color behind the current number and use that number’s column below. For damage, use only the weapon you chose. These meanings replace the original equipment card.
 
@@ -11,7 +11,7 @@ Equipment affects only the unit showing it. Read it at the start of each attack 
 | Color | Speed | Attack | Defense | Damage |
 | --- | --- | --- | --- | --- |
 | Red | Rush: +2 inches | +1 close attack | Armor 1 against Energy shots | Piercing: ignore 1 armor |
-| Blue | Advance: +2 inches | Fire: +1 ranged attack | Armor 1 against Ballistic or Rocket shots | +1 damage against either infantry type |
+| Blue | Advance: +2 inches after halving speed | Fire: +1 ranged attack | Armor 1 against Ballistic or Rocket shots | +1 damage against either infantry type |
 | Black | +1 ranged defense while in terrain cover | Ignore 1 point of ranged terrain cover | Armor 1 against any attack | +1 damage against a target’s rear or a shutdown target |
 | Gray | Disengage without taking damage | May Repair | +1 close defense | +1 close damage |
 | Green | Ignore difficult terrain except water | +1 ranged attack against a target with no terrain cover | +1 ranged defense while in terrain cover | +1 damage against vehicles and ’Mechs; conventional infantry instead get +1 against infantry |

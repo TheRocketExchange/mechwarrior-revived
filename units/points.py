@@ -13,6 +13,7 @@ import math
 from functools import lru_cache
 from pathlib import Path
 from statistics import mean
+from readiness import Readiness, order
 
 ROOT = Path(__file__).resolve().parent
 CONFIG = json.loads((ROOT / "points-config.json").read_text(encoding="utf-8"))
@@ -137,14 +138,21 @@ def offensive_rating(unit, click):
         minimum = 0 if color(click, "attack") == "yellow" else weapon["min_range"]
         reach = max(0.25, 1 + CONFIG["range_per_inch"] * weapon["max_range"] - CONFIG["minimum_range_cost"] * minimum)
         arc = 360 if unit["category"] in ("Conventional Infantry", "Battle Armor") else unit["arc"]
-        reach *= 1 + CONFIG["firing_arc_weight"] * (arc / 180 - 1)
+        arc_factor = 1 + CONFIG["firing_arc_weight"] * (arc / 180 - 1)
+        advance = math.ceil(number(click, "speed") * CONFIG["advance_speed_fraction"])
+        if color(click, "speed") == "blue":
+            advance += CONFIG["advance_equipment_bonus"]
+        moving_reach = (reach + CONFIG["range_per_inch"] * advance) * arc_factor
+        reach *= arc_factor
         stationary_heat = heat_output_factor(unit, weapon["type"], weapon["slot"])
         mobile_heat = heat_output_factor(unit, weapon["type"], weapon["slot"], action_heat=2)
         signature = (weapon["type"], number(click,weapon["slot"]), color(click,weapon["slot"]), minimum, weapon["max_range"], stationary_heat, mobile_heat)
         if signature in seen:
             continue
         seen.add(signature)
-        value = (CONFIG["stationary_share"] * normal * stationary_heat + CONFIG["moving_share"] * mobile * mobile_heat + CONFIG["indirect_access_weight"] * indirect * stationary_heat) * reach
+        value = ((CONFIG["stationary_share"] * normal * stationary_heat
+                  + CONFIG["indirect_access_weight"] * indirect * stationary_heat) * reach
+                 + CONFIG["moving_share"] * mobile * mobile_heat * moving_reach)
         choices.append(value)
     if unit["category"] in ("Mech", "Battle Armor", "Conventional Infantry"):
         for weapon in unit["weapons"]:
@@ -176,12 +184,41 @@ def toughness(unit, click):
     return reference / max(incoming, 1 / 216)
 
 
+def readiness_output(ratings, horizon=None):
+    """Best attack/recover output, averaged over every live starting click.
+
+Pushing uses the current click's attack, then advances the actual dial.
+Recovering costs one opportunity and never repairs that damage. Starting at
+each click separately matches the heat model's rating-per-dial convention.
+"""
+    horizon = CONFIG["readiness_actions"] if horizon is None else horizon
+    if horizon < 1 or not ratings:
+        raise ValueError("Readiness needs live clicks and a positive horizon")
+
+    @lru_cache(maxsize=None)
+    def best(remaining, click, state):
+        if not remaining or click >= len(ratings):
+            return 0.0
+        recover_state, _ = order(state, "Hold")
+        recover = best(remaining - 1, click, recover_state)
+        if state == Readiness.SPENT:
+            return recover
+        next_state, push = order(state, "Fire")
+        attack = ratings[click] + best(remaining - 1, click + push, next_state)
+        return max(recover, attack)
+
+    return mean(best(horizon, click, Readiness.READY) / horizon for click in range(len(ratings)))
+
+
 def calculate(unit):
     live = unit["track"][unit["start"]:]
     if not live:
         raise ValueError("Cannot price an empty damage track")
     durability = sum(toughness(unit, click) for click in live)
-    firepower = mean(offensive_rating(unit, click) for click in live)
+    ratings = [offensive_rating(unit, click) for click in live]
+    unrestricted = mean(ratings)
+    firepower = unrestricted if unit["category"] == "Mech" else readiness_output(ratings)
+    readiness_factor = firepower / unrestricted if unrestricted else 1.0
     mobility = mean(max(0, number(click, "speed")) * CONFIG["mobility_per_inch"]
                     + (CONFIG["hover_mobility"] if unit["movement"].lower() == "hover" else 0)
                     + (CONFIG["jump_mobility"] if color(click, "speed") == "yellow" else 0)
@@ -196,7 +233,9 @@ def calculate(unit):
     raw = CONFIG["scale"] * durability * (CONFIG["base"] + mobility + CONFIG["firepower_weight"] * firepower + support) + pilot
     return {"points": max(1, math.floor(raw + 0.5)), "version": CONFIG["version"],
             "breakdown": {"durability": round(durability, 4), "mobility": round(mobility, 4),
-                          "firepower": round(firepower, 4), "support": round(support, 4),
+                          "firepower": round(firepower, 4),
+                          "firepower_before_readiness": round(unrestricted, 4),
+                          "readiness_factor": round(readiness_factor, 4), "support": round(support, 4),
                           "pilot_allowance": pilot, "raw": round(raw, 4)}}
 
 

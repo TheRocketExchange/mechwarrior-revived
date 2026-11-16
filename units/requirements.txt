@@ -1,2 +1,4 @@
 lxml
 Pillow
+reportlab
+pypdf

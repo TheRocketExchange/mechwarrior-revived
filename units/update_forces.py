@@ -21,6 +21,7 @@ def main():
         assert sum(force["conventional_squads"]) == force["counts"][3]
         assert all(size in (2, 3) for size in force["battle_armor_squads"] + force["conventional_squads"])
         assert force["total"] <= roster["limit"], "Rebalance counts after changing the formula"
+        assert 4 <= force["counts"][0] <= 8
     assert max(f["total"] for f in forces) - min(f["total"] for f in forces) <= roster["limit"] * 0.02
     with (ROOT / "playtest/sample-forces.csv").open("w", encoding="utf-8", newline="") as stream:
         writer = csv.writer(stream)
@@ -71,7 +72,7 @@ Use the weapon labels on each datasheet. For a Rocket test, choose a substitute 
 
 - **H:** Pressure several sites with ’Mechs and commit the few infantry squads carefully.
 - **B:** Use vehicle fire and the two carried squads to take positions.
-- **I:** Test whether more infantry can hold ground with fewer ’Mechs, and whether nine squads slow the game.
+- **I:** Test whether more infantry can hold ground with fewer ’Mechs, and whether {len(forces[2]['battle_armor_squads']) + len(forces[2]['conventional_squads'])} squads slow the game.
 
 Repeated chassis help compare army composition. You do not need to buy these figures: substitute from your collection, keeping unit counts, infantry types, and squads as close as possible.
 

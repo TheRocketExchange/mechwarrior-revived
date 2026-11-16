@@ -3,3 +3,6 @@ rule_version,formula_version,change,status,evidence,review_after
 0.2,0.2-alpha-1,One pilot allowance of 6 included in each Mech,initial estimate,All four roles share the allowance,Initial paired matrix
 0.2,0.2-alpha-1,Up to two carriers per army with no surcharge,shared army allowance,Transport access is equal for both players,Transport exercises and paired matrix
 0.2,0.2-alpha-1,Rocket test substitutes recalculated through the same formula,initial estimate,At most one Ballistic weapon on one Mech per force,Weapon comparison pair
+0.3,0.3-alpha-1,24-action non-Mech readiness model follows actual pushing damage and recovery,playtest estimate,Approved combat-rhythm revision; exhaustive short-schedule checks,Fixed-model four-case comparison then repriced return games
+0.3,0.3-alpha-1,Moving-fire reach uses half-speed Advance plus blue speed bonus; other weights unchanged,playtest estimate,Movement rule changed; full-speed mobility still valued separately,Compare moving shots and mission positions
+0.3,0.3-alpha-1,Rebuilt sample force counts under 1200 with the same four catalog variants,example armies,H 1184; B 1196; I 1192; no unit price overrides,Check added groups and time after repricing

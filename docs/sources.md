@@ -1,6 +1,6 @@
 # Sources
 
-Version 0.2 · November 14, 2026
+Version 0.3 · November 14, 2026
 
 Revived uses existing miniatures with new playtest rules. These sources explain what was retained and what inspired the changes.
 

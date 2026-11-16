@@ -1,6 +1,6 @@
 # Weapon reference
 
-Version 0.2
+Version 0.3
 
 Use the damage and range printed on the base. Choose one weapon per attack. These rules apply to shooting only, even if you use the same damage value for a close attack.
 

@@ -18,7 +18,7 @@
         <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M38 3 72 22v42L38 83 4 64V22Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/></svg>
         <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
       </a>
-      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.2</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
+      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.3</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
     </div>
   </header>
   <div class="nav-band">
@@ -29,19 +29,19 @@
   </div>
   <div class="page-layout">
     <aside class="sidebar" aria-label="Rulebook navigation">
-      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.2 / November 2026</span></div>
+      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.3 / November 2026</span></div>
       <details class="toc-panel" open>
         <summary>On this page</summary>
         <ol class="contents"><li class="level-h2"><a href="#the-sources">The sources</a></li><li class="level-h2"><a href="#rules-compared">Rules compared</a></li><li class="level-h2"><a href="#ideas-from-the-handbook">Ideas from the handbook</a></li><li class="level-h2"><a href="#choices-for-revived">Choices for Revived</a></li></ol>
       </details>
-      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
+      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="readiness.html">Readiness reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
       <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
     </aside>
     <main id="main" tabindex="-1">
       <div class="page-heading">
         <p class="eyebrow">Development / Community sources</p>
         <h1>Rules &amp; handbook comparison</h1>
-        <div class="page-toolbar"><span class="version-tag">v0.2 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
+        <div class="page-toolbar"><span class="version-tag">v0.3 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
       </div>
       <article class="rule-content"><p>Revived’s biggest changes are alternating activations and infantry that fight independently. Earlier rules also offer useful ideas for movement, heat, transport, and missions.</p>
 <h2 id="the-sources">The sources</h2>
@@ -53,7 +53,7 @@
 <tr>
 <th>Topic</th>
 <th>Age of Destruction</th>
-<th>Revived v0.2</th>
+<th>Revived v0.3</th>
 </tr>
 </thead>
 <tbody>
@@ -65,7 +65,7 @@
 <tr>
 <td>Infantry</td>
 <td>Temporary formations</td>
-<td>Fixed squads of 2–3 bases; each keeps its own actions, targets, and damage</td>
+<td>Fixed squads of 2–3 bases share one order; each keeps its own targets, rolls, and damage</td>
 </tr>
 <tr>
 <td>Formation shooting</td>
@@ -75,7 +75,12 @@
 <tr>
 <td>Move and attack</td>
 <td>’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty</td>
-<td>Full-speed Advance shooting, with −1 only for Ballistic recoil. Infantry and ’Mechs Assault at half speed</td>
+<td>Half-speed Advance shooting, with −1 only for Ballistic recoil. Move travels full speed without an attack. Infantry and ’Mechs Assault at half speed</td>
+</tr>
+<tr>
+<td>Pushing and recovery</td>
+<td>Non-’Mechs normally take pushing damage for a second order token and cannot take orders with two tokens; a turn without an order clears tokens</td>
+<td>Combat orders commit, then push. Move or Hold recovers. Spent units must recover; they still contest and count for passes</td>
 </tr>
 <tr>
 <td>Heat</td>
@@ -150,7 +155,7 @@
 <tr>
 <td>SC-012 Fast and Furious, p. 106</td>
 <td>Vehicles can move half speed and shoot, with order-token costs</td>
-<td>Test mobile vehicle fire; Revived allows full-speed Advance</td>
+<td>Revived v0.3 also uses half-speed Advance, with combat orders advancing readiness</td>
 </tr>
 <tr>
 <td>SC-A03 Death March, p. 107</td>
@@ -166,13 +171,13 @@
 </table></div>
 <p>SC-001 Escape the City (p. 104) still uses normal victory rules. Despite its title, it is not an exit mission.</p>
 <h2 id="choices-for-revived">Choices for Revived</h2>
-<p>Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Use action heat, mobile vehicle fire, and terrain worth holding.</p>
+<p>Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Version 0.3 adds pushing, recovery, half-speed Advance, and a common squad order. See the <a href="combat-rhythm.html">worked examples</a> for their effects and the test comparison. These adapt the original rhythm without copying its order budget or combined-fire bonuses.</p>
 <p>The first missions test holding ground, escaping, and capturing a station. Score at round end so both players can respond. Old “per turn” effects need care: under alternating activations, they could trigger far more often.</p>
 <p>Hold the Station lets any eligible unit contest. Infantry’s advantage is cover and access to fieldworks. If that proves too weak, test infantry-only capture later.</p>
 <p>Leave weather, reserves, faction restrictions, captives, and extra station attacks for later. Test pilots separately from point changes. The handbook gives useful ideas; balance and play time still need games.</p>
 </article>
       
-      <div class="page-end"><span>MechWarrior Revived / Version 0.2</span><a href="#top">Back to top ↑</a></div>
+      <div class="page-end"><span>MechWarrior Revived / Version 0.3</span><a href="#top">Back to top ↑</a></div>
     </main>
   </div>
   <footer class="site-footer"><div><a href="index.html" class="footer-brand">MechWarrior <strong>Revived</strong></a><p>An unofficial fan rules project. All game names and trademarks belong to their respective owners.</p></div><div class="footer-links"><a href="design.html">Design notes</a><a href="sources.html">Sources</a><a href="comparison.html">Rules comparison</a><a href="https://www.net-armageddon.org/">Layout inspired by NetEA ↗</a></div></footer>
