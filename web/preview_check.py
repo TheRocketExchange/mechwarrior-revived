@@ -208,6 +208,24 @@ assert js("document.querySelectorAll('#force-size option').length===4")
 js("document.querySelector('#force-size').value='grand';document.querySelector('#force-size').dispatchEvent(new Event('change'));document.querySelector('#force-sample').value='H';document.querySelector('#force-sample').dispatchEvent(new Event('change'))")
 assert js("document.querySelector('#force-size').value==='standard' && document.querySelectorAll('[data-roster-group]').length===15")
 js("window.confirm=()=>true;document.querySelector('#force-new').click()")
+input_value('#force-query','AOD050')
+js("document.querySelector('[data-add=\"AOD050\"]').click()")
+assert js("document.querySelector('#force-checks').classList.contains('force-valid')"),'Vehicle-only force rejected'
+for unit_id in ('D006','AOD030'):
+    input_value('#force-query',unit_id)
+    js(f"document.querySelector('[data-add=\"{unit_id}\"]').click()")
+input_value('#force-name','Armor and Infantry')
+for size in ('skirmish','standard','large','grand'):
+    js(f"document.querySelector('#force-size').value='{size}';document.querySelector('#force-size').dispatchEvent(new Event('change'))")
+    assert js("document.querySelector('#force-checks').classList.contains('force-valid')"),'Zero-Mech force rejected at '+size
+    assert js("document.querySelector('#force-size-guide').textContent.includes('no ’Mechs') && document.querySelectorAll('[data-field=\"pilot\"]').length===0")
+zero_mech_force=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
+open_page('builder.html?test=zero-mechs',"document.querySelector('#force-name').value==='Armor and Infantry'")
+assert js("document.querySelector('#force-checks').classList.contains('force-valid') && document.querySelectorAll('[data-roster-group]').length===3")
+screenshot('builder-zero-mechs')
+js("document.querySelector('[data-remove-group=\"V1\"]').click()")
+assert js("document.querySelector('#force-checks').classList.contains('force-valid') && document.querySelectorAll('[data-roster-group]').length===2"),'Infantry-only force rejected'
+js("window.confirm=()=>true;document.querySelector('#force-new').click()")
 for unit_id in ('AOD108','AOD112','AOD096','AOD104','D006','AOD050'):
     input_value('#force-query',unit_id)
     js(f"document.querySelector('[data-add=\"{unit_id}\"]').click()")
@@ -220,11 +238,14 @@ input_value('#force-name','Desert Watch')
 assert js("document.querySelector('#force-check-title').textContent==='All Standard force limits met'")
 assert js("document.querySelectorAll('[data-roster-group]').length===6")
 original_groups=js("JSON.parse(localStorage.getItem('mw-revived-force-v1')).groups")
-for size, points, expected in [('skirmish',600,'points over'),('large',1800,'Choose 6–12'),('grand',2400,'Choose 8–16')]:
+for size, points, expected in [('skirmish',600,'points over'),('large',1800,None),('grand',2400,None)]:
     js(f"document.querySelector('#force-size').value='{size}';document.querySelector('#force-size').dispatchEvent(new Event('change'))")
     assert js("JSON.parse(localStorage.getItem('mw-revived-force-v1')).groups")==original_groups
     assert str(points)==js("String(createForceModel(MW_CATALOG).validate(JSON.parse(localStorage.getItem('mw-revived-force-v1'))).size.points_limit)")
-    assert expected in js("document.querySelector('#force-errors').textContent")
+    if expected:
+        assert expected in js("document.querySelector('#force-errors').textContent")
+    else:
+        assert js("document.querySelector('#force-checks').classList.contains('force-valid')")
 saved=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
 assert saved['game_size']=='grand'
 assert saved['groups'][0]['rocket_slot']=='secondary'
@@ -288,6 +309,10 @@ selected_text='\n'.join(page.extract_text() for page in selected_reader.pages)
 assert selected_text.count('Catalog ID:')==8
 assert selected_text.count('Grand Battle')==4
 assert all(label in selected_text for label in ('C1a','C1b','C1c','V1','Gunner','Rocket','HEAT DIAL','COMBAT DIAL','SD'))
+call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#list='+quote(json.dumps(zero_mech_force))})
+wait("document.title==='Armor and Infantry · Unit cards' && document.readyState==='complete' && document.querySelectorAll('.print-unit-card').length===5")
+assert js("!document.querySelector('#force-card-status').textContent.includes('Draft')")
+assert js("[...document.querySelectorAll('[data-card-id]')].map(card=>card.dataset.cardId)")==['V1','C1a','C1b','A1a','A1b']
 long_force={'name':'Long card layout','groups':[{'id':'M1','members':['BF019'],'pilot':'Gunner'},{'id':'A1','members':['CA129']}]}
 call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#list='+quote(json.dumps(long_force))})
 wait("document.querySelector('[data-catalog-id=\"BF019\"]') && document.querySelectorAll('.print-unit-card').length===2")

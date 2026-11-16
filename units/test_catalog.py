@@ -12,7 +12,7 @@ from PIL import Image
 from parse_catalog import parse_unit
 from points import CONFIG, calculate, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot
 from readiness import Readiness, order, finish_action
-from force_org import DEFAULT_SIZE, GAME_SIZES, PILOTS, unit_family, validate_force
+from force_org import DEFAULT_SIZE, GAME_SIZES, INFANTRY, PILOTS, unit_family, validate_force
 
 ROOT = Path(__file__).resolve().parent
 CATALOG = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
@@ -91,17 +91,17 @@ class ForceOrganizationChecks(unittest.TestCase):
         force["groups"].append({"id": f"G{len(force['groups'])}", "members": [key] * count, **extra})
 
     def test_game_sizes_have_legal_real_rosters_and_legacy_default(self):
-        expected = {"skirmish": (600, 2, 4, 3, 4, 1, 1, 48),
-                    "standard": (1200, 4, 8, 6, 9, 2, 2, 48),
-                    "large": (1800, 6, 12, 9, 13, 3, 3, 72),
-                    "grand": (2400, 8, 16, 12, 18, 4, 4, 72)}
+        expected = {"skirmish": (600, 4, 3, 4, 1, 1, 48),
+                    "standard": (1200, 8, 6, 9, 2, 2, 48),
+                    "large": (1800, 12, 9, 13, 3, 3, 72),
+                    "grand": (2400, 16, 12, 18, 4, 4, 72)}
         self.assertEqual(set(GAME_SIZES), set(expected))
         candidates = sorted((u for u in UNITS.values() if u["core_legal"] and u["category"] == "Mech" and "Unique" not in u["rank"]), key=lambda u:u["cost"]["points"])
         from collections import Counter
-        for key, (points, low, high, vehicles, squads, carriers, pilots, width) in expected.items():
+        for key, (points, high, vehicles, squads, carriers, pilots, width) in expected.items():
             size = GAME_SIZES[key]
             self.assertEqual((size["points_limit"], size["board_width"], size["board_depth"]), (points, width, 48))
-            self.assertEqual(size["limits"], dict(mechs_min=low, mechs_max=high, vehicles_max=vehicles, squads_max=squads, carriers_max=carriers, pilot_max=pilots, family_max=3))
+            self.assertEqual(size["limits"], dict(mechs_max=high, vehicles_max=vehicles, squads_max=squads, carriers_max=carriers, pilot_max=pilots, family_max=3))
             force, families = {"game_size": key, "groups": []}, Counter()
             for unit in candidates:
                 family = unit_family(unit)
@@ -120,14 +120,27 @@ class ForceOrganizationChecks(unittest.TestCase):
                 group["members"] = ["AOD108"]
             with self.assertRaisesRegex(ValueError, "Rule of three"):
                 validate_force(repeated, UNITS)
-            force["groups"] = force["groups"][:low-1]
-            with self.assertRaisesRegex(ValueError, "Force needs"):
-                validate_force(force, UNITS)
+            for count in (1, 2, 3):
+                small = self.force(("AOD108", "AOD112", "AOD096")[:count])
+                small["game_size"] = key
+                self.assertEqual(validate_force(small, UNITS)["mechs"], count)
         legacy = self.force()
         self.assertEqual(validate_force(legacy, UNITS), validate_force(dict(legacy, game_size=DEFAULT_SIZE), UNITS))
         for invalid in ("unknown", "", None, 600, {}):
             with self.assertRaisesRegex(ValueError, "game size"):
                 validate_force(dict(legacy, game_size=invalid), UNITS)
+
+    def test_zero_mechs_allows_vehicles_infantry_and_mixed_forces_at_every_size(self):
+        for size_id in GAME_SIZES:
+            for choices in (("AOD050",), ("D006",), ("AOD030",), ("AOD050", "D006", "AOD030")):
+                with self.subTest(size=size_id, choices=choices):
+                    force = {"game_size": size_id, "groups": []}
+                    for key in choices:
+                        self.add(force, key, 2 if UNITS[key]["category"] in INFANTRY else 1)
+                    result = validate_force(force, UNITS)
+                    self.assertEqual(result["mechs"], 0)
+                    self.assertEqual(result["groups"], len(choices))
+                    self.assertGreater(result["total"], 0)
 
     def test_each_size_enforces_budget_pilots_carriers_and_type_caps(self):
         # Cheap, distinct test units isolate force limits from catalog pricing.
@@ -140,7 +153,7 @@ class ForceOrganizationChecks(unittest.TestCase):
                 fixtures[unit["id"]] = unit
         for size_id, size in GAME_SIZES.items():
             limits = size["limits"]
-            force = {"game_size": size_id, "groups": [{"id": f"M{i}", "members": [f"M{i}"], "pilot": PILOTS[i%4]} for i in range(limits["mechs_min"])]}
+            force = {"game_size": size_id, "groups": [{"id": f"M{i}", "members": [f"M{i}"], "pilot": PILOTS[i%4]} for i in range(2 * limits["pilot_max"])]}
             validate_force(force, fixtures)
             # Exact budget is legal; the same roster one point over is not.
             priced = copy.deepcopy(fixtures)
@@ -149,7 +162,7 @@ class ForceOrganizationChecks(unittest.TestCase):
             priced["M0"]["cost"]["points"] += 1
             with self.assertRaisesRegex(ValueError, "above"):
                 validate_force(force, priced)
-            for category, prefix, cap, pattern in (("Vehicle", "V", limits["vehicles_max"], "vehicles"), ("Conventional Infantry", "C", limits["squads_max"], "squads"), ("Mech", "M", limits["mechs_max"], "Force needs")):
+            for category, prefix, cap, pattern in (("Vehicle", "V", limits["vehicles_max"], "vehicles"), ("Conventional Infantry", "C", limits["squads_max"], "squads"), ("Mech", "M", limits["mechs_max"], "Mechs")):
                 changed = copy.deepcopy(force)
                 if category == "Mech":
                     changed["groups"] = []
@@ -225,11 +238,9 @@ class ForceOrganizationChecks(unittest.TestCase):
             validate_force(force, UNITS)
 
     def test_type_and_squad_size_boundaries(self):
-        for count in (3, 9):
-            force = self.force(("AOD108", "AOD112", "AOD096") * 3)
-            force["groups"] = force["groups"][:count]
-            with self.assertRaisesRegex(ValueError, "4-8"):
-                validate_force(force, UNITS, 10000)
+        force = self.force(("AOD108", "AOD112", "AOD096") * 3)
+        with self.assertRaisesRegex(ValueError, "at most 8 Mechs"):
+            validate_force(force, UNITS, 10000)
         force = self.force()
         for key in ("AOD050", "AOD038", "AOD042"):
             for _ in range(2):

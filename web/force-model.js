@@ -81,7 +81,7 @@ function createForceModel(catalog) {
         if (category !== "Mech" || !members[0].rocket_options[group.rocket_slot]) errors.push(`${group.id}: that Rocket substitute is unavailable.`);
       }
     }
-    if (counts.Mech < limits.mechs_min || counts.Mech > limits.mechs_max) errors.push(`Choose ${limits.mechs_min}–${limits.mechs_max} ’Mechs; you have ${counts.Mech}.`);
+    if (counts.Mech > limits.mechs_max) errors.push(`At most ${limits.mechs_max} ’Mechs; you have ${counts.Mech}.`);
     if (counts.Vehicle > limits.vehicles_max) errors.push(`At most ${limits.vehicles_max} vehicles; you have ${counts.Vehicle}.`);
     if (counts.squads > limits.squads_max) errors.push(`At most ${limits.squads_max} infantry squads; you have ${counts.squads}.`);
     for (const [key, count] of families) if (count > limits.family_max) {

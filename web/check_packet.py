@@ -62,7 +62,7 @@ rows = [[cell.text_content().strip() for cell in row.xpath('./th|./td')] for row
 assert rows[0][1:] == [size["name"] for size in GAME_SIZES.values()]
 for column, size in enumerate(GAME_SIZES.values(), 1):
     limit = size["limits"]
-    assert [row[column] for row in rows[1:]] == [f"{limit['mechs_min']}–{limit['mechs_max']}", f"0–{limit['vehicles_max']}", f"0–{limit['squads_max']}", str(limit['carriers_max']), str(limit['pilot_max'])]
+    assert [row[column] for row in rows[1:]] == [f"0–{limit['mechs_max']}", f"0–{limit['vehicles_max']}", f"0–{limit['squads_max']}", str(limit['carriers_max']), str(limit['pilot_max'])]
 for unit in published["units"]:
     assert unit["family"] == unit_family(units[unit["id"]]), unit["id"]
     assert "printed_points" not in unit, unit["id"]

@@ -35,7 +35,7 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Scenario-specific victory | Keep attention on the mission |
 | Four pilot roles, one included in each ’Mech’s cost | Add character without advancement |
 | One points formula for every unit | Price each complete click, giving early strength more weight while charging for how well the unit holds up |
-| Four game sizes with force charts and three choices per chassis or infantry family | Support smaller and larger collections while keeping a recognizable ’Mech core and limiting repetition |
+| Four game sizes with upper limits by unit type and three choices per chassis or infantry family | Support smaller and larger collections, including forces without ’Mechs, while limiting repetition |
 
 There are no campaigns, pilot levels, custom units, or expansion rules in this version.
 

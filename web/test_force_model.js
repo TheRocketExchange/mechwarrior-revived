@@ -19,8 +19,7 @@ test("infantry limits count squads, including mixed families",()=>{
   const force=base();for(let i=0;i<3;i++)force.groups.push({id:"C"+(i+1),members:["D006","D006","D009"]});assert.deepEqual(model.validate(force).errors,[]);force.groups.push({id:"C4",members:["D009","D009"]});fails(force,/Hoverbike Squad: 4 squads/);assert(!model.validate(force).errors.some(error=>error.includes("Standard Foot")));
 });
 test("type, squad-size, pilot, Unique, and points caps",()=>{
-  let force=base();force.groups.pop();fails(force,/4–8/);
-  force=base();for(let i=0;i<7;i++)model.addUnit(force,["AOD050","AOD038","AOD066"][i%3]);fails(force,/6 vehicles/);
+  let force=base();for(let i=0;i<7;i++)model.addUnit(force,["AOD050","AOD038","AOD066"][i%3]);fails(force,/6 vehicles/);
   force=base();for(let i=0;i<10;i++)model.addUnit(force,["D006","D009","D003","AOD030"][i%4]);fails(force,/9 infantry squads/);
   force=base();model.addUnit(force,"D006");force.groups.at(-1).members.pop();fails(force,/2–3 bases/);
   force=base();for(const group of force.groups)group.pilot="Gunner";fails(force,/Gunner: at most 2/);
@@ -60,7 +59,7 @@ test("selected cards contain each model and its assignments",()=>{
 test("game sizes survive saves and imports; old lists default to Standard",()=>{
   assert.equal(model.parse({groups:[]}).game_size,"standard");
   for(const id of Object.keys(model.config.sizes)) {
-    const force=model.parse({name:"Size test",game_size:id,groups:[],points_limit:999999,limits:{mechs_min:0}});
+    const force=model.parse({name:"Size test",game_size:id,groups:[],points_limit:999999,limits:{mechs_max:999}});
     assert.equal(model.parse(JSON.parse(JSON.stringify(force))).game_size,id);
     assert.equal(model.validate(force).size.points_limit,model.config.sizes[id].points_limit);
   }
@@ -77,21 +76,35 @@ test("each size supports its full Mech allowance with automatic legal pilots",()
     }
     assert.equal(force.groups.length,limits.mechs_max);assert.deepEqual(model.validate(force).errors,[]);
     const repeated=model.parse(force);for(const group of repeated.groups.slice(0,4))group.members=["AOD108"];fails(repeated,/Dasher II: 4/);
-    force.groups=force.groups.slice(0,limits.mechs_min-1);fails(force,/Choose .* ’Mechs/);
+    for(const count of [1,2,3]) {const small=base();small.game_size=id;small.groups=small.groups.slice(0,count);assert.deepEqual(model.validate(small).errors,[]);}
   }
 });
+test("zero Mechs allows vehicle-only, infantry-only, and mixed lists at every size",()=>{
+  for(const id of Object.keys(model.config.sizes)) {
+    for(const choices of [["AOD050"],["D006"],["AOD030"],["AOD050","D006","AOD030"]]) {
+      const force=model.parse({game_size:id,groups:[]});
+      for(const unit of choices)model.addUnit(force,unit);
+      const result=model.validate(force);
+      assert.deepEqual(result.errors,[]);assert.equal(result.counts.Mech,0);assert(result.points>0);
+      assert.equal(model.cards(force).length,result.counts.models);
+      assert(model.cards(force).every(card=>!card.pilot));
+      assert.deepEqual(model.parse(JSON.parse(JSON.stringify(force))),force);
+    }
+  }
+});
+
 test("size changes apply budget, type, carrier, and pilot caps without deleting models",()=>{
   const fixtures=[];
   for(const [category,source,prefix] of [["Mech","AOD108","M"],["Vehicle","AOD050","V"],["Conventional Infantry","D006","C"]]) for(let i=0;i<20;i++)fixtures.push({...model.units.get(source),id:prefix+i,name:prefix+i,family:prefix+i,rank:"Regular",cost:{points:1},rocket_options:{}});
   const testModel=createForceModel({...catalog,units:fixtures});
   for(const id of Object.keys(model.config.sizes)) {
     const force=testModel.parse({game_size:id,groups:[]}), size=testModel.size(force), limits=size.limits;
-    for(let i=0;i<limits.mechs_min;i++)testModel.addUnit(force,"M"+i);
+    for(let i=0;i<2*limits.pilot_max;i++)testModel.addUnit(force,"M"+i);
     assert.deepEqual(testModel.validate(force).errors,[]);
     const first=testModel.units.get("M0");first.cost.points=size.points_limit-force.groups.length+1;
     assert.equal(testModel.validate(force).points,size.points_limit);assert.deepEqual(testModel.validate(force).errors,[]);
     first.cost.points++;assert(testModel.validate(force).errors.some(e=>e.includes("1 points over")));first.cost.points=1;
-    for(const [prefix,cap,pattern] of [["V",limits.vehicles_max,/vehicles/],["C",limits.squads_max,/infantry squads/],["M",limits.mechs_max,/Choose .* ’Mechs/]]) {
+    for(const [prefix,cap,pattern] of [["V",limits.vehicles_max,/vehicles/],["C",limits.squads_max,/infantry squads/],["M",limits.mechs_max,/At most .* ’Mechs/]]) {
       const changed=testModel.parse(force);if(prefix==="M")changed.groups=[];
       for(let i=0;i<cap;i++)testModel.addUnit(changed,prefix+i);
       assert.deepEqual(testModel.validate(changed).errors,[]);
@@ -106,7 +119,7 @@ test("size changes apply budget, type, carrier, and pilot caps without deleting 
   }
   const force=base();model.addUnit(force,"AOD050");const original=JSON.stringify(force.groups);force.game_size="skirmish";
   assert(model.validate(force).errors.some(e=>e.includes("points over")));assert.equal(JSON.stringify(force.groups),original);
-  force.game_size="large";fails(force,/Choose 6–12/);assert.equal(JSON.stringify(force.groups),original);
+  force.game_size="large";assert.deepEqual(model.validate(force).errors,[]);assert.equal(JSON.stringify(force.groups),original);
 });
 test("starter patrols are legal Skirmish lists and produce seven assigned cards",()=>{
   const starter=JSON.parse(fs.readFileSync(path.join(root,"scenarios/first-contact.json"),"utf8"));

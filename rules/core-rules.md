@@ -279,13 +279,15 @@ Choose the same size in the [force builder](../site/builder.html). It checks the
 
 | Part of the force | Skirmish | Standard | Large Battle | Grand Battle |
 | --- | --- | --- | --- | --- |
-| BattleMechs | 2–4 | 4–8 | 6–12 | 8–16 |
+| BattleMechs | 0–4 | 0–8 | 0–12 | 0–16 |
 | Ground vehicles | 0–3 | 0–6 | 0–9 | 0–12 |
 | Infantry squads | 0–4 | 0–9 | 0–13 | 0–18 |
 | Carriers, maximum | 1 | 2 | 3 | 4 |
 | Each pilot role, maximum | 1 | 2 | 3 | 4 |
 
-These are allowances, not numbers you must fill. Only ’Mechs have a minimum. A ’Mech or vehicle uses one choice. Infantry combine conventional and battle armor squads, with 2–3 bases per squad. Carriers are designated vehicles already in the force; they add no points or vehicle slots. Every ’Mech must have one pilot, included in its cost.
+These are upper limits, with no required unit types. You can field only vehicles, only infantry, or any mix, including a force with no ’Mechs. The ’Mech limit counts only ’Mechs; vehicles and infantry have their own limits.
+
+A ’Mech or vehicle uses one choice. Infantry combine conventional and battle armor squads, with 2–3 bases per squad. Carriers are designated vehicles already in the force; they add no points or vehicle slots. Every ’Mech must have one pilot, included in its cost.
 
 At **every size**, the rule of three applies across the whole force, each Unique catalog ID appears at most once, and at most one ’Mech may take one Rocket test substitute. Larger games do not reset these limits for separate detachments.
 

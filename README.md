@@ -21,7 +21,7 @@ Use the rules in this packet. Original abilities, formations, pilots, gear, and 
 
 ## Build your own force
 
-Once you know the basics, [choose a game size](https://therocketexchange.github.io/mechwarrior-revived/rules.html#choose-the-battle-size): **Skirmish (600), Standard (1,200), Large Battle (1,800), or Grand Battle (2,400 points per side)**. Each has a [force chart](https://therocketexchange.github.io/mechwarrior-revived/rules.html#force-organization) with ’Mech, vehicle, squad, pilot, and carrier limits. The rule of three applies at every size. Larger games use a 72 × 48 inch battlefield; the smaller two use 48 × 48.
+Once you know the basics, [choose a game size](https://therocketexchange.github.io/mechwarrior-revived/rules.html#choose-the-battle-size): **Skirmish (600), Standard (1,200), Large Battle (1,800), or Grand Battle (2,400 points per side)**. Each has a [force chart](https://therocketexchange.github.io/mechwarrior-revived/rules.html#force-organization) with upper limits for ’Mechs, vehicles, squads, pilots, and carriers. No unit type is required; you can field zero ’Mechs. The rule of three applies at every size. Larger games use a 72 × 48 inch battlefield; the smaller two use 48 × 48.
 
 Use the [force builder](https://therocketexchange.github.io/mechwarrior-revived/builder.html) to select a game size, choose models, arrange squads, and assign pilots and carriers. It adds up points, checks that size’s limits, and saves your list in your browser. Export a list to keep a backup or move it to another device. **Generate unit cards** creates a print sheet for just your models, with the game size, roster labels, and assignments filled in; use **Print / Save as PDF** to keep a copy.
 

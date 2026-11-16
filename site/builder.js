@@ -42,7 +42,7 @@
     const result=model.validate(force);
     const selected=result.size, limits=selected.limits;
     $("force-totals").innerHTML=`<p class="force-points"><strong>${result.points.toLocaleString()}</strong> / ${selected.points_limit.toLocaleString()} points · ${esc(selected.name)}</p><p>${result.counts.Mech} ’Mechs · ${result.counts.Vehicle} vehicle${result.counts.Vehicle===1?"":"s"} · ${result.counts.squads} squad${result.counts.squads===1?"":"s"} · ${result.counts.models} models</p><p>Breakthrough target: ${result.escape} points</p>`;
-    $("force-size-guide").textContent=`${selected.board_width} × ${selected.board_depth} inch table · ${limits.mechs_min}–${limits.mechs_max} ’Mechs · up to ${limits.vehicles_max} vehicles, ${limits.squads_max} squads, ${limits.carriers_max} carrier${limits.carriers_max===1?'':'s'}, and ${limits.pilot_max} of each pilot role. Rule of three applies across the whole force.`;
+    $("force-size-guide").textContent=`${selected.board_width} × ${selected.board_depth} inch table · up to ${limits.mechs_max} ’Mechs, ${limits.vehicles_max} vehicles, ${limits.squads_max} squads, ${limits.carriers_max} carrier${limits.carriers_max===1?'':'s'}, and ${limits.pilot_max} of each pilot role. You can field a force with no ’Mechs. Rule of three applies across the whole force.`;
     $("force-check-title").textContent=result.errors.length?`${result.errors.length} force ${result.errors.length===1?'limit needs':'limits need'} attention`:`All ${selected.name} force limits met`;
     $("force-checks").classList.toggle("force-valid",!result.errors.length);
     $("force-errors").innerHTML=result.errors.map(error=>`<li>${esc(error)}</li>`).join("")||"<li>Points, unit types, squads, families, pilots, and carriers checked.</li>";

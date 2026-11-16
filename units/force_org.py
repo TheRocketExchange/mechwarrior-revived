@@ -10,15 +10,15 @@ DEFAULT_SIZE = "standard"
 
 def game_size(name, points, mechs, vehicles, squads, carriers, pilots, width):
     return {"name": name, "points_limit": points, "board_width": width, "board_depth": 48,
-            "limits": {"mechs_min": mechs[0], "mechs_max": mechs[1], "vehicles_max": vehicles,
+            "limits": {"mechs_max": mechs, "vehicles_max": vehicles,
                        "squads_max": squads, "family_max": 3, "carriers_max": carriers, "pilot_max": pilots}}
 
 
 GAME_SIZES = {
-    "skirmish": game_size("Skirmish", 600, (2, 4), 3, 4, 1, 1, 48),
-    "standard": game_size("Standard", 1200, (4, 8), 6, 9, 2, 2, 48),
-    "large": game_size("Large Battle", 1800, (6, 12), 9, 13, 3, 3, 72),
-    "grand": game_size("Grand Battle", 2400, (8, 16), 12, 18, 4, 4, 72),
+    "skirmish": game_size("Skirmish", 600, 4, 3, 4, 1, 1, 48),
+    "standard": game_size("Standard", 1200, 8, 6, 9, 2, 2, 48),
+    "large": game_size("Large Battle", 1800, 12, 9, 13, 3, 3, 72),
+    "grand": game_size("Grand Battle", 2400, 16, 12, 18, 4, 4, 72),
 }
 
 # Archive spelling differences and modified versions share a family. Mk II,
@@ -98,7 +98,7 @@ def validate_force(force, catalog, limit=None):
             total += members[0]["rocket_options"][slot]["points"]
         else:
             total += sum(unit["cost"]["points"] for unit in members)
-    require(limits["mechs_min"] <= categories["Mech"] <= limits["mechs_max"], f"Force needs {limits['mechs_min']}-{limits['mechs_max']} Mechs")
+    require(categories["Mech"] <= limits["mechs_max"], f"Force allows at most {limits['mechs_max']} Mechs")
     require(categories["Vehicle"] <= limits["vehicles_max"], f"Force allows at most {limits['vehicles_max']} vehicles")
     require(squads <= limits["squads_max"], f"Force allows at most {limits['squads_max']} infantry squads")
     require(all(count <= limits["family_max"] for count in families.values()), "Rule of three: a family exceeds 3 choices")
