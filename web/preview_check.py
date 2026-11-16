@@ -183,13 +183,13 @@ call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceSca
 open_page('builder.html',"Boolean(document.querySelector('#force-name'))")
 js("localStorage.setItem('mw-revived-force-v1',JSON.stringify({name:'Older list',formula_version:'0.3-alpha-1',points:1,groups:[{id:'M1',members:['AOD108'],pilot:'Gunner',cost:1}]}))")
 open_page('builder.html?test=repriced',"document.querySelectorAll('[data-roster-group]').length===1")
-assert js("document.querySelector('#force-message').textContent.includes('Points updated to formula '+MW_CATALOG.points_formula.version)")
+assert js("document.querySelector('#force-message').textContent.includes('Points updated.')")
 assert js("document.querySelector('[data-roster-group]').textContent.includes(String(MW_CATALOG.units.find(u=>u.id==='AOD108').cost.points))")
 assert js("document.querySelector('#force-size').value==='standard'")
 js("localStorage.removeItem('mw-revived-force-v1')")
 open_page('builder.html?test=empty',"document.querySelectorAll('[data-roster-group]').length===0")
 open_page('builder.html?sample=S1',"document.querySelectorAll('[data-roster-group]').length===5",clean_query=True)
-assert js("document.querySelector('#force-size').value==='skirmish' && document.querySelector('#force-check-title').textContent==='All Skirmish force limits met'")
+assert js("document.querySelector('#force-size').value==='skirmish' && document.querySelector('#force-check-title').textContent==='Within force limits'")
 patrol_a=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
 refuse=call('Page.addScriptToEvaluateOnNewDocument',{'source':'window.confirm=()=>false'})['identifier']
 open_page('builder.html?sample=S2',"document.querySelectorAll('[data-roster-group]').length===5",clean_query=True)
@@ -218,7 +218,7 @@ input_value('#force-name','Armor and Infantry')
 for size in ('skirmish','standard','large','grand'):
     js(f"document.querySelector('#force-size').value='{size}';document.querySelector('#force-size').dispatchEvent(new Event('change'))")
     assert js("document.querySelector('#force-checks').classList.contains('force-valid')"),'Zero-Mech force rejected at '+size
-    assert js("document.querySelector('#force-size-guide').textContent.includes('no ’Mechs') && document.querySelectorAll('[data-field=\"pilot\"]').length===0")
+    assert js("document.querySelector('.force-counts').textContent.includes('’Mechs 0 /') && document.querySelectorAll('[data-field=\"pilot\"]').length===0")
 zero_mech_force=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
 open_page('builder.html?test=zero-mechs',"document.querySelector('#force-name').value==='Armor and Infantry'")
 assert js("document.querySelector('#force-checks').classList.contains('force-valid') && document.querySelectorAll('[data-roster-group]').length===3")
@@ -235,7 +235,7 @@ js("document.querySelector('[data-group=\"V1\"][data-field=\"carrier\"]').click(
 js("const field=document.querySelector('[data-group=\"V1\"][data-field=\"passengers\"]');field.value='C1';field.dispatchEvent(new Event('change',{bubbles:true}))")
 js("const rocket=document.querySelector('[data-group=\"M1\"][data-field=\"rocket_slot\"]');rocket.value='secondary';rocket.dispatchEvent(new Event('change',{bubbles:true}))")
 input_value('#force-name','Desert Watch')
-assert js("document.querySelector('#force-check-title').textContent==='All Standard force limits met'")
+assert js("document.querySelector('#force-check-title').textContent==='Within force limits'")
 assert js("document.querySelectorAll('[data-roster-group]').length===6")
 original_groups=js("JSON.parse(localStorage.getItem('mw-revived-force-v1')).groups")
 for size, points, expected in [('skirmish',600,'points over'),('large',1800,None),('grand',2400,None)]:
