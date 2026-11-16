@@ -11,8 +11,8 @@ Use one copy per game. Write “unknown” for anything you did not measure.
 | Rules version / experimental changes | |
 | Scenario / terrain changes | |
 | Points formula version | |
-| Player A army / actual Revived points | |
-| Player B army / actual Revived points | |
+| Player A army / points | |
+| Player B army / points | |
 | A side or role / B side or role | |
 | A ’Mechs / vehicles / conventional bases / battle armor | |
 | B ’Mechs / vehicles / conventional bases / battle armor | |
@@ -25,9 +25,9 @@ Use one copy per game. Write “unknown” for anything you did not measure.
 
 Add a row for each base.
 
-| Unit ID | Name, edition, collector number, rank | Category | Revived points | Printed cost (reference) | Squad | Carrier/passenger | Pilot | Primary/secondary E/B/R and source |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| | | | | | | | | |
+| Unit ID | Name, edition, collector number, rank | Category | Points | Squad | Carrier/passenger | Pilot | Primary/secondary E/B/R and source |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | | |
 
 ## Round record
 

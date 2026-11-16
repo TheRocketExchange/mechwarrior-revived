@@ -109,8 +109,7 @@ def card(pdf, commands, images, unit, x, y):
     else:
         text(commands, x+18, y+205, "Photo unavailable", 9, color=MUTED)
     text(commands, x+173, y+242, unit["cost"]["points"], 27, True, RED)
-    text(commands, x+173, y+228, "REVIVED POINTS", 6.5, color=MUTED)
-    text(commands, x+173, y+214, f"Printed: {unit['printed_points']}", 7, color=MUTED)
+    text(commands, x+173, y+228, "POINTS", 6.5, color=MUTED)
     for i, line in enumerate(wrap(unit["category"], 70, 8)):
         text(commands, x+173, y+195-i*10, line, 8, True)
     text(commands, x+173, y+167, unit["rank"], 8, color=MUTED)

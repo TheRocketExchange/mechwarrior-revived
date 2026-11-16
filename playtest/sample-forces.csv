@@ -1,13 +1,13 @@
-force,catalog_id,unit_name,edition,rank,category,quantity,revived_points_each,printed_points_each,formula_version,squad_sizes,carrier_count
-H,AOD108,Dasher II,Age of Destruction,Elite,Mech,8,94,144,0.3-alpha-1,,0
-H,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,6,56,50,0.3-alpha-1,,2
-H,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,2,24,17,0.3-alpha-1,2,0
-H,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,4,12,13,0.3-alpha-1,2+2,0
-B,AOD108,Dasher II,Age of Destruction,Elite,Mech,6,94,144,0.3-alpha-1,,0
-B,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,7,56,50,0.3-alpha-1,,2
-B,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,6,24,17,0.3-alpha-1,3+3,0
-B,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,8,12,13,0.3-alpha-1,3+3+2,0
-I,AOD108,Dasher II,Age of Destruction,Elite,Mech,4,94,144,0.3-alpha-1,,0
-I,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,6,56,50,0.3-alpha-1,,2
-I,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,8,24,17,0.3-alpha-1,3+3+2,0
-I,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,24,12,13,0.3-alpha-1,3+3+3+3+3+3+3+3,0
+force,catalog_id,unit_name,edition,rank,category,quantity,points_each,formula_version,squad_sizes,carrier_count
+H,AOD108,Dasher II,Age of Destruction,Elite,Mech,8,94,0.3-alpha-1,,0
+H,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,6,56,0.3-alpha-1,,2
+H,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,2,24,0.3-alpha-1,2,0
+H,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,4,12,0.3-alpha-1,2+2,0
+B,AOD108,Dasher II,Age of Destruction,Elite,Mech,6,94,0.3-alpha-1,,0
+B,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,7,56,0.3-alpha-1,,2
+B,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,6,24,0.3-alpha-1,3+3,0
+B,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,8,12,0.3-alpha-1,3+3+2,0
+I,AOD108,Dasher II,Age of Destruction,Elite,Mech,4,94,0.3-alpha-1,,0
+I,AOD050,Zibler Fast Strike Tank,Age of Destruction,Veteran,Vehicle,6,56,0.3-alpha-1,,2
+I,AOD030,Fenrir Battle Armor,Age of Destruction,Veteran,Battle Armor,8,24,0.3-alpha-1,3+3+2,0
+I,D006,Standard Foot,Dark Age,Elite,Conventional Infantry,24,12,0.3-alpha-1,3+3+3+3+3+3+3+3,0

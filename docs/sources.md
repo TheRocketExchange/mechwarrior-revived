@@ -13,7 +13,7 @@ Revived uses existing miniatures with new playtest rules. These sources explain 
 | [Age of Destruction equipment card](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf) | Color placement and heat markings. Revived replaces the ability text |
 | [Local Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHandbookv21.pdf) | Mike “Rimoran” McCarrig’s 116-page compilation, December 15, 2020 |
 | [Public Scenario Handbook v2.1](https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf) | Online copy of the booklet |
-| [WarrenBorn unit archive](https://www.warrenborn.com/UnitSection.html) and [full index](https://www.warrenborn.com/Search.php) | Miniature photos, collector IDs, original points, combat dials, and heat tracks for the unit catalog |
+| [WarrenBorn unit archive](https://www.warrenborn.com/UnitSection.html) and [full index](https://www.warrenborn.com/Search.php) | Miniature photos, collector IDs, combat dials, and heat tracks for the unit catalog |
 | [Gray Death Scout](https://www.sarna.net/wiki/Gray_Death_Scout) | Identifies Gray Death Scout Armor as battle armor despite its shortened catalog name |
 
 The hosted rulebooks are official game texts. The handbook combines archived scenarios with community advice and changes. A separate fan replacement called “MechWarrior Revised” has not been confirmed.
@@ -32,7 +32,7 @@ The equipment sheet covers six colors. Unlisted markings have no effect; note th
 
 Old symbols do not identify Rockets separately. Use fixed labels from an agreed source, or mark a Rocket test substitute. That label does not establish the figure’s original armament.
 
-Revived replaces printed costs with one [points formula](../rules/points.md). Its weights are playtest estimates, not published WizKids values.
+Every unit uses the same [points formula](../rules/points.md). Its weights are playtest estimates.
 
 ## Unit catalog and photographs
 

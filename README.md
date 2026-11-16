@@ -10,7 +10,7 @@ New in this edition: pushing and recovery for vehicles and squads, half-speed Ad
 
 Open the [HTML rulebook](site/rules.html) or browse the [rules hub](site/index.html). Both work offline, with search, print styles, and card downloads. The navigation is inspired by [NetEA](https://www.net-armageddon.org/).
 
-The [unit catalog](site/units.html) has 1,649 source-linked photo datasheets, full dials, and costs from one [points formula](rules/points.md). [Printable unit cards](units/revived-unit-cards.pdf) cover the whole catalog, four per page. Original printed costs are reference only.
+The [unit catalog](site/units.html) has 1,649 source-linked photo datasheets, full dials, and costs from one [points formula](rules/points.md). [Printable unit cards](units/revived-unit-cards.pdf) cover the whole catalog, four per page.
 
 1. Read the [core rules](rules/core-rules.md) and choose a [sample force](playtest/sample-forces.md).
 2. Start with [Seize and Hold](scenarios/01-seize-and-hold.md). Place terrain before choosing sides.

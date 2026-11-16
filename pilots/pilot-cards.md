@@ -2,7 +2,7 @@
 
 Version 0.3
 
-Give each ’Mech one pilot before deployment; its Revived cost includes the pilot allowance. Use at most two of each role per force. Write the ’Mech’s ID on its card.
+Give each ’Mech one pilot before deployment; its cost includes the pilot allowance. Use at most two of each role per force. Write the ’Mech’s ID on its card.
 
 [Print the cards](revived-pilot-cards.pdf) at 100% on US Letter paper. Each card is 2.5 × 3.5 inches. Two sheets cover a force of eight ’Mechs. [View the sheet](revived-pilot-cards-preview.png).
 

@@ -44,9 +44,9 @@ with (ROOT / "playtest/sample-forces.csv").open(encoding="utf-8",newline="") as 
 totals = {}
 for row in rows:
     unit = units[row["catalog_id"]]
-    assert int(row["revived_points_each"]) == unit["cost"]["points"]
+    assert int(row["points_each"]) == unit["cost"]["points"]
     assert row["formula_version"] == unit["cost"]["version"]
-    totals[row["force"]] = totals.get(row["force"],0) + int(row["quantity"]) * int(row["revived_points_each"])
+    totals[row["force"]] = totals.get(row["force"],0) + int(row["quantity"]) * int(row["points_each"])
 for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot-cards.pdf", ROOT / "rules/readiness-reference.pdf"):
     data=path.read_bytes()
     start=int(re.search(rb'startxref\s+(\d+)',data).group(1))

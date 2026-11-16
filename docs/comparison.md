@@ -21,7 +21,6 @@ The downloaded **[Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHan
 | Transport | Boarding and unloading use carrier movement; passengers are lost when it is destroyed | Squad spends its activation; carrier acts separately. Passengers may survive a destroyed carrier |
 | Victory | Win a majority of three conditions: elimination, battlefield control, and enemy deployment zone | Each scenario sets one mission and its scoring |
 | Pilots | Purchased cards modify ’Mechs | Four roles; one pilot allowance included in each ’Mech’s cost; no advancement |
-| Points | Printed cost on each base | One shared formula uses the full dial and Revived weapon, equipment, and heat rules |
 | Weapons | Energy, Ballistic, and Melee symbols | Separate Rocket labels; recoil, heat, and indirect fire give different tradeoffs |
 
 AoD formation bonuses require a legal formation and line of sight; simple adjacency is not enough. AoD infantry can also capture units, and its victory rules already include objectives beyond kills.

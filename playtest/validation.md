@@ -14,7 +14,7 @@ The checks below cover written rules, arithmetic, and generated files. **No tabl
 | Breakthrough targets | 30% rounded up: H 356, B 359, I 358 |
 | Catalog coverage | All 1,649 miniature entries in the source index parsed; all 1,649 local photos decoded successfully. Includes five DropShip turret sections |
 | Unit types | 751 ’Mechs including quads and colossi, 519 vehicles, 213 battle armor, 161 conventional infantry, and five turrets. 114 entries are marked outside the core rules |
-| Points | Every cost and Rocket substitute reproduces from formula 0.3-alpha-1. Original cost, faction, name, and rarity do not affect pricing |
+| Points | Every cost and Rocket substitute reproduces from formula 0.3-alpha-1. Faction, name, and rarity do not affect pricing |
 | Pricing and readiness tests | Nineteen automated tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, and readiness. Short schedules were also exhaustively enumerated to check the optimizer independently |
 | Unit PDF | 1,649 photo cards on 413 US Letter pages. All IDs extracted from the PDF; sampled pages independently rendered and visually checked |
 | Seize and Hold score | 5 scoring rounds × 3 sites = 15 available points |

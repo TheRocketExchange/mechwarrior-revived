@@ -8,7 +8,7 @@ If rules disagree, follow the scenario for deployment and victory, then any spec
 
 ## 1 Assemble forces
 
-Start with a 1,200-point limit. Add the **Revived points** from the [unit catalog](../site/units.html), stay under the limit, and aim for opposing totals within 2%. Pay for every base in a squad. All costs use the same [points formula](points.md); the original printed cost is only a reference. Use one formula version for both armies.
+Start with a 1,200-point limit. Add the **points** from the [unit catalog](../site/units.html), stay under the limit, and aim for opposing totals within 2%. Pay for every base in a squad. All costs use the same [points formula](points.md). Use one formula version for both armies.
 
 You may mix factions and take duplicates. A figure marked Unique is limited to one of that collector’s number per side.
 
@@ -252,7 +252,7 @@ Finish the attack, then give each passenger 1 unavoidable damage. Remove casualt
 
 Save as many bases as can fit. Remove any that cannot be placed. Mark the surviving squad activated, even if it had not acted, and keep its readiness. If it is split, it must regroup next round. Leave no wreck.
 
-A squad cannot board and unload in the same round or gain another activation when its carrier is destroyed. In Breakthrough, passengers exit with their carrier and score their own Revived points once.
+A squad cannot board and unload in the same round or gain another activation when its carrier is destroyed. In Breakthrough, passengers exit with their carrier and score their own points once.
 
 ## 10 Objectives and victory
 

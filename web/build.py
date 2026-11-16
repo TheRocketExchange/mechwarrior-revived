@@ -184,7 +184,7 @@ def main():
             body = '<p class="lead">Rules for your MechWarrior clix collection.</p><p>Build an army of 4–8 ’Mechs with vehicles and infantry. Take turns activating your units, manage heat and readiness, and fight for the scenario’s objectives.</p><p>New in v0.3: pushing and recovery, half-speed Advance, and one order per squad. <a href="combat-rhythm.html">See what changes on the table.</a></p>' + resource_rows([
                 ("01", "rules.html", "Read the rules", "Force assembly, movement, combat, heat, and victory."),
                 ("02", "forces.html", "Assemble a force", "Three starting armies under a 1,200-point ceiling."),
-                ("03", "units.html", "Find your units", "Photos, full dials, printable cards, and Revived points."),
+                ("03", "units.html", "Find your units", "Photos, full dials, printable cards, and points."),
                 ("04", "scenarios.html", "Choose your mission", "Three scenarios with deployment and scoring rules."),
                 ("05", "aids.html", "Prepare the table", "Quick references and printable pilot cards."),
             ]) + '<div class="edition-note"><strong>Playtest edition</strong><p>The rules are ready to try. Balance and the two-hour play target still need testing.</p></div>'
@@ -206,7 +206,7 @@ def main():
         ("04", "pilots.html", "Pilot cards", "Gunner, Skirmisher, Brawler, and Engineer."),
         ("PDF", "downloads/revived-pilot-cards.pdf", "Print the pilot cards", "US Letter · Four 2.5 × 3.5 inch cards · Print at 100%"),
         ("PDF", "downloads/revived-unit-cards.pdf", "Print the unit cards", "The full catalog · Four photo cards per Letter page · Print at 100%"),
-        ("CSV", "downloads/sample-forces.csv", "Sample force data", "Unit counts and Revived costs for all three forces."),
+        ("CSV", "downloads/sample-forces.csv", "Sample force data", "Unit counts and costs for all three forces."),
         ("CSV", "downloads/adjustments.csv", "Points change log", "Record formula changes and test results."),
         ("LOG", "log.html", "Playtest log", "A printable record for your games and rules questions."),
     ])

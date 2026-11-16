@@ -2,7 +2,7 @@
 
 Version 0.3 · Formula 0.3-alpha-1
 
-Build armies with the **Revived points** shown in the [unit catalog](../site/units.html). Pay per base, including every member of a squad. The old printed cost is shown only for reference.
+Build armies with the **points** shown in the [unit catalog](../site/units.html). Pay per base, including every member of a squad.
 
 Every unit uses the same formula. There are no hand-set prices, faction discounts, or rarity premiums. These are starting costs for playtesting, not established balance.
 

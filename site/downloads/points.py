@@ -1,4 +1,4 @@
-"""The sole points calculator. Printed points, names, factions, and rarity are not inputs.
+"""The sole points calculator. Names, factions, and rarity are not inputs.
 
 Expected damage includes all 216 three-dice outcomes and the two-white-dice
 critical rule. Ratings use every live click from the starting mark onward.

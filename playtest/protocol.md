@@ -85,4 +85,4 @@ These are prompts for review, not proof of balance. Identify whether a problem c
 
 For a rules gap, write down what happened and both players’ temporary ruling. Use that ruling in both games and mark the pair as a rules-clarification test.
 
-Between pairs, update the version and any affected references or cards. Record formula changes and their reasons in [adjustments.csv](adjustments.csv), then rebuild all costs together. Keep original printed points only as a reference.
+Between pairs, update the version and any affected references or cards. Record formula changes and their reasons in [adjustments.csv](adjustments.csv), then rebuild all costs together.

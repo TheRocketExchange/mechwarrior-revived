@@ -24,11 +24,11 @@ The attacker chooses who acts first in round 1. Roll initiative normally afterwa
 
 ## Escape
 
-Before play, calculate **30% of the attacker’s actual starting Revived points, rounded up**. This is the escape target. A 1,200-point army needs 360 escaped points.
+Before play, calculate **30% of the attacker’s actual starting points, rounded up**. This is the escape target. A 1,200-point army needs 360 escaped points.
 
 An unengaged attacker may leave with Move, Advance, or Rush, using that action’s movement allowance and costs. Move lets a Spent group recover and exit. Advance is half speed and still commits or pushes non-’Mechs, even without a shot. Pay pushing damage before scoring; a unit destroyed by it scores nothing. Move the entire base over the north edge, paying enough movement for its back edge to clear the table. It cannot attack that activation. No other edge is an exit; shutdown units cannot leave.
 
-Remove escaped units permanently and count their Revived points once, using the cost recorded before deployment. Passengers leave with their carrier and add their points, even if their squad has already acted. Destroyed units score nothing.
+Remove escaped units permanently and count their points once, using the cost recorded before deployment. Passengers leave with their carrier and add their points, even if their squad has already acted. Destroyed units score nothing.
 
 A squad leaving on foot must get every survivor across with the same action in the same activation. Declare the exit before moving. If any member cannot make it, none leaves; choose a normal squad action instead. A split squad must spend an activation regrouping first; it cannot exit during that activation.
 
