@@ -1,6 +1,6 @@
 # Design notes
 
-Revived is a combined-arms game of BattleMechs, vehicles, and infantry fighting for ground. It uses existing MechWarrior clix figures and their changing combat dials. The aim is a game of about two hours in which infantry matter for the ground they hold and the attacks they make.
+Revived is a modernized, fan-made take on MechWarrior: Dark Age, using existing MW:DA clix figures and their combat dials. BattleMechs, vehicles, and infantry fight for ground. The aim is a game of about two hours in which infantry matter for the ground they hold and the attacks they make.
 
 ## Roles on the table
 

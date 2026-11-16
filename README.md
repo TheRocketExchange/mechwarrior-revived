@@ -1,10 +1,10 @@
 # MechWarrior Revived
 
-MechWarrior Revived is a tabletop wargame of combined-arms battles in the BattleTech universe. Command BattleMechs, armored vehicles, and infantry as you fight to seize ground, break through enemy lines, or hold a vital position.
+MechWarrior Revived is a modernized, fan-made take on **MechWarrior: Dark Age**, played with your existing **MW:DA clix figures and their combat dials**. Command BattleMechs, armored vehicles, and infantry in the BattleTech universe as you fight to seize ground, break through enemy lines, or hold a vital position.
 
 Players take turns moving and fighting with one unit or squad at a time. A damaged combat dial changes what a unit can do. Heat and pushing force you to decide when another attack is worth the strain, and when to pull back or recover.
 
-Play with your existing MechWarrior clix miniatures and their combat dials. These fan-made rules include scenarios, photo datasheets, and printable game aids.
+The rules include scenarios, photo datasheets, and printable game aids.
 
 **[Open the rulebook](https://therocketexchange.github.io/mechwarrior-revived/) · [Read the rules](https://therocketexchange.github.io/mechwarrior-revived/rules.html) · [Browse the units](https://therocketexchange.github.io/mechwarrior-revived/units.html)**
 
