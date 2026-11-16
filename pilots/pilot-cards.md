@@ -2,9 +2,9 @@
 
 Version 0.3
 
-Give each ’Mech one pilot before deployment; its cost includes the pilot allowance. Use at most two of each role per force. Write the ’Mech’s ID on its card.
+Give each ’Mech one pilot before deployment; its cost includes the pilot allowance. Each role is limited to 1 in Skirmish, 2 in Standard, 3 in Large Battle, or 4 in Grand Battle. See the [force chart](../rules/core-rules.md#force-organization). Write the ’Mech’s ID on its card.
 
-[Print the cards](revived-pilot-cards.pdf) at 100% on US Letter paper. Each card is 2.5 × 3.5 inches. Two sheets cover a force of eight ’Mechs. [View the sheet](revived-pilot-cards-preview.png).
+[Print the cards](revived-pilot-cards.pdf) at 100% on US Letter paper. Each card is 2.5 × 3.5 inches. One sheet covers Skirmish; print up to two for Standard, three for Large Battle, or four for Grand Battle. [View the sheet](revived-pilot-cards-preview.png).
 
 | Pilot | Ability |
 | --- | --- |

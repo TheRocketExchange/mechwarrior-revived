@@ -173,8 +173,13 @@ js("localStorage.setItem('mw-revived-force-v1',JSON.stringify({name:'Older list'
 open_page('builder.html?test=repriced',"document.querySelectorAll('[data-roster-group]').length===1")
 assert js("document.querySelector('#force-message').textContent.includes('Points updated to formula '+MW_CATALOG.points_formula.version)")
 assert js("document.querySelector('[data-roster-group]').textContent.includes(String(MW_CATALOG.units.find(u=>u.id==='AOD108').cost.points))")
+assert js("document.querySelector('#force-size').value==='standard'")
 js("localStorage.removeItem('mw-revived-force-v1')")
 open_page('builder.html?test=empty',"document.querySelectorAll('[data-roster-group]').length===0")
+assert js("document.querySelectorAll('#force-size option').length===4")
+js("document.querySelector('#force-size').value='grand';document.querySelector('#force-size').dispatchEvent(new Event('change'));document.querySelector('#force-sample').value='H';document.querySelector('#force-sample').dispatchEvent(new Event('change'))")
+assert js("document.querySelector('#force-size').value==='standard' && document.querySelectorAll('[data-roster-group]').length===15")
+js("window.confirm=()=>true;document.querySelector('#force-new').click()")
 for unit_id in ('AOD108','AOD112','AOD096','AOD104','D006','AOD050'):
     input_value('#force-query',unit_id)
     js(f"document.querySelector('[data-add=\"{unit_id}\"]').click()")
@@ -184,13 +189,21 @@ js("document.querySelector('[data-group=\"V1\"][data-field=\"carrier\"]').click(
 js("const field=document.querySelector('[data-group=\"V1\"][data-field=\"passengers\"]');field.value='C1';field.dispatchEvent(new Event('change',{bubbles:true}))")
 js("const rocket=document.querySelector('[data-group=\"M1\"][data-field=\"rocket_slot\"]');rocket.value='secondary';rocket.dispatchEvent(new Event('change',{bubbles:true}))")
 input_value('#force-name','Desert Watch')
-assert js("document.querySelector('#force-check-title').textContent==='All standard force limits met'")
+assert js("document.querySelector('#force-check-title').textContent==='All Standard force limits met'")
 assert js("document.querySelectorAll('[data-roster-group]').length===6")
+original_groups=js("JSON.parse(localStorage.getItem('mw-revived-force-v1')).groups")
+for size, points, expected in [('skirmish',600,'points over'),('large',1800,'Choose 6–12'),('grand',2400,'Choose 8–16')]:
+    js(f"document.querySelector('#force-size').value='{size}';document.querySelector('#force-size').dispatchEvent(new Event('change'))")
+    assert js("JSON.parse(localStorage.getItem('mw-revived-force-v1')).groups")==original_groups
+    assert str(points)==js("String(createForceModel(MW_CATALOG).validate(JSON.parse(localStorage.getItem('mw-revived-force-v1'))).size.points_limit)")
+    assert expected in js("document.querySelector('#force-errors').textContent")
 saved=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
+assert saved['game_size']=='grand'
 assert saved['groups'][0]['rocket_slot']=='secondary'
 assert saved['groups'][-1]['passengers']=='C1'
 open_page('builder.html',"document.querySelector('#force-name').value==='Desert Watch'")
 assert js("document.querySelectorAll('[data-roster-group]').length===6")
+assert js("document.querySelector('#force-size').value==='grand' && document.querySelector('#force-size-guide').textContent.includes('72 × 48')")
 screenshot('builder-desktop')
 call('Emulation.setDeviceMetricsOverride',{'width':390,'height':844,'deviceScaleFactor':1,'mobile':True})
 assert js("document.documentElement.scrollWidth <= innerWidth"),'Builder mobile overflow'
@@ -212,6 +225,7 @@ input_id=call('DOM.querySelector',{'nodeId':root,'selector':'#force-import'})['n
 call('DOM.setFileInputFiles',{'nodeId':input_id,'files':[str(export_path.resolve())]})
 wait("document.querySelector('#force-name').value==='Desert Watch'")
 assert js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")==saved
+assert js("document.querySelector('#force-size').value==='grand'")
 broken=downloads/'invalid-force.json'
 broken.write_text('{"groups":[{"id":"M1","members":["UNKNOWN"]}]}',encoding='utf-8')
 call('DOM.setFileInputFiles',{'nodeId':input_id,'files':[str(broken.resolve())]})
@@ -235,6 +249,7 @@ wait("[...document.querySelectorAll('.print-unit-card img')].every(img=>img.comp
 assert js("[...document.querySelectorAll('[data-card-id]')].map(card=>card.dataset.cardId)")==['M1','M2','M3','M4','C1a','C1b','C1c','V1']
 assert js("document.querySelector('[data-card-id=\"M1\"]').textContent.includes('Secondary: Rocket')")
 assert js("document.querySelector('[data-card-id=\"C1a\"]').textContent.includes('Assigned carrier: V1')")
+assert js("document.querySelector('#force-card-status').textContent.includes('Grand Battle') && [...document.querySelectorAll('.card-sheet-label')].every(label=>label.textContent.includes('/ 2400 points'))")
 screenshot('selected-cards')
 printout=call('Page.printToPDF',{'printBackground':True,'preferCSSPageSize':True,'paperWidth':8.5,'paperHeight':11})
 selected_pdf=QA/'selected-unit-cards.pdf'
@@ -243,6 +258,7 @@ selected_reader=PdfReader(selected_pdf)
 assert len(selected_reader.pages)==4,len(selected_reader.pages)
 selected_text='\n'.join(page.extract_text() for page in selected_reader.pages)
 assert selected_text.count('Catalog ID:')==8
+assert selected_text.count('Grand Battle')==4
 assert all(label in selected_text for label in ('C1a','C1b','C1c','V1','Gunner','Rocket','HEAT DIAL','COMBAT DIAL','SD'))
 long_force={'name':'Long card layout','groups':[{'id':'M1','members':['BF019'],'pilot':'Gunner'},{'id':'A1','members':['CA129']}]}
 call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#list='+quote(json.dumps(long_force))})

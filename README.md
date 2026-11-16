@@ -8,7 +8,7 @@ Play with your existing MechWarrior clix miniatures and their combat dials. Thes
 
 **[Open the rulebook](https://therocketexchange.github.io/mechwarrior-revived/) · [Read the rules](https://therocketexchange.github.io/mechwarrior-revived/rules.html) · [Browse the units](https://therocketexchange.github.io/mechwarrior-revived/units.html)**
 
-**Version 0.3 is ready for playtesting.** Balance and the roughly two-hour play target still need testing. The [worked examples](https://therocketexchange.github.io/mechwarrior-revived/combat-rhythm.html) explain pushing, recovery, and moving fire. The [v0.2 tag](https://github.com/TheRocketExchange/mechwarrior-revived/tree/v0.2) preserves the previous edition.
+**Version 0.3 is ready for playtesting.** Balance at each size and the roughly two-hour target for Standard games still need testing. The [worked examples](https://therocketexchange.github.io/mechwarrior-revived/combat-rhythm.html) explain pushing, recovery, and moving fire. The [v0.2 tag](https://github.com/TheRocketExchange/mechwarrior-revived/tree/v0.2) preserves the previous edition.
 
 ## Your first game
 
@@ -21,9 +21,9 @@ Use the rules in this packet. Original abilities, formations, pilots, gear, and 
 
 ## Build your own force
 
-Once you know the basics, follow [Build your force](https://therocketexchange.github.io/mechwarrior-revived/rules.html#11-build-your-force). It sets out the points limit, force-organization chart, rule of three, squad sizes, and pilot and carrier limits.
+Once you know the basics, [choose a game size](https://therocketexchange.github.io/mechwarrior-revived/rules.html#choose-the-battle-size): **Skirmish (600), Standard (1,200), Large Battle (1,800), or Grand Battle (2,400 points per side)**. Each has a [force chart](https://therocketexchange.github.io/mechwarrior-revived/rules.html#force-organization) with ’Mech, vehicle, squad, pilot, and carrier limits. The rule of three applies at every size. Larger games use a 72 × 48 inch battlefield; the smaller two use 48 × 48.
 
-Use the [force builder](https://therocketexchange.github.io/mechwarrior-revived/builder.html) to choose models, arrange squads, and assign pilots and carriers. It adds up points, checks the limits, and saves your list in your browser. Export a list to keep a backup or move it to another device. **Generate unit cards** creates a print sheet for just your models, with roster labels and assignments filled in; use **Print / Save as PDF** to keep a copy.
+Use the [force builder](https://therocketexchange.github.io/mechwarrior-revived/builder.html) to select a game size, choose models, arrange squads, and assign pilots and carriers. It adds up points, checks that size’s limits, and saves your list in your browser. Export a list to keep a backup or move it to another device. **Generate unit cards** creates a print sheet for just your models, with the game size, roster labels, and assignments filled in; use **Print / Save as PDF** to keep a copy.
 
 The [unit catalog](https://therocketexchange.github.io/mechwarrior-revived/units.html) has 1,649 photo datasheets with full dials and costs from one [points formula](https://therocketexchange.github.io/mechwarrior-revived/points.html). Each datasheet identifies its unit family for the rule of three. [Download the unit cards](https://therocketexchange.github.io/mechwarrior-revived/downloads/revived-unit-cards.pdf), two per page with complete combat and heat dials, or the [catalog CSV](https://therocketexchange.github.io/mechwarrior-revived/downloads/unit-catalog.csv). The [card guide](https://therocketexchange.github.io/mechwarrior-revived/units.html#reading-a-unit-card) explains IDs, squad and carrier assignments, and clicks.
 

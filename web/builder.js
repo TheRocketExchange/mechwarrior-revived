@@ -38,9 +38,12 @@
   }
   function render() {
     $("force-name").value=force.name;
+    $("force-size").value=force.game_size;
     const result=model.validate(force);
-    $("force-totals").innerHTML=`<p class="force-points"><strong>${result.points.toLocaleString()}</strong> / ${model.config.points_limit.toLocaleString()} points</p><p>${result.counts.Mech} ’Mechs · ${result.counts.Vehicle} vehicle${result.counts.Vehicle===1?"":"s"} · ${result.counts.squads} squad${result.counts.squads===1?"":"s"} · ${result.counts.models} models</p><p>Breakthrough target: ${result.escape} points</p>`;
-    $("force-check-title").textContent=result.errors.length?`${result.errors.length} force ${result.errors.length===1?'limit needs':'limits need'} attention`:"All standard force limits met";
+    const selected=result.size, limits=selected.limits;
+    $("force-totals").innerHTML=`<p class="force-points"><strong>${result.points.toLocaleString()}</strong> / ${selected.points_limit.toLocaleString()} points · ${esc(selected.name)}</p><p>${result.counts.Mech} ’Mechs · ${result.counts.Vehicle} vehicle${result.counts.Vehicle===1?"":"s"} · ${result.counts.squads} squad${result.counts.squads===1?"":"s"} · ${result.counts.models} models</p><p>Breakthrough target: ${result.escape} points</p>`;
+    $("force-size-guide").textContent=`${selected.board_width} × ${selected.board_depth} inch table · ${limits.mechs_min}–${limits.mechs_max} ’Mechs · up to ${limits.vehicles_max} vehicles, ${limits.squads_max} squads, ${limits.carriers_max} carrier${limits.carriers_max===1?'':'s'}, and ${limits.pilot_max} of each pilot role. Rule of three applies across the whole force.`;
+    $("force-check-title").textContent=result.errors.length?`${result.errors.length} force ${result.errors.length===1?'limit needs':'limits need'} attention`:`All ${selected.name} force limits met`;
     $("force-checks").classList.toggle("force-valid",!result.errors.length);
     $("force-errors").innerHTML=result.errors.map(error=>`<li>${esc(error)}</li>`).join("")||"<li>Points, unit types, squads, families, pilots, and carriers checked.</li>";
     $("force-cards").disabled=!force.groups.length;
@@ -60,6 +63,8 @@
     for(const group of force.groups) if(group.passengers===id) delete group.passengers;
   }
   $("force-name").addEventListener("input",()=>{force.name=$("force-name").value;save();});
+  for(const [id,size] of Object.entries(model.config.sizes)) $("force-size").insertAdjacentHTML("beforeend",option(id,`${size.name} · ${size.points_limit.toLocaleString()} points`,force.game_size));
+  $("force-size").addEventListener("change",()=>{force.game_size=$("force-size").value;change();message(`Game size changed to ${model.size(force).name}. Models and assignments kept; review the force checks.`);});
   $("force-filters").addEventListener("submit",event=>event.preventDefault());
   $("force-filters").addEventListener("input",()=>{page=0;renderResults();});
   for(const category of [...new Set(MW_CATALOG.units.map(unit=>unit.category))].sort()) $("force-type").insertAdjacentHTML("beforeend",option(category,category,""));

@@ -1,12 +1,12 @@
 # Breakthrough
 
-Two players · 1,200 points each · 8 rounds · Version 0.3
+Two players · Any listed game size · 8 rounds · Version 0.3
 
 The attacker must get enough of the army past the defender and off the north edge.
 
 ## Set up
 
-Use a 48 × 48 inch table, with coordinates measured from the southwest corner. Roll or flip a coin to choose attacker and defender.
+Agree on a [game size](../rules/core-rules.md#choose-the-battle-size). This layout uses 48 × 48 inches; for Large or Grand Battles, apply the [wider battlefield setup](../rules/core-rules.md#set-up-a-larger-battlefield). Measure coordinates from the southwest corner. Roll or flip a coin to choose attacker and defender.
 
 | Feature | Footprint |
 | --- | --- |

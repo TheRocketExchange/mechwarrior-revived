@@ -1,13 +1,25 @@
-"""Unit families and roster checks for the standard Revived force organization."""
+"""Shared game sizes, unit families, and roster checks."""
 from collections import Counter
 import math
 import re
 
 INFANTRY = {"Conventional Infantry", "Battle Armor"}
 PILOTS = ("Gunner", "Skirmisher", "Brawler", "Engineer")
-POINTS_LIMIT = 1200
-LIMITS = {"mechs_min": 4, "mechs_max": 8, "vehicles_max": 6,
-          "squads_max": 9, "family_max": 3, "carriers_max": 2, "pilot_max": 2}
+DEFAULT_SIZE = "standard"
+
+
+def game_size(name, points, mechs, vehicles, squads, carriers, pilots, width):
+    return {"name": name, "points_limit": points, "board_width": width, "board_depth": 48,
+            "limits": {"mechs_min": mechs[0], "mechs_max": mechs[1], "vehicles_max": vehicles,
+                       "squads_max": squads, "family_max": 3, "carriers_max": carriers, "pilot_max": pilots}}
+
+
+GAME_SIZES = {
+    "skirmish": game_size("Skirmish", 600, (2, 4), 3, 4, 1, 1, 48),
+    "standard": game_size("Standard", 1200, (4, 8), 6, 9, 2, 2, 48),
+    "large": game_size("Large Battle", 1800, (6, 12), 9, 13, 3, 3, 72),
+    "grand": game_size("Grand Battle", 2400, (8, 16), 12, 18, 4, 4, 72),
+}
 
 # Archive spelling differences and modified versions share a family. Mk II,
 # IIC and other distinct chassis generations keep their own family names.
@@ -41,8 +53,13 @@ def require(condition, message):
         raise ValueError(message)
 
 
-def validate_force(force, catalog, limit=POINTS_LIMIT):
+def validate_force(force, catalog, limit=None):
     """Validate an explicit roster; each group lists its individual catalog IDs."""
+    size_id = force.get("game_size", DEFAULT_SIZE)
+    require(isinstance(size_id, str) and size_id in GAME_SIZES, "Choose a supported game size")
+    size = GAME_SIZES[size_id]
+    limits = size["limits"]
+    limit = size["points_limit"] if limit is None else limit
     groups = force["groups"]
     ids = [group["id"] for group in groups]
     require(all(ids) and len(ids) == len(set(ids)), "Group IDs must be nonempty and unique")
@@ -81,13 +98,13 @@ def validate_force(force, catalog, limit=POINTS_LIMIT):
             total += members[0]["rocket_options"][slot]["points"]
         else:
             total += sum(unit["cost"]["points"] for unit in members)
-    require(LIMITS["mechs_min"] <= categories["Mech"] <= LIMITS["mechs_max"], "Force needs 4-8 Mechs")
-    require(categories["Vehicle"] <= LIMITS["vehicles_max"], "Force allows at most 6 vehicles")
-    require(squads <= LIMITS["squads_max"], "Force allows at most 9 infantry squads")
-    require(all(count <= LIMITS["family_max"] for count in families.values()), "Rule of three: a family exceeds 3 choices")
+    require(limits["mechs_min"] <= categories["Mech"] <= limits["mechs_max"], f"Force needs {limits['mechs_min']}-{limits['mechs_max']} Mechs")
+    require(categories["Vehicle"] <= limits["vehicles_max"], f"Force allows at most {limits['vehicles_max']} vehicles")
+    require(squads <= limits["squads_max"], f"Force allows at most {limits['squads_max']} infantry squads")
+    require(all(count <= limits["family_max"] for count in families.values()), "Rule of three: a family exceeds 3 choices")
     require(all(count <= 1 for count in unique.values()), "A Unique catalog ID may appear only once")
-    require(all(count <= LIMITS["pilot_max"] for count in pilots.values()), "At most 2 of each pilot role")
-    require(carriers <= LIMITS["carriers_max"], "At most 2 carriers")
+    require(all(count <= limits["pilot_max"] for count in pilots.values()), f"At most {limits['pilot_max']} of each pilot role")
+    require(carriers <= limits["carriers_max"], f"At most {limits['carriers_max']} carriers")
     require(rocket_count <= 1, "At most one Rocket test substitute")
     passengers = [group["passengers"] for group in groups if group.get("passengers")]
     require(len(passengers) == len(set(passengers)), "A squad cannot start in two carriers")

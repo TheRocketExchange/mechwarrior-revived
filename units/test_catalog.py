@@ -12,7 +12,7 @@ from PIL import Image
 from parse_catalog import parse_unit
 from points import CONFIG, calculate, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot
 from readiness import Readiness, order, finish_action
-from force_org import PILOTS, unit_family, validate_force
+from force_org import DEFAULT_SIZE, GAME_SIZES, PILOTS, unit_family, validate_force
 
 ROOT = Path(__file__).resolve().parent
 CATALOG = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
@@ -89,6 +89,98 @@ class ForceOrganizationChecks(unittest.TestCase):
 
     def add(self, force, key, count=1, **extra):
         force["groups"].append({"id": f"G{len(force['groups'])}", "members": [key] * count, **extra})
+
+    def test_game_sizes_have_legal_real_rosters_and_legacy_default(self):
+        expected = {"skirmish": (600, 2, 4, 3, 4, 1, 1, 48),
+                    "standard": (1200, 4, 8, 6, 9, 2, 2, 48),
+                    "large": (1800, 6, 12, 9, 13, 3, 3, 72),
+                    "grand": (2400, 8, 16, 12, 18, 4, 4, 72)}
+        self.assertEqual(set(GAME_SIZES), set(expected))
+        candidates = sorted((u for u in UNITS.values() if u["core_legal"] and u["category"] == "Mech" and "Unique" not in u["rank"]), key=lambda u:u["cost"]["points"])
+        from collections import Counter
+        for key, (points, low, high, vehicles, squads, carriers, pilots, width) in expected.items():
+            size = GAME_SIZES[key]
+            self.assertEqual((size["points_limit"], size["board_width"], size["board_depth"]), (points, width, 48))
+            self.assertEqual(size["limits"], dict(mechs_min=low, mechs_max=high, vehicles_max=vehicles, squads_max=squads, carriers_max=carriers, pilot_max=pilots, family_max=3))
+            force, families = {"game_size": key, "groups": []}, Counter()
+            for unit in candidates:
+                family = unit_family(unit)
+                if families[family] >= 3:
+                    continue
+                i = len(force["groups"])
+                force["groups"].append({"id": f"M{i+1}", "members": [unit["id"]], "pilot": PILOTS[i % 4]})
+                families[family] += 1
+                if len(force["groups"]) == high:
+                    break
+            result = validate_force(force, UNITS)
+            self.assertEqual(result["mechs"], high)
+            self.assertLessEqual(result["total"], points)
+            repeated = copy.deepcopy(force)
+            for group in repeated["groups"][:4]:
+                group["members"] = ["AOD108"]
+            with self.assertRaisesRegex(ValueError, "Rule of three"):
+                validate_force(repeated, UNITS)
+            force["groups"] = force["groups"][:low-1]
+            with self.assertRaisesRegex(ValueError, "Force needs"):
+                validate_force(force, UNITS)
+        legacy = self.force()
+        self.assertEqual(validate_force(legacy, UNITS), validate_force(dict(legacy, game_size=DEFAULT_SIZE), UNITS))
+        for invalid in ("unknown", "", None, 600, {}):
+            with self.assertRaisesRegex(ValueError, "game size"):
+                validate_force(dict(legacy, game_size=invalid), UNITS)
+
+    def test_each_size_enforces_budget_pilots_carriers_and_type_caps(self):
+        # Cheap, distinct test units isolate force limits from catalog pricing.
+        fixtures = {}
+        for category, source, prefix in (("Mech", "AOD108", "M"), ("Vehicle", "AOD050", "V"), ("Conventional Infantry", "D006", "C")):
+            for i in range(20):
+                unit = copy.deepcopy(UNITS[source])
+                unit.update(id=f"{prefix}{i}", name=f"Test {prefix}{i}", rank="Regular")
+                unit["cost"]["points"] = 1
+                fixtures[unit["id"]] = unit
+        for size_id, size in GAME_SIZES.items():
+            limits = size["limits"]
+            force = {"game_size": size_id, "groups": [{"id": f"M{i}", "members": [f"M{i}"], "pilot": PILOTS[i%4]} for i in range(limits["mechs_min"])]}
+            validate_force(force, fixtures)
+            # Exact budget is legal; the same roster one point over is not.
+            priced = copy.deepcopy(fixtures)
+            priced["M0"]["cost"]["points"] = size["points_limit"] - len(force["groups"]) + 1
+            self.assertEqual(validate_force(force, priced)["total"], size["points_limit"])
+            priced["M0"]["cost"]["points"] += 1
+            with self.assertRaisesRegex(ValueError, "above"):
+                validate_force(force, priced)
+            for category, prefix, cap, pattern in (("Vehicle", "V", limits["vehicles_max"], "vehicles"), ("Conventional Infantry", "C", limits["squads_max"], "squads"), ("Mech", "M", limits["mechs_max"], "Force needs")):
+                changed = copy.deepcopy(force)
+                if category == "Mech":
+                    changed["groups"] = []
+                for i in range(cap):
+                    group = {"id": f"{prefix}{i}", "members": [f"{prefix}{i}"] * (2 if category in ("Conventional Infantry",) else 1)}
+                    if category == "Mech":
+                        group["pilot"] = PILOTS[i%4]
+                    changed["groups"].append(group)
+                validate_force(changed, fixtures)
+                extra = copy.deepcopy(changed["groups"][-1])
+                extra["id"] = "Extra"
+                changed["groups"].append(extra)
+                with self.assertRaisesRegex(ValueError, pattern):
+                    validate_force(changed, fixtures)
+            changed = copy.deepcopy(force)
+            for i in range(limits["carriers_max"]):
+                changed["groups"].append({"id": f"V{i}", "members": [f"V{i}"], "carrier": True})
+            validate_force(changed, fixtures)
+            changed["groups"].append({"id": "Extra", "members": ["V19"], "carrier": True})
+            with self.assertRaisesRegex(ValueError, "carriers"):
+                validate_force(changed, fixtures)
+            changed = copy.deepcopy(force)
+            for group in changed["groups"][:limits["pilot_max"]]:
+                group["pilot"] = "Gunner"
+            # Ensure no other group already uses that role.
+            for i, group in enumerate(changed["groups"][limits["pilot_max"]:]):
+                group["pilot"] = PILOTS[1+i%3]
+            validate_force(changed, fixtures)
+            changed["groups"][limits["pilot_max"]]["pilot"] = "Gunner"
+            with self.assertRaisesRegex(ValueError, "each pilot"):
+                validate_force(changed, fixtures)
 
     def test_sample_forces_are_legal_and_close(self):
         roster = json.loads((ROOT.parent / "playtest/forces.json").read_text(encoding="utf-8"))

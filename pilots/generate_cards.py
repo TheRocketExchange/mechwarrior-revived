@@ -1,9 +1,12 @@
 """Build a self-contained Letter-size pilot card PDF without third-party libraries."""
 
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT.parent / "units"))
+from force_org import GAME_SIZES
 DATA = json.loads((ROOT / "cards.json").read_text(encoding="utf-8"))
 WIDTH, HEIGHT = 612, 792
 CARD_W, CARD_H = 180, 252
@@ -61,7 +64,8 @@ def paragraph(x, y, value, width=152, size=9, leading=12, rgb=INK):
 
 text(72, 747, "MECHWARRIOR REVIVED", 21, True, TEAL)
 text(72, 726, f"Pilot cards | Playtest {DATA['version']} | Print at 100% on US Letter", 10)
-text(72, 709, "One card per 'Mech. Maximum two of each role per force. No extra points.", 9)
+role_limits = " / ".join(f"{size['name'].removesuffix(' Battle')} {size['limits']['pilot_max']}" for size in GAME_SIZES.values())
+text(72, 709, f"Each role: {role_limits}. One pilot per 'Mech; no extra points.", 9)
 positions = [(90, 414), (324, 414), (90, 120), (324, 120)]
 assert len(DATA["cards"]) == len(positions)
 for card, (x, y) in zip(DATA["cards"], positions):
@@ -79,7 +83,7 @@ for card, (x, y) in zip(DATA["cards"], positions):
     assert end >= y + 8, (card["role"], "reminder overflows")
 
 text(72, 87, "Cut on the four card borders. Finished size: 2.5 x 3.5 inches.", 9)
-text(72, 72, "Print another sheet for up to eight 'Mechs. Abilities affect only the assigned unit.", 9)
+text(72, 72, "Print extra sheets as needed. Abilities affect only the assigned unit.", 9)
 text(72, 57, "No advancement or usage tokens. Engineer works during shutdown; other abilities do not.", 8, rgb=GRAY)
 
 stream = "\n".join(commands).encode("ascii")

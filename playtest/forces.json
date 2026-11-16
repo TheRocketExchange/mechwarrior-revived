@@ -112,7 +112,8 @@
             "AOD026"
           ]
         }
-      ]
+      ],
+      "game_size": "standard"
     },
     {
       "id": "B",
@@ -239,7 +240,8 @@
             "AOD026"
           ]
         }
-      ]
+      ],
+      "game_size": "standard"
     },
     {
       "id": "I",
@@ -385,7 +387,8 @@
             "AOD022"
           ]
         }
-      ]
+      ],
+      "game_size": "standard"
     }
   ]
 }

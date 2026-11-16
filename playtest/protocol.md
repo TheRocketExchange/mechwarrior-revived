@@ -2,7 +2,7 @@
 
 Version 0.3
 
-Keep the rules, points formula, rosters, squads, and pilots the same for each game and its return match. Save proposed changes until both games are finished. No tabletop results have been recorded yet.
+Keep the rules, game size, points formula, rosters, squads, and pilots the same for each game and its return match. Save proposed changes until both games are finished. No tabletop results have been recorded yet.
 
 ## Try these first
 
@@ -51,6 +51,8 @@ Log actual attack rolls, recovery activations, pushing damage, losses caused by 
 
 Use the [sample forces](sample-forces.md): H (’Mech-heavy), B (balanced), and I (infantry-heavy). Play every matchup below twice, following the scenario’s instructions for exchanging sides or roles. That makes **9 pairs, 18 games**.
 
+This matrix uses **Standard, 1,200 points**. To test another size, build two legal lists for it and play a return pair. Keep the prescribed battlefield for that size, including the added flanks at 1,800 and 2,400 points. Record the size, table dimensions, activation counts, time per round, and whether deployment or objectives feel crowded. Compare results within each size before combining them; the larger sizes have no recorded play-time estimates yet.
+
 | Game IDs | Scenario | Matchups |
 | --- | --- | --- |
 | SH-HB, SH-BI, SH-HI | Seize and Hold | H/B, B/I, H/I |
@@ -71,7 +73,7 @@ Use [one log per game](playtest-log.md). Leave missing measurements as “unknow
 | Does position matter? | Cover should help survival; exposed assaults should matter; frontal attacks on armor should remain weak |
 | Do vehicles and ’Mechs have jobs? | Record useful transport, fire support, movement, and objective play in each pair |
 | Do squads reduce waiting? | Count passes and activations after the opponent has finished. Review repeated rounds with 3 or more unanswered activations, or missions decided by holding infantry back solely to delay |
-| Is the game a reasonable length? | Aim for median play time of 120 minutes or less. Review games over 150 minutes or waits longer than 5 minutes |
+| Is the game a reasonable length? | For Standard games, aim for median play time of 120 minutes or less and review games over 150 minutes. Record other sizes separately. Review waits longer than 5 minutes at any size |
 | Is the quick reference enough? | Aim for no more than 6 core-rule lookups after round 2 in a typical game. Add repeatedly missing details to the reference |
 | Does one side have too much advantage? | Compare return matches. Review a role or edge that wins all three matchup pairs without a clear army or tactical reason |
 | Are the rules clear? | Record any transport, heat, equipment, or pilot dispute needed to finish play |

@@ -16,11 +16,11 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 6 0 obj
-<< /Length 4586 >>
+<< /Length 4593 >>
 stream
 BT /F2 21 Tf 0.08 0.32 0.37 rg 1 0 0 1 72 747 Tm (MECHWARRIOR REVIVED) Tj ET
 BT /F1 10 Tf 0.1 0.16 0.19 rg 1 0 0 1 72 726 Tm (Pilot cards | Playtest 0.3 | Print at 100% on US Letter) Tj ET
-BT /F1 9 Tf 0.1 0.16 0.19 rg 1 0 0 1 72 709 Tm (One card per 'Mech. Maximum two of each role per force. No extra points.) Tj ET
+BT /F1 9 Tf 0.1 0.16 0.19 rg 1 0 0 1 72 709 Tm (Each role: Skirmish 1 / Standard 2 / Large 3 / Grand 4. One pilot per 'Mech; no extra points.) Tj ET
 1 1 1 rg 0.6 w 90 414 180 252 re f
 0.42 0.46 0.48 RG 0.6 w 90 414 180 252 re S
 0.08 0.32 0.37 rg 0.6 w 90 611 180 55 re f
@@ -76,7 +76,7 @@ BT /F1 9 Tf 0.1 0.16 0.19 rg 1 0 0 1 338 227 Tm (while shutdown. Stop at the hea
 BT /F1 9 Tf 0.1 0.16 0.19 rg 1 0 0 1 338 215 Tm (dial's starting position.) Tj ET
 BT /F1 7 Tf 0.42 0.46 0.48 rg 1 0 0 1 338 150 Tm (Vent uses your whole activation.) Tj ET
 BT /F1 9 Tf 0.1 0.16 0.19 rg 1 0 0 1 72 87 Tm (Cut on the four card borders. Finished size: 2.5 x 3.5 inches.) Tj ET
-BT /F1 9 Tf 0.1 0.16 0.19 rg 1 0 0 1 72 72 Tm (Print another sheet for up to eight 'Mechs. Abilities affect only the assigned unit.) Tj ET
+BT /F1 9 Tf 0.1 0.16 0.19 rg 1 0 0 1 72 72 Tm (Print extra sheets as needed. Abilities affect only the assigned unit.) Tj ET
 BT /F1 8 Tf 0.42 0.46 0.48 rg 1 0 0 1 72 57 Tm (No advancement or usage tokens. Engineer works during shutdown; other abilities do not.) Tj ET
 endstream
 endobj
@@ -92,5 +92,5 @@ xref
 trailer
 << /Size 7 /Root 1 0 R >>
 startxref
-5040
+5047
 %%EOF

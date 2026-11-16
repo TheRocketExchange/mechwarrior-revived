@@ -35,7 +35,7 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Scenario-specific victory | Keep attention on the mission |
 | Four pilot roles, one included in each ’Mech’s cost | Add character without advancement |
 | One points formula for every unit | Price each complete click, giving early strength more weight while charging for how well the unit holds up |
-| A standard force chart and three choices per chassis or infantry family | Keep a recognizable ’Mech core and limit repetition across ranks and variants |
+| Four game sizes with force charts and three choices per chassis or infantry family | Support smaller and larger collections while keeping a recognizable ’Mech core and limiting repetition |
 
 There are no campaigns, pilot levels, custom units, or expansion rules in this version.
 
@@ -45,9 +45,9 @@ Every unit still activates each round, but vehicles and infantry now need recove
 
 The [combat examples](combat-rhythm.md) explain the expected effects and the four-case comparison. Expanded original heat effects, equipment meanings, and more pilot abilities belong in a later pass.
 
-The shared points formula is a starting estimate. The sample armies now use several chassis and follow the force limits. Test other chassis and heat tracks too, then adjust the shared weights if results show a consistent problem. The six-vehicle and nine-squad caps are starting limits for the standard 1,200-point game; test their effect on force variety, activation counts, and play time.
+The shared points formula is a starting estimate. The sample armies use several chassis and follow the Standard force limits. Test other chassis and heat tracks too, then adjust the shared weights if results show a consistent problem. Games at 600, 1,200, 1,800, and 2,400 points have their own unit, carrier, and pilot limits. The rule of three stays fixed. Larger tables gain width while retaining the 48-inch depth, so mission travel distances stay the same. Test each size’s force variety, activation counts, flank use, and play time.
 
-Use the [playtest plan](../playtest/protocol.md), repeat games with sides reversed, and record time and rules lookups. Balance and the two-hour target remain untested.
+Use the [playtest plan](../playtest/protocol.md), repeat games with sides reversed, and record time and rules lookups. Balance at each size and Standard’s two-hour target remain untested.
 
 ## Introducing the game
 

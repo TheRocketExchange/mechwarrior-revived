@@ -12,7 +12,7 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "units"))
-from force_org import unit_family, validate_force
+from force_org import DEFAULT_SIZE, GAME_SIZES, unit_family, validate_force
 SITE = ROOT / "site"
 catalog = json.loads((ROOT / "units/catalog.json").read_text(encoding="utf-8"))
 units = {u["id"]:u for u in catalog["units"]}
@@ -50,6 +50,18 @@ for suffix in re.findall(re.escape(live_base) + r'([^\s)<>]*)', readme):
     check_link(SITE / "index.html", suffix or "index.html")
 published = json.loads((SITE / "catalog-data.js").read_text(encoding="utf-8").split(" = ", 1)[1].rstrip(";\n"))
 assert len(published["units"]) == len(units)
+assert published["force_organization"]["sizes"] == GAME_SIZES
+assert published["force_organization"]["default_size"] == DEFAULT_SIZE
+# Check the written force chart against the data used by both validators.
+rules_page = pages[(SITE / "rules.html").resolve()]
+sizes_table = rules_page.xpath('//*[@id="choose-the-battle-size"]/following::table[1]')[0]
+assert [[cell.text_content().strip() for cell in row.xpath('./td')] for row in sizes_table.xpath('.//tbody/tr')] == [[size["name"], f"{size['points_limit']:,}", f"{size['board_width']} × {size['board_depth']} inches"] for size in GAME_SIZES.values()]
+chart = rules_page.xpath('//*[@id="force-organization"]/following::table[1]')[0]
+rows = [[cell.text_content().strip() for cell in row.xpath('./th|./td')] for row in chart.xpath('.//tr')]
+assert rows[0][1:] == [size["name"] for size in GAME_SIZES.values()]
+for column, size in enumerate(GAME_SIZES.values(), 1):
+    limit = size["limits"]
+    assert [row[column] for row in rows[1:]] == [f"{limit['mechs_min']}–{limit['mechs_max']}", f"0–{limit['vehicles_max']}", f"0–{limit['squads_max']}", str(limit['carriers_max']), str(limit['pilot_max'])]
 for unit in published["units"]:
     assert unit["family"] == unit_family(units[unit["id"]]), unit["id"]
     assert "printed_points" not in unit, unit["id"]
@@ -130,6 +142,9 @@ for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot
     if path.name == "readiness-reference.pdf":
         reference_text = reader.pages[0].extract_text()
         assert all(word in reference_text for word in ("Ready", "Committed", "Spent", "Passengers", "Breakthrough"))
+    if path.name == "revived-pilot-cards.pdf":
+        role_limits = " / ".join(f"{size['name'].removesuffix(' Battle')} {size['limits']['pilot_max']}" for size in GAME_SIZES.values())
+        assert role_limits in reader.pages[0].extract_text()
 pilot_data=json.loads((ROOT / "pilots/cards.json").read_text(encoding="utf-8"))
 pilot_rules=(ROOT / "pilots/pilot-cards.md").read_text(encoding="utf-8").replace('’',"'")
 for card in pilot_data["cards"]:

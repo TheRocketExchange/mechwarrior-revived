@@ -11,6 +11,7 @@ Use one copy per game. Write “unknown” for anything you did not measure.
 | Rules version / experimental changes | |
 | Scenario / terrain changes | |
 | Points formula version | |
+| Game size / limit / table dimensions | |
 | Player A army / points | |
 | Player B army / points | |
 | A side or role / B side or role | |

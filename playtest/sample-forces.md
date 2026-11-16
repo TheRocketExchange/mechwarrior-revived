@@ -1,10 +1,10 @@
 # Sample forces
 
-Version 0.3 · 1,200-point limit · Formula 0.3-alpha-2
+Version 0.3 · Standard · 1,200-point limit · Formula 0.3-alpha-2
 
 Three starting armies: **H** (’Mech-heavy), **B** (balanced), and **I** (infantry-heavy). Try H against B first. Their totals are close; their balance still needs testing.
 
-Each follows the [force organization and rule of three](../rules/core-rules.md#11-build-your-force): 4–8 ’Mechs, at most 6 vehicles, and at most 9 infantry squads. No chassis appears more than three times; no infantry family appears in more than three squads. All squads have 2–3 bases.
+Each follows the Standard [force organization and rule of three](../rules/core-rules.md#11-build-your-force): 4–8 ’Mechs, at most 6 vehicles, and at most 9 infantry squads. No chassis appears more than three times; no infantry family appears in more than three squads. All squads have 2–3 bases. For 600, 1,800, or 2,400 points, select that [game size](../rules/core-rules.md#choose-the-battle-size) in the [force builder](../site/builder.html) and build to its chart.
 
 | Army | Points | ’Mechs | Vehicles | Conventional bases | Battle armor bases | Squads | Activation groups |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |

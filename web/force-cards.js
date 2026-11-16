@@ -34,9 +34,9 @@
     const force=model.parse(JSON.parse(encoded)), result=model.validate(force), cards=model.cards(force);
     document.title=force.name+' · Unit cards';
     document.querySelector('h1').textContent=force.name+' — unit cards';
-    status.textContent=`${cards.length} cards · ${result.points} points. `+(result.errors.length?`Draft list: ${result.errors.length} force limits need attention. `:'')+'Two cards per Letter page. Print at 100%, with backgrounds enabled, or choose Save as PDF.';
+    status.textContent=`${result.size.name} · ${result.points} / ${result.size.points_limit} points · ${cards.length} cards. `+(result.errors.length?`Draft list: ${result.errors.length} force limits need attention. `:'')+'Two cards per Letter page. Print at 100%, with backgrounds enabled, or choose Save as PDF.';
     const pages=[];
-    for(let i=0;i<cards.length;i+=2)pages.push(`<div class="card-sheet">${cards.slice(i,i+2).map(card).join('')}</div>`);
+    for(let i=0;i<cards.length;i+=2)pages.push(`<div class="card-sheet"><p class="card-sheet-label">${esc(result.size.name)} · ${result.points} / ${result.size.points_limit} points${result.errors.length?' · Draft':''} · ${esc(force.name)}</p>${cards.slice(i,i+2).map(card).join('')}</div>`);
     output.innerHTML=pages.join('')||'<p>This list has no models yet. Add some in the force builder.</p>';
     const button=document.getElementById('print-force-cards');
     button.disabled=!cards.length;

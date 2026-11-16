@@ -1,12 +1,12 @@
 # Seize and Hold
 
-Two players · 1,200 points each · 6 rounds · Version 0.3
+Two players · Any listed game size · 6 rounds · Version 0.3
 
 Hold three relay sites and score points each round. Use the [core rules](../rules/core-rules.md) for objective control.
 
 ## Set up
 
-Use a 48 × 48 inch table. Measure coordinates from the southwest corner: x runs east, y runs north. Mark each terrain rectangle as listed.
+Agree on a [game size](../rules/core-rules.md#choose-the-battle-size). This layout uses 48 × 48 inches; for Large or Grand Battles, apply the [wider battlefield setup](../rules/core-rules.md#set-up-a-larger-battlefield). Measure coordinates from the southwest corner: x runs east, y runs north. Mark each terrain rectangle as listed.
 
 | Feature | Location |
 | --- | --- |

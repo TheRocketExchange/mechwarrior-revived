@@ -57,4 +57,55 @@ test("selected cards contain each model and its assignments",()=>{
   assert.throws(()=>model.addUnit(force,"AOD030","C1"),/same infantry type/);
   const unique=base();model.addUnit(unique,"CA129");assert.equal(unique.groups.at(-1).members.length,1);model.addUnit(unique,"AOD030","A1");assert(!model.validate(unique).errors.some(error=>/Unique|2–3/.test(error)));
 });
+test("game sizes survive saves and imports; old lists default to Standard",()=>{
+  assert.equal(model.parse({groups:[]}).game_size,"standard");
+  for(const id of Object.keys(model.config.sizes)) {
+    const force=model.parse({name:"Size test",game_size:id,groups:[],points_limit:999999,limits:{mechs_min:0}});
+    assert.equal(model.parse(JSON.parse(JSON.stringify(force))).game_size,id);
+    assert.equal(model.validate(force).size.points_limit,model.config.sizes[id].points_limit);
+  }
+  for(const id of ["unknown","",null,600,{},"__proto__","constructor"]) assert.throws(()=>model.parse({game_size:id,groups:[]}),/game size/);
+});
+test("each size supports its full Mech allowance with automatic legal pilots",()=>{
+  const candidates=[...model.units.values()].filter(u=>u.core_legal&&u.category==="Mech"&&!u.rank.includes("Unique")).sort((a,b)=>a.cost.points-b.cost.points);
+  for(const id of Object.keys(model.config.sizes)) {
+    const force=model.parse({game_size:id,groups:[]}), limits=model.size(force).limits, families=new Map();
+    for(const unit of candidates) {
+      if((families.get(unit.family)||0)>=3) continue;
+      model.addUnit(force,unit.id);families.set(unit.family,(families.get(unit.family)||0)+1);
+      if(force.groups.length===limits.mechs_max)break;
+    }
+    assert.equal(force.groups.length,limits.mechs_max);assert.deepEqual(model.validate(force).errors,[]);
+    const repeated=model.parse(force);for(const group of repeated.groups.slice(0,4))group.members=["AOD108"];fails(repeated,/Dasher II: 4/);
+    force.groups=force.groups.slice(0,limits.mechs_min-1);fails(force,/Choose .* ’Mechs/);
+  }
+});
+test("size changes apply budget, type, carrier, and pilot caps without deleting models",()=>{
+  const fixtures=[];
+  for(const [category,source,prefix] of [["Mech","AOD108","M"],["Vehicle","AOD050","V"],["Conventional Infantry","D006","C"]]) for(let i=0;i<20;i++)fixtures.push({...model.units.get(source),id:prefix+i,name:prefix+i,family:prefix+i,rank:"Regular",cost:{points:1},rocket_options:{}});
+  const testModel=createForceModel({...catalog,units:fixtures});
+  for(const id of Object.keys(model.config.sizes)) {
+    const force=testModel.parse({game_size:id,groups:[]}), size=testModel.size(force), limits=size.limits;
+    for(let i=0;i<limits.mechs_min;i++)testModel.addUnit(force,"M"+i);
+    assert.deepEqual(testModel.validate(force).errors,[]);
+    const first=testModel.units.get("M0");first.cost.points=size.points_limit-force.groups.length+1;
+    assert.equal(testModel.validate(force).points,size.points_limit);assert.deepEqual(testModel.validate(force).errors,[]);
+    first.cost.points++;assert(testModel.validate(force).errors.some(e=>e.includes("1 points over")));first.cost.points=1;
+    for(const [prefix,cap,pattern] of [["V",limits.vehicles_max,/vehicles/],["C",limits.squads_max,/infantry squads/],["M",limits.mechs_max,/Choose .* ’Mechs/]]) {
+      const changed=testModel.parse(force);if(prefix==="M")changed.groups=[];
+      for(let i=0;i<cap;i++)testModel.addUnit(changed,prefix+i);
+      assert.deepEqual(testModel.validate(changed).errors,[]);
+      testModel.addUnit(changed,prefix+cap);assert(testModel.validate(changed).errors.some(e=>pattern.test(e)));
+    }
+    const carriers=testModel.parse(force);
+    for(let i=0;i<limits.carriers_max;i++){testModel.addUnit(carriers,"V"+i);carriers.groups.at(-1).carrier=true;}
+    assert.deepEqual(testModel.validate(carriers).errors,[]);testModel.addUnit(carriers,"V19");carriers.groups.at(-1).carrier=true;
+    assert(testModel.validate(carriers).errors.some(e=>e.includes("carriers")));
+    const pilots=testModel.parse(force);pilots.groups[limits.pilot_max].pilot="Gunner";
+    assert(testModel.validate(pilots).errors.some(e=>e.startsWith("Gunner: at most")));
+  }
+  const force=base();model.addUnit(force,"AOD050");const original=JSON.stringify(force.groups);force.game_size="skirmish";
+  assert(model.validate(force).errors.some(e=>e.includes("points over")));assert.equal(JSON.stringify(force.groups),original);
+  force.game_size="large";fails(force,/Choose 6–12/);assert.equal(JSON.stringify(force.groups),original);
+});
 console.log(`${tests} force-builder model checks passed.`);

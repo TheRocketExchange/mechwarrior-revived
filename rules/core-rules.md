@@ -20,7 +20,7 @@ If rules disagree, follow the scenario for deployment and victory, then any spec
 
 ## 2 Prepare the table
 
-You need a 48 × 48 inch table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use separate markers or the [readiness sheet](readiness-reference.md) for vehicles and squads. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Each [scenario](../scenarios/01-seize-and-hold.md) gives its terrain layout and deployment zones.
+You need a table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use 48 × 48 inches for Skirmish or Standard games, and 72 × 48 for Large or Grand Battles; see [game sizes](#choose-the-battle-size). Use separate markers or the [readiness sheet](readiness-reference.md) for vehicles and squads. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Each [scenario](../scenarios/01-seize-and-hold.md) gives its terrain layout and deployment zones.
 
 Set combat dials to their starting marks and heat dials to their green starting positions. All vehicles and squads start Ready. If a dial is jammed, use a written copy of its track. Agree on terrain boundaries and unclear colors before deploying.
 
@@ -262,21 +262,32 @@ If you run out of time, finish the round only if both players can. Otherwise rec
 
 ### Choose the battle size
 
-The standard game is **1,200 points per side**. Add the points shown in the [unit catalog](../site/units.html), paying for every base, including each member of a squad. Stay at or below the limit. Both armies use the same [points formula](points.md). For a close test matchup, aim for totals within 2%.
+Agree on one size before choosing units. **Skirmish** uses fewer models and is a useful first game. **Standard** is the size used by the sample armies. The larger sizes give you room for more units or expensive ’Mechs; expect more activations and longer rounds.
 
-Use the organization below for all three core scenarios. For a different battle size, agree on any changes to these limits before choosing units.
+| Game size | Points per side | Table, east–west × north–south |
+| --- | ---: | --- |
+| Skirmish | 600 | 48 × 48 inches |
+| Standard | 1,200 | 48 × 48 inches |
+| Large Battle | 1,800 | 72 × 48 inches |
+| Grand Battle | 2,400 | 72 × 48 inches |
+
+Add the points shown in the [unit catalog](../site/units.html), paying for every base, including each member of a squad. Stay at or below the chosen limit. Unit costs do not change with game size. Both armies use the same size and [points formula](points.md). For a close test matchup, aim for totals within 2% of the limit.
+
+Choose the same size in the [force builder](../site/builder.html). It checks the limits below, saves the size with your list, and includes it on generated card sheets. Older saved lists without a size use Standard.
 
 ### Force organization
 
-| Part of the force | Limit | What counts |
-| --- | --- | --- |
-| BattleMechs | 4–8 | One ordinary or quad ’Mech per choice |
-| Ground vehicles | 0–6 | One vehicle per choice; carriers count here too |
-| Infantry | 0–9 squads | Conventional infantry and battle armor combined; 2–3 bases per squad |
-| Repeated unit family | At most 3 | Three ’Mechs or vehicles of that family, or three squads containing that infantry family |
-| Unique figure | At most 1 of each catalog ID | Also counts toward its family and unit-type limits |
-| Carriers | At most 2 | Designate vehicles already in the force; no extra cost or extra vehicle slots |
-| Pilots | One per ’Mech; at most 2 of each role | Included in the ’Mech’s points |
+| Part of the force | Skirmish | Standard | Large Battle | Grand Battle |
+| --- | --- | --- | --- | --- |
+| BattleMechs | 2–4 | 4–8 | 6–12 | 8–16 |
+| Ground vehicles | 0–3 | 0–6 | 0–9 | 0–12 |
+| Infantry squads | 0–4 | 0–9 | 0–13 | 0–18 |
+| Carriers, maximum | 1 | 2 | 3 | 4 |
+| Each pilot role, maximum | 1 | 2 | 3 | 4 |
+
+These are allowances, not numbers you must fill. Only ’Mechs have a minimum. A ’Mech or vehicle uses one choice. Infantry combine conventional and battle armor squads, with 2–3 bases per squad. Carriers are designated vehicles already in the force; they add no points or vehicle slots. Every ’Mech must have one pilot, included in its cost.
+
+At **every size**, the rule of three applies across the whole force, each Unique catalog ID appears at most once, and at most one ’Mech may take one Rocket test substitute. Larger games do not reset these limits for separate detachments.
 
 You may mix factions. Use ordinary or quad ’Mechs, ground vehicles, conventional infantry, and battle armor. Treat quads as ’Mechs. Identify battle armor by its name or catalog category, not its equipment colors.
 
@@ -286,7 +297,7 @@ Leave out aircraft, artillery-only and aquatic-only units, colossal ’Mechs, Dr
 
 Check the **unit family** on each catalog datasheet. Ranks, factions, variant codes, named versions, and Rocket substitutions do not reset the limit. Three Dasher II figures fill the Dasher II allowance, even if each has a different rank or weapon profile.
 
-For infantry, count **squads**, not bases. A family may appear in up to three squads. A squad of three Standard Foot bases uses one of those three choices. A mixed squad counts once toward every infantry family it contains. All infantry squads together must still fit the nine-squad limit.
+For infantry, count **squads**, not bases. A family may appear in up to three squads. A squad of three Standard Foot bases uses one of those three choices. A mixed squad counts once toward every infantry family it contains. All squads together must still fit the limit for your game size.
 
 A Unique figure is limited to one of its catalog ID in the whole force, even when placed in a squad. Its family limit still applies. For example, a named Atlas and two other Atlas figures fill the three-Atlas allowance.
 
@@ -296,12 +307,22 @@ Each squad starts with two or three bases. Keep conventional infantry and battle
 
 ### Assign carriers, pilots, and weapons
 
-Choose up to two of your ground vehicles as carriers. Each holds one whole squad of up to three bases, including battle armor. Ignore printed transport ratings. Record the carriers and any starting passengers. Embarked squads still count toward all infantry and family limits.
+Choose carriers from your ground vehicles, up to the limit for your game size. Each holds one whole squad of up to three bases, including battle armor. Ignore printed transport ratings. Record the carriers and any starting passengers. Embarked squads still count toward all infantry and family limits.
 
-Give each ’Mech one [Revived pilot](../pilots/pilot-cards.md), with at most two of each role per force. A pilot affects only its own ’Mech and is lost with it. Use these cards without original pilot or gear cards.
+Give each ’Mech one [Revived pilot](../pilots/pilot-cards.md), observing the per-role limit for your game size. A pilot affects only its own ’Mech and is lost with it. Use these cards without original pilot or gear cards.
 
 Label each ranged damage value Energy, Ballistic, or Rocket before deployment. Follow the [weapon reference](weapon-reference.md), including the limit of one Rocket test substitute on one ’Mech per force. Use that substitute’s cost. Keep labels, pilots, and costs for the whole game. There is no ammunition tracking.
 
 ### Check the roster
 
-Before deployment, exchange rosters and check the points total, unit-type limits, rule of three, Unique figures, squad members, pilots, and carriers. The [sample forces](../playtest/sample-forces.md) show three legal ways to organize a force.
+Before deployment, exchange rosters and check the game size, points total, unit-type limits, rule of three, Unique figures, squad members, pilots, and carriers. The [sample forces](../playtest/sample-forces.md) show three legal Standard armies.
+
+### Set up a larger battlefield
+
+All three core scenarios work with the size chart. At 600 or 1,200 points, use their 48 × 48 inch layouts as written. At 1,800 or 2,400 points, use **72 inches east–west and 48 north–south**:
+
+1. Center the printed layout on the wider table. Add **12 inches to every x coordinate**, including both ends of terrain rectangles. Keep every y coordinate and terrain footprint the same size.
+2. Extend both deployment zones across the full 72-inch width. In Breakthrough, the full north edge remains the exit.
+3. Add woods at **x 3–9, y 18–26** and **x 63–69, y 18–26**. Add rubble at **x 3–9, y 30–36** and **x 63–69, y 30–36**. These cover the new flanks.
+
+Keep objective counts, control distances, round limits, and scoring unchanged. Breakthrough still requires 30% of the attacker’s actual starting points, rounded up. The table stays 48 inches deep so movement and escape distances do not grow with army size. These size limits and wider layouts are playtest starting points; record crowded deployments, unused flanks, and time per round.

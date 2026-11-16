@@ -4,7 +4,7 @@ import csv
 import json
 from pathlib import Path
 
-from force_org import unit_family, validate_force
+from force_org import DEFAULT_SIZE, GAME_SIZES, unit_family, validate_force
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -23,7 +23,9 @@ def main():
     roster = json.loads((ROOT / "playtest/forces.json").read_text(encoding="utf-8"))
     index = {unit["id"]: unit for unit in catalog["units"]}
     forces = roster["forces"]
-    results = {force["id"]: validate_force(force, index, roster["limit"]) for force in forces}
+    assert roster["limit"] == GAME_SIZES[DEFAULT_SIZE]["points_limit"]
+    assert all(force.get("game_size", DEFAULT_SIZE) == DEFAULT_SIZE for force in forces)
+    results = {force["id"]: validate_force(force, index) for force in forces}
     totals = [result["total"] for result in results.values()]
     if max(totals) - min(totals) > roster["limit"] * 0.02:
         raise ValueError("Sample forces must stay within 2% of the common limit of one another")
@@ -54,11 +56,11 @@ def main():
         sections.append("\n".join(lines))
     text = f"""# Sample forces
 
-Version {roster['version']} · {roster['limit']:,}-point limit · Formula {catalog['points_formula']['version']}
+Version {roster['version']} · Standard · {roster['limit']:,}-point limit · Formula {catalog['points_formula']['version']}
 
 Three starting armies: **H** (’Mech-heavy), **B** (balanced), and **I** (infantry-heavy). Try H against B first. Their totals are close; their balance still needs testing.
 
-Each follows the [force organization and rule of three](../rules/core-rules.md#11-build-your-force): 4–8 ’Mechs, at most 6 vehicles, and at most 9 infantry squads. No chassis appears more than three times; no infantry family appears in more than three squads. All squads have 2–3 bases.
+Each follows the Standard [force organization and rule of three](../rules/core-rules.md#11-build-your-force): 4–8 ’Mechs, at most 6 vehicles, and at most 9 infantry squads. No chassis appears more than three times; no infantry family appears in more than three squads. All squads have 2–3 bases. For 600, 1,800, or 2,400 points, select that [game size](../rules/core-rules.md#choose-the-battle-size) in the [force builder](../site/builder.html) and build to its chart.
 
 | Army | Points | ’Mechs | Vehicles | Conventional bases | Battle armor bases | Squads | Activation groups |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |

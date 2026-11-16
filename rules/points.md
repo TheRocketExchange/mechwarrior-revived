@@ -61,7 +61,7 @@ Datasheets show firepower before readiness, a **readiness multiplier**, and the 
 ## Special cases
 
 - A Rocket test substitute uses the alternate cost on its datasheet. Record that cost before deployment and keep it for the return game.
-- Up to two carriers remain a shared army allowance. Designation adds no separate charge in this version.
+- Carriers use the allowance for the chosen [game size](core-rules.md#force-organization). Designation adds no separate charge in this version.
 - Aircraft, artillery-only units, DropShip turrets, and other excluded types still get catalog costs. Those estimates use the same model, but do not make them legal in a core game. Special flight, artillery, and DropShip rules are not priced here.
 - Repair stops, exact base size, heat-related movement loss, mission layouts, squad coordination, and pilot combinations are not fully modeled. The readiness model includes pushing damage but not critical-miss self-damage, enemy attacks, or repairs. Click weights express an early-strength preference, not measured survival odds. Test these before treating the costs as settled.
 

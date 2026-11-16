@@ -43,9 +43,10 @@
         <h1>Build a force</h1>
         <div class="page-toolbar"><span class="version-tag">v0.3 · Playtest</span><div class="page-actions"><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
       </div>
-      <article class="rule-content"><p>Choose models, organize squads, and assign pilots and carriers. Points come from the same formula as every unit card. Follow the <a href="rules.html#11-build-your-force">standard force chart</a>, or start with one of the <a href="forces.html">sample armies</a>.</p>
+      <article class="rule-content"><p>Choose a game size, then add models, organize squads, and assign pilots and carriers. Each size has its own <a href="rules.html#force-organization">force limits</a>. Unit costs stay the same at every size. The <a href="forces.html">sample armies</a> use the 1,200-point Standard game.</p>
 <div class="force-toolbar">
   <label class="force-name-label">Force name<input id="force-name" maxlength="80" value="My force"></label>
+  <label>Game size<select id="force-size" aria-describedby="force-size-guide"></select></label>
   <button type="button" id="force-new">New list</button>
   <button type="button" id="force-export">Export list</button>
   <label class="file-button">Import list<input type="file" id="force-import" accept=".json,application/json"></label>
@@ -56,6 +57,7 @@
 <p id="force-message" class="force-message" role="status" aria-live="polite"></p>
 <section class="force-summary" aria-labelledby="force-summary-heading">
   <h2 id="force-summary-heading">Your force</h2><div id="force-totals"></div>
+  <p id="force-size-guide"></p>
   <details id="force-checks"><summary id="force-check-title">Force checks</summary><ul id="force-errors"></ul></details>
 </section>
 <div class="force-workspace">

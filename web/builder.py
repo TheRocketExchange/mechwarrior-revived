@@ -19,7 +19,7 @@ def build_force_builder(output, write_page, search):
     cards += assets + '<script src="force-cards.js" defer></script><link rel="stylesheet" href="force-cards.css">'
     write_page("force-cards.html", "Your unit cards", "Forces", "Ready for the table", cards, [])
     search.extend([
-        {"title": "Build a force", "page": "Force builder", "url": "builder.html", "text": "Build an army list. Choose models, infantry squads, pilots, carriers, and Rocket substitutes. Check points and the rule of three. Save and export your roster."},
+        {"title": "Build a force", "page": "Force builder", "url": "builder.html", "text": "Build an army list. Select Skirmish 600, Standard 1200, Large Battle 1800, or Grand Battle 2400 points. Choose models, infantry squads, pilots, carriers, and Rocket substitutes. Check points and the rule of three. Save and export your roster."},
         {"title": "Print cards for your models", "page": "Force builder", "url": "builder.html", "text": "Generate full-dial unit cards for just the models in your army. Print or save as PDF with roster IDs and assignments filled in."},
     ])
     return 2

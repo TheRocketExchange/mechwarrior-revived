@@ -189,7 +189,7 @@ def main():
                 ("03", "units.html", "Find your units", "Photos, full dials, printable cards, and points."),
                 ("04", "scenarios.html", "Choose your mission", "Three scenarios with deployment and scoring rules."),
                 ("05", "aids.html", "Prepare the table", "Quick references and printable pilot cards."),
-            ]) + '<div class="edition-note"><strong>Playtest edition</strong><p>The rules are ready to try. Balance and the two-hour play target still need testing.</p></div>'
+            ]) + '<div class="edition-note"><strong>Playtest edition</strong><p>The rules are ready to try. Balance at each size and the Standard game’s two-hour play target still need testing.</p></div>'
             SEARCH.append({"title": title, "page": title, "url": filename, "text": re.sub(r"<[^>]+>", " ", body)})
         write_page(filename, title, active, eyebrow, body, toc, tools, next_page)
 

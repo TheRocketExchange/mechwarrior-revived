@@ -71,6 +71,10 @@
 <td>All three rosters pass automated checks for unit-type caps, 2–3-base squads, repeated families, Unique IDs, pilots, carriers, passenger assignments, Rocket substitutions, and points. Mixed squads count toward every family they contain</td>
 </tr>
 <tr>
+<td>Game sizes</td>
+<td>600-point Skirmish, 1,200-point Standard, 1,800-point Large Battle, and 2,400-point Grand Battle share one definition across Python and the browser. All four have legal catalog rosters at their maximum ’Mech count. Budget boundaries, minimum and maximum units, pilots, carriers, and the unchanged rule of three are checked. The rules chart matches the published data</td>
+</tr>
+<tr>
 <td>Breakthrough targets</td>
 <td>30% rounded up: H 354, B 357, I 352</td>
 </tr>
@@ -88,7 +92,7 @@
 </tr>
 <tr>
 <td>Automated tests</td>
-<td>Thirty-one tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters. New checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness optimizer independently</td>
+<td>Thirty-three tests passed. They cover all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, and legal and illegal rosters at all four sizes. Dial checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness optimizer independently</td>
 </tr>
 <tr>
 <td>Unit PDF</td>
@@ -148,7 +152,7 @@
 </tr>
 <tr>
 <td>HTML</td>
-<td>25 offline pages and 1,767 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
+<td>25 offline pages and 1,768 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, game-size charts, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads</td>
 </tr>
 <tr>
 <td>Browser</td>
@@ -160,11 +164,11 @@
 </tr>
 <tr>
 <td>Force builder</td>
-<td>Eight model checks cover sample-list parity, family limits, mixed squads, unit caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover editing, reload persistence, JSON export/import, rejected broken imports, generated cards, and recalculating an older saved list with a notice</td>
+<td>Eleven model checks cover sample-list parity, family limits, mixed squads, size-specific budgets and caps, pilots, Unique figures, carriers, Rocket prices, import validation, and card assignments. Browser checks cover switching all four sizes without losing models, loading Standard samples, preserving size on reload and JSON export/import, rejected broken imports, generated cards, and recalculating an older saved list with a notice. Older lists without a size use Standard</td>
 </tr>
 <tr>
 <td>Selected-model cards</td>
-<td>An eight-model list produced exactly eight cards on four Letter pages, including the chosen Rocket cost, pilot names, squad labels, and assigned carrier. Representative output independently rendered and visually checked. Draft lists can also print</td>
+<td>An eight-model list produced exactly eight cards on four Letter pages, including the chosen Rocket cost, pilot names, squad labels, and assigned carrier. Every sheet also shows game size and points. Representative output independently rendered and visually checked. Draft lists can also print</td>
 </tr>
 </tbody>
 </table></div>

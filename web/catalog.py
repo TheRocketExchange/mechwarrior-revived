@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "units"))
-from force_org import INFANTRY, LIMITS, PILOTS, POINTS_LIMIT, unit_family
+from force_org import DEFAULT_SIZE, GAME_SIZES, INFANTRY, PILOTS, unit_family
 
 
 def build_catalog(output, write_page, search):
@@ -30,7 +30,7 @@ def build_catalog(output, write_page, search):
     # Source prices remain in the import archive; the site publishes one cost.
     published = dict(catalog, units=[dict({key: value for key, value in unit.items() if key != "printed_points"}, family=unit_family(unit))
                                      for unit in catalog["units"]])
-    published["force_organization"] = {"points_limit": POINTS_LIMIT, "limits": LIMITS, "pilots": PILOTS, "infantry": sorted(INFANTRY)}
+    published["force_organization"] = {"default_size": DEFAULT_SIZE, "sizes": GAME_SIZES, "pilots": PILOTS, "infantry": sorted(INFANTRY)}
     (output / "catalog-data.js").write_text("window.MW_CATALOG = " + json.dumps(published, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
     for asset in ("catalog.js", "catalog.css"):
         shutil.copyfile(ROOT / "web" / asset, output / asset)
