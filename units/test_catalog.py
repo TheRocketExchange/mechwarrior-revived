@@ -296,6 +296,35 @@ class ForceOrganizationChecks(unittest.TestCase):
             validate_force(force, UNITS)
 
 
+class StarterScenarioChecks(unittest.TestCase):
+    def test_patrols_and_map_support_the_four_round_starter(self):
+        scenario = json.loads((ROOT.parent / "scenarios/first-contact.json").read_text(encoding="utf-8"))
+        self.assertEqual(scenario["game_size"], "skirmish")
+        self.assertEqual(scenario["board"], {"width": 48, "depth": 48})
+        self.assertEqual(scenario["rounds"], 4)
+        self.assertEqual(scenario["scoring_rounds"], [2, 3, 4])
+        self.assertEqual(scenario["objective"], {"name": "Relay", "x": 24, "y": 24, "radius": 3})
+        totals = []
+        for force in scenario["forces"]:
+            result = validate_force(force, UNITS)
+            self.assertEqual((result["mechs"], result["vehicles"], result["squads"], result["groups"], result["carriers"]), (3, 1, 1, 5, 0))
+            self.assertEqual(sum(len(g["members"]) for g in force["groups"]), 7)
+            self.assertFalse(any(g.get("rocket_slot") for g in force["groups"]))
+            totals.append(result["total"])
+        self.assertEqual(len(totals), 2)
+        self.assertLessEqual(max(totals)-min(totals), 12)
+        self.assertEqual(scenario["deployment"], {"south": [0,8], "north": [40,48]})
+        terrain = scenario["terrain"]
+        self.assertEqual(len({t["id"] for t in terrain}), 6)
+        for t in terrain:
+            self.assertTrue(0 <= t["x"] < t["x"]+t["width"] <= 48)
+            self.assertTrue(8 < t["y"] < t["y"]+t["depth"] < 40)
+            self.assertTrue(any(other["kind"] == t["kind"] and other["x"] == 48-t["x"]-t["width"] and other["y"] == 48-t["y"]-t["depth"] and other["width"] == t["width"] and other["depth"] == t["depth"] for other in terrain))
+            near_x = max(t["x"], min(24, t["x"]+t["width"]))
+            near_y = max(t["y"], min(24, t["y"]+t["depth"]))
+            self.assertGreater(math.hypot(near_x-24, near_y-24), 3)
+
+
 class PricingChecks(unittest.TestCase):
     def profile(self, damage, defenses=None, category="Mech"):
         unit = basic(category)

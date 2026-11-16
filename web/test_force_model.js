@@ -108,4 +108,10 @@ test("size changes apply budget, type, carrier, and pilot caps without deleting 
   assert(model.validate(force).errors.some(e=>e.includes("points over")));assert.equal(JSON.stringify(force.groups),original);
   force.game_size="large";fails(force,/Choose 6–12/);assert.equal(JSON.stringify(force.groups),original);
 });
+test("starter patrols are legal Skirmish lists and produce seven assigned cards",()=>{
+  const starter=JSON.parse(fs.readFileSync(path.join(root,"scenarios/first-contact.json"),"utf8"));
+  const totals=[];
+  for(const patrol of starter.forces){const force=model.parse(patrol),result=model.validate(force);assert.equal(force.game_size,"skirmish");assert.deepEqual(result.errors,[]);assert.equal(result.counts.models,7);assert.equal(force.groups.length,5);assert.equal(model.cards(force).length,7);assert.equal(result.counts.carriers,0);assert.equal(model.cards(force).filter(card=>card.squad==="C1").length,3);totals.push(result.points);}
+  assert(Math.max(...totals)-Math.min(...totals)<=12);
+});
 console.log(`${tests} force-builder model checks passed.`);

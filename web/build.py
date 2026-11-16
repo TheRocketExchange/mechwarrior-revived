@@ -33,6 +33,8 @@ PAGES = [
     ("rules/readiness-reference.md", "readiness.html", "Readiness reference", "Game aids", "At the table / Readiness"),
     ("pilots/pilot-cards.md", "pilots.html", "Pilot cards", "Game aids", "At the table / 02"),
     ("playtest/sample-forces.md", "forces.html", "Sample forces", "Forces", "Build your force"),
+    ("playtest/starter-forces.md", "starter-forces.html", "Starter patrols", "Forces", "First Contact / Two patrols"),
+    ("scenarios/00-first-contact.md", "first-contact.html", "First Contact", "Scenarios", "Start here / First battle"),
     ("scenarios/01-seize-and-hold.md", "seize-and-hold.html", "Seize and Hold", "Scenarios", "Mission / 01"),
     ("scenarios/02-breakthrough.md", "breakthrough.html", "Breakthrough", "Scenarios", "Mission / 02"),
     ("scenarios/03-hold-the-station.md", "hold-the-station.html", "Hold the Station", "Scenarios", "Mission / 03"),
@@ -70,6 +72,8 @@ def rewrite_link(href, source):
     path = (source.parent / unquote(parts.path)).resolve()
     if path.parent == OUT.resolve():
         target = path.name
+    elif path.parent == (ROOT / "scenarios/diagrams").resolve():
+        target = "diagrams/" + path.name
     elif path in SOURCE_URL:
         target = SOURCE_URL[path]
     else:
@@ -106,6 +110,8 @@ def render_document(source, output, title):
         for child in token.children or []:
             if child.type == "link_open":
                 child.attrSet("href", rewrite_link(child.attrGet("href"), source))
+            elif child.type == "image":
+                child.attrSet("src", rewrite_link(child.attrGet("src"), source))
     rendered = MD.renderer.render(tokens, MD.options, {})
     # Keyboard users can scroll wide tables without scrolling the whole page.
     rendered = rendered.replace("<table>", '<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>')
@@ -164,14 +170,21 @@ def resource_rows(items):
 def main():
     OUT.mkdir(exist_ok=True)
     (OUT / "downloads").mkdir(exist_ok=True)
-    for asset in ("site.css", "site.js"):
+    for asset in ("site.css", "site.js", "diagrams.css"):
         shutil.copyfile(WEB / asset, OUT / asset)
     for path in DOWNLOADS:
         shutil.copyfile(ROOT / path, OUT / "downloads" / Path(path).name)
+    (OUT / "diagrams").mkdir(exist_ok=True)
+    for diagram in (ROOT / "scenarios/diagrams").glob("*.svg"):
+        shutil.copyfile(diagram, OUT / "diagrams" / diagram.name)
     for source, filename, title, active, eyebrow in PAGES:
         body, toc = ("", []) if filename == "index.html" else render_document(ROOT / source, filename, title)
         tools, next_page = "", None
-        if filename == "rules.html":
+        if filename == "first-contact.html":
+            body += '<link rel="stylesheet" href="diagrams.css">'
+            tools = '<a class="small-button" href="diagrams/first-contact-map.svg">Open setup map <span aria-hidden="true">↗</span></a>'
+            next_page = ("starter-forces.html", "Choose a starter patrol")
+        elif filename == "rules.html":
             tools = '<a class="small-button" href="turn.html">Quick reference <span aria-hidden="true">↗</span></a>'
             next_page = ("weapons.html", "Weapon types & tradeoffs")
         elif filename == "weapons.html":
@@ -180,26 +193,29 @@ def main():
             next_page = ("pilots.html", "Choose your pilots")
         elif filename == "pilots.html":
             tools = '<a class="small-button" href="downloads/revived-pilot-cards.pdf">Printable cards <span class="file-type">PDF</span></a>'
-            next_page = ("seize-and-hold.html", "Your first scenario")
+            next_page = ("first-contact.html", "Your first scenario")
             body += '<figure class="pilot-preview"><a href="downloads/revived-pilot-cards.pdf"><img src="downloads/revived-pilot-cards-preview.png" alt="Four printable Revived pilot cards: Gunner, Skirmisher, Brawler, and Engineer" loading="lazy" width="1224" height="1584"></a><figcaption>Four roles. Print the PDF at 100% on US Letter paper.</figcaption></figure>'
         elif filename == "index.html":
             body = '<p class="lead">Combined-arms battles in the BattleTech universe.</p><p>Command BattleMechs, armored vehicles, and infantry. Fight to seize ground, break through enemy lines, or hold a vital position. Take turns moving and attacking as damage, heat, and pushing test your force.</p><p>New in v0.3: pushing and recovery, half-speed Advance, and one order per squad. <a href="combat-rhythm.html">See what changes on the table.</a></p>' + resource_rows([
+                ("START", "first-contact.html", "Play your first battle", "600 points · Two starter patrols · Setup map and teaching diagrams."),
                 ("01", "rules.html", "Read the rules", "Learn how a battle unfolds, from movement and combat to victory."),
                 ("02", "builder.html", "Build your force", "Choose models, check your list, and print cards for your army."),
                 ("03", "units.html", "Find your units", "Photos, full dials, printable cards, and points."),
-                ("04", "scenarios.html", "Choose your mission", "Three scenarios with deployment and scoring rules."),
+                ("04", "scenarios.html", "Choose your mission", "A starter battle and three full missions with deployment and scoring rules."),
                 ("05", "aids.html", "Prepare the table", "Quick references and printable pilot cards."),
             ]) + '<div class="edition-note"><strong>Playtest edition</strong><p>The rules are ready to try. Balance at each size and the Standard game’s two-hour play target still need testing.</p></div>'
             SEARCH.append({"title": title, "page": title, "url": filename, "text": re.sub(r"<[^>]+>", " ", body)})
         write_page(filename, title, active, eyebrow, body, toc, tools, next_page)
 
-    scenario_body = '<p class="lead">Choose a scenario.</p><p>Each uses a 48 × 48 inch table and equal point limits. Place terrain before choosing sides, then play again with army roles or deployment edges exchanged.</p>' + resource_rows([
-        ("01", "seize-and-hold.html", "Seize and Hold", "6 rounds · Three relay sites · Recommended first game"),
+    scenario_body = '<p class="lead">Choose a scenario.</p><p>Start with First Contact at 600 points. The other three missions support all four game sizes: use 48 × 48 inches for Skirmish or Standard, and the <a href="rules.html#set-up-a-larger-battlefield">72 × 48 setup</a> for Large or Grand Battles. Place terrain before choosing sides, then play again with roles or edges exchanged.</p>' + resource_rows([
+        ("START", "first-contact.html", "First Contact", "4 rounds · 600 points · One relay · Map, diagrams, and starter patrols"),
+        ("01", "seize-and-hold.html", "Seize and Hold", "6 rounds · Three relay sites · Next step after First Contact"),
         ("02", "breakthrough.html", "Breakthrough", "8 rounds · Attacker versus defender · Escape through the north edge"),
         ("03", "hold-the-station.html", "Hold the Station", "6 rounds · Attacker versus defender · Capture both access sites"),
     ]) + '<p>Use the <a href="rules.html#10-objectives-and-victory">core rules</a> to check who controls each objective. The scenario tells you when to score and how to win.</p>'
     write_page("scenarios.html", "Scenarios", "Scenarios", "Mission selection", scenario_body, [])
     aids_body = '<p>References and printable cards for the table.</p>' + resource_rows([
+        ("MAP", "first-contact.html#set-up-the-map", "Starter map & diagrams", "Measured 48 × 48 setup, movement, objective control, and pushing."),
         ("LIST", "builder.html", "Cards for your army", "Build a list, then print only your models with their assignments filled in."),
         ("01", "turn.html", "Turn reference", "Round sequence, actions, attacks, and heat."),
         ("NEW", "readiness.html", "Readiness reference", "Ready, Committed, Spent: recovery, pushing, and a roster tracker."),

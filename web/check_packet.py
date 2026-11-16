@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit, parse_qs
 
 from lxml import html
+from lxml import etree
 from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -83,6 +84,32 @@ for row in rows:
     totals[row["force"]] = totals.get(row["force"],0) + int(row["quantity"]) * int(row["points_each"])
 rosters = json.loads((ROOT / "playtest/forces.json").read_text(encoding="utf-8"))
 assert totals == {force["id"]: validate_force(force, units, rosters["limit"])["total"] for force in rosters["forces"]}
+starter = json.loads((ROOT / "scenarios/first-contact.json").read_text(encoding="utf-8"))
+samples = json.loads((SITE / "builder-data.js").read_text(encoding="utf-8").split(" = ",1)[1].rstrip(";\n"))
+assert samples["forces"] == rosters["forces"] + starter["forces"]
+assert set(pages[(SITE / "builder.html").resolve()].xpath('//*[@id="force-sample"]/optgroup/option/@value')) == {f["id"] for f in samples["forces"]}
+starter_page = pages[(SITE / "first-contact.html").resolve()]
+assert len(starter_page.xpath('//img[starts-with(@src,"diagrams/")]')) == 4
+map_table = starter_page.xpath('//*[@id="set-up-the-map"]/following::table[1]')[0]
+rows = [[cell.text_content().strip() for cell in row.xpath('./td')] for row in map_table.xpath('.//tbody/tr')]
+expected_positions = [["Relay objective", "Point (24, 24)"], ["South deployment", "Full width, y 0–8"], ["North deployment", "Full width, y 40–48"]]
+expected_positions += [[f"{t['id']} · {t['name']}", f"x {t['x']}–{t['x']+t['width']}, y {t['y']}–{t['y']+t['depth']}"] for t in starter["terrain"]]
+assert rows == expected_positions
+for svg in (ROOT / "scenarios/diagrams").glob("*.svg"):
+    assert (SITE / "diagrams" / svg.name).read_bytes() == svg.read_bytes()
+    image = etree.fromstring(svg.read_bytes())
+    assert image.get("role") == "img" and image.xpath('//*[local-name()="title"]') and image.xpath('//*[local-name()="desc"]')
+    assert not image.xpath('//*[local-name()="script"]')
+    if svg.name == "first-contact-map.svg":
+        for t in starter["terrain"]:
+            shape = image.xpath('//*[@data-terrain=$id]', id=t["id"])[0]
+            assert [float(shape.get(k)) for k in ("x","y","width","height")] == [84+t["x"]*11.5, 104+(48-t["y"]-t["depth"])*11.5, t["width"]*11.5, t["depth"]*11.5]
+        ring = image.xpath('//*[@data-control-radius]')[0]
+        assert [float(ring.get(k)) for k in ("cx","cy","r")] == [360,380,34.5]
+starter_rosters = pages[(SITE / "starter-forces.html").resolve()].text_content()
+for force in starter["forces"]:
+    result = validate_force(force, units)
+    assert f"{result['total']} points" in starter_rosters
 for path in (ROOT / "units/revived-unit-cards.pdf", ROOT / "pilots/revived-pilot-cards.pdf", ROOT / "rules/readiness-reference.pdf"):
     data=path.read_bytes()
     start=int(re.search(rb'startxref\s+(\d+)',data).group(1))

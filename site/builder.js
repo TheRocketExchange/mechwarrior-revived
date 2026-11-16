@@ -88,11 +88,13 @@
     change();
   });
   $("force-new").addEventListener("click",()=>{if(force.groups.length&&!confirm("Start a new list? Export this list first if you want to keep it."))return;force=empty();change();message("New list started.");});
-  $("force-sample").addEventListener("change",event=>{
-    const sample=MW_SAMPLE_FORCES.forces.find(force=>force.id===event.target.value);if(!sample)return;
-    if(force.groups.length&&!confirm("Replace this list with the sample army? Export first to keep the current list.")){event.target.value="";return;}
-    force=model.parse(sample);event.target.value="";change();message("Sample loaded. Change any models or assignments to make it your own.");
-  });
+  function loadSample(id) {
+    const sample=MW_SAMPLE_FORCES.forces.find(force=>force.id===id);
+    if(!sample){message("Sample army not found. Choose one from the list.");return;}
+    if(force.groups.length&&!confirm("Replace this list with the sample army? Export first to keep the current list."))return;
+    force=model.parse(sample);change();message("Sample loaded. Change any models or assignments to make it your own.");
+  }
+  $("force-sample").addEventListener("change",event=>{if(event.target.value)loadSample(event.target.value);event.target.value="";});
   $("force-export").addEventListener("click",()=>{
     const blob=new Blob([JSON.stringify(force,null,2)+"\n"],{type:"application/json"}), url=URL.createObjectURL(blob), link=document.createElement("a");
     link.href=url;link.download=(force.name.replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"")||"my-force")+".json";link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message("List exported. Points are recalculated from the current catalog when imported.");
@@ -105,7 +107,9 @@
   $("force-cards").addEventListener("click",()=>{
     save();window.open("force-cards.html#list="+encodeURIComponent(JSON.stringify(force)),"_blank","noopener");
   });
-  const add=new URLSearchParams(location.search).get("add");
-  if(add) {try {const id=model.addUnit(force,add);save();message(`Added to ${id}.`);}catch(error){message(error.message);}history.replaceState(null,"",location.pathname);}
+  const params=new URLSearchParams(location.search), add=params.get("add"), sample=params.get("sample");
+  if(sample)loadSample(sample);
+  else if(add) {try {const id=model.addUnit(force,add);save();message(`Added to ${id}.`);}catch(error){message(error.message);}}
+  if(sample||add)history.replaceState(null,"",location.pathname);
   render();
 })();

@@ -14,7 +14,7 @@ You take turns activating one ’Mech, vehicle, or infantry squad. Move into pos
 
 Each miniature is one **unit**, also called a **base**. Infantry move in fixed squads but keep their own dials and attack rolls. A squad activates together; each ’Mech and vehicle activates on its own. Damage turns a combat dial toward destruction and may change its speed, weapons, or defenses. ’Mechs also track heat. Vehicles and squads track readiness, taking damage if they push for a second combat action before recovering.
 
-For your first game, choose a [sample force](../playtest/sample-forces.md) and [Seize and Hold](../scenarios/01-seize-and-hold.md), then prepare the table below. To select your own units, use [Build your force](#11-build-your-force) after the play rules.
+For your first game, play [First Contact](../scenarios/00-first-contact.md) with the two [starter patrols](../playtest/starter-forces.md). It has a measured map, teaching diagrams, one objective, and four rounds. To select your own units, use [Build your force](#11-build-your-force) after the play rules.
 
 If rules disagree, follow the scenario for deployment and victory, then any specific pilot or equipment rule, then the core rules.
 
@@ -319,7 +319,7 @@ Before deployment, exchange rosters and check the game size, points total, unit-
 
 ### Set up a larger battlefield
 
-All three core scenarios work with the size chart. At 600 or 1,200 points, use their 48 × 48 inch layouts as written. At 1,800 or 2,400 points, use **72 inches east–west and 48 north–south**:
+The three full missions work with the size chart; First Contact stays at 600 points on its starter map. For the full missions at 600 or 1,200 points, use their 48 × 48 inch layouts as written. At 1,800 or 2,400 points, use **72 inches east–west and 48 north–south**:
 
 1. Center the printed layout on the wider table. Add **12 inches to every x coordinate**, including both ends of terrain rectangles. Keep every y coordinate and terrain footprint the same size.
 2. Extend both deployment zones across the full 72-inch width. In Breakthrough, the full north edge remains the exit.

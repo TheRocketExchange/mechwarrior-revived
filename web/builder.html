@@ -1,11 +1,11 @@
-<p>Choose a game size, then add models, organize squads, and assign pilots and carriers. Each size has its own <a href="rules.html#force-organization">force limits</a>. Unit costs stay the same at every size. The <a href="forces.html">sample armies</a> use the 1,200-point Standard game.</p>
+<p>Choose a game size, then add models, organize squads, and assign pilots and carriers. Each size has its own <a href="rules.html#force-organization">force limits</a>. Unit costs stay the same at every size. Start with a 600-point <a href="starter-forces.html">starter patrol</a> or a 1,200-point <a href="forces.html">sample army</a>.</p>
 <div class="force-toolbar">
   <label class="force-name-label">Force name<input id="force-name" maxlength="80" value="My force"></label>
   <label>Game size<select id="force-size" aria-describedby="force-size-guide"></select></label>
   <button type="button" id="force-new">New list</button>
   <button type="button" id="force-export">Export list</button>
   <label class="file-button">Import list<input type="file" id="force-import" accept=".json,application/json"></label>
-  <label>Start from a sample<select id="force-sample"><option value="">Choose an army…</option><option value="H">H · ’Mech-heavy</option><option value="B">B · Balanced</option><option value="I">I · Infantry-heavy</option></select></label>
+  <label>Start from a sample<select id="force-sample"><option value="">Choose an army…</option><optgroup label="First Contact · 600 points"><option value="S1">Patrol A</option><option value="S2">Patrol B</option></optgroup><optgroup label="Standard · 1,200 points"><option value="H">H · ’Mech-heavy</option><option value="B">B · Balanced</option><option value="I">I · Infantry-heavy</option></optgroup></select></label>
   <button type="button" id="force-cards">Generate unit cards</button>
 </div>
 <p class="force-save-note" id="force-save" role="status">Saved automatically in this browser. Export a file to keep a backup or use another device.</p>

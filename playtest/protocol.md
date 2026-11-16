@@ -4,6 +4,8 @@ Version 0.3
 
 Keep the rules, game size, points formula, rosters, squads, and pilots the same for each game and its return match. Save proposed changes until both games are finished. No tabletop results have been recorded yet.
 
+For a learning session, play [First Contact](../scenarios/00-first-contact.md) with its [starter patrols](starter-forces.md). Play a four-round game and return match, using the map and teaching diagrams. Record starter games separately from the full-mission matrix below.
+
 ## Try these first
 
 Use real bases and current dials. Reset damage and heat between exercises.

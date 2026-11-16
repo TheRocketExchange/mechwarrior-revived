@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242624">
+  <meta name="description" content="MechWarrior Revived: a playtest rulebook for existing clix miniatures. Rules, scenarios, sample forces, and printable pilot cards.">
+  <title>First Contact · MechWarrior Revived</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="search-index.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the rules</a>
+  <header class="masthead" id="top">
+    <div class="masthead-inner">
+      <a class="brand" href="index.html" aria-label="MechWarrior Revived home">
+        <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M38 3 72 22v42L38 83 4 64V22Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/></svg>
+        <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
+      </a>
+      <div class="masthead-note"><span class="edition-label"><span class="status-dot"></span> Version 0.3</span><p>Tabletop rules<br>for MechWarrior clix.</p></div>
+    </div>
+  </header>
+  <div class="nav-band">
+    <div class="nav-inner">
+      <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html">Rules</a><a href="units.html">Units</a><a href="builder.html">Forces</a><a href="scenarios.html" aria-current="page">Scenarios</a><a href="aids.html">Game aids</a><a href="design.html">Development</a></nav>
+      <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
+    </div>
+  </div>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="Rulebook navigation">
+      <div class="sidebar-edition"><span class="section-label">Rules & references</span><strong>Playtest edition</strong><span>v0.3 / November 2026</span></div>
+      <details class="toc-panel" open>
+        <summary>On this page</summary>
+        <ol class="contents"><li class="level-h2"><a href="#choose-your-patrols">Choose your patrols</a></li><li class="level-h2"><a href="#set-up-the-map">Set up the map</a></li><li class="level-h2"><a href="#play-and-score">Play and score</a></li><li class="level-h2"><a href="#moving-and-shooting">Moving and shooting</a></li><li class="level-h2"><a href="#holding-the-relay">Holding the relay</a></li><li class="level-h2"><a href="#pushing-or-recovering">Pushing or recovering</a></li><li class="level-h2"><a href="#your-first-four-rounds">Your first four rounds</a></li><li class="level-h2"><a href="#play-again">Play again</a></li></ol>
+      </details>
+      <div class="side-resources"><h2 class="section-label">Table essentials</h2><a href="rules.html">Core rules<span aria-hidden="true">↗</span></a><a href="weapons.html">Weapons<span aria-hidden="true">↗</span></a><a href="equipment.html">Equipment colors<span aria-hidden="true">↗</span></a><a href="turn.html">Turn reference<span aria-hidden="true">↗</span></a><a href="readiness.html">Readiness reference<span aria-hidden="true">↗</span></a><a href="pilots.html">Pilot cards<span aria-hidden="true">↗</span></a><a href="units.html">Unit cards<span aria-hidden="true">↗</span></a><a href="builder.html">Force builder<span aria-hidden="true">↗</span></a><a href="points.html">Points<span aria-hidden="true">↗</span></a><a href="scenarios.html">Scenarios<span aria-hidden="true">↗</span></a></div>
+      <a class="download-link" href="downloads/revived-pilot-cards.pdf"><span class="file-type">PDF</span><span>Printable pilot cards<small>4 roles · US Letter</small></span><span aria-hidden="true">↓</span></a>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div class="page-heading">
+        <p class="eyebrow">Start here / First battle</p>
+        <h1>First Contact</h1>
+        <div class="page-toolbar"><span class="version-tag">v0.3 · Playtest</span><div class="page-actions"><a class="small-button" href="diagrams/first-contact-map.svg">Open setup map <span aria-hidden="true">↗</span></a><button type="button" class="print-button" data-print hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z" stroke="currentColor" stroke-width="1.5"/></svg>Print page</button></div></div>
+      </div>
+      <article class="rule-content"><p>Starter scenario · Two players · 600 points each · 48 × 48 inches · 4 rounds · Version 0.3</p>
+<p>Two patrols reach a relay station at the same time. Get troops onto the site, keep the enemy away, and hold it while your weapons and engines wear down.</p>
+<p>This is a first game using the normal rules. One objective and four rounds keep the mission simple. The map and examples below show setup, movement, objective control, and pushing.</p>
+<h2 id="choose-your-patrols">Choose your patrols</h2>
+<p>Use the two <a href="starter-forces.html">starter patrols</a>, with seven models and five activation groups each. <a href="builder.html?sample=S1">Load Patrol A</a> or <a href="builder.html?sample=S2">Patrol B</a> in the builder, then choose <strong>Generate unit cards</strong>. You can also bring your own legal <a href="rules.html#force-organization">600-point Skirmish force</a>.</p>
+<p>The starter lists have infantry on foot and no Rocket substitutes. Keep the <a href="turn.html">turn reference</a>, <a href="equipment.html">equipment reference</a>, and <a href="pilots.html">pilot cards</a> nearby. Set combat and heat dials to Start. Vehicles and squads begin Ready.</p>
+<h2 id="set-up-the-map">Set up the map</h2>
+<p>Use a <strong>48 × 48 inch</strong> table. The southwest corner is (0, 0); x runs east and y runs north. Each grid square below is <strong>6 inches</strong>. The circles and arrows in the teaching diagrams are examples, not extra terrain.</p>
+<p><a href="diagrams/first-contact-map.svg"><img src="diagrams/first-contact-map.svg" alt="First Contact setup map: deployment zones at the north and south edges, a central relay, two woods, two rubble patches, and two blocking structures." /></a></p>
+<p><em>Open the map for a full-size view or print it as a setup guide. It is not a table-sized play mat. The dashed ring marks the relay’s 3-inch control radius.</em></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Position in inches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Relay objective</td>
+<td>Point (24, 24)</td>
+</tr>
+<tr>
+<td>South deployment</td>
+<td>Full width, y 0–8</td>
+</tr>
+<tr>
+<td>North deployment</td>
+<td>Full width, y 40–48</td>
+</tr>
+<tr>
+<td>W1 · Southwest woods</td>
+<td>x 12–18, y 16–22</td>
+</tr>
+<tr>
+<td>W2 · Northeast woods</td>
+<td>x 30–36, y 26–32</td>
+</tr>
+<tr>
+<td>R1 · Southeast rubble</td>
+<td>x 30–36, y 16–22</td>
+</tr>
+<tr>
+<td>R2 · Northwest rubble</td>
+<td>x 12–18, y 26–32</td>
+</tr>
+<tr>
+<td>B1 · West blocking structure</td>
+<td>x 4–10, y 20–28</td>
+</tr>
+<tr>
+<td>B2 · East blocking structure</td>
+<td>x 38–44, y 20–28</td>
+</tr>
+</tbody>
+</table></div>
+<p>Mark terrain edges with paper or felt if you do not have scenery. Everything outside those footprints is open ground. The relay marker is a point, not a building or an obstacle; leave its control area open. Use the normal terrain rules for woods, rubble, and blocking structures.</p>
+<p>Roll one die each, rerolling ties. The winner chooses north or south. The other player deploys one group first; alternate until both patrols are placed. Keep each entire base inside its zone, and infantry in their 4-inch chain. Either patrol can take either side.</p>
+<h2 id="play-and-score">Play and score</h2>
+<p>At the start of every round, roll initiative normally. Alternate group activations until everything has acted. Mark activations separately from heat and readiness.</p>
+<p>At the end of <strong>rounds 2, 3, and 4</strong>, score <strong>1 point</strong> if you control the relay. You control it when at least one of your base centers is within <strong>3 inches</strong> and no enemy base center is. If both sides are inside, it is contested and neither scores. Round 1 scores nothing.</p>
+<p>After round 4, the higher score wins. Equal scores are a draw. Kills do not score or break ties. There are <strong>3 points available across both players</strong>. Wiping out a patrol does not end play; if neither side has units left, use the core early-ending rule.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
+<thead>
+<tr>
+<th>Round</th>
+<th>South score</th>
+<th>North score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>No scoring</td>
+<td>No scoring</td>
+</tr>
+<tr>
+<td>2</td>
+<td>___</td>
+<td>___</td>
+</tr>
+<tr>
+<td>3</td>
+<td>___</td>
+<td>___</td>
+</tr>
+<tr>
+<td>4</td>
+<td>___</td>
+<td>___</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>___</td>
+<td>___</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="moving-and-shooting">Moving and shooting</h2>
+<p><a href="diagrams/movement-and-fire.svg"><img src="diagrams/movement-and-fire.svg" alt="For speed 8 without modifiers: Advance up to 4 inches and make one ranged attack; Move up to 8 without attacking; Rush up to 16 without attacking." /></a></p>
+<p>This example uses <strong>speed 8 with no heat or equipment modifiers</strong>. You may move less. Measure the route traveled and pay terrain costs. Other speeds use the same rules: halve and round up for Advance, full speed for Move, twice speed for Rush.</p>
+<p>Advance has no general attack penalty. A Ballistic shot after moving or turning has −1 recoil unless Gunner removes it. An Energy attack adds 1 extra ’Mech heat. Rockets shoot only with Fire. Check range, arc, and line of sight after moving; an Advance does not guarantee a legal shot.</p>
+<p>For a ’Mech, Advance costs 2 heat, Move 1, and Rush 1, plus the extra heat if it rolls an Energy attack. For vehicles and infantry, Advance commits or pushes; Move recovers; Rush leaves readiness unchanged and is not allowed while Spent.</p>
+<h2 id="holding-the-relay">Holding the relay</h2>
+<p><a href="diagrams/objective-control.svg"><img src="diagrams/objective-control.svg" alt="Two objective examples: a friendly center inside the three-inch ring with an enemy outside controls the relay; both sides inside make it contested." /></a></p>
+<p>Check <strong>base centers</strong>, not base edges. A friendly base inside the ring and an enemy outside means you control the relay. If an enemy center is also inside, neither side scores, even if one side has more models there.</p>
+<p>Spent units can still control or contest. Shutdown ’Mechs and passengers cannot. A unit does not need to fire to help win the game.</p>
+<h2 id="pushing-or-recovering">Pushing or recovering</h2>
+<p><a href="diagrams/pushing-and-recovery.svg"><img src="diagrams/pushing-and-recovery.svg" alt="A vehicle or squad can Fire from Ready to Committed, Fire again to become Spent and take pushing damage, then Move or Hold to return to Ready." /></a></p>
+<p>This example is for a <strong>vehicle or infantry squad</strong>, starting Ready. Each step happens on a separate activation. A first Fire commits it. A second Fire pushes: finish each base’s attack, then give each surviving base 1 unavoidable damage. It is now Spent and must recover on its next activation.</p>
+<p>You can recover early: <strong>Fire, then Move or Hold</strong> returns the group to Ready without pushing damage. Recovery does not repair the dial. Use Hold if engaged, or follow the normal Disengage rules. ’Mechs use heat instead of this readiness sequence.</p>
+<h2 id="your-first-four-rounds">Your first four rounds</h2>
+<p>These are prompts, not required orders. Keep making your own choices.</p>
+<ol>
+<li><strong>Approach.</strong> Try Move or Rush toward the relay or cover. Check the whole base fits along the route. Move recovers non-’Mechs; Rush does not.</li>
+<li><strong>Make contact.</strong> Choose between firing from cover and advancing toward the relay. Check the target before rolling. Mark Committed after a vehicle or squad’s first combat order. Score the relay after all groups act.</li>
+<li><strong>Manage the cost.</strong> Decide whether to push, recover, or Vent a ’Mech. Read the current dial after damage or heat changes. Score the relay again.</li>
+<li><strong>Contest the site.</strong> A Move can recover a vehicle or squad and put it in control range. Check who can still contest, finish every activation, then score the last point.</li>
+</ol>
+<p>Readiness and heat stay between rounds. Clearing the “has acted” marker does not clear either track.</p>
+<h2 id="play-again">Play again</h2>
+<p>Keep the armies and terrain, swap deployment sides, and play another four rounds. Note whether the relay was reachable, when heat or pushing changed a decision, and how long the game took. The starter matchup has not yet been tested on the table.</p>
+<p>Next try <a href="seize-and-hold.html">Seize and Hold</a> for three objectives, six rounds, and more choices about where to commit your force.</p>
+<link rel="stylesheet" href="diagrams.css"></article>
+      <a class="next-page" href="starter-forces.html"><span>Continue reading<strong>Choose a starter patrol</strong></span><span aria-hidden="true">→</span></a>
+      <div class="page-end"><span>MechWarrior Revived / Version 0.3</span><a href="#top">Back to top ↑</a></div>
+    </main>
+  </div>
+  <footer class="site-footer"><div><a href="index.html" class="footer-brand">MechWarrior <strong>Revived</strong></a><p>An unofficial fan rules project. All game names and trademarks belong to their respective owners.</p></div><div class="footer-links"><a href="design.html">Design notes</a><a href="sources.html">Sources</a><a href="comparison.html">Rules comparison</a><a href="https://www.net-armageddon.org/">Layout inspired by NetEA ↗</a></div></footer>
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-heading"><h2 id="search-title">Search the rulebook</h2><button class="close-search" type="button" aria-label="Close search">×</button></div>
+    <label class="visually-hidden" for="rule-search">Search rules, scenarios, and references</label>
+    <input id="rule-search" type="search" placeholder="Try heat, rockets, or transport…" autocomplete="off" spellcheck="false">
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <div class="search-results"></div>
+    <p class="search-hint">Search works offline. <kbd>Esc</kbd> to close.</p>
+  </dialog>
+</body>
+</html>

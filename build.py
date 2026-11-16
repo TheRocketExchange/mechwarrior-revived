@@ -4,6 +4,6 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-for script in ("units/parse_catalog.py", "units/points.py", "units/update_forces.py",
+for script in ("units/parse_catalog.py", "units/points.py", "units/update_forces.py", "units/update_starter.py", "scenarios/generate_diagrams.py",
                "units/generate_cards.py", "pilots/generate_cards.py", "rules/generate_reference.py", "web/build.py"):
     subprocess.run([sys.executable, str(ROOT / script)], cwd=ROOT, check=True)

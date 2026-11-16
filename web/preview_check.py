@@ -55,10 +55,10 @@ def wait(condition):
     raise AssertionError(condition)
 
 
-def open_page(name,condition):
+def open_page(name,condition,clean_query=False):
     url=(ROOT/'site'/name.split('?')[0]).as_uri()+('?' + name.split('?',1)[1] if '?' in name else '')
     call('Page.navigate',{'url':url})
-    wait("location.href==="+json.dumps(url)+" && document.readyState==='complete' && ("+condition+")")
+    wait("location.href==="+json.dumps(url.split('?')[0] if clean_query else url)+" && document.readyState==='complete' && ("+condition+")")
 
 
 def screenshot(name):
@@ -72,6 +72,18 @@ def input_value(selector,value):
 
 call('Page.enable')
 call('Runtime.enable')
+call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceScaleFactor':1,'mobile':False})
+open_page('first-contact.html',"document.querySelectorAll('article img').length===4")
+wait("[...document.querySelectorAll('article img')].every(img=>img.complete&&img.naturalWidth>0)")
+js("document.querySelector('img').scrollIntoView()")
+screenshot('starter-map-desktop')
+call('Emulation.setDeviceMetricsOverride',{'width':390,'height':844,'deviceScaleFactor':1,'mobile':True})
+assert js("document.documentElement.scrollWidth <= innerWidth"),'Starter mobile overflow'
+screenshot('starter-map-mobile')
+for diagram,height in [('movement-and-fire',430),('objective-control',400),('pushing-and-recovery',390)]:
+    call('Emulation.setDeviceMetricsOverride',{'width':700,'height':height,'deviceScaleFactor':1,'mobile':False})
+    open_page('diagrams/'+diagram+'.svg',"Boolean(document.querySelector('svg'))")
+    screenshot('starter-'+diagram)
 call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceScaleFactor':1,'mobile':False})
 open_page('units.html',"document.querySelectorAll('.unit-tile').length===24")
 assert js("document.querySelector('#unit-count').textContent.includes('1,649')")
@@ -176,6 +188,22 @@ assert js("document.querySelector('[data-roster-group]').textContent.includes(St
 assert js("document.querySelector('#force-size').value==='standard'")
 js("localStorage.removeItem('mw-revived-force-v1')")
 open_page('builder.html?test=empty',"document.querySelectorAll('[data-roster-group]').length===0")
+open_page('builder.html?sample=S1',"document.querySelectorAll('[data-roster-group]').length===5",clean_query=True)
+assert js("document.querySelector('#force-size').value==='skirmish' && document.querySelector('#force-check-title').textContent==='All Skirmish force limits met'")
+patrol_a=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
+refuse=call('Page.addScriptToEvaluateOnNewDocument',{'source':'window.confirm=()=>false'})['identifier']
+open_page('builder.html?sample=S2',"document.querySelectorAll('[data-roster-group]').length===5",clean_query=True)
+assert js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")==patrol_a
+call('Page.removeScriptToEvaluateOnNewDocument',{'identifier':refuse})
+accept=call('Page.addScriptToEvaluateOnNewDocument',{'source':'window.confirm=()=>true'})['identifier']
+open_page('builder.html?sample=S2',"document.querySelector('#force-name').value.includes('Patrol B')",clean_query=True)
+patrol_b=js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")
+assert patrol_b['game_size']=='skirmish' and len(patrol_b['groups'])==5
+call('Page.removeScriptToEvaluateOnNewDocument',{'identifier':accept})
+open_page('builder.html?sample=UNKNOWN',"document.querySelector('#force-message').textContent.includes('not found')",clean_query=True)
+assert js("JSON.parse(localStorage.getItem('mw-revived-force-v1'))")==patrol_b
+js("localStorage.removeItem('mw-revived-force-v1')")
+open_page('builder.html?test=starter-done',"document.querySelectorAll('[data-roster-group]').length===0")
 assert js("document.querySelectorAll('#force-size option').length===4")
 js("document.querySelector('#force-size').value='grand';document.querySelector('#force-size').dispatchEvent(new Event('change'));document.querySelector('#force-sample').value='H';document.querySelector('#force-sample').dispatchEvent(new Event('change'))")
 assert js("document.querySelector('#force-size').value==='standard' && document.querySelectorAll('[data-roster-group]').length===15")
@@ -269,6 +297,17 @@ assert js("[...document.querySelectorAll('.print-unit-card')].every(card=>card.s
 printout=call('Page.printToPDF',{'printBackground':True,'preferCSSPageSize':True,'paperWidth':8.5,'paperHeight':11})
 (QA/'selected-long-unit-cards.pdf').write_bytes(base64.b64decode(printout['data']))
 assert len(PdfReader(QA/'selected-long-unit-cards.pdf').pages)==1
+for patrol in (patrol_a,patrol_b):
+    call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#list='+quote(json.dumps(patrol))})
+    wait("document.title==="+json.dumps(patrol['name']+' · Unit cards')+" && document.readyState==='complete' && document.querySelectorAll('.print-unit-card').length===7")
+    wait("[...document.querySelectorAll('.print-unit-card img')].every(img=>img.complete&&img.naturalWidth>0)")
+    assert js("document.querySelector('#force-card-status').textContent.includes('Skirmish') && !document.querySelector('#force-card-status').textContent.includes('Draft')")
+    assert js("[...document.querySelectorAll('.print-unit-card')].every(card=>card.scrollHeight<=card.clientHeight+1)")
+    printout=call('Page.printToPDF',{'printBackground':True,'preferCSSPageSize':True,'paperWidth':8.5,'paperHeight':11})
+    target_pdf=QA/('starter-patrol-a.pdf' if patrol==patrol_a else 'starter-patrol-b.pdf')
+    target_pdf.write_bytes(base64.b64decode(printout['data']))
+    reader=PdfReader(target_pdf)
+    assert len(reader.pages)==4 and sum(page.extract_text().count('Catalog ID:') for page in reader.pages)==7
 assert not exceptions,exceptions
 ws.close()
 print('Browser checks passed: catalog, dials, printing, mobile layouts, force building, assignments, saving, JSON export/import, invalid imports, and selected-card PDFs. No JavaScript exceptions.')

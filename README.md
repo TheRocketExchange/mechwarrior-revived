@@ -12,8 +12,8 @@ Play with your existing MechWarrior clix miniatures and their combat dials. Thes
 
 ## Your first game
 
-1. Read [how the game works](https://therocketexchange.github.io/mechwarrior-revived/rules.html#1-how-the-game-works), then choose one of the [sample forces](https://therocketexchange.github.io/mechwarrior-revived/forces.html).
-2. Start with [Seize and Hold](https://therocketexchange.github.io/mechwarrior-revived/seize-and-hold.html). Set out the terrain and objectives before deploying.
+1. Read [how the game works](https://therocketexchange.github.io/mechwarrior-revived/rules.html#1-how-the-game-works), then choose one of the two [starter patrols](https://therocketexchange.github.io/mechwarrior-revived/starter-forces.html). Each has seven models and loads into the builder for card printing.
+2. Play [First Contact](https://therocketexchange.github.io/mechwarrior-revived/first-contact.html): a 600-point starter with four rounds and one relay. Use its [setup map](https://therocketexchange.github.io/mechwarrior-revived/diagrams/first-contact-map.svg) and diagrams for movement, objective control, and pushing.
 3. Keep the [turn reference](https://therocketexchange.github.io/mechwarrior-revived/turn.html), [readiness sheet](https://therocketexchange.github.io/mechwarrior-revived/readiness.html), [equipment sheet](https://therocketexchange.github.io/mechwarrior-revived/equipment.html), and [pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) nearby.
 4. Record the game in the [playtest log](https://therocketexchange.github.io/mechwarrior-revived/log.html), then play again with sides reversed.
 
@@ -39,6 +39,7 @@ Points value every click as a complete profile. Early strength carries more weig
 | [Turn reference](https://therocketexchange.github.io/mechwarrior-revived/turn.html) | [Sample forces](https://therocketexchange.github.io/mechwarrior-revived/forces.html) |
 | [Readiness reference](https://therocketexchange.github.io/mechwarrior-revived/readiness.html) | [Combat examples](https://therocketexchange.github.io/mechwarrior-revived/combat-rhythm.html) |
 | [Pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) | [Playtest plan](https://therocketexchange.github.io/mechwarrior-revived/playtest.html) |
+| [First Contact starter](https://therocketexchange.github.io/mechwarrior-revived/first-contact.html) | [Starter patrols](https://therocketexchange.github.io/mechwarrior-revived/starter-forces.html) |
 | [Seize and Hold](https://therocketexchange.github.io/mechwarrior-revived/seize-and-hold.html) | [Game log](https://therocketexchange.github.io/mechwarrior-revived/log.html) |
 | [Breakthrough](https://therocketexchange.github.io/mechwarrior-revived/breakthrough.html) | [Points adjustments](https://therocketexchange.github.io/mechwarrior-revived/downloads/adjustments.csv) |
 | [Hold the Station](https://therocketexchange.github.io/mechwarrior-revived/hold-the-station.html) | [Checks so far](https://therocketexchange.github.io/mechwarrior-revived/validation.html) |
@@ -62,3 +63,5 @@ Edit the rules in their Markdown source files, starting with [core-rules.md](rul
 Run `python units/test_catalog.py`, `node web/test_force_model.js`, and `python web/check_packet.py` after rebuilding. The builder reads the same catalog costs and force limits as the roster generator; it never accepts saved prices from an imported list. To refresh the public archive cache, run `python units/import_catalog.py --fetch`. Routine builds need no network.
 
 For pilot changes, edit both the [card data](pilots/cards.json) and [pilot rules](pilots/pilot-cards.md), then rebuild.
+
+The starter’s map and rosters use [first-contact.json](scenarios/first-contact.json). Keep the scenario’s written coordinates in sync; packet checks compare them with the measured SVG. [generate_diagrams.py](scenarios/generate_diagrams.py) draws the map and teaching diagrams, and [update_starter.py](units/update_starter.py) generates the patrol tables from current catalog costs.

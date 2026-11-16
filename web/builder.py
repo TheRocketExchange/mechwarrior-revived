@@ -10,6 +10,8 @@ def build_force_builder(output, write_page, search):
     for name in ("force-model.js", "builder.js", "builder.css", "force-cards.js", "force-cards.css"):
         shutil.copyfile(ROOT / "web" / name, output / name)
     samples = json.loads((ROOT / "playtest/forces.json").read_text(encoding="utf-8"))
+    starter = json.loads((ROOT / "scenarios/first-contact.json").read_text(encoding="utf-8"))
+    samples["forces"].extend(starter["forces"])
     (output / "builder-data.js").write_text("window.MW_SAMPLE_FORCES = " + json.dumps(samples, ensure_ascii=False) + ";\n", encoding="utf-8")
     assets = '<script src="catalog-data.js"></script><script src="force-model.js"></script>'
     body = (ROOT / "web/builder.html").read_text(encoding="utf-8")
