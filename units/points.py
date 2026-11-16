@@ -96,7 +96,7 @@ def shot(unit, click, weapon, target, moving=False, indirect=False, close=False,
     if not close and (kind == "M" or (moving and kind in ("R", "A"))):
         return 0.0
     terrain_cover = target["cover"] if not close else 0
-    defense = target["defense"] - (target["cover"] if close else 0)
+    defense = target["defense"] - target["cover"] + target.get("close_cover", 0) if close else target["defense"]
     if dfa:
         defense += 2
         damage += 2
@@ -206,11 +206,18 @@ def offensive_rating(unit, click):
 
 def toughness(unit, click):
     reference = expected_damage(CONFIG["reference_attack"], CONFIG["reference_defense"], CONFIG["reference_damage"])
+    terrain_defense = CONFIG["infantry_terrain_defense"].get(unit["category"])
+    fieldworks_share = CONFIG["infantry_fieldworks_share"] if terrain_defense else 0
+    terrains = {"open": 1 - CONFIG["cover_share"],
+                "woods": CONFIG["cover_share"] - fieldworks_share,
+                "fieldworks": fieldworks_share}
     incoming = 0.0
     for kind in ("B", "E", "R", "close"):
         share = CONFIG["incoming_ranged_share"] / 3 if kind != "close" else 1 - CONFIG["incoming_ranged_share"]
-        for in_cover in (False, True):
-            cover_share = CONFIG["cover_share"] if in_cover else 1 - CONFIG["cover_share"]
+        for terrain, cover_share in terrains.items():
+            if not cover_share:
+                continue
+            in_cover = terrain != "open"
             defense = number(click, "defense")
             defense_color = color(click, "defense")
             armor = int(defense_color == "black" or (defense_color == "red" and kind == "E") or (defense_color == "blue" and kind in ("B", "R")))
@@ -218,8 +225,10 @@ def toughness(unit, click):
             if unit["category"] == "Conventional Infantry":
                 equipment = min(1, equipment + armor)
                 armor = 0
-            if in_cover and kind != "close":
-                defense += 2 if unit["category"] == "Conventional Infantry" else 1
+            if terrain_defense:
+                defense += terrain_defense.get(f"{terrain}_{'close' if kind == 'close' else 'ranged'}", 0)
+            elif in_cover and kind != "close":
+                defense += 1
             incoming += share * cover_share * expected_damage(CONFIG["reference_attack"], defense + equipment, CONFIG["reference_damage"], armor, kind == "E")
     return reference / max(incoming, 1 / 216)
 

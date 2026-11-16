@@ -10,7 +10,7 @@ from unittest.mock import patch
 from PIL import Image
 
 from parse_catalog import parse_unit
-from points import CONFIG, calculate, dfa_eligible, dfa_landing_risk, dfa_rating, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot
+from points import CONFIG, calculate, dfa_eligible, dfa_landing_risk, dfa_rating, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot, toughness
 from readiness import Readiness, order, finish_action
 from force_org import DEFAULT_SIZE, GAME_SIZES, INFANTRY, PILOTS, unit_family, validate_force
 
@@ -483,6 +483,45 @@ class PricingChecks(unittest.TestCase):
         self.assertGreater(shot(unit, click, weapon, target, close=True, exposed=True), 0)
         unit["category"] = "Battle Armor"
         self.assertGreater(shot(unit, click, weapon, target, close=True), 0)
+
+    def test_infantry_terrain_protection_is_priced_for_ranged_and_close_attacks(self):
+        damage = lambda defense: expected_damage(8, defense, 3)
+        cases = (("Conventional Infantry", 21, 22, 20), ("Battle Armor", 20, 21, 19))
+        for category, woods, fieldworks, close in cases:
+            unit = basic(category)
+            incoming = .8 * (.5*damage(18) + .35*damage(woods) + .15*damage(fieldworks)) + .2 * (.85*damage(18) + .15*damage(close))
+            self.assertAlmostEqual(toughness(unit, unit["track"][0]), damage(18)/incoming)
+            current = toughness(unit, unit["track"][0])
+            old_cover = {"Conventional Infantry":{"woods_ranged":2,"fieldworks_ranged":3,"fieldworks_close":1},
+                         "Battle Armor":{"woods_ranged":1,"fieldworks_ranged":2,"fieldworks_close":0}}
+            with patch.dict(CONFIG, infantry_terrain_defense=old_cover):
+                self.assertGreater(current, toughness(unit, unit["track"][0]))
+        for category in ("Mech", "Vehicle"):
+            unit = basic(category)
+            expected = damage(18)/(.8*(.5*damage(18)+.5*damage(19))+.2*damage(18))
+            self.assertAlmostEqual(toughness(unit, unit["track"][0]), expected)
+            with patch.dict(CONFIG, infantry_fieldworks_share=0):
+                self.assertAlmostEqual(toughness(unit, unit["track"][0]), expected)
+
+    def test_fieldworks_close_protection_and_ranged_cover_interactions(self):
+        unit = basic("Mech")
+        click, weapon = unit["track"][0], unit["weapons"][0]
+        woods = {"category":"Conventional Infantry", "defense":21, "armor":0, "cover":3}
+        fieldworks = dict(woods, defense=22, cover=4, close_cover=2)
+        self.assertAlmostEqual(shot(unit, click, weapon, woods, close=True), expected_damage(8,18,3))
+        self.assertAlmostEqual(shot(unit, click, weapon, fieldworks, close=True), expected_damage(8,20,3))
+        self.assertAlmostEqual(shot(unit, click, weapon, fieldworks), expected_damage(8,22,3))
+        click["attack"]["color"] = "black"
+        self.assertAlmostEqual(shot(unit, click, weapon, fieldworks), expected_damage(8,21,3))
+        self.assertAlmostEqual(shot(unit, click, weapon, fieldworks, close=True), expected_damage(8,20,3))
+        click["attack"]["color"] = "white"
+        weapon["type"] = "R"
+        self.assertAlmostEqual(shot(unit, click, weapon, fieldworks, indirect=True), expected_damage(6,22,2))
+
+    def test_stronger_cover_hit_rates_keep_white_dice_criticals(self):
+        for bonus, hits in ((0,135),(2,81),(3,56),(4,36)):
+            self.assertAlmostEqual(expected_damage(8,18+bonus,1,cap=1), hits/216)
+        self.assertAlmostEqual(expected_damage(8,100,1,cap=1), 1/36)
 
     def test_dfa_hit_damage_and_landing_risk_include_critical_results(self):
         unit = basic("Mech")

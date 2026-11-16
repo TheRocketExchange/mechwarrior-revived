@@ -1,6 +1,6 @@
 # Starter patrols
 
-For [First Contact](../scenarios/00-first-contact.md) · Skirmish, 600-point limit · Formula 0.3-alpha-3
+For [First Contact](../scenarios/00-first-contact.md) · Skirmish, 600-point limit · Formula 0.3-alpha-4
 
 Each patrol has three ’Mechs, one vehicle, and one three-base infantry squad. Each has five activation groups: M1, M2, M3, V1, and C1. Label the infantry C1a, C1b, and C1c; they keep separate dials but share an order.
 
@@ -9,32 +9,32 @@ Choose one patrol each. Both may deploy on either side. Their totals are close, 
 
 ## Patrol A
 
-**596 points · 7 models · 5 activation groups.**
+**590 points · 7 models · 5 activation groups.**
 
 [Load Patrol A in the builder](../site/builder.html?sample=S1) to print its unit cards or change models.
 
 | Roster ID | Model and catalog ID | Bases | Points | Pilot |
 | --- | --- | ---: | ---: | --- |
-| M1 | [Dasher II · AOD108](../site/unit.html?id=AOD108) · Elite | 1 | 124 | Gunner |
-| M2 | [Hatchetman · AOD104](../site/unit.html?id=AOD104) · Elite | 1 | 163 | Brawler |
-| M3 | [Ursa · AOD112](../site/unit.html?id=AOD112) · Elite | 1 | 195 | Engineer |
-| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) · Veteran | 1 | 75 | — |
-| C1 | [Standard Foot · D006](../site/unit.html?id=D006) · Elite | 3 | 39 | — |
+| M1 | [Dasher II · AOD108](../site/unit.html?id=AOD108) · Elite | 1 | 122 | Gunner |
+| M2 | [Hatchetman · AOD104](../site/unit.html?id=AOD104) · Elite | 1 | 160 | Brawler |
+| M3 | [Ursa · AOD112](../site/unit.html?id=AOD112) · Elite | 1 | 192 | Engineer |
+| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) · Veteran | 1 | 74 | — |
+| C1 | [Standard Foot · D006](../site/unit.html?id=D006) · Elite | 3 | 42 | — |
 
 
 ## Patrol B
 
-**600 points · 7 models · 5 activation groups.**
+**595 points · 7 models · 5 activation groups.**
 
 [Load Patrol B in the builder](../site/builder.html?sample=S2) to print its unit cards or change models.
 
 | Roster ID | Model and catalog ID | Bases | Points | Pilot |
 | --- | --- | ---: | ---: | --- |
-| M1 | [Dasher II · AOD105](../site/unit.html?id=AOD105) · Green | 1 | 135 | Gunner |
-| M2 | [Hatchetman · AOD102](../site/unit.html?id=AOD102) · Veteran | 1 | 171 | Brawler |
-| M3 | [Ursa · AOD111](../site/unit.html?id=AOD111) · Veteran | 1 | 205 | Engineer |
-| V1 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) · Veteran | 1 | 50 | — |
-| C1 | [Standard Foot · D006](../site/unit.html?id=D006) · Elite | 3 | 39 | — |
+| M1 | [Dasher II · AOD105](../site/unit.html?id=AOD105) · Green | 1 | 134 | Gunner |
+| M2 | [Hatchetman · AOD102](../site/unit.html?id=AOD102) · Veteran | 1 | 168 | Brawler |
+| M3 | [Ursa · AOD111](../site/unit.html?id=AOD111) · Veteran | 1 | 202 | Engineer |
+| V1 | [JI2A1 Attack APC · AOD038](../site/unit.html?id=AOD038) · Veteran | 1 | 49 | — |
+| C1 | [Standard Foot · D006](../site/unit.html?id=D006) · Elite | 3 | 42 | — |
 
 
 Neither vehicle is designated as a carrier, including the APC in Patrol B. Infantry start on foot. These lists use no Rocket substitutes. Use normal equipment, pilots, heat, and readiness.

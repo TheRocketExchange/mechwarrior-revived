@@ -1,6 +1,6 @@
 # Points
 
-Version 0.3 · Formula 0.3-alpha-3
+Version 0.3 · Formula 0.3-alpha-4
 
 Build armies with the **points** shown in the [unit catalog](../site/units.html). Pay per base, including every member of a squad.
 
@@ -18,11 +18,11 @@ Here are three otherwise identical six-click vehicles. All have speed 6, attack 
 
 | Damage from Start to the last click | Pattern | Points |
 | --- | --- | ---: |
-| 3, 3, 3, 3, 3, 3 | Holds its strength | 59 |
+| 3, 3, 3, 3, 3, 3 | Holds its strength | 58 |
 | 3, 3, 2, 2, 1, 1 | Gradual decline | 45 |
-| 3, 1, 1, 1, 1, 1 | Sharp early drop | 36 |
+| 3, 1, 1, 1, 1, 1 | Sharp early drop | 35 |
 
-Order also matters. A damage track of **3, 3, 1, 1, 1, 1** costs **41 points**; **3, 1, 1, 1, 1, 3** costs **38**. They have the same starting damage and average, but the first keeps its strength through the next hit. These are pricing examples, not additional catalog units.
+Order also matters. A damage track of **3, 3, 1, 1, 1, 1** costs **40 points**; **3, 1, 1, 1, 1, 3** costs **37**. They have the same starting damage and average, but the first keeps its strength through the next hit. These are pricing examples, not additional catalog units.
 
 ## The formula
 
@@ -42,11 +42,11 @@ Each datasheet has a “How the points are calculated” section with a profile-
 
 ## How the ratings work
 
-**Toughness** compares a click with a defense-18 target under an attack-8, damage-3 hit. The test mix is 80% ranged attacks, split equally among B/E/R, and 20% close attacks. Half arrive in the open and half in woods. Revived equipment and infantry cover apply.
+**Toughness** compares a click with a defense-18 target under an attack-8, damage-3 hit. The test mix is 80% ranged attacks, split equally among B/E/R, and 20% close attacks. For infantry, terrain is 50% open, 35% woods, and 15% fieldworks. Other units use 50% open and 50% woods. Conventional infantry get +3 ranged defense in woods and +4 ranged/+2 close in fieldworks; battle armor gets +2 and +3/+1 respectively. Equipment applies separately. These terrain shares estimate access to cover across a game, rather than assuming infantry always occupy their best position.
 
 **Mobility** adds 0.08 per inch of speed. Jump adds 0.25 while shown: yellow speed on any unit, or blue speed on a ’Mech. Green speed adds 0.15; gray speed adds 0.10; red or blue speed adds 0.08. A blue-speed ’Mech gets both Jump and the Advance allowance. Hover adds 0.05. These are small allowances for terrain and movement choices, not extra inches during play.
 
-**Firepower** checks all 216 dice results, including white-dice criticals. Its target mix is 40% armored vehicles, 20% unarmored ’Mechs, 10% open conventional infantry, 15% covered conventional infantry, and 15% battle armor. It weighs stationary fire at 65% and moving fire at 35%. Recoil, Energy heat, Rocket restrictions, damage limits, and Piercing all apply.
+**Firepower** checks all 216 dice results, including white-dice criticals. Its target mix is 40% armored vehicles, 20% unarmored ’Mechs, 10% open conventional infantry, 15% conventional infantry in woods with +3 cover, and 15% battle armor in the open. It weighs stationary fire at 65% and moving fire at 35%. Recoil, Energy heat, Rocket restrictions, damage limits, and Piercing all apply. Fieldworks improve infantry’s Toughness estimate; this offensive target mix does not include them.
 
 Range adds 0.025 per maximum-range inch and subtracts 0.025 per minimum-range inch. For moving fire, add the half-speed Advance allowance, rounded up, plus 2 inches for blue speed equipment. This estimates how far a unit can reach with a shot; full speed still sets its separate Mobility rating. Wider arcs get a small bonus. Indirect access adds 15% of its expected damage. Close attacks use a 0.4 reach allowance, split between frontal and rear attacks. The best attack counts fully; a different second choice adds 15%, since it offers a choice rather than another attack.
 

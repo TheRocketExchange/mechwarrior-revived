@@ -121,8 +121,8 @@ Each inch moved through difficult terrain costs 2 inches of movement; other grou
 | Terrain | Movement | Cover and sight |
 | --- | --- | --- |
 | Open ground or road | Normal | No cover |
-| Woods or rubble | Difficult for everyone | Ranged defense: +2 for conventional infantry, +1 for others |
-| Fieldworks | Infantry only; normal movement | Conventional infantry: +3 ranged defense and +1 close defense. Battle armor: +2 ranged defense |
+| Woods or rubble | Difficult for everyone | Ranged defense: +3 conventional infantry, +2 battle armor, +1 vehicles and ’Mechs |
+| Fieldworks | Infantry only; normal movement | Conventional infantry: +4 ranged defense and +2 close defense. Battle armor: +3 ranged defense and +1 close defense |
 | Blocking building or rock | Impassable | Blocks direct line of sight |
 | Shallow water | Difficult, except for hover vehicles | No cover or extra cooling |
 
@@ -134,7 +134,7 @@ Intervening ’Mechs block direct sight. Vehicles also block it when neither att
 
 Never shoot at a friendly unit or an enemy touching a friendly unit, even with indirect fire.
 
-**Cover:** Use the target’s terrain, not terrain crossed by the shot. Take the single best cover bonus, up to +3 ranged defense. Equipment defense is separate. Cover does not protect against close attacks, except conventional infantry’s +1 defense in fieldworks.
+**Cover:** Use the target’s terrain, not terrain crossed by the shot. Take the single best cover bonus, up to +4 ranged defense. Equipment defense is separate. Woods and rubble give no close defense. Fieldworks give +2 close defense to conventional infantry and +1 to battle armor.
 
 ## 7 Combat
 

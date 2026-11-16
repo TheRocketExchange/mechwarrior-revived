@@ -28,7 +28,8 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Death from Above trades a full-speed jump and +2 damage for +2 target defense, landing damage, and heat | Bring back a risky jump attack with one roll and no displacement |
 | Combat orders commit then push vehicles and squads; Move or Hold recovers | Restore pauses and decisions about spending the damage dial |
 | Each base attacks separately, without ally accuracy bonuses | Let infantry earn their place through their own actions |
-| Stronger infantry cover and close assaults against exposed armor | Make terrain and timing matter |
+| Infantry gain stronger ranged cover; fieldworks also protect against close attacks | Make infantry positions harder to clear while leaving open ground dangerous |
+| Infantry close assaults against exposed armor | Make terrain and timing matter |
 | Heat comes from actions; Hold and Vent cool | Fit heat to alternating activations |
 | Printed heat modifiers and one stress roll for colored warnings | Keep different heat tracks with fewer lookups |
 | Six equipment colors with new meanings | Use one reference across collections |

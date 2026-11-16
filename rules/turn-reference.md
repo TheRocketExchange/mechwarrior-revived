@@ -69,12 +69,12 @@ Three bullet holes destroy a unit. Read new dials between attacks. Apply attacke
 
 ## Terrain and heat
 
-- **Woods/rubble:** Each inch costs 2. Ranged cover: +2 conventional infantry, +1 others.
-- **Fieldworks:** Infantry only; normal movement. Ranged cover: +3 conventional, +2 battle armor. Conventional infantry also get +1 close defense.
+- **Woods/rubble:** Each inch costs 2. Ranged cover: +3 conventional infantry, +2 battle armor, +1 vehicles and ’Mechs. No close defense.
+- **Fieldworks:** Infantry only; normal movement. Conventional infantry: +4 ranged and +2 close defense. Battle armor: +3 ranged and +1 close defense.
 - **Water:** Each inch costs 2, except hover. No cover or cooling.
 - **Blocking terrain:** Stops movement and direct sight.
 
-Use only the best cover bonus, up to +3.
+Use only the best cover bonus, up to +4 ranged defense. Equipment defense is separate.
 
 Apply printed heat modifiers. After gaining heat, a colored warning other than green/white means one stress roll: on 1, take 1 unavoidable damage. No roll while cooling or shutdown.
 
