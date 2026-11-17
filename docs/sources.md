@@ -23,7 +23,7 @@ The local handbook is 2,040,496 bytes. Its SHA-256 is `3E0822C0C44E61CE1F16AAFEB
 
 ## Visual references and fonts
 
-The site's condensed type, heavy headings and pale field-sheet surfaces take their cues from the [original Dark Age rulebook](https://cf.sarna.net/docs/products/mwda/rule_book.pdf). The angular panels, metallic borders and red accents also draw on the [Age of Destruction equipment sheet](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf). The navigation retains the influence of [NetEA](https://www.net-armageddon.org/).
+The site's condensed type, heavy headings and pale field-sheet surfaces take their cues from the [original Dark Age rulebook](https://cf.sarna.net/docs/products/mwda/rule_book.pdf). The angular panels and metallic borders also draw on the [Age of Destruction equipment sheet](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf). Steel-blue headers, blue-gray panels and beveled controls recall early-2000s gaming forums. The navigation retains the influence of [NetEA](https://www.net-armageddon.org/).
 
 The site bundles **Russo One** for headings, **Roboto Condensed** for reading and controls, and **Orbitron** for the Revived wordmark and selected numbers. These are visual alternatives, not the original proprietary fonts. Each comes from Google Fonts under the SIL Open Font License, with the notices included in the download: [Russo One](https://github.com/google/fonts/blob/main/ofl/russoone/OFL.txt), [Roboto Condensed](https://github.com/google/fonts/blob/main/ofl/robotocondensed/OFL.txt), [Orbitron](https://github.com/google/fonts/blob/main/ofl/orbitron/OFL.txt). All three load locally so the offline rulebook keeps its typography.
 
