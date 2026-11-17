@@ -161,9 +161,9 @@ if args.builder_filters_only:
     ws.close()
     sys.exit(0)
 call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceScaleFactor':1,'mobile':False})
-open_page('first-contact.html',"document.querySelectorAll('article img').length===4")
-wait("[...document.querySelectorAll('article img')].every(img=>img.complete&&img.naturalWidth>0)")
-js("document.querySelector('img').scrollIntoView()")
+open_page('first-contact.html',"document.querySelectorAll('article img[src^=\"diagrams/\"]').length===4")
+wait("[...document.querySelectorAll('article img[src^=\"diagrams/\"]')].every(img=>img.complete&&img.naturalWidth>0)")
+js("document.querySelector('article img[src^=\"diagrams/\"]').scrollIntoView()")
 screenshot('starter-map-desktop')
 call('Emulation.setDeviceMetricsOverride',{'width':390,'height':844,'deviceScaleFactor':1,'mobile':True})
 assert js("document.documentElement.scrollWidth <= innerWidth"),'Starter mobile overflow'

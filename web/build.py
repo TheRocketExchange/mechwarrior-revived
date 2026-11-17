@@ -16,6 +16,7 @@ from urllib.parse import unquote, urlsplit
 from markdown_it import MarkdownIt
 from catalog import build_catalog
 from builder import build_force_builder
+from photography import banner_html, illustrate
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
@@ -146,6 +147,7 @@ def resources_html(current):
 
 def write_page(filename, title, active, eyebrow, body, toc, tools="", next_page=None):
     template = (WEB / "shell.html").read_text(encoding="utf-8")
+    body = illustrate(filename, body)
     next_html = ""
     if next_page:
         url, label = next_page
@@ -154,6 +156,7 @@ def write_page(filename, title, active, eyebrow, body, toc, tools="", next_page=
         "TITLE": html.escape(title), "NAV": nav_html(active), "EYEBROW": html.escape(eyebrow),
         "BODY": body, "CONTENTS": contents_html(toc), "RESOURCES": resources_html(filename),
         "PAGE_TOOLS": tools, "NEXT": next_html,
+        "BANNER": banner_html(),
     }
     for key, value in replacements.items():
         template = template.replace("{{" + key + "}}", value)
@@ -172,7 +175,7 @@ def resource_rows(items):
 def main():
     OUT.mkdir(exist_ok=True)
     (OUT / "downloads").mkdir(exist_ok=True)
-    for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css"):
+    for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css", "photography.css"):
         shutil.copyfile(WEB / asset, OUT / asset)
     (OUT / "fonts").mkdir(exist_ok=True)
     for font in (WEB / "fonts").iterdir():

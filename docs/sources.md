@@ -27,7 +27,7 @@ The site's condensed type, heavy headings and pale field-sheet surfaces take the
 
 The site bundles **Russo One** for headings, **Roboto Condensed** for reading and controls, and **Orbitron** for the Revived wordmark and selected numbers. These are visual alternatives, not the original proprietary fonts. Each comes from Google Fonts under the SIL Open Font License, with the notices included in the download: [Russo One](https://github.com/google/fonts/blob/main/ofl/russoone/OFL.txt), [Roboto Condensed](https://github.com/google/fonts/blob/main/ofl/robotocondensed/OFL.txt), [Orbitron](https://github.com/google/fonts/blob/main/ofl/orbitron/OFL.txt). All three load locally so the offline rulebook keeps its typography.
 
-Roster thumbnails use the same credited catalog photographs as the unit datasheets. Every squad member shows its own exact variant, including mixed squads.
+The banner and photographs throughout the rules use real MechWarrior clix miniatures from the credited WarrenBorn archive. Photographs retain their original models and bases; each links to the exact unit datasheet and its source record. The banner features Dereck Hasbani's Atlas (D115), Kendrick Fetladral's Mad Cat III (D113), and the Hatchetman (F084). Roster thumbnails show each member's exact variant, including mixed squads.
 
 ## What carries over
 
