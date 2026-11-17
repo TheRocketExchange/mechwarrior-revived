@@ -6,23 +6,11 @@ Hold three relay sites and score points each round. Use the [core rules](../rule
 
 ## Set up
 
-Agree on a [game size](../rules/core-rules.md#choose-the-battle-size). This layout uses 48 × 48 inches; for Large or Grand Battles, apply the [wider battlefield setup](../rules/core-rules.md#set-up-a-larger-battlefield). Measure coordinates from the southwest corner: x runs east, y runs north. Mark each terrain rectangle as listed.
+Agree on a [game size](../rules/core-rules.md#choose-the-battle-size), then place terrain and objectives as shown. Use the wider map for Large or Grand Battles.
 
-| Feature | Location |
-| --- | --- |
-| West objective | Point (10, 24) |
-| Central objective | Point (24, 24) |
-| East objective | Point (38, 24) |
-| West fieldworks | x 7–10, y 21–27; objective on the eastern edge |
-| East woods | x 35–41, y 21–27 |
-| Southern woods | x 15–21, y 11–17 |
-| Northern woods | x 27–33, y 31–37 |
-| Southwest blocking structure | x 5–11, y 11–17 |
-| Northeast blocking structure | x 37–43, y 31–37 |
-| Southeast rubble | x 31–37, y 13–19 |
-| Northwest rubble | x 11–17, y 29–35 |
+[![Seize and Hold setup map with measured terrain placement and deployment zones.](diagrams/seize-and-hold-map.svg)](diagrams/seize-and-hold-map.svg)
 
-Deploy south in y 0–6 or north in y 42–48, with bases entirely inside the zone. Use the normal side-choice and alternating deployment rules. Choose sides after placing terrain; leave the center objective in open ground. Infiltrate follows its equipment rule after ordinary deployment.
+Deploy with bases entirely inside the north or south zone shown on the map. Use the normal side-choice and alternating deployment rules. Choose sides after placing terrain; leave the center objective in open ground. Infiltrate follows its equipment rule after ordinary deployment.
 
 Vehicles and ’Mechs can contest the western site from outside the fieldworks if their centers are within 3 inches. They cannot enter the fieldworks.
 

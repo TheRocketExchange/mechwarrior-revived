@@ -162,8 +162,8 @@ def check_maps():
             js("document.querySelector('.battle-map').scrollIntoView()")
             wait("document.querySelector('.battle-map img').complete && document.querySelector('.battle-map img').naturalWidth>0")
             assert js("document.documentElement.scrollWidth<=innerWidth"),(width,name)
+            assert js("!document.querySelector('img[src^=\"battle-photos/\"]')")
             original_width=js("document.querySelector('.battle-map img').getBoundingClientRect().width")
-            original_rows=js("[...document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows].map(row=>[...row.cells].map(cell=>cell.textContent))")
             js("document.querySelector('[data-map-zoom]').click()")
             assert js("document.querySelector('[data-map-zoom]').getAttribute('aria-pressed')==='true'")
             assert js("document.querySelector('.battle-map img').getBoundingClientRect().width")>original_width
@@ -173,9 +173,7 @@ def check_maps():
             wait("document.querySelector('.battle-map img').complete && document.querySelector('.battle-map img').naturalWidth>0")
             assert js("document.querySelector('[data-map-open]').href===document.querySelector('.battle-map img').src")
             assert js("document.querySelector('[data-map-size]').textContent.startsWith('72') && document.querySelector('.battle-map img').alt.includes('72')")
-            assert js("document.querySelector('[data-map-table-label]').textContent.startsWith('72')")
-            assert js("[...document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows].map(row=>[...row.cells].map(cell=>cell.textContent))")==js("JSON.parse(document.querySelector('[data-map-coordinate-rows]').textContent)")
-            assert js("document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows.length")==len(original_rows)+4
+            assert js("document.querySelector('.battle-map img').getBoundingClientRect().width>=1176")
             call('Emulation.setEmulatedMedia',{'media':'print'})
             assert js("getComputedStyle(document.querySelector('.battle-map-toolbar')).display==='none' && getComputedStyle(document.querySelector('.battle-map-viewport')).overflow==='visible'")
             assert js("getComputedStyle(document.querySelector('.battle-map img')).minWidth==='0px'")
@@ -186,7 +184,6 @@ def check_maps():
             js(f"document.querySelector('[data-map-size-select]').value='diagrams/{name}-map.svg';document.querySelector('[data-map-size-select]').dispatchEvent(new Event('change'))")
             wait("document.querySelector('.battle-map img').complete")
             assert js("document.querySelector('[data-map-size]').textContent.startsWith('48')")
-            assert js("[...document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows].map(row=>[...row.cells].map(cell=>cell.textContent))")==original_rows
         print(f'Map size selection, enlargement, print styles, and layout passed at {width} pixels.')
     for name,count in [('first-contact',4),('dead-air',1),('rules',4),('readiness',1)]:
         open_page(name+'.html',f"document.querySelectorAll('.battle-map').length==={count}")

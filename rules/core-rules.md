@@ -342,10 +342,6 @@ Before deployment, exchange rosters and check the game size, points total, unit-
 
 ### Set up a larger battlefield
 
-The three full missions work with the size chart; First Contact stays at 600 points on its starter map. For the full missions at 600 or 1,200 points, use their 48 × 48 inch layouts as written. At 1,800 or 2,400 points, use **72 inches east–west and 48 north–south**:
-
-1. Center the printed layout on the wider table. Add **12 inches to every x coordinate**, including both ends of terrain rectangles. Keep every y coordinate and terrain footprint the same size.
-2. Extend both deployment zones across the full 72-inch width. In Breakthrough, the full north edge remains the exit.
-3. Add woods at **x 3–9, y 18–26** and **x 63–69, y 18–26**. Add rubble at **x 3–9, y 30–36** and **x 63–69, y 30–36**. These cover the new flanks.
+The three full missions have two setup maps: **48 × 48 inches** for Skirmish or Standard, and **72 × 48 inches** for Large or Grand Battles. Select the table size on the scenario page. The wider maps include terrain for the new flanks; all placement measurements are on the diagrams. First Contact uses its own starter map.
 
 Keep objective counts, control distances, round limits, and scoring unchanged. Breakthrough still requires 30% of the attacker’s actual starting points, rounded up. The table stays 48 inches deep so movement and escape distances do not grow with army size. These size limits and wider layouts are playtest starting points; record crowded deployments, unused flanks, and time per round.

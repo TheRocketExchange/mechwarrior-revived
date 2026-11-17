@@ -3,6 +3,7 @@
 @media screen and (max-width:740px){
   html{scroll-padding-top:64px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
   .masthead-inner{display:grid;grid-template-columns:minmax(0,1fr) clamp(84px,26vw,112px);align-items:center;gap:12px;padding:12px 16px 10px}
+  .masthead-inner:not(:has(.masthead-photography)){grid-template-columns:1fr}
   .masthead-inner .brand{align-self:center;gap:8px}
   .masthead-inner .insignia{width:30px;height:39px}
   .masthead-inner .wordmark>span{font-size:clamp(16px,4.8vw,23px)}

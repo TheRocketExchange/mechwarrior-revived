@@ -3,6 +3,7 @@ import copy
 import json
 from pathlib import Path
 from map_style import Board, BLUE, RED, GOLD, INK, MUTED, TERRAIN, badge, circle, line, rect, save, terrain_key, text
+from measurements import placement_dimensions
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "diagrams"
@@ -31,34 +32,67 @@ def wider(layout):
     return result
 
 
+def dimension(board, ident, axis, edge, end, lane, witness=None, distance=None, label=None):
+    """Double-headed arrow, witness line and inch label; endpoints stay measurable."""
+    distance = abs(end-edge) if distance is None else distance
+    a,b = ((edge,lane),(end,lane)) if axis=='x' else ((lane,edge),(lane,end))
+    label = label or (((edge+end)/2,lane) if axis=='x' else (lane,(edge+end)/2))
+    lx,ly = board.x(label[0]),board.y(label[1])
+    out=[f'<g data-measure="{ident}" data-axis="{axis}" data-distance="{distance:g}">']
+    if witness is not None and witness!=lane:
+        start,finish = ((end,witness),(end,lane)) if axis=='x' else ((witness,end),(lane,end))
+        out.append(line(board.x(start[0]),board.y(start[1]),board.x(finish[0]),board.y(finish[1]),INK,.9,'stroke-dasharray="3 3"'))
+    out += [line(board.x(a[0]),board.y(a[1]),board.x(b[0]),board.y(b[1]),'#eee9d8',3.5,'opacity=".85"'),
+            line(board.x(a[0]),board.y(a[1]),board.x(b[0]),board.y(b[1]),INK,1.2,'data-dimension-line="true" marker-start="url(#measure-arrow)" marker-end="url(#measure-arrow)"'),
+            rect(lx-15,ly-9,30,18,'#eee9d8',extra='rx="2"'),
+            text(lx,ly+5,f'{distance:g}″',14,'middle',weight='bold'),'</g>']
+    return out
+
+
 def map_diagram(slug, data, wide=False):
     board_width=72 if wide else 48
-    board=Board(board_width,48,84,154,672/board_width)
+    canvas_width=board_width*14+168
+    board=Board(board_width,48,84,174,14,axes=False)
     for zone in data['deployment']: board.zone(zone)
     for feature in data['terrain']: board.terrain(feature)
     for objective in data['objectives']: board.objective(objective)
     body=board.render()
+    for d in placement_dimensions(data['terrain'],data['objectives'],board_width,zones=data['deployment']):
+        body += dimension(board,d['id'],**{k:v for k,v in d.items() if k!='id'})
+    for t in data['terrain']:
+        body += [text(board.x(t['x']+t['width']/2),board.y(t['y'])-7,
+                      f'{t["width"]}×{t["depth"]}',12,'middle',weight='bold',
+                      extra=f'data-footprint="{t["id"]}" paint-order="stroke" stroke="#eee9d8" stroke-width="4" stroke-linejoin="round"')]
+    # Board size and deployment depth live outside the terrain drawing.
+    body += dimension(board,'board','x',0,board_width,48+2.2)
+    body += dimension(board,'board','y',0,48,-4.5)
+    for zone in data['deployment']:
+        body += dimension(board,zone['id'],'y',zone['low'],zone['high'],board_width+2.5)
+        if zone['high']<48 and zone['low']>0:
+            body += dimension(board,zone['id']+'-offset','y',zone['high'],48,board_width+2.5)
     if data.get('exit')=='north':
         body += [line(board.left,board.top,board.x(board.width),board.top,BLUE,6),
-                 badge(board.x(board.width/2),board.top-15,'NORTH EDGE: EXIT',color=BLUE,size=15)]
-    body += [text(790,143,'N',17,'middle',INK,'bold'),line(790,175,790,150,INK,2),
-             '<path d="M785 156L790 147L795 156Z" fill="#243448"/>']
+                 badge(board.x(board.width/2),board.y(46.5),'NORTH EDGE: EXIT',color=BLUE,size=15)]
+    compass=canvas_width-34
+    body += [text(compass,142,'N',17,'middle',INK,'bold'),line(compass,168,compass,148,INK,2),
+             f'<path d="M{compass-5} 154L{compass} 145L{compass+5} 154Z" fill="#243448"/>']
     y=board.y(0)+56
-    body += [text(84,y,'Southwest corner = (0, 0)',17),text(756,y,'x → east   /   y ↑ north',17,'end')]
-    body += terrain_key(62,y+26,[kind for kind in TERRAIN if any(t['kind']==kind for t in data['terrain'])])
-    y+=84
+    body += [text(84,y,'Arrows: distance to edge or point. All measurements in inches.',16),
+             text(84,y+24,'Terrain labels: width × depth.',16,fill=MUTED)]
+    body += terrain_key(62,y+47,[kind for kind in TERRAIN if any(t['kind']==kind for t in data['terrain'])])
+    y+=102
     if data['objectives']:
         body += [circle(75,y-5,11,'none',GOLD,'stroke-dasharray="4 3" stroke-width="2"'),circle(75,y-5,3,GOLD,GOLD),text(96,y,'Objective point + 3-inch control ring',16)]
         y+=31
-    keys=[(o['id'],f"{o['name']} ({o['x']}, {o['y']})") for o in data['objectives']]+[(t['id'],t['name']) for t in data['terrain']]
+    keys=[(o['id'],o['name']) for o in data['objectives']]+[(t['id'],t['name']) for t in data['terrain']]
     for i,(ident,name) in enumerate(keys):
-        xx=62+(i%2)*370; yy=y+(i//2)*24
+        xx=62+(i%2)*(canvas_width-100)/2; yy=y+(i//2)*24
         body += [text(xx,yy,ident,14,weight='bold'),text(xx+35,yy,name,14,fill=MUTED)]
     y+=((len(keys)+1)//2)*24+17
     body += [text(62,y,data['note'],16),text(62,y+26,'Terrain borders are exact. Patterns do not add obstacles.',15,fill=MUTED)]
     filename=slug+('-wide' if wide else '')+'-map.svg'
-    save(OUT/filename,data['title'],f'{board_width} × 48 inches  /  6-inch grid  /  {data["rounds"]} rounds',body,840,y+90,
-         f'{data["title"]} measured battlefield. North is up. Coordinates are inches from the southwest corner. '+data['note'],
+    save(OUT/filename,data['title'],f'{board_width} × 48 inches  /  6-inch grid  /  {data["rounds"]} rounds',body,canvas_width,y+90,
+         f'{data["title"]} measured battlefield. North is up. Arrows measure terrain edges and objective centers from table edges. Terrain labels give width by depth in inches. '+data['note'],
          f'MISSION {data["number"]}  /  '+('LARGE & GRAND BATTLE' if wide else 'BATTLEFIELD LAYOUT'))
 
 

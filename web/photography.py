@@ -6,6 +6,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BANNER = "rocky-approach"
+SCENARIO_PAGES = {'scenarios.html', 'first-contact.html', 'dead-air.html',
+                  'seize-and-hold.html', 'breakthrough.html', 'hold-the-station.html'}
 
 # These show other games using MechWarrior figures, not Revived rules or exact rosters.
 PHOTOS = {
@@ -35,13 +37,7 @@ PHOTOS = {
     "pilots.html": [(None, "heavy-metal")],
     "forces.html": [(None, "spirit-cat-line")],
     "starter-forces.html": [(None, "street-patrol")],
-    "dead-air.html": [("the-two-patrols", "factory-defense")],
-    "first-contact.html": [("choose-your-patrols", "city-table")],
-    "seize-and-hold.html": [("set-up", "last-approach")],
-    "breakthrough.html": [("set-up", "city-column")],
-    "hold-the-station.html": [("set-up", "factory-pressure")],
     "combat-rhythm.html": [(None, "corner-fight")],
-    "scenarios.html": [(None, "factory-battlefield")],
     "aids.html": [(None, "city-table")],
 }
 
@@ -69,7 +65,9 @@ def credit(photo_id, css_class=""):
             f'{label}</a>')
 
 
-def banner_html():
+def banner_html(filename):
+    if filename in SCENARIO_PAGES:
+        return ''
     return ('<div class="masthead-photography">' + photo_link(BANNER, banner=True)
             + credit(BANNER, 'masthead-photo-credit') + '</div>')
 

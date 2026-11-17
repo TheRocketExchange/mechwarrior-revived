@@ -5,6 +5,7 @@ import copy
 import hashlib
 import io
 import json
+import math
 import sys
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -19,6 +20,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "units"))
 import generate_cards as cards
 from force_org import validate_force
+sys.path.insert(0, str(ROOT / 'scenarios'))
+from measurements import placement_dimensions
 
 OUT = ROOT / "playtest"
 BASE = "https://therocketexchange.github.io/mechwarrior-revived/"
@@ -107,7 +110,7 @@ def mission_page(c):
     for fid in ("S1", "S2"):
         f = THEME["forces"][fid]
         y = note(c, f["name"], escape(f["briefing"]), y, colors.HexColor(f["color"]))
-    y = note(c, "Mission", "Play <b>First Contact</b>: 48 x 48 inches, four rounds, one relay at (24, 24). At the end of rounds 2, 3 and 4, score 1 if a friendly base center is within 3 inches and no enemy center is. Both sides inside means no score. Shutdown 'Mechs and passengers do not count; Spent units do.", y)
+    y = note(c, "Mission", "Play <b>First Contact</b>: four rounds and one relay, placed as shown on the map. At the end of rounds 2, 3 and 4, score 1 if a friendly base center is within 3 inches and no enemy center is. Both sides inside means no score. Shutdown 'Mechs and passengers do not count; Spent units do.", y)
     y = para(c, "Higher score after round 4 wins; equal scores are a draw. Kills do not score or break ties. There are only 3 points available between both players. A wipeout does not end the game; if neither army has units left, end early with scores so far.", 36, y+4, size=9.5, leading=13)-19
     y = note(c, "Before you deploy", "Bring 14 models or clearly labeled stand-ins, tape measures, terrain, an objective marker, activation/readiness markers, and three D6 per player (two white and one other color). Set combat and heat dials to Start; vehicles and squads begin Ready. Both forces are mixed-faction contract patrols. Callsigns and this story are original fiction; the model factions and rules are unchanged.", y)
     y = note(c, "Two games, one rules snapshot", "Keep this PDF for both games. First play either patrol from either edge. For the return game, keep your force, swap north/south, and reset all dials and markers. Save suggested rule or points changes until both games are finished. The matchup has not yet been tested on the table.", y)
@@ -117,7 +120,7 @@ def mission_page(c):
 
 def map_page(c):
     page(c, "Kestrel Relay", "Setup guide / 48 x 48 inches / North is up / Not a table-sized play mat")
-    x0, y0, scale = 117, 282, 7.875
+    x0, y0, scale = 66, 192, 10
     width = 48*scale
     c.setFillColor(colors.HexColor("#fafaf6")); c.rect(x0, y0, width, width, fill=1, stroke=0)
     c.setFillColor(colors.HexColor("#e1edf0")); c.rect(x0, y0, width, 8*scale, fill=1, stroke=0)
@@ -126,9 +129,6 @@ def map_page(c):
     for n in range(0, 49, 6):
         c.line(x0+n*scale, y0, x0+n*scale, y0+width)
         c.line(x0, y0+n*scale, x0+width, y0+n*scale)
-        c.setFillColor(MUTED); c.setFont("Helvetica", 8)
-        c.drawCentredString(x0+n*scale, y0-13, str(n))
-        c.drawRightString(x0-9, y0+n*scale-3, str(n))
     palette = {"woods": "#dce7cd", "rubble": "#ede2c9", "blocking": "#ccd3d3"}
     for t in SCENARIO["terrain"]:
         x, y, w, h = x0+t["x"]*scale, y0+t["y"]*scale, t["width"]*scale, t["depth"]*scale
@@ -141,21 +141,44 @@ def map_page(c):
                 p=c.beginPath(); p.moveTo(x+dx-4, y+9); p.lineTo(x+dx, y+17); p.lineTo(x+dx+4, y+9); p.close(); c.drawPath(p)
         else:
             c.setDash(2, 3); c.line(x+5, y+8, x+w-5, y+8); c.setDash()
-        c.setFillColor(INK); c.setFont("Helvetica-Bold", 12); c.drawCentredString(x+w/2, y+h/2-4, t["id"])
+        c.setFillColor(INK); c.setFont("Helvetica-Bold", 10); c.drawCentredString(x+w/2, y+h-12, t["id"])
+        c.setFont('Helvetica-Bold',8);c.drawCentredString(x+w/2,y+5,f"{t['width']} x {t['depth']}")
     c.setDash(4, 3); c.setStrokeColor(TEAL)
     for y in (8, 40): c.line(x0, y0+y*scale, x0+width, y0+y*scale)
     obj=SCENARIO["objective"]
     cx, cy = x0+obj["x"]*scale, y0+obj["y"]*scale
     c.setStrokeColor(RUST); c.circle(cx, cy, obj["radius"]*scale); c.setDash()
     c.setFillColor(RUST); c.circle(cx, cy, 3, fill=1, stroke=0)
-    c.setFont("Helvetica-Bold", 9); c.drawCentredString(cx, cy+34, "RELAY (24, 24)")
-    c.setFont("Helvetica", 8); c.drawCentredString(cx, cy-37, "3-inch control radius")
-    for value,y in (("NORTH / y 40-48",y0+44*scale),("SOUTH / y 0-8",y0+4*scale)):
+    c.setFont("Helvetica-Bold", 9); c.drawCentredString(cx, cy+38, "RELAY")
+    for value,y in (("NORTH",y0+44*scale),("SOUTH",y0+4*scale)):
         c.setFillColor(TEAL); c.setFont("Helvetica-Bold", 10); c.drawCentredString(cx,y-3,value)
-    rows=[["Feature", "Footprint in inches"]]
-    rows += [[f"{t['id']} / {THEME['terrain_names'][t['id']]}", f"x {t['x']}-{t['x']+t['width']}, y {t['y']}-{t['y']+t['depth']}"] for t in SCENARIO["terrain"]]
-    y=table(c, rows, 249, [315,225], font=8)
-    para(c, "W = woods; R = rubble; B = blocking. Each grid square is 6 inches. The southwest corner is (0, 0). Everything outside these footprints is open. Use a small marker for the relay; it adds no cover or obstacle.<br/><b>Deploy:</b> Roll D6 each, reroll ties. Winner chooses an edge; the other player deploys a group first. Alternate groups, whole bases inside the zones. Keep C1's centers in a 4-inch chain. Infiltrate follows its normal rule if present; neither patrol has it.", 36, y-10, size=8.5, leading=11)
+    def dimension(axis, edge, end, lane, witness=None, distance=None, label=None, **_):
+        a,b = ((edge,lane),(end,lane)) if axis=='x' else ((lane,edge),(lane,end))
+        convert=lambda p:(x0+p[0]*scale,y0+p[1]*scale)
+        ax,ay=convert(a);bx,by=convert(b)
+        c.setStrokeColor(INK);c.setLineWidth(.5)
+        if witness is not None and witness!=lane:
+            wx,wy=convert((end,witness) if axis=='x' else (witness,end))
+            c.setDash(1.5,2);c.line(wx,wy,bx,by);c.setDash()
+        c.setStrokeColor(colors.white);c.setLineWidth(2);c.line(ax,ay,bx,by)
+        c.setStrokeColor(INK);c.setLineWidth(.6);c.line(ax,ay,bx,by)
+        angle=math.atan2(by-ay,bx-ax)
+        for px,py,theta in ((ax,ay,angle),(bx,by,angle+math.pi)):
+            for side in (-.45,.45):c.line(px,py,px+3.5*math.cos(theta+side),py+3.5*math.sin(theta+side))
+        label=label or (((edge+end)/2,lane) if axis=='x' else (lane,(edge+end)/2))
+        lx,ly=convert(label)
+        value=f'{abs(end-edge):g}"'
+        c.setFillColor(colors.white);c.rect(lx-11,ly-5,22,11,stroke=0,fill=1)
+        c.setFillColor(INK);c.setFont('Helvetica-Bold',8);c.drawCentredString(lx,ly-2.5,value)
+    zones=[dict(low=limits[0],high=limits[1]) for limits in SCENARIO['deployment'].values()]
+    for d in placement_dimensions(SCENARIO['terrain'],[dict(obj,id='O1')],48,zones=zones):dimension(**d)
+    dimension('x',0,48,49.2);dimension('y',0,48,-2.5)
+    dimension('y',0,8,50);dimension('y',40,48,50)
+    label(c,'All measurements in inches. Terrain labels: width x depth.',36,176,8)
+    label(c,'W = woods / R = rubble / B = blocking / Dashed ring = 3-inch control radius',36,161,8)
+    for i,t in enumerate(SCENARIO['terrain']):
+        label(c,f"{t['id']} / {THEME['terrain_names'][t['id']]}",36+(i%2)*270,145-(i//2)*12,8,MUTED)
+    para(c, "Everything outside the terrain footprints is open. The relay adds no cover or obstacle.<br/><b>Deploy:</b> Roll D6 each, reroll ties. Winner chooses an edge; the other player deploys a group first. Alternate groups, whole bases inside the zones. Keep C1's centers in a 4-inch chain. Infiltrate follows its normal rule if present; neither patrol has it.", 36, 104, size=8.5, leading=11)
     c.showPage()
 
 

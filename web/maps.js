@@ -12,25 +12,16 @@ document.querySelectorAll('.battle-map').forEach(figure=>{
     viewport.focus({preventScroll:true});
   });
   if(select){
-    const table=figure.nextElementSibling.querySelector('table');
-    const narrowRows=[...table.tBodies[0].rows].map(row=>[...row.cells].map(cell=>cell.textContent));
-    const wideRows=JSON.parse(figure.querySelector('[data-map-coordinate-rows]').textContent);
     select.closest('label').hidden=false;
     figure.querySelector('[data-map-wide]').hidden=true;
     select.addEventListener('change',()=>{
       const option=select.selectedOptions[0];
       image.src=option.value;
       image.width=Number(option.dataset.width);image.height=Number(option.dataset.height);
+      figure.style.setProperty('--map-width',option.dataset.width+'px');
       image.alt=option.dataset.alt;
       figure.querySelector('[data-map-open]').href=option.value;
       figure.querySelector('[data-map-size]').textContent=option.dataset.description;
-      const body=document.createElement('tbody');
-      for(const cells of option.dataset.wideCoordinates?wideRows:narrowRows){
-        const row=body.insertRow();
-        cells.forEach(value=>row.insertCell().textContent=value);
-      }
-      table.tBodies[0].replaceWith(body);
-      table.caption.textContent=option.textContent+' setup coordinates';
       viewport.scrollTop=0;
     });
   }

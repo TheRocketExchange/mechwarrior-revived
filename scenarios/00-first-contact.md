@@ -16,23 +16,11 @@ The starter lists have infantry on foot and no Rocket substitutes. Keep the [tur
 
 ## Set up the map
 
-Use a **48 × 48 inch** table. The southwest corner is (0, 0); x runs east and y runs north. Each grid square below is **6 inches**. The circles and arrows in the teaching diagrams are examples, not extra terrain.
+Place terrain and the relay as shown on the map. The later diagrams show examples of play.
 
 [![First Contact setup map: deployment zones at the north and south edges, a central relay, two woods, two rubble patches, and two blocking structures.](diagrams/first-contact-map.svg)](diagrams/first-contact-map.svg)
 
 *Open the map for a full-size view or print it as a setup guide. It is not a table-sized play mat. The dashed ring marks the relay’s 3-inch control radius.*
-
-| Feature | Position in inches |
-| --- | --- |
-| Relay objective | Point (24, 24) |
-| South deployment | Full width, y 0–8 |
-| North deployment | Full width, y 40–48 |
-| W1 · Southwest woods | x 12–18, y 16–22 |
-| W2 · Northeast woods | x 30–36, y 26–32 |
-| R1 · Southeast rubble | x 30–36, y 16–22 |
-| R2 · Northwest rubble | x 12–18, y 26–32 |
-| B1 · West blocking structure | x 4–10, y 20–28 |
-| B2 · East blocking structure | x 38–44, y 20–28 |
 
 Mark terrain edges with paper or felt if you do not have scenery. Everything outside those footprints is open ground. The relay marker is a point, not a building or an obstacle; leave its control area open. Use the normal terrain rules for woods, rubble, and blocking structures.
 

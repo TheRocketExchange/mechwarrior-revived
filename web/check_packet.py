@@ -104,28 +104,22 @@ assert samples["forces"] == rosters["forces"] + starter["forces"]
 assert set(pages[(SITE / "builder.html").resolve()].xpath('//*[@id="force-sample"]/optgroup/option/@value')) == {f["id"] for f in samples["forces"]}
 starter_page = pages[(SITE / "first-contact.html").resolve()]
 assert len(starter_page.xpath('//img[starts-with(@src,"diagrams/")]')) == 4
-map_table = starter_page.xpath('//*[@id="set-up-the-map"]/following::table[1]')[0]
-rows = [[cell.text_content().strip() for cell in row.xpath('./td')] for row in map_table.xpath('.//tbody/tr')]
-expected_positions = [["Relay objective", "Point (24, 24)"], ["South deployment", "Full width, y 0–8"], ["North deployment", "Full width, y 40–48"]]
-expected_positions += [[f"{t['id']} · {t['name']}", f"x {t['x']}–{t['x']+t['width']}, y {t['y']}–{t['y']+t['depth']}"] for t in starter["terrain"]]
-assert rows == expected_positions
+assert not starter_page.xpath('//*[@data-map-table-label]')
+assert pages[(SITE/'index.html').resolve()].xpath('//a[@class="resource-row"]//strong/text()')[1:] == ['First Contact','Core rules','Army builder','Unit catalog','Scenarios','Play aids']
+for name in ('scenarios','first-contact','dead-air','seize-and-hold','breakthrough','hold-the-station'):
+    page=pages[(SITE/(name+'.html')).resolve()]
+    assert not page.xpath('//img[starts-with(@src,"battle-photos/")]'), name
+    assert not page.xpath('//*[@data-map-coordinate-rows or @data-map-table-label]'), name
 for svg in (ROOT / "scenarios/diagrams").glob("*.svg"):
     assert (SITE / "diagrams" / svg.name).read_bytes() == svg.read_bytes()
     image = etree.fromstring(svg.read_bytes())
     assert image.get("role") == "img" and image.xpath('//*[local-name()="title"]') and image.xpath('//*[local-name()="desc"]')
     assert not image.xpath('//*[local-name()="script"]')
-# Measured maps must reproduce the scenario tables, including wider layouts.
+# Placement arrows and geometry must match the source data at both table sizes.
 layouts = json.loads((ROOT / 'scenarios/layouts.json').read_text(encoding='utf-8'))
-for name, layout in layouts.items():
+for name in layouts:
     page = pages[(SITE / (name+'.html')).resolve()]
-    setup = page.xpath('//*[@id="set-up"]/following::table[1]')[0]
-    positions = {row.xpath('./td')[0].text_content(): row.xpath('./td')[1].text_content() for row in setup.xpath('.//tbody/tr')}
-    for terrain in layout['terrain']:
-        assert [int(n) for n in re.findall(r'\d+', positions[terrain['name']])] == [terrain['x'],terrain['x']+terrain['width'],terrain['y'],terrain['y']+terrain['depth']], (name,terrain['id'])
-    for objective in layout['objectives']:
-        assert [int(n) for n in re.findall(r'\d+', positions[objective['name']])] == [objective['x'],objective['y']], (name,objective['id'])
-    for zone in layout['deployment']:
-        assert f"y {zone['low']}–{zone['high']}" in page.text_content(), (name,zone['id'])
+    assert not page.xpath('//article//table'), name
     assert len(page.xpath('//select[@data-map-size-select]/option')) == 2, name
 layouts['first-contact'] = {'terrain':starter['terrain'], 'objectives':[dict(starter['objective'],id='O1')],
     'deployment':[dict(id=side,low=limits[0],high=limits[1]) for side,limits in starter['deployment'].items()]}
@@ -139,11 +133,6 @@ for name, layout in layouts.items():
         assert math.isclose(float(board.get('width')),width*scale,abs_tol=.001)
         assert math.isclose(float(board.get('height')),48*scale,abs_tol=.001)
         expected_terrain = [dict(t,x=t['x']+(12 if wide else 0)) for t in layout['terrain']]
-        wide_rows = None
-        if wide:
-            page=pages[(SITE/(name+'.html')).resolve()]
-            wide_rows=dict(json.loads(page.xpath('//script[@data-map-coordinate-rows]/text()')[0]))
-            assert len(wide_rows)==len(layout['terrain'])+len(layout['objectives'])+4
         shapes = svg.xpath('//*[@data-terrain]')
         assert len(shapes)==len(expected_terrain)+(4 if wide else 0)
         for terrain in expected_terrain:
@@ -151,26 +140,55 @@ for name, layout in layouts.items():
             expected=[left+terrain['x']*scale,top+(48-terrain['y']-terrain['depth'])*scale,terrain['width']*scale,terrain['depth']*scale]
             assert all(math.isclose(float(shape.get(k)),v,abs_tol=.001) for k,v in zip(('x','y','width','height'),expected)), (name,wide,terrain['id'])
             assert shape.get('data-kind')==terrain['kind']
-            if wide:
-                assert [int(n) for n in re.findall(r'\d+',wide_rows[terrain['name']])]==[terrain['x'],terrain['x']+terrain['width'],terrain['y'],terrain['y']+terrain['depth']]
         if wide:
             original_ids={t['id'] for t in layout['terrain']}
             added=[s for s in shapes if s.get('data-terrain') not in original_ids]
             actual={(s.get('data-kind'),round((float(s.get('x'))-left)/scale),round(48-(float(s.get('y'))-top+float(s.get('height')))/scale),round(float(s.get('width'))/scale),round(float(s.get('height'))/scale)) for s in added}
             assert actual=={('woods',3,18,6,8),('woods',63,18,6,8),('rubble',3,30,6,6),('rubble',63,30,6,6)},name
-            for label,expected in [('West outer woods',[3,9,18,26]),('East outer woods',[63,69,18,26]),('West outer rubble',[3,9,30,36]),('East outer rubble',[63,69,30,36])]:
-                assert [int(n) for n in re.findall(r'\d+',wide_rows[label])]==expected
         assert len(svg.xpath('//*[@data-objective]'))==len(layout['objectives'])
         for obj in layout['objectives']:
             ring=svg.xpath('//*[@data-objective=$id]',id=obj['id'])[0]
             expected=[left+(obj['x']+(12 if wide else 0))*scale,top+(48-obj['y'])*scale,3*scale]
             assert all(math.isclose(float(ring.get(k)),v,abs_tol=.001) for k,v in zip(('cx','cy','r'),expected)),(name,wide,obj['id'])
-            if wide: assert [int(n) for n in re.findall(r'\d+',wide_rows[obj['name']])]==[obj['x']+12,obj['y']]
         for zone in layout['deployment']:
             shape=svg.xpath('//*[@data-zone=$id]',id=zone['id'])[0]
             assert math.isclose(float(shape.get('width')),width*scale,abs_tol=.001)
             assert math.isclose(float(shape.get('y')),top+(48-zone['high'])*scale,abs_tol=.001)
             assert math.isclose(float(shape.get('height')),(zone['high']-zone['low'])*scale,abs_tol=.001)
+        # Check actual line endpoints and text, not only dimension metadata.
+        features=[]
+        for shape in shapes:
+            features.append(dict(id=shape.get('data-terrain'),
+                x=(float(shape.get('x'))-left)/scale,
+                y=48-(float(shape.get('y'))-top+float(shape.get('height')))/scale,
+                width=float(shape.get('width'))/scale,depth=float(shape.get('height'))/scale))
+        features += [dict(o,x=o['x']+(12 if wide else 0),width=0,depth=0) for o in layout['objectives']]
+        for feature in features:
+            ident=feature['id']
+            for axis in ('x','y'):
+                measure=svg.xpath('//*[@data-measure=$id and @data-axis=$axis]',id=ident,axis=axis)
+                assert len(measure)==1,(name,wide,ident,axis)
+                measure=measure[0]
+                start=feature[axis];span=feature['width' if axis=='x' else 'depth'];limit=width if axis=='x' else 48
+                edge=0 if start+span/2<=limit/2 else limit
+                end=start if edge==0 else start+span
+                expected=abs(end-edge)
+                assert math.isclose(float(measure.get('data-distance')),expected,abs_tol=.001)
+                assert ''.join(measure.xpath('./*[local-name()="text"]/text()'))==f'{round(expected):g}″'
+                arrow=measure.xpath('./*[@data-dimension-line]')[0]
+                positions=[float(arrow.get(axis+str(i))) for i in (1,2)]
+                expected_positions=[left+v*scale if axis=='x' else top+(48-v)*scale for v in (edge,end)]
+                assert all(math.isclose(a,b,abs_tol=.001) for a,b in zip(positions,expected_positions)),(name,wide,ident,axis)
+                assert arrow.get('marker-start') and arrow.get('marker-end')
+            if feature['width']:
+                label=svg.xpath('//*[@data-footprint=$id]/text()',id=ident)
+                assert label==[f"{round(feature['width'])}×{round(feature['depth'])}"],(name,wide,ident)
+        for zone in layout['deployment']:
+            assert float(svg.xpath('//*[@data-measure=$id]/@data-distance',id=zone['id'])[0])==zone['high']-zone['low']
+            if zone['low']>0 and zone['high']<48:
+                assert float(svg.xpath('//*[@data-measure=$id]/@data-distance',id=zone['id']+'-offset')[0])==48-zone['high']
+        for axis,distance in [('x',width),('y',48)]:
+            assert float(svg.xpath('//*[@data-measure="board" and @data-axis=$axis]/@data-distance',axis=axis)[0])==distance
 assert len(pages[(SITE/'rules.html').resolve()].xpath('//figure[contains(@class,"battle-map")]'))==4
 starter_rosters = pages[(SITE / "starter-forces.html").resolve()].text_content()
 for force in starter["forces"]:

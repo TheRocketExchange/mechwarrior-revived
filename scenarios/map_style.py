@@ -47,6 +47,7 @@ DEFS = '''<defs>
 <pattern id="water" patternUnits="userSpaceOnUse" width="40" height="30"><rect width="40" height="30" fill="#83b0be"/><path d="M4 10Q9 5 14 10T24 10M22 24Q27 19 32 24" fill="none" stroke="#c2dee0" stroke-width="3" stroke-linecap="round"/></pattern>
 <marker id="move-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#346b9e"/></marker>
 <marker id="sight-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#946416"/></marker>
+<marker id="measure-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1L7 4L0 7" fill="none" stroke="#30392f" stroke-width="1.4"/></marker>
 </defs>'''
 
 
@@ -85,10 +86,10 @@ class Board:
         for value in (low,high):
             if value not in (0,self.depth):
                 self.zones.append(line(self.left,self.y(value),self.x(self.width),self.y(value),color,2,'stroke-dasharray="8 5"'))
-        # Label only; the exact limits remain in the band and coordinate labels.
+        # Dimension arrows supply the limits on scenario maps.
         label_y = self.y((low+high)/2)
         if high-low>8: label_y=self.y(high-1.8)
-        self.overlay.append(badge(self.x(self.width/2), label_y+3, f'{zone["name"]}  ·  y {low}–{high}', PAPER,color,15))
+        self.overlay.append(badge(self.x(self.width/2), label_y+3, zone['name'], PAPER,color,15))
 
     def terrain(self, feature):
         kind, ident = feature['kind'], feature['id']

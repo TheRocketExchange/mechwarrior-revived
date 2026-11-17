@@ -6,21 +6,13 @@ The attacker must get enough of the army past the defender and off the north edg
 
 ## Set up
 
-Agree on a [game size](../rules/core-rules.md#choose-the-battle-size). This layout uses 48 × 48 inches; for Large or Grand Battles, apply the [wider battlefield setup](../rules/core-rules.md#set-up-a-larger-battlefield). Measure coordinates from the southwest corner. Roll or flip a coin to choose attacker and defender.
+Agree on a [game size](../rules/core-rules.md#choose-the-battle-size), then place terrain as shown. Use the wider map for Large or Grand Battles. Roll to choose attacker and defender.
 
-| Feature | Footprint |
-| --- | --- |
-| Western woods | x 5–13, y 18–26 |
-| Eastern woods | x 35–43, y 18–26 |
-| Western rubble | x 14–20, y 29–35 |
-| Eastern rubble | x 28–34, y 29–35 |
-| Central blocking structure | x 21–27, y 20–26 |
-| Defender’s western fieldworks | x 5–11, y 33–39 |
-| Defender’s eastern fieldworks | x 37–43, y 33–39 |
+[![Breakthrough setup map with measured terrain placement and deployment zones.](diagrams/breakthrough-map.svg)](diagrams/breakthrough-map.svg)
 
-The defender deploys first, entirely in **y 30–42**. The attacker then deploys entirely in **y 0–6**. Keep squads together and use legal terrain. Infiltrate follows its equipment rule after ordinary deployment.
+The defender deploys first, then the attacker. Keep each base entirely inside its marked zone. Keep squads together and use legal terrain. Infiltrate follows its equipment rule after ordinary deployment.
 
-The attacker chooses who acts first in round 1. Roll initiative normally afterward. The whole north edge, y = 48, is the exit.
+The attacker chooses who acts first in round 1. Roll initiative normally afterward. The whole north edge is the exit.
 
 ## Escape
 
