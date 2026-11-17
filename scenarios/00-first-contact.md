@@ -72,16 +72,11 @@ This example is for a **vehicle or infantry squad**, starting Ready. Each step h
 
 You can recover early: **Fire, then Move or Hold** returns the group to Ready without pushing damage. Recovery does not repair the dial. Use Hold if engaged, or follow the normal Disengage rules. ’Mechs use heat instead of this readiness sequence.
 
-## Your first four rounds
+## Round reminders
 
-These are prompts, not required orders. Keep making your own choices.
-
-1. **Approach.** Try Move or Rush toward the relay or cover. Check the whole base fits along the route. Move recovers non-’Mechs; Rush does not.
-2. **Make contact.** Choose between firing from cover and advancing toward the relay. Check the target before rolling. Mark Committed after a vehicle or squad’s first combat order. Score the relay after all groups act.
-3. **Manage the cost.** Decide whether to push, recover, or Vent a ’Mech. Read the current dial after damage or heat changes. Score the relay again.
-4. **Contest the site.** A Move can recover a vehicle or squad and put it in control range. Check who can still contest, finish every activation, then score the last point.
-
-Readiness and heat stay between rounds. Clearing the “has acted” marker does not clear either track.
+- At round start, clear activation markers. Keep readiness and heat.
+- Score the relay at the end of rounds 2, 3, and 4, after every group has acted.
+- Spent units can still control or contest the relay. Shutdown ’Mechs and passengers cannot.
 
 ## Play again
 

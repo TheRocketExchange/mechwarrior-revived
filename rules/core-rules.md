@@ -360,7 +360,7 @@ These are upper limits, with no required unit types. You can field only vehicles
 
 > **Example:** A Skirmish force may have no ’Mechs, two vehicles, and three infantry squads, provided their combined points stay at or below 600 and the other limits are met.
 
-A ’Mech or vehicle uses one choice. Infantry combine conventional and battle armor squads, with 2–3 bases per squad. Carriers are designated vehicles already in the force; they add no points or vehicle slots. Every ’Mech must have one pilot, included in its cost.
+A ’Mech or vehicle uses one choice. The infantry-squad limit includes Infantry and battle armor squads, with 2–3 bases per squad. Carriers are designated vehicles already in the force; they add no points or vehicle slots. Every ’Mech must have one pilot, included in its cost.
 
 At **every size**, the rule of three applies across the whole force, each Unique catalog ID appears at most once, and at most one ’Mech may take one Rocket test substitute. Larger games do not reset these limits for separate detachments.
 

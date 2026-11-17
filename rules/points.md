@@ -6,13 +6,13 @@ Build armies with the **points** shown in the [unit catalog](../site/units.html)
 
 Every unit uses the same formula. There are no hand-set prices, faction discounts, or rarity premiums. These are starting costs for playtesting, not established balance.
 
-## Why the whole dial matters
+## Dial weighting
 
-A strong starting click costs more, but it does not tell the whole story. A unit that keeps fighting well after several hits costs more than one that quickly loses its best weapons, armor, or speed.
+Points reflect every click, with more weight given to earlier clicks. A unit that keeps its weapons, armor, or speed through damage costs more than one that loses them early.
 
 The formula prices **each click as a complete profile**, from Start to the last click before destruction. Its defense protects the weapons and movement on that same click. This avoids letting tough but weak late clicks inflate the value of powerful early weapons.
 
-Earlier clicks count more because their strengths are available sooner. The weight falls evenly from **1.5 at Start to 0.5 at the last click**. For a six-click dial, the weights are 1.5, 1.3, 1.1, 0.9, 0.7, and 0.5. No click is ignored, and the weights average 1. A one-click dial uses 1.
+Earlier clicks count more because their strengths are available sooner. The weight falls evenly from **1.5 at Start to 0.5 at the last click**. For a six-click dial, the weights are 1.5, 1.3, 1.1, 0.9, 0.7, and 0.5. The weights average 1. A one-click dial uses 1.
 
 Here are three otherwise identical six-click vehicles. All have speed 6, attack 8, defense 18, and a single Ballistic weapon with a 0–12-inch range and a 180° arc. They have no colored equipment. Only the damage values change:
 

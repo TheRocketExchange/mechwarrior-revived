@@ -15,8 +15,8 @@ Use one copy per game. Write “unknown” for anything you did not measure.
 | Player A army / points | |
 | Player B army / points | |
 | A side or role / B side or role | |
-| A ’Mechs / vehicles / conventional bases / battle armor | |
-| B ’Mechs / vehicles / conventional bases / battle armor | |
+| A ’Mechs / vehicles / infantry bases / battle armor bases | |
+| B ’Mechs / vehicles / infantry bases / battle armor bases | |
 | A squads and activation groups / B squads and groups | |
 | Carrier IDs / starting passenger squads | |
 | Pilots / unlisted colors / Rocket substitutes | |

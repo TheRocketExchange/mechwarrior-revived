@@ -44,7 +44,7 @@ PAGES = [
     ("playtest/protocol.md", "playtest.html", "Playtest plan", "Development", "Testing / Plan"),
     ("playtest/playtest-log.md", "log.html", "Game log", "Development", "Testing / Record a game"),
     ("docs/design-brief.md", "design.html", "Design notes", "Development", "About the rules"),
-    ("docs/combat-rhythm.md", "combat-rhythm.html", "How v0.3 changes a battle", "Development", "Development / Worked examples"),
+    ("docs/combat-rhythm.md", "combat-rhythm.html", "Combat and recovery", "Development", "Development / Worked examples"),
     ("docs/comparison.md", "comparison.html", "Rules & handbook comparison", "Development", "Development / Community sources"),
     ("docs/sources.md", "sources.html", "Sources", "Development", "Background reading"),
     ("playtest/validation.md", "validation.html", "Checks so far", "Development", "Testing / Progress"),
@@ -65,8 +65,6 @@ def slug(value):
 
 
 def rewrite_link(href, source):
-    if href == "C:/Users/wben7/Downloads/MWScenarioHandbookv21.pdf":
-        return "https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf"
     # Turn Windows source paths into valid local-file links.
     if re.match(r"^[A-Za-z]:[/\\]", href):
         return Path(unquote(href)).as_uri()
@@ -130,7 +128,7 @@ def nav_html(active):
 
 def contents_html(toc):
     if not toc:
-        return '<p class="toc-note">Everything on this page is below.</p>'
+        return ""
     return '<ol class="contents">' + "".join(
         f'<li class="level-{level}"><a href="#{anchor}">{html.escape(label)}</a></li>'
         for level, label, anchor in toc) + "</ol>"
@@ -140,7 +138,7 @@ def resources_html(current):
     links = [("rules.html", "Core rules"), ("weapons.html", "Weapons"),
              ("equipment.html", "Equipment colors"), ("turn.html", "Turn reference"),
              ("readiness.html", "Readiness reference"),
-             ("pilots.html", "Pilot cards"), ("units.html", "Unit cards"), ("builder.html", "Force builder"),
+             ("pilots.html", "Pilot cards"), ("units.html", "Unit cards"), ("builder.html", "Army builder"),
              ("points.html", "Points"), ("scenarios.html", "Scenarios")]
     return "".join(f'<a href="{url}"' + (' aria-current="page"' if url == current else "")
                    + f'>{label}<span aria-hidden="true">↗</span></a>' for url, label in links)
@@ -153,15 +151,17 @@ def write_page(filename, title, active, eyebrow, body, toc, tools="", next_page=
     next_html = ""
     if next_page:
         url, label = next_page
-        next_html = f'<a class="next-page" href="{url}"><span>Continue reading<strong>{label}</strong></span><span aria-hidden="true">→</span></a>'
+        next_html = f'<a class="next-page" href="{url}"><span>Next<strong>{label}</strong></span><span aria-hidden="true">→</span></a>'
     replacements = {
         "TITLE": html.escape(title), "NAV": nav_html(active), "EYEBROW": html.escape(eyebrow),
         "BODY": body, "CONTENTS": contents_html(toc), "RESOURCES": resources_html(filename),
+        "TOC_HIDDEN": "" if toc else " hidden",
         "PAGE_TOOLS": tools, "NEXT": next_html,
         "BANNER": banner_html(filename),
     }
     for key, value in replacements.items():
         template = template.replace("{{" + key + "}}", value)
+    template = template.replace('<p class="eyebrow"></p>', "")
     template = re.sub(r"(?m)^[ \t]+$", "", template)
     (OUT / filename).write_text(template, encoding="utf-8")
 

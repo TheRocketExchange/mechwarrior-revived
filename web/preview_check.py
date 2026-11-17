@@ -52,7 +52,12 @@ def js(code):
 def wait(condition):
     deadline=time.time()+20
     while time.time()<deadline:
-        if js(condition): return
+        try:
+            if js(condition): return
+        except AssertionError as error:
+            # A navigation can replace the page while CDP evaluates this poll.
+            if 'Inspected target navigated or closed' not in str(error):
+                raise
         time.sleep(0.1)
     raise AssertionError(condition)
 
@@ -280,7 +285,7 @@ screenshot('readiness-cost')
 open_page('readiness.html',"document.querySelector('h1').textContent==='Readiness reference'")
 assert js("document.querySelector('article').textContent.includes('Keep readiness between rounds')")
 screenshot('readiness-desktop')
-open_page('combat-rhythm.html',"document.querySelector('h1').textContent==='How v0.3 changes a battle'")
+open_page('combat-rhythm.html',"document.querySelector('h1').textContent==='Combat and recovery'")
 assert js("document.querySelector('article').textContent.includes('readiness only')")
 js("document.querySelector('[data-search-open]').click()")
 input_value('#rule-search','AOD030')

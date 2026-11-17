@@ -31,7 +31,7 @@ PHOTOS = {
         ("energy-damage", "heavy-metal"), ("melee-damage", "close-quarters"),
         ("heat-colors", "burning-wreck"),
     ],
-    "points.html": [("why-the-whole-dial-matters", "factory-pressure")],
+    "points.html": [("dial-weighting", "factory-pressure")],
     "turn.html": [("each-round", "factory-battlefield"), ("attacks", "corner-fight")],
     "readiness.html": [("recovery", "battle-line")],
     "pilots.html": [(None, "heavy-metal")],

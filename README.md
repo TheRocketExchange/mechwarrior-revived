@@ -74,3 +74,11 @@ For pilot changes, edit both the [card data](pilots/cards.json) and [pilot rules
 The starter’s map and rosters use [first-contact.json](scenarios/first-contact.json). The three full scenario maps use [layouts.json](scenarios/layouts.json), with 48 × 48 and 72 × 48 views. Placement measurements appear on the diagrams as arrows; packet checks compare every footprint, deployment zone, objective ring, and arrow endpoint with the source data. [check_layouts.py](scenarios/check_layouts.py) checks terrain spacing, routes for a 3-inch base, and direct firing lanes. Wider maps add four blocking buildings and two woods to protect the flanks. [generate_diagrams.py](scenarios/generate_diagrams.py) draws seven maps and five rules diagrams using the shared symbols and colors in [map_style.py](scenarios/map_style.py). The [scenario pages](https://therocketexchange.github.io/mechwarrior-revived/scenarios.html) let readers enlarge maps and switch table sizes. [update_starter.py](units/update_starter.py) generates the patrol tables from current catalog costs.
 
 The themed starter pack uses [dead-air.json](playtest/dead-air.json) for names and briefings. [generate_pack.py](playtest/generate_pack.py) reads the same starter rosters, catalog dials, prices and pilot abilities to create its PDF, page and importable lists. Keep its quick references in sync with the core rules. Its snapshot changes when the rules or selected model data changes; keep one PDF for a paired test. [check_pack.py](playtest/check_pack.py) checks the printed cards and imports against those sources.
+
+### Presentation references
+
+Introduce the setting and play sequence before army building. Keep sample armies available for a first game. References for this structure:
+
+- [Mantic’s Firefight introduction](https://www.manticgames.com/what-is-firefight/): setting and alternating actions before getting started.
+- [The NetEA Tournament Pack](https://tp.net-armageddon.org/tournament-pack/): core play and training scenarios before army lists.
+- [Warhammer 40,000’s March 2023 army-building guide](https://www.warhammer-community.com/en-gb/articles/z6UkH6T3/how-army-building-works-in-the-new-edition-of-warhammer-40000/): battle size, unit selection, and repetition limits.

@@ -9,17 +9,14 @@ Revived uses existing miniatures with new playtest rules. These sources explain 
 | Approved First Playtest Scope | Army size, alternating activations, infantry roles, and the first set of rules and scenarios |
 | [Dark Age Rules of Warfare](https://cf.sarna.net/docs/products/mwda/rule_book.pdf), pp. 4–7, 14–19, 21–22 | Combat and heat dials, three attack dice, white-dice critical results, and the basis for Death from Above |
 | [Age of Destruction Rules of Warfare](https://manualzz.com/doc/27785577/mechwarrior-age-of-destruction-board-game-user-manual), pp. 12–15, 19–23, 27, 29–31, 40–41 | Orders, formations, assault, heat, transport, and victory. Unit costs from p. 12 |
-| [Age of Destruction PDF](https://www.warrenborn.com/Files/Rules/MWAD_Rulebook_lo.pdf) | Original file; the text mirror above was used because this PDF exceeded the reader’s size limit |
+| [Age of Destruction PDF](https://www.warrenborn.com/Files/Rules/MWAD_Rulebook_lo.pdf) | Original rulebook PDF |
 | [Age of Destruction equipment card](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf) | Color placement and heat markings, including blue speed for Jump Jets. Revived replaces the ability text |
 | [Domination rules](https://www.warrenborn.com/Files/Rules/MWDO_rules.pdf), pp. 1–2 | Purple Reconnaissance, Coolant Flush, Advanced Anti-Missile System, PPC Capacitor, and Artemis V Fire-Control System |
-| [Local Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHandbookv21.pdf) | Mike “Rimoran” McCarrig’s 116-page compilation, December 15, 2020 |
-| [Public Scenario Handbook v2.1](https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf) | Online copy of the booklet |
+| [Scenario Handbook v2.1](https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf) | Mike “Rimoran” McCarrig’s 116-page compilation, December 15, 2020 |
 | [WarrenBorn unit archive](https://www.warrenborn.com/UnitSection.html) and [full index](https://www.warrenborn.com/Search.php) | Miniature photos, collector IDs, combat dials, and heat tracks for the unit catalog |
 | [Gray Death Scout](https://www.sarna.net/wiki/Gray_Death_Scout) | Identifies Gray Death Scout Armor as battle armor despite its shortened catalog name |
 
-The hosted rulebooks are official game texts. The handbook combines archived scenarios with community advice and changes. A separate fan replacement called “MechWarrior Revised” has not been confirmed.
-
-The local handbook is 2,040,496 bytes. Its SHA-256 is `3E0822C0C44E61CE1F16AAFEB2C5A744232AD9475771912508528319DC03DC99`. The public file has not been compared byte for byte.
+The hosted rulebooks are official game texts. The handbook combines archived scenarios with community advice and changes.
 
 ## Visual references and fonts
 

@@ -1,12 +1,12 @@
 # Age of Destruction and the scenario handbook
 
-Revived’s biggest changes are alternating activations and infantry that fight independently. Earlier rules also offer useful ideas for movement, heat, transport, and missions.
+Revived uses alternating activations and fixed infantry squads whose members roll separate attacks.
 
 ## The sources
 
-**Age of Destruction** is WizKids’ official revision of the clix game. A separate fan ruleset under “MechWarrior Revised” or “Age of Destruction (Updated Ruleset)” has not been identified. The comparison below uses the full [Rules of Warfare](https://manualzz.com/doc/27785577/mechwarrior-age-of-destruction-board-game-user-manual), not its quick-start section.
+**Age of Destruction** is WizKids’ official revision of the clix game. The comparison below uses the full [Rules of Warfare](https://manualzz.com/doc/27785577/mechwarrior-age-of-destruction-board-game-user-manual).
 
-The downloaded **[Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHandbookv21.pdf)** is by **Mike “Rimoran” McCarrig**, dated December 15, 2020. Its 116 pages collect scenarios, writing advice, and suggested changes. It is a community compilation, not a replacement rulebook. Page references below use its printed numbers.
+**[Scenario Handbook v2.1](https://www.warrenborn.com/Files/MWScenarioHandbookv21.pdf)** is by **Mike “Rimoran” McCarrig**, dated December 15, 2020. Its 116 pages collect scenarios, writing advice, and suggested changes. Page references below use its printed numbers.
 
 ## Rules compared
 
@@ -26,7 +26,7 @@ The downloaded **[Scenario Handbook v2.1](C:/Users/wben7/Downloads/MWScenarioHan
 
 AoD formation bonuses require a legal formation and line of sight; simple adjacency is not enough. AoD infantry can also capture units, and its victory rules already include objectives beyond kills.
 
-Revived makes those choices simpler to follow: no combined attacks, and a clear mission for each scenario. More units acting each round may also make combat faster and deadlier.
+Revived removes formation-fire bonuses and uses scenario-specific victory conditions. The effect of activating every group each round needs playtesting.
 
 ## Ideas from the handbook
 
@@ -47,10 +47,10 @@ SC-001 Escape the City (p. 104) still uses normal victory rules. Despite its tit
 
 ## Choices for Revived
 
-Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Version 0.3 adds pushing, recovery, half-speed Advance, and a common squad order. See the [worked examples](combat-rhythm.md) for their effects and the test comparison. These adapt the original rhythm without copying its order budget or combined-fire bonuses.
+Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Version 0.3 adds pushing, recovery, half-speed Advance, and a common squad order. See the [worked examples](combat-rhythm.md) for their effects and the test comparison.
 
 The first missions test holding ground, escaping, and capturing a station. Score at round end so both players can respond. Old “per turn” effects need care: under alternating activations, they could trigger far more often.
 
 Hold the Station lets any eligible unit contest. Infantry’s advantage is cover and access to fieldworks. If that proves too weak, test infantry-only capture later.
 
-Single-faction lists and limited Bypass capture are now supported. Leave weather, reserves, escorting captives, and extra station attacks for later. The handbook gives useful ideas; balance and play time still need games.
+Single-faction lists and limited Bypass capture are supported. Weather, reserves, escorting captives, and extra station attacks remain outside these rules.

@@ -14,7 +14,7 @@ Use real bases and current dials. Reset damage and heat between exercises.
 
 | Try | Watch for |
 | --- | --- |
-| The same conventional squad in the open, woods, fieldworks, and close combat from the rear | Hits, damage, survival, and whether the position is reachable |
+| The same infantry squad in the open, woods, fieldworks, and close combat from the rear | Hits, damage, survival, and whether the position is reachable |
 | Battle armor making the same close attacks | Its advantage against armor and shutdown targets; Piercing and critical hits |
 | Both infantry types defending woods, rubble, and fieldworks against shooting and close attacks | Infantry ranged cover +3/+4; battle armor +2/+3. Fieldworks close defense +2/+1. Check equipment stacking, passive protection during Salvage, and unchanged exposure in the open |
 | Fire while engaged with an enemy behind you, including at zero speed | Pivot without moving the center or breaking contact; no Assault needed; ranged Fire still cannot pivot |

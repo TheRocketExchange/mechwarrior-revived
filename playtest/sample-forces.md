@@ -6,7 +6,7 @@ Three starting armies: **H** (’Mech-heavy), **B** (balanced), and **I** (infan
 
 Each follows the Standard [force organization and rule of three](../rules/core-rules.md#11-build-your-force): at most 8 ’Mechs, 6 vehicles, and 9 infantry squads. No unit type is required; a force can have zero ’Mechs. No chassis appears more than three times; no infantry family appears in more than three squads. All squads have 2–3 bases. For 600, 1,800, or 2,400 points, select that [game size](../rules/core-rules.md#choose-the-battle-size) in the [force builder](../site/builder.html) and build to its chart.
 
-| Army | Points | ’Mechs | Vehicles | Conventional bases | Battle armor bases | Squads | Activation groups |
+| Army | Points | ’Mechs | Vehicles | Infantry bases | Battle armor bases | Squads | Activation groups |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | H | **1,192** | 8 | 4 | 5 | 2 | 3 | 15 |
 | B | **1,192** | 6 | 6 | 8 | 6 | 5 | 17 |
@@ -18,7 +18,7 @@ Use the exact catalog IDs in the rosters below. Each link shows the figure, rank
 
 ## Before deployment
 
-Use the group IDs below: M for ’Mechs, V for vehicles, C for conventional squads, and A for battle armor squads. Label individual squad members C1a, C1b, C1c, and so on. Each group takes one activation.
+Use the group IDs below: M for ’Mechs, V for vehicles, C for infantry squads, and A for battle armor squads. Label individual squad members C1a, C1b, C1c, and so on. Each group takes one activation.
 
 V1 starts with C1 aboard; V2 starts with A1. All other squads start on foot. Passengers still count as separate groups and are already paid for in the roster. Keep squad membership, pilots, and transport assignments for the return game.
 

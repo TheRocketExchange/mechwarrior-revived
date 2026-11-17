@@ -34,7 +34,7 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Printed heat modifiers and one stress roll for colored warnings | Keep different heat tracks with fewer lookups |
 | Original equipment identities with shorter effects and separate weapon tables | Keep repair crews, commanders, jump units, armor, and weapons recognizable |
 | Ballistic recoil, Energy heat, and stationary Rocket fire | Give each weapon a strength and a cost |
-| Up to two free carriers, each holding one squad | Make transport easy to test with existing figures |
+| Carrier limits depend on game size; each carries one squad | Carrier designation adds no points to the vehicle’s cost |
 | Scenario-specific victory | Keep attention on the mission |
 | Four pilot roles, one included in each ’Mech’s cost | Add character without advancement |
 | One points formula for every unit | Price each complete click, giving early strength more weight while charging for how well the unit holds up |
@@ -52,13 +52,3 @@ The [combat examples](combat-rhythm.md) explain the expected effects and the fou
 The shared points formula is a starting estimate. The sample armies use several chassis and follow the Standard force limits. Test other chassis and heat tracks too, then adjust the shared weights if results show a consistent problem. Games at 600, 1,200, 1,800, and 2,400 points have their own unit, carrier, and pilot limits. The rule of three stays fixed. Larger tables gain width while retaining the 48-inch depth, so mission travel distances stay the same. Test each size’s force variety, activation counts, flank use, and play time.
 
 Use the [playtest plan](../playtest/protocol.md), repeat games with sides reversed, and record time and rules lookups. Balance at each size and Standard’s two-hour target remain untested.
-
-## Introducing the game
-
-The opening explains the battle, player decisions, and turn sequence before asking readers to build an army. The full force chart follows the play rules; sample armies let a new player start sooner.
-
-Presentation references:
-
-- [Mantic’s Firefight introduction](https://www.manticgames.com/what-is-firefight/) establishes the setting and alternating actions before its getting-started material.
-- [The NetEA Tournament Pack](https://tp.net-armageddon.org/tournament-pack/) teaches core play and training scenarios before its army-list sections.
-- [Warhammer 40,000’s March 2023 army-building guide](https://www.warhammer-community.com/en-gb/articles/z6UkH6T3/how-army-building-works-in-the-new-edition-of-warhammer-40000/) gives a clear sequence from battle size to unit selection and states repetition limits. Revived applies its own limits to chassis and infantry squads.
