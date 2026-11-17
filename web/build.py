@@ -212,7 +212,7 @@ def main():
             next_page = ("first-contact.html", "Your first scenario")
             body += '<figure class="pilot-preview"><a href="downloads/revived-pilot-cards.pdf"><img src="downloads/revived-pilot-cards-preview.png" alt="Four printable Revived pilot cards: Gunner, Skirmisher, Brawler, and Engineer" loading="lazy" width="1224" height="1584"></a><figcaption>Four roles. Print the PDF at 100% on US Letter paper.</figcaption></figure>'
         elif filename == "index.html":
-            body = '<p class="lead">A modernized take on MechWarrior: Dark Age.</p><p>Use your existing <strong>MW:DA clix figures and their combat dials</strong> with these fan-made rules. Command BattleMechs, armored vehicles, and infantry in the BattleTech universe, taking turns moving and fighting for ground.</p>' + resource_rows([
+            body = '<p class="lead">Fan made modernized rules for MechWarrior: Dark Age.</p>' + resource_rows([
                 ("START", "first-contact.html", "Quick start", "First Contact · Two starter patrols · Setup map and teaching diagrams."),
                 ("01", "rules.html", "Core rules", "Learn how a battle unfolds, from movement and combat to victory."),
                 ("02", "builder.html", "Army builder", "Choose models, check your list, and print cards for your army."),
