@@ -213,20 +213,18 @@ def main():
             body += '<figure class="pilot-preview"><a href="downloads/revived-pilot-cards.pdf"><img src="downloads/revived-pilot-cards-preview.png" alt="Four printable Revived pilot cards: Gunner, Skirmisher, Brawler, and Engineer" loading="lazy" width="1224" height="1584"></a><figcaption>Four roles. Print the PDF at 100% on US Letter paper.</figcaption></figure>'
         elif filename == "index.html":
             body = '<p class="lead">A modernized take on MechWarrior: Dark Age.</p><p>Use your existing <strong>MW:DA clix figures and their combat dials</strong> with these fan-made rules. Command BattleMechs, armored vehicles, and infantry in the BattleTech universe, taking turns moving and fighting for ground.</p>' + resource_rows([
-                ("PACK", "dead-air.html", "Dead Air: The Fight for Kestrel Relay", "Two named patrols, photo cards, a map and a results sheet. Print and play."),
-                ("START", "first-contact.html", "First Contact", "600 points · Two starter patrols · Setup map and teaching diagrams."),
+                ("START", "first-contact.html", "Quick start", "First Contact · Two starter patrols · Setup map and teaching diagrams."),
                 ("01", "rules.html", "Core rules", "Learn how a battle unfolds, from movement and combat to victory."),
                 ("02", "builder.html", "Army builder", "Choose models, check your list, and print cards for your army."),
                 ("03", "units.html", "Unit catalog", "Photos, full dials, printable cards, and points."),
-                ("04", "scenarios.html", "Scenarios", "A starter battle and three full missions with deployment and scoring rules."),
-                ("05", "aids.html", "Play aids", "Quick references and printable pilot cards."),
+                ("04", "aids.html", "Play aids", "Quick references and printable pilot cards."),
             ]) + '<div class="edition-note"><strong>Playtest edition</strong><p>The rules are ready to try. Balance at each size and the Standard game’s two-hour play target still need testing.</p></div>'
             SEARCH.append({"title": title, "page": title, "url": filename, "text": re.sub(r"<[^>]+>", " ", body)})
         write_page(filename, title, active, eyebrow, body, toc, tools, next_page)
 
     scenario_body = '<p class="lead">Choose a scenario.</p><p>Start with First Contact at 600 points. The other three missions support all four game sizes: use 48 × 48 inches for Skirmish or Standard, and the <a href="rules.html#set-up-a-larger-battlefield">72 × 48 setup</a> for Large or Grand Battles. Place terrain before choosing sides, then play again with roles or edges exchanged.</p>' + resource_rows([
-        ("PACK", "dead-air.html", "Dead Air", "Themed First Contact pack · Two patrols · Assigned cards · Map · Results sheet"),
         ("START", "first-contact.html", "First Contact", "4 rounds · 600 points · One relay · Map, diagrams, and starter patrols"),
+        ("PACK", "dead-air.html", "Dead Air", "Themed First Contact pack · Two patrols · Assigned cards · Map · Results sheet"),
         ("01", "seize-and-hold.html", "Seize and Hold", "6 rounds · Three relay sites · Next step after First Contact"),
         ("02", "breakthrough.html", "Breakthrough", "8 rounds · Attacker versus defender · Escape through the north edge"),
         ("03", "hold-the-station.html", "Hold the Station", "6 rounds · Attacker versus defender · Capture both access sites"),
