@@ -1,11 +1,11 @@
 <div class="force-toolbar">
   <label class="force-name-label">Force name<input id="force-name" maxlength="80" value="My force"></label>
-  <label>Game size<select id="force-size" aria-describedby="force-size-guide"></select></label>
-  <label>Faction<select id="force-faction"><option value="">Mixed factions</option></select></label>
+  <label class="force-size-label">Game size<select id="force-size" aria-describedby="force-size-guide"></select></label>
+  <label class="force-faction-label">Faction<select id="force-faction"><option value="">Mixed factions</option></select></label>
+  <label class="force-sample-label">Sample army<select id="force-sample"><option value="">Choose…</option><optgroup label="First Contact · 600 points"><option value="S1">Patrol A</option><option value="S2">Patrol B</option></optgroup><optgroup label="Standard · 1,200 points"><option value="H">H · ’Mech-heavy</option><option value="B">B · Balanced</option><option value="I">I · Infantry-heavy</option></optgroup></select></label>
   <button type="button" id="force-new">New list</button>
   <button type="button" id="force-export">Export list</button>
   <label class="file-button">Import list<input type="file" id="force-import" accept=".json,application/json"></label>
-  <label>Sample army<select id="force-sample"><option value="">Choose…</option><optgroup label="First Contact · 600 points"><option value="S1">Patrol A</option><option value="S2">Patrol B</option></optgroup><optgroup label="Standard · 1,200 points"><option value="H">H · ’Mech-heavy</option><option value="B">B · Balanced</option><option value="I">I · Infantry-heavy</option></optgroup></select></label>
   <a id="force-cards" target="_blank" rel="noopener" aria-disabled="true">Print cards / dials</a>
 </div>
 <p class="force-save-note" id="force-save" role="status">Autosaves in this browser</p>

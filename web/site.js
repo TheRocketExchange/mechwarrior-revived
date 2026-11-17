@@ -1,9 +1,25 @@
 "use strict";
 
 const toc = document.querySelector(".toc-panel");
+const navigation = document.querySelector(".navigation-menu");
 const narrow = window.matchMedia("(max-width: 740px)");
-if (narrow.matches) toc.open = false;
-narrow.addEventListener("change", event => { toc.open = !event.matches; });
+if (narrow.matches) { toc.open = false; navigation.open = false; }
+narrow.addEventListener("change", event => { toc.open = !event.matches; navigation.open = !event.matches; });
+navigation.querySelector("nav").addEventListener("click", event => {
+  if (narrow.matches && event.target.closest("a")) navigation.open = false;
+});
+document.addEventListener("click", event => {
+  if (narrow.matches && !navigation.contains(event.target)) navigation.open = false;
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && narrow.matches && navigation.open) {
+    navigation.open = false;
+    navigation.querySelector("summary").focus();
+  }
+});
+toc.addEventListener("click", event => {
+  if (narrow.matches && event.target.closest(".contents a")) toc.open = false;
+});
 
 const printButton = document.querySelector("[data-print]");
 printButton.hidden = false;
@@ -71,6 +87,7 @@ function search() {
 }
 function showSearch() {
   if (dialog.open) return;
+  if (narrow.matches) navigation.open = false;
   search();
   dialog.showModal();
   input.focus();

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="dark-age.css">
   <link rel="stylesheet" href="photography.css">
   <link rel="stylesheet" href="diagrams.css">
+  <link rel="stylesheet" href="mobile.css">
   <script src="search-index.js" defer></script>
   <script src="site.js" defer></script>
   <script src="maps.js" defer></script>
@@ -22,12 +23,15 @@
         <svg class="insignia" viewBox="0 0 76 86" fill="none" aria-hidden="true"><path d="M12 3h52l9 9v62l-9 9H12l-9-9V12Z" stroke="currentColor" stroke-width="2"/><path d="m20 58 4-27 14 10 14-10 4 27H46l-2-11-6 6-6-6-2 11Z" fill="currentColor"/><path d="M38 12v10M38 64v10M10 43h7M59 43h7" stroke="currentColor" stroke-width="2"/><g fill="currentColor"><circle cx="12" cy="12" r="2"/><circle cx="64" cy="12" r="2"/><circle cx="12" cy="74" r="2"/><circle cx="64" cy="74" r="2"/></g></svg>
         <span class="wordmark"><span>MechWarrior</span><strong>Revived</strong></span>
       </a>
-      <div class="masthead-photography"><a class="battle-photo-link" href="battle-photos/rocky-approach.jpg" style="--photo-position:50% 46%"><img src="battle-photos/rocky-approach.jpg" alt="MechWarrior miniatures moving between tall red rock formations on a tabletop battlefield." width="1296" height="870" decoding="async" fetchpriority="high"></a><a class="masthead-photo-credit" href="https://chicagoskirmish.blogspot.com/2012/05/battle-for-addicks-mech-attack-battle.html">Photo: Chicago Skirmish Wargames</a></div>
+      <div class="masthead-photography"><a class="battle-photo-link" href="battle-photos/rocky-approach.jpg" style="--photo-position:50% 46%"><img src="battle-photos/rocky-approach.jpg" alt="MechWarrior miniatures moving between tall red rock formations on a tabletop battlefield." width="1296" height="870" decoding="async" fetchpriority="high"></a><a class="masthead-photo-credit" href="https://chicagoskirmish.blogspot.com/2012/05/battle-for-addicks-mech-attack-battle.html" aria-label="Photo: Chicago Skirmish Wargames"><span class="photo-credit-name">Photo: Chicago Skirmish Wargames</span><span class="photo-credit-short">Photo credit</span></a></div>
     </div>
   </header>
   <div class="nav-band">
     <div class="nav-inner">
-      <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html" aria-current="page">Rules</a><a href="units.html">Units</a><a href="builder.html">Forces</a><a href="scenarios.html">Scenarios</a><a href="aids.html">Game aids</a><a href="design.html">Development</a></nav>
+      <details class="navigation-menu" open>
+        <summary>Menu</summary>
+        <nav class="primary-nav" aria-label="Main navigation"><a href="rules.html" aria-current="page">Rules</a><a href="units.html">Units</a><a href="builder.html">Forces</a><a href="scenarios.html">Scenarios</a><a href="aids.html">Game aids</a><a href="design.html">Development</a></nav>
+      </details>
       <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
     </div>
   </div>
@@ -50,7 +54,7 @@
       <article class="rule-content"><p>Version 0.3 · Formula 0.3-alpha-5</p>
 <p>Build armies with the <strong>points</strong> shown in the <a href="units.html">unit catalog</a>. Pay per base, including every member of a squad.</p>
 <p>Every unit uses the same formula. There are no hand-set prices, faction discounts, or rarity premiums. These are starting costs for playtesting, not established balance.</p>
-<h2 id="why-the-whole-dial-matters">Why the whole dial matters</h2><figure class="rule-photo"><a class="battle-photo-link" href="battle-photos/factory-pressure.jpg" style="--photo-position:50% 48%"><img src="battle-photos/factory-pressure.jpg" alt="MechWarrior miniatures and fallen models scattered around shelters and a factory on a yellow tabletop." width="1296" height="972" decoding="async" loading="lazy"></a><figcaption><span>The fight closes around the factory.</span><a class="" href="https://chicagoskirmish.blogspot.com/2012/05/battle-for-addicks-mech-attack-battle.html">Photo: Chicago Skirmish Wargames</a></figcaption></figure>
+<h2 id="why-the-whole-dial-matters">Why the whole dial matters</h2><figure class="rule-photo"><a class="battle-photo-link" href="battle-photos/factory-pressure.jpg" style="--photo-position:50% 48%"><img src="battle-photos/factory-pressure.jpg" alt="MechWarrior miniatures and fallen models scattered around shelters and a factory on a yellow tabletop." width="1296" height="972" decoding="async" loading="lazy"></a><figcaption><span>The fight closes around the factory.</span><a class="" href="https://chicagoskirmish.blogspot.com/2012/05/battle-for-addicks-mech-attack-battle.html" aria-label="Photo: Chicago Skirmish Wargames">Photo: Chicago Skirmish Wargames</a></figcaption></figure>
 <p>A strong starting click costs more, but it does not tell the whole story. A unit that keeps fighting well after several hits costs more than one that quickly loses its best weapons, armor, or speed.</p>
 <p>The formula prices <strong>each click as a complete profile</strong>, from Start to the last click before destruction. Its defense protects the weapons and movement on that same click. This avoids letting tough but weak late clicks inflate the value of powerful early weapons.</p>
 <p>Earlier clicks count more because their strengths are available sooner. The weight falls evenly from <strong>1.5 at Start to 0.5 at the last click</strong>. For a six-click dial, the weights are 1.5, 1.3, 1.1, 0.9, 0.7, and 0.5. No click is ignored, and the weights average 1. A one-click dial uses 1.</p>

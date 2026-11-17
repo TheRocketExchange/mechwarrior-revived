@@ -177,7 +177,7 @@ def resource_rows(items):
 def main():
     OUT.mkdir(exist_ok=True)
     (OUT / "downloads").mkdir(exist_ok=True)
-    for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css", "photography.css", "maps.js"):
+    for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css", "photography.css", "maps.js", "mobile.css"):
         shutil.copyfile(WEB / asset, OUT / asset)
     (OUT / "battle-photos").mkdir(exist_ok=True)
     for photo in (WEB / "battle-photos").glob("*.jpg"):

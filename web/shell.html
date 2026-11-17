@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="dark-age.css">
   <link rel="stylesheet" href="photography.css">
   <link rel="stylesheet" href="diagrams.css">
+  <link rel="stylesheet" href="mobile.css">
   <script src="search-index.js" defer></script>
   <script src="site.js" defer></script>
   <script src="maps.js" defer></script>
@@ -27,7 +28,10 @@
   </header>
   <div class="nav-band">
     <div class="nav-inner">
-      <nav class="primary-nav" aria-label="Main navigation">{{NAV}}</nav>
+      <details class="navigation-menu" open>
+        <summary>Menu</summary>
+        <nav class="primary-nav" aria-label="Main navigation">{{NAV}}</nav>
+      </details>
       <button class="search-trigger" type="button" data-search-open hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.7"/></svg><span>Search</span><kbd>/</kbd></button>
     </div>
   </div>

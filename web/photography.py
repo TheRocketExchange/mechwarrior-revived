@@ -62,8 +62,11 @@ def photo_link(photo_id, banner=False):
 
 def credit(photo_id, css_class=""):
     photo = photographs()[photo_id]
-    return (f'<a class="{css_class}" href="{escape(photo["source"], quote=True)}">'
-            f'Photo: {escape(photo["credit"])}</a>')
+    label = 'Photo: ' + escape(photo["credit"])
+    if css_class == 'masthead-photo-credit':
+        label = f'<span class="photo-credit-name">{label}</span><span class="photo-credit-short">Photo credit</span>'
+    return (f'<a class="{css_class}" href="{escape(photo["source"], quote=True)}" aria-label="Photo: {escape(photo["credit"], quote=True)}">'
+            f'{label}</a>')
 
 
 def banner_html():
