@@ -138,9 +138,12 @@ def grid(commands, x, top, headers, rows, row_height=14):
         commands.append(f"{rgb(LINE)} RG .3 w {left:.3f} {top} m {left:.3f} {bottom} l S")
 
 
-def card(pdf, commands, images, unit, x, y):
+def card(pdf, commands, images, unit, x, y, assignment=None):
     commands.append(f"{rgb(LINE)} RG 0.5 w {x} {y} 540 360 re S")
-    text(commands, x+12, y+346, f"Catalog ID: {unit['id']}  /  {unit['set']}", 7, color=MUTED)
+    identity = f"Catalog ID: {unit['id']}  /  {unit['set']}"
+    if assignment:
+        identity += "  /  " + assignment['force_name']
+    text(commands, x+12, y+346, identity, 7, color=MUTED)
     lines = wrap(unit["name"], 510, 14)
     assert len(lines) <= 2, unit["id"]
     for i, line in enumerate(lines):
@@ -163,16 +166,17 @@ def card(pdf, commands, images, unit, x, y):
         text(commands, x+132, y+266-i*10, f"{weapon['slot'].title()}: {kind}  |  {attack_range}", 8, True)
     category = unit["category"]
     example = {"Mech": "M1", "Vehicle": "V1", "Conventional Infantry": "C1a", "Battle Armor": "A1a"}.get(category, "T1")
-    text(commands, x+132, y+244, f"Roster ID: __________  (e.g. {example})", 8)
+    roster_label = f"Roster ID: {assignment['roster_id']} / {assignment['callsign']}" if assignment else f"Roster ID: __________  (e.g. {example})"
+    text(commands, x+132, y+244, roster_label, 8)
     if category == "Mech":
-        assignment = "Pilot: ____________________"
+        assignment_label = f"Pilot: {assignment['pilot_name']} / {assignment['pilot']}" if assignment else "Pilot: ____________________"
     elif category in ("Conventional Infantry", "Battle Armor"):
-        assignment = "Squad: ______    Assigned carrier: ______"
+        assignment_label = f"Squad: {assignment['squad']}    Assigned carrier: None" if assignment else "Squad: ______    Assigned carrier: ______"
     elif category == "Vehicle":
-        assignment = "Carrier: Yes / No    Assigned squad: ______"
+        assignment_label = "Carrier: No    Assigned squad: None" if assignment else "Carrier: Yes / No    Assigned squad: ______"
     else:
-        assignment = "Uses rules beyond this edition."
-    text(commands, x+132, y+231, assignment, 8)
+        assignment_label = "Uses rules beyond this edition."
+    text(commands, x+132, y+231, assignment_label, 8)
     text(commands, x+12, y+216, "COMBAT DIAL", 8, True, RED)
     text(commands, x+112, y+216, f"Clicks: {len(unit['track'])-unit['start']} (damage from Start to End)", 7)
     if not unit["core_legal"]:

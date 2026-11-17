@@ -34,6 +34,7 @@ PAGES = [
     ("pilots/pilot-cards.md", "pilots.html", "Pilot cards", "Game aids", "At the table / 02"),
     ("playtest/sample-forces.md", "forces.html", "Sample forces", "Forces", "Build your force"),
     ("playtest/starter-forces.md", "starter-forces.html", "Starter patrols", "Forces", "First Contact / Two patrols"),
+    ("playtest/dead-air.md", "dead-air.html", "Dead Air", "Scenarios", "The Fight for Kestrel Relay / Starter pack"),
     ("scenarios/00-first-contact.md", "first-contact.html", "First Contact", "Scenarios", "Start here / First battle"),
     ("scenarios/01-seize-and-hold.md", "seize-and-hold.html", "Seize and Hold", "Scenarios", "Mission / 01"),
     ("scenarios/02-breakthrough.md", "breakthrough.html", "Breakthrough", "Scenarios", "Mission / 02"),
@@ -52,7 +53,8 @@ NAV = [("Rules", "rules.html"), ("Units", "units.html"), ("Forces", "builder.htm
        ("Development", "design.html")]
 DOWNLOADS = ["rules/readiness-reference.pdf", "pilots/revived-pilot-cards.pdf", "pilots/revived-pilot-cards-preview.png",
              "playtest/sample-forces.csv", "playtest/adjustments.csv", "units/revived-unit-cards.pdf",
-             "units/points-config.json", "units/points.py", "units/readiness.py"]
+             "units/points-config.json", "units/points.py", "units/readiness.py",
+             "playtest/dead-air-playtest-pack.pdf", "playtest/dead-air-s1.json", "playtest/dead-air-s2.json"]
 SEARCH = []
 
 
@@ -180,7 +182,11 @@ def main():
     for source, filename, title, active, eyebrow in PAGES:
         body, toc = ("", []) if filename == "index.html" else render_document(ROOT / source, filename, title)
         tools, next_page = "", None
-        if filename == "first-contact.html":
+        if filename == "dead-air.html":
+            body += '<link rel="stylesheet" href="diagrams.css">'
+            tools = '<a class="small-button" href="downloads/dead-air-playtest-pack.pdf">Download playtest pack <span class="file-type">PDF</span></a>'
+            next_page = ("first-contact.html", "First Contact rules and diagrams")
+        elif filename == "first-contact.html":
             body += '<link rel="stylesheet" href="diagrams.css">'
             tools = '<a class="small-button" href="diagrams/first-contact-map.svg">Open setup map <span aria-hidden="true">↗</span></a>'
             next_page = ("starter-forces.html", "Choose a starter patrol")
@@ -197,6 +203,7 @@ def main():
             body += '<figure class="pilot-preview"><a href="downloads/revived-pilot-cards.pdf"><img src="downloads/revived-pilot-cards-preview.png" alt="Four printable Revived pilot cards: Gunner, Skirmisher, Brawler, and Engineer" loading="lazy" width="1224" height="1584"></a><figcaption>Four roles. Print the PDF at 100% on US Letter paper.</figcaption></figure>'
         elif filename == "index.html":
             body = '<p class="lead">A modernized take on MechWarrior: Dark Age.</p><p>Use your existing <strong>MW:DA clix figures and their combat dials</strong> with these fan-made rules. Command BattleMechs, armored vehicles, and infantry in the BattleTech universe, taking turns moving and fighting for ground.</p><p>New in v0.3: pushing and recovery, half-speed Advance, and one order per squad. <a href="combat-rhythm.html">See what changes on the table.</a></p>' + resource_rows([
+                ("PACK", "dead-air.html", "Dead Air: The Fight for Kestrel Relay", "Two named patrols, photo cards, a map and a results sheet. Print and play."),
                 ("START", "first-contact.html", "Play your first battle", "600 points · Two starter patrols · Setup map and teaching diagrams."),
                 ("01", "rules.html", "Read the rules", "Learn how a battle unfolds, from movement and combat to victory."),
                 ("02", "builder.html", "Build your force", "Choose models, check your list, and print cards for your army."),
@@ -208,6 +215,7 @@ def main():
         write_page(filename, title, active, eyebrow, body, toc, tools, next_page)
 
     scenario_body = '<p class="lead">Choose a scenario.</p><p>Start with First Contact at 600 points. The other three missions support all four game sizes: use 48 × 48 inches for Skirmish or Standard, and the <a href="rules.html#set-up-a-larger-battlefield">72 × 48 setup</a> for Large or Grand Battles. Place terrain before choosing sides, then play again with roles or edges exchanged.</p>' + resource_rows([
+        ("PACK", "dead-air.html", "Dead Air", "Themed First Contact pack · Two patrols · Assigned cards · Map · Results sheet"),
         ("START", "first-contact.html", "First Contact", "4 rounds · 600 points · One relay · Map, diagrams, and starter patrols"),
         ("01", "seize-and-hold.html", "Seize and Hold", "6 rounds · Three relay sites · Next step after First Contact"),
         ("02", "breakthrough.html", "Breakthrough", "8 rounds · Attacker versus defender · Escape through the north edge"),
@@ -215,6 +223,7 @@ def main():
     ]) + '<p>Use the <a href="rules.html#10-objectives-and-victory">core rules</a> to check who controls each objective. The scenario tells you when to score and how to win.</p>'
     write_page("scenarios.html", "Scenarios", "Scenarios", "Mission selection", scenario_body, [])
     aids_body = '<p>References and printable cards for the table.</p>' + resource_rows([
+        ("PACK", "dead-air.html", "Dead Air playtest pack", "Kestrel Watch versus Blackwire Recovery. Everything to prepare the starter matchup."),
         ("MAP", "first-contact.html#set-up-the-map", "Starter map & diagrams", "Measured 48 × 48 setup, movement, objective control, and pushing."),
         ("LIST", "builder.html", "Cards for your army", "Build a list, then print only your models with their assignments filled in."),
         ("01", "turn.html", "Turn reference", "Round sequence, actions, attacks, and heat."),

@@ -6,6 +6,8 @@ Keep the rules, game size, points formula, rosters, squads, and pilots the same 
 
 For a learning session, play [First Contact](../scenarios/00-first-contact.md) with its [starter patrols](starter-forces.md). Play a four-round game and return match, using the map and teaching diagrams. Record starter games separately from the full-mission matrix below.
 
+The [Dead Air playtest pack](dead-air.md) collects that matchup with named patrols, a map, assigned cards and a one-page results sheet. Keep the same PDF for both games; its snapshot identifies the rules and model data used. The story adds no special rules.
+
 ## Try these first
 
 Use real bases and current dials. Reset damage and heat between exercises.
@@ -14,7 +16,7 @@ Use real bases and current dials. Reset damage and heat between exercises.
 | --- | --- |
 | The same conventional squad in the open, woods, fieldworks, and close combat from the rear | Hits, damage, survival, and whether the position is reachable |
 | Battle armor making the same close attacks | Its advantage against armor and shutdown targets; Piercing and critical hits |
-| Both infantry types defending woods, rubble, and fieldworks against shooting and close attacks | Conventional infantry ranged cover +3/+4; battle armor +2/+3. Fieldworks close defense +2/+1. Check equipment stacking, black attack ignoring 1 ranged cover, and unchanged exposure in the open |
+| Both infantry types defending woods, rubble, and fieldworks against shooting and close attacks | Conventional infantry ranged cover +3/+4; battle armor +2/+3. Fieldworks close defense +2/+1. Check equipment stacking, passive protection during Salvage, and unchanged exposure in the open |
 | Fire while engaged with an enemy behind you, including at zero speed | Pivot without moving the center or breaking contact; no Assault needed; ranged Fire still cannot pivot |
 | Ordinary jumping Assault versus DFA against the same vehicle or ’Mech | Half-speed versus full-speed reach; DFA +2 defense/+2 damage; landing damage on a hit, miss, or critical miss; 2 total heat |
 | DFA on the last live click; a miss beside a surviving target; blocked landing; Jump lost on the dial | Finish target effects before landing damage; no heat after destruction; no displacement or reactive pivot; legal start and landing required |

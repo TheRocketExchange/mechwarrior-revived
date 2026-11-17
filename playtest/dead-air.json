@@ -1,0 +1,43 @@
+{
+  "edition": "1",
+  "title": "Dead Air",
+  "subtitle": "The Fight for Kestrel Relay",
+  "briefing": "For six days, the valley has heard nothing but static. Kestrel Relay is the last working link between the mining settlements and the outside world. Now its maintenance beacon has begun transmitting again. Two patrols have picked up the signal. Neither intends to leave the station to the other.",
+  "dispatch": "KESTREL RELAY // LOCAL CARRIER FOUND // AUTHORITY UNCONFIRMED",
+  "forces": {
+    "S1": {
+      "name": "Kestrel Watch",
+      "short": "Watch",
+      "color": "#255c68",
+      "briefing": "The settlements pooled their remaining machines and hired whoever would answer. Get a crew onto the relay and keep the channel open. The valley needs a way to call for help, and your patrol is all it can afford to send.",
+      "groups": {
+        "M1": {"callsign": "Needle", "pilot_name": "Mara Venn"},
+        "M2": {"callsign": "Gatecrasher", "pilot_name": "Ivo Rusk"},
+        "M3": {"callsign": "Old Reliable", "pilot_name": "Tess Calder"},
+        "V1": {"callsign": "Roadrunner"},
+        "C1": {"callsign": "Line Crew"}
+      }
+    },
+    "S2": {
+      "name": "Blackwire Recovery",
+      "short": "Blackwire",
+      "color": "#9b4b30",
+      "briefing": "Your employer claims the relay under an old salvage contract. Secure the site before the local militia can bring it online. The transmitter must survive; the people defending it are a problem your employer has left to you.",
+      "groups": {
+        "M1": {"callsign": "Switchblade", "pilot_name": "Dax Orrel"},
+        "M2": {"callsign": "Crowbar", "pilot_name": "Nera Holt"},
+        "M3": {"callsign": "Deadbolt", "pilot_name": "Soren Pike"},
+        "V1": {"callsign": "Towline"},
+        "C1": {"callsign": "Wirecutters"}
+      }
+    }
+  },
+  "terrain_names": {
+    "W1": "South shelterbelt",
+    "W2": "North shelterbelt",
+    "R1": "Collapsed loading yard",
+    "R2": "Ruined crew quarters",
+    "B1": "Ore-processing block",
+    "B2": "Sealed power house"
+  }
+}

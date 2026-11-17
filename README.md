@@ -12,6 +12,8 @@ The rules include scenarios, photo datasheets, and printable game aids. [Named e
 
 ## Your first game
 
+**[Dead Air: The Fight for Kestrel Relay](https://therocketexchange.github.io/mechwarrior-revived/dead-air.html)** packages the first game as a fight between Kestrel Watch and Blackwire Recovery. [Download the playtest pack](https://therocketexchange.github.io/mechwarrior-revived/downloads/dead-air-playtest-pack.pdf): two ready-made patrols, fourteen photo cards with full dials, six assigned pilot cards, a measured map, field references, and a one-page results sheet. The story uses the existing First Contact rules and starter lists.
+
 1. Read [how the game works](https://therocketexchange.github.io/mechwarrior-revived/rules.html#1-how-the-game-works), then choose one of the two [starter patrols](https://therocketexchange.github.io/mechwarrior-revived/starter-forces.html). Each has seven models and loads into the builder for card printing.
 2. Play [First Contact](https://therocketexchange.github.io/mechwarrior-revived/first-contact.html): a 600-point starter with four rounds and one relay. Use its [setup map](https://therocketexchange.github.io/mechwarrior-revived/diagrams/first-contact-map.svg) and diagrams for movement, objective control, and pushing.
 3. Keep the [turn reference](https://therocketexchange.github.io/mechwarrior-revived/turn.html), [readiness sheet](https://therocketexchange.github.io/mechwarrior-revived/readiness.html), [equipment sheet](https://therocketexchange.github.io/mechwarrior-revived/equipment.html), and [pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) nearby.
@@ -40,6 +42,7 @@ Points value every click as a complete profile. Early strength carries more weig
 | [Readiness reference](https://therocketexchange.github.io/mechwarrior-revived/readiness.html) | [Combat examples](https://therocketexchange.github.io/mechwarrior-revived/combat-rhythm.html) |
 | [Pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) | [Playtest plan](https://therocketexchange.github.io/mechwarrior-revived/playtest.html) |
 | [First Contact starter](https://therocketexchange.github.io/mechwarrior-revived/first-contact.html) | [Starter patrols](https://therocketexchange.github.io/mechwarrior-revived/starter-forces.html) |
+| [Dead Air playtest pack](https://therocketexchange.github.io/mechwarrior-revived/dead-air.html) | [Printable pack and results sheet](https://therocketexchange.github.io/mechwarrior-revived/downloads/dead-air-playtest-pack.pdf) |
 | [Seize and Hold](https://therocketexchange.github.io/mechwarrior-revived/seize-and-hold.html) | [Game log](https://therocketexchange.github.io/mechwarrior-revived/log.html) |
 | [Breakthrough](https://therocketexchange.github.io/mechwarrior-revived/breakthrough.html) | [Points adjustments](https://therocketexchange.github.io/mechwarrior-revived/downloads/adjustments.csv) |
 | [Hold the Station](https://therocketexchange.github.io/mechwarrior-revived/hold-the-station.html) | [Checks so far](https://therocketexchange.github.io/mechwarrior-revived/validation.html) |
@@ -60,8 +63,10 @@ Run `python build.py` to rebuild costs, sample armies, card PDFs, the readiness 
 
 Edit the rules in their Markdown source files, starting with [core-rules.md](rules/core-rules.md). Pricing lives in [points.py](units/points.py), with tuning weights in [points-config.json](units/points-config.json). Change the formula version when changing weights. Sample rosters live in [forces.json](playtest/forces.json); [update_forces.py](units/update_forces.py) checks their organization and generates the tables and CSV.
 
-Run `python units/test_catalog.py`, `node web/test_force_model.js`, and `python web/check_packet.py` after rebuilding. The builder reads the same catalog costs and force limits as the roster generator; it never accepts saved prices from an imported list. To refresh the public archive cache, run `python units/import_catalog.py --fetch`. Routine builds need no network.
+Run `python units/test_catalog.py`, `node web/test_force_model.js`, `python web/check_packet.py`, and `python playtest/check_pack.py` after rebuilding. The builder reads the same catalog costs and force limits as the roster generator; it never accepts saved prices from an imported list. To refresh the public archive cache, run `python units/import_catalog.py --fetch`. Routine builds need no network.
 
 For pilot changes, edit both the [card data](pilots/cards.json) and [pilot rules](pilots/pilot-cards.md), then rebuild.
 
 The starter’s map and rosters use [first-contact.json](scenarios/first-contact.json). Keep the scenario’s written coordinates in sync; packet checks compare them with the measured SVG. [generate_diagrams.py](scenarios/generate_diagrams.py) draws the map and teaching diagrams, and [update_starter.py](units/update_starter.py) generates the patrol tables from current catalog costs.
+
+The themed starter pack uses [dead-air.json](playtest/dead-air.json) for names and briefings. [generate_pack.py](playtest/generate_pack.py) reads the same starter rosters, catalog dials, prices and pilot abilities to create its PDF, page and importable lists. Keep its quick references in sync with the core rules. Its snapshot changes when the rules or selected model data changes; keep one PDF for a paired test. [check_pack.py](playtest/check_pack.py) checks the printed cards and imports against those sources.

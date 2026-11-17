@@ -35,6 +35,8 @@ jobs:
         run: node web/test_force_model.js
       - name: Check generated packet
         run: python web/check_packet.py
+      - name: Check themed playtest pack
+        run: python playtest/check_pack.py
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:

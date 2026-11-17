@@ -1,0 +1,45 @@
+{
+  "id": "S2",
+  "name": "Blackwire Recovery",
+  "game_size": "skirmish",
+  "groups": [
+    {
+      "id": "M1",
+      "members": [
+        "AOD107"
+      ],
+      "pilot": "Gunner"
+    },
+    {
+      "id": "M2",
+      "members": [
+        "AOD102"
+      ],
+      "pilot": "Brawler"
+    },
+    {
+      "id": "M3",
+      "members": [
+        "AOD110"
+      ],
+      "pilot": "Engineer"
+    },
+    {
+      "id": "V1",
+      "members": [
+        "AOD040"
+      ]
+    },
+    {
+      "id": "C1",
+      "members": [
+        "D006",
+        "D006",
+        "D006"
+      ]
+    }
+  ],
+  "version": 1,
+  "faction": "",
+  "formula_version": "0.3-alpha-5"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "S1",
+  "name": "Kestrel Watch",
+  "game_size": "skirmish",
+  "groups": [
+    {
+      "id": "M1",
+      "members": [
+        "AOD106"
+      ],
+      "pilot": "Gunner"
+    },
+    {
+      "id": "M2",
+      "members": [
+        "AOD104"
+      ],
+      "pilot": "Brawler"
+    },
+    {
+      "id": "M3",
+      "members": [
+        "AOD112"
+      ],
+      "pilot": "Engineer"
+    },
+    {
+      "id": "V1",
+      "members": [
+        "AOD050"
+      ]
+    },
+    {
+      "id": "C1",
+      "members": [
+        "D006",
+        "D006",
+        "D006"
+      ]
+    }
+  ],
+  "version": 1,
+  "faction": "",
+  "formula_version": "0.3-alpha-5"
+}
