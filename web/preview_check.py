@@ -18,6 +18,7 @@ sys.path.insert(0,str(QA / "python"))
 import websocket
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--port", type=int, default=9234)
+parser.add_argument("--builder-filters-only", action="store_true")
 args = parser.parse_args()
 
 opener=build_opener(ProxyHandler({}))
@@ -70,8 +71,95 @@ def input_value(selector,value):
     js(f"document.querySelector({json.dumps(selector)}).value={json.dumps(value)};document.querySelector({json.dumps(selector)}).dispatchEvent(new Event('input',{{bubbles:true}}))")
 
 
+def check_builder_filters():
+    open_page('builder.html', "Boolean(document.querySelector('#force-sort'))")
+    js("localStorage.setItem('mw-revived-force-v1',JSON.stringify({name:'Existing infantry list',groups:[{id:'C1',members:['D006','D006']}]}))")
+    open_page('builder.html?test=filters', "document.querySelector('#force-name').value==='Existing infantry list'")
+    assert js("document.querySelector('[data-roster-group=C1] h3').textContent==='C1 · Infantry squad'")
+    assert js("[...document.querySelector('#force-type').options].some(o=>o.value==='Infantry') && !document.body.textContent.includes('Conventional Infantry')")
+    saved_list=js("localStorage.getItem('mw-revived-force-v1')")
+    core_count=js("MW_CATALOG.units.filter(u=>u.core_legal).length")
+
+    def count():
+        return int(js("document.querySelector('#force-results-count').textContent").split()[0].replace(',',''))
+
+    def shown():
+        return js("[...document.querySelectorAll('[data-add]')].map(b=>{const u=MW_CATALOG.units.find(u=>u.id===b.dataset.add);return {id:u.id,points:u.cost.points,faction:u.faction,category:u.category,name:u.name,core:u.core_legal}})")
+
+    assert count()==core_count
+    js("document.querySelector('#force-next').click()")
+    assert js("document.querySelector('#force-page').textContent.startsWith('2 /')")
+    input_value('#force-max-points','20')
+    assert js("document.querySelector('#force-page').textContent.startsWith('1 /')")
+    assert shown() and all(u['points']<=20 for u in shown())
+    assert count()==js("MW_CATALOG.units.filter(u=>u.core_legal&&u.cost.points<=20).length")
+    input_value('#force-min-points','14')
+    input_value('#force-max-points','14')
+    assert shown() and all(u['points']==14 for u in shown())
+    input_value('#force-query','D006')
+    assert [u['id'] for u in shown()]==['D006'], 'Infantry points filter must use the price per base'
+    input_value('#force-query','')
+    input_value('#force-min-points','15')
+    assert count()==0 and not shown()
+    assert js("document.querySelector('#force-prev').disabled && document.querySelector('#force-next').disabled")
+    input_value('#force-max-points','')
+    input_value('#force-min-points','50')
+    assert shown() and all(u['points']>=50 for u in shown())
+    input_value('#force-min-points','')
+    input_value('#force-filter-faction','Republic of the Sphere')
+    input_value('#force-type','Infantry')
+    input_value('#force-max-points','30')
+    assert shown() and all(u['faction']=='Republic of the Sphere' and u['category']=='Infantry' and u['points']<=30 for u in shown())
+    assert count()==js("MW_CATALOG.units.filter(u=>u.core_legal&&u.faction==='Republic of the Sphere'&&u.category==='Infantry'&&u.cost.points<=30).length")
+    input_value('#force-filter-faction','')
+    input_value('#force-type','')
+    input_value('#force-max-points','')
+    input_value('#force-scope','all')
+    assert count()==js("MW_CATALOG.units.length")
+    for sort, field, descending in [('points-asc','points',False),('points-desc','points',True),('faction','faction',False)]:
+        input_value('#force-sort',sort)
+        first=shown()
+        js("document.querySelector('#force-next').click()")
+        ordered=first+shown()
+        values=[u[field] for u in ordered]
+        assert values==sorted(values,reverse=descending), sort
+        if field=='points':
+            assert first[0]['points']==js(f"Math.{'max' if descending else 'min'}(...MW_CATALOG.units.map(u=>u.cost.points))"), sort
+    input_value('#force-sort','catalog')
+    assert [u['id'] for u in shown()]==js("MW_CATALOG.units.slice(0,12).map(u=>u.id)")
+    input_value('#force-sort','name')
+    assert js("[...document.querySelectorAll('.force-unit > div > a')].map(a=>a.textContent).every((name,i,names)=>!i||names[i-1].localeCompare(name)<=0)")
+    assert js("localStorage.getItem('mw-revived-force-v1')")==saved_list, 'Browsing changed the saved roster'
+    js("document.querySelector('#force-faction').value='Spirit Cats';document.querySelector('#force-faction').dispatchEvent(new Event('change'))")
+    assert js("document.querySelector('#force-filter-faction').disabled && document.querySelector('#force-filter-faction').value==='Spirit Cats'")
+    assert shown() and all(u['faction']=='Spirit Cats' for u in shown())
+    js("document.querySelector('#force-faction').value='House Liao';document.querySelector('#force-faction').dispatchEvent(new Event('change'))")
+    assert shown() and all(u['faction']=='House Liao' for u in shown())
+    js("document.querySelector('#force-faction').value='';document.querySelector('#force-faction').dispatchEvent(new Event('change'))")
+    assert js("!document.querySelector('#force-filter-faction').disabled && document.querySelector('#force-filter-faction').value===''")
+    assert count()==js("MW_CATALOG.units.length")
+    input_value('#force-scope','core')
+    input_value('#force-type','Infantry')
+    input_value('#force-filter-faction','Republic of the Sphere')
+    input_value('#force-sort','points-asc')
+    for width in (320,390,1440):
+        call('Emulation.setDeviceMetricsOverride',{'width':width,'height':900,'deviceScaleFactor':1,'mobile':width<850})
+        js("document.fonts.ready.then(()=>true)")
+        js("document.querySelector('#force-picker-heading').scrollIntoView()")
+        assert js("document.documentElement.scrollWidth<=innerWidth"), width
+        assert js("[...document.querySelectorAll('#force-filters input,#force-filters select')].every(e=>{const b=e.getBoundingClientRect();return b.left>=0 && b.right<=innerWidth})"), width
+        screenshot('builder-filters-'+str(width))
+    js("localStorage.removeItem('mw-revived-force-v1')")
+    print('Builder filters: points ranges and ordering, faction browsing, combined filters, pagination, existing infantry lists, and mobile layout passed.')
+
+
 call('Page.enable')
 call('Runtime.enable')
+if args.builder_filters_only:
+    check_builder_filters()
+    assert not exceptions, exceptions
+    ws.close()
+    sys.exit(0)
 call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceScaleFactor':1,'mobile':False})
 open_page('first-contact.html',"document.querySelectorAll('article img').length===4")
 wait("[...document.querySelectorAll('article img')].every(img=>img.complete&&img.naturalWidth>0)")
@@ -180,6 +268,7 @@ assert js("Boolean(document.querySelector('.catalog-restriction'))")
 js("document.querySelector('[data-click=\"14\"]').click()")
 assert js("document.querySelector('.dial-controls h2').textContent.includes('click 15')")
 open_page('unit.html?id=NOT-A-UNIT',"document.querySelector('#unit-detail').textContent.includes('Unit not found')")
+check_builder_filters()
 call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceScaleFactor':1,'mobile':False})
 open_page('builder.html',"Boolean(document.querySelector('#force-name'))")
 js("localStorage.setItem('mw-revived-force-v1',JSON.stringify({name:'Older list',formula_version:'0.3-alpha-1',points:1,groups:[{id:'M1',members:['AOD108'],pilot:'Gunner',cost:1}]}))")

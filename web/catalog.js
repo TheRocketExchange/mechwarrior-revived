@@ -89,8 +89,8 @@
   }
   function assignmentFields() {
     const category = unit.category;
-    const example = {Mech:'M1',Vehicle:'V1','Conventional Infantry':'C1a','Battle Armor':'A1a'}[category] || 'T1';
-    const fields = category==='Mech' ? '<br>Pilot: __________' : ['Conventional Infantry','Battle Armor'].includes(category) ? '<br>Squad: __________<br>Assigned carrier: __________' : category==='Vehicle' ? '<br>Carrier: Yes / No<br>Assigned squad: __________' : '';
+    const example = {Mech:'M1',Vehicle:'V1','Infantry':'C1a','Battle Armor':'A1a'}[category] || 'T1';
+    const fields = category==='Mech' ? '<br>Pilot: __________' : ['Infantry','Battle Armor'].includes(category) ? '<br>Squad: __________<br>Assigned carrier: __________' : category==='Vehicle' ? '<br>Carrier: Yes / No<br>Assigned squad: __________' : '';
     const readiness = category!=='Mech' && category!=='Turret' ? '<br>Readiness: Ready / Committed / Spent' : '';
     return `<p class="unit-assignment">Roster ID: __________ <small>(e.g. ${example})</small>${fields}${readiness}</p><p class="card-help"><a href="units.html#reading-a-unit-card">What these card labels mean</a></p>`;
   }
@@ -124,7 +124,7 @@
 ${Object.keys(unit.rocket_options).length?`<label class="rocket-choice">Rocket test substitute<select id="rocket-choice"><option value="">None</option>${Object.keys(unit.rocket_options).map(slot=>`<option value="${slot}" ${rocketSlot===slot?'selected':''}>${slot==='primary'?'Primary':'Secondary'} as Rocket</option>`).join('')}</select></label><p class="dial-note">At most one such weapon on one ’Mech per force. This changes the card’s points; it does not identify the original weapon.</p>`:''}
 <section class="full-track"><h2>Full combat dial</h2><p><strong>Clicks: ${unit.track.length-unit.start}</strong> from Start to End. Read left to right, then continue on the next table. Damage moves one column right per point; repairs move left. Start is the starting position, Stop is a repair stop, and End is destroyed. X marks a lost value.</p><div class="screen-dials">${trackTable()}</div><div class="print-dials">${trackTable(true)}</div><p class="dial-key">Colors: R red · B blue · K black · Gy gray · Gn green · Y yellow · P purple. Use <a href="equipment.html">Revived equipment rules</a>; circle and square equipment work alike.</p></section>${heatTable()}
 ${costDetail(cost)}
-<p class="unit-builder-link"><a href="builder.html?add=${encodeURIComponent(unit.id)}">${["Conventional Infantry","Battle Armor"].includes(unit.category)?(unit.rank.includes("Unique")?"Start a squad with this Unique figure":"Add a two-base squad to your force"):"Add this model to your force"}</a></p><p class="unit-source">Photo and original dial: <a href="${esc(unit.source_url)}">WarrenBorn · ${esc(unit.id)}</a>${unit.photo_source?' · <a href="'+esc(unit.photo_source)+'">Original photograph</a>':''}. Cost is a Revived playtest estimate.</p>`;
+<p class="unit-builder-link"><a href="builder.html?add=${encodeURIComponent(unit.id)}">${["Infantry","Battle Armor"].includes(unit.category)?(unit.rank.includes("Unique")?"Start a squad with this Unique figure":"Add a two-base squad to your force"):"Add this model to your force"}</a></p><p class="unit-source">Photo and original dial: <a href="${esc(unit.source_url)}">WarrenBorn · ${esc(unit.id)}</a>${unit.photo_source?' · <a href="'+esc(unit.photo_source)+'">Original photograph</a>':''}. Cost is a Revived playtest estimate.</p>`;
     document.getElementById('dial-back').addEventListener('click',()=>{position=Math.max(unit.start,position-1);renderDetail();});
     document.getElementById('dial-forward').addEventListener('click',()=>{position=Math.min(unit.track.length-1,position+1);renderDetail();});
     document.getElementById('dial-reset').addEventListener('click',()=>{position=unit.start;renderDetail();});

@@ -8,8 +8,8 @@ Use the damage and range printed on the base. Choose one weapon per attack. Thes
 
 | Type | Strength | Cost |
 | --- | --- | --- |
-| Ballistic | +1 damage against conventional infantry or battle armor with no terrain cover | −1 attack if you moved or turned before firing |
-| Energy | Piercing: ignore 1 point of armor | A firing ’Mech gains 1 extra heat. Damage against conventional infantry is limited to 2 before armor |
+| Ballistic | +1 damage against infantry or battle armor with no terrain cover | −1 attack if you moved or turned before firing |
+| Energy | Piercing: ignore 1 point of armor | A firing ’Mech gains 1 extra heat. Damage against infantry is limited to 2 before armor |
 | Rocket | Can shoot indirectly through blocking terrain and intervening bases | Fire action only. Indirect shots take −2 attack and −1 damage |
 
 **Ballistic:** Check the target’s terrain cover before equipment reduces or ignores it. Advance adds no extra accuracy penalty. Gunner removes recoil during Advance if movement costs no more than half speed, rounded up; count difficult terrain.
@@ -45,8 +45,8 @@ These damage examples use a vehicle or ’Mech with damage 3, no other bonuses o
 
 | Target | Ballistic | Energy | Rocket |
 | --- | --- | --- | --- |
-| Conventional infantry in the open, no armor | 4 | 2 | 3 direct / 2 indirect |
-| Conventional infantry in cover, no armor | 3 | 2 | 3 direct / 2 indirect |
+| Infantry in the open, no armor | 4 | 2 | 3 direct / 2 indirect |
+| Infantry in cover, no armor | 3 | 2 | 3 direct / 2 indirect |
 | Vehicle or ’Mech with Armor 1 | 2 | 3 | 2 direct / 1 indirect |
 
 Cover still affects the attack roll. Compare moving and stationary fire:

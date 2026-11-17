@@ -68,6 +68,10 @@
       <label>Find a unit<input type="search" id="force-query" placeholder="Name, catalog ID, or family…" autocomplete="off"></label>
       <label>Type<select id="force-type"><option value="">All types</option></select></label>
       <label>Show<select id="force-scope"><option value="core">Core units</option><option value="all">Full catalog</option></select></label>
+      <label class="force-filter-wide">Faction<select id="force-filter-faction"><option value="">All factions</option></select></label>
+      <label>Min points<input type="number" id="force-min-points" min="0" step="1" placeholder="Any" inputmode="numeric"></label>
+      <label>Max points<input type="number" id="force-max-points" min="0" step="1" placeholder="Any" inputmode="numeric"></label>
+      <label class="force-filter-wide">Sort<select id="force-sort"><option value="catalog">Catalog order</option><option value="points-asc">Points: low to high</option><option value="points-desc">Points: high to low</option><option value="faction">Faction: A–Z</option><option value="name">Name: A–Z</option></select></label>
     </form>
     <p id="force-results-count" class="force-save-note" aria-live="polite"></p>
     <div id="force-results"></div>

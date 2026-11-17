@@ -87,7 +87,7 @@ def parse_unit(path):
     if "mech" in unit_type.lower() or unit_type in ("Quad", "Colossus"):
         category = "Mech"
     elif "infantry" in unit_type.lower():
-        category = "Battle Armor" if re.search(r"battle\s*armor|\bPAL\s+Suit\b|Gray Death Scout Armor", name, re.I) else "Conventional Infantry"
+        category = "Battle Armor" if re.search(r"battle\s*armor|\bPAL\s+Suit\b|Gray Death Scout Armor", name, re.I) else "Infantry"
     elif unit_type == "Turret":
         category = "Turret"
     else:

@@ -36,7 +36,12 @@
   }
   function renderResults() {
     const words=$("force-query").value.trim().toLowerCase().split(/\s+/).filter(Boolean), type=$("force-type").value;
-    const matches=MW_CATALOG.units.filter(unit=>(!force.faction||unit.faction===force.faction)&&words.every(word=>`${unit.name} ${unit.id} ${unit.family} ${unit.variant} ${unit.faction}`.toLowerCase().includes(word))&&(!type||unit.category===type)&&($("force-scope").value==="all"||unit.core_legal));
+    const faction=force.faction||$("force-filter-faction").value;
+    const min=$("force-min-points").valueAsNumber, max=$("force-max-points").valueAsNumber;
+    const matches=MW_CATALOG.units.filter(unit=>(!faction||unit.faction===faction)&&words.every(word=>`${unit.name} ${unit.id} ${unit.family} ${unit.variant} ${unit.faction}`.toLowerCase().includes(word))&&(!type||unit.category===type)&&($("force-scope").value==="all"||unit.core_legal)&&(Number.isNaN(min)||unit.cost.points>=min)&&(Number.isNaN(max)||unit.cost.points<=max));
+    const byName=(a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id);
+    const sorting={"points-asc":(a,b)=>a.cost.points-b.cost.points||byName(a,b),"points-desc":(a,b)=>b.cost.points-a.cost.points||byName(a,b),faction:(a,b)=>a.faction.localeCompare(b.faction)||byName(a,b),name:byName};
+    if(sorting[$("force-sort").value])matches.sort(sorting[$("force-sort").value]);
     const pages=Math.max(1,Math.ceil(matches.length/12)); page=Math.min(page,pages-1);
     $("force-results-count").textContent=`${matches.length.toLocaleString()} unit${matches.length===1?'':'s'}`;
     $("force-results").innerHTML=matches.slice(page*12,page*12+12).map(unit=>`<div class="force-unit"><img src="${esc(unit.photo)}" alt="${esc(unit.name)} miniature" loading="lazy"><div><a href="unit.html?id=${encodeURIComponent(unit.id)}">${esc(unit.name)}</a><small>${esc(unit.id)} · ${esc(unit.rank)} · ${unit.cost.points} pts${model.infantry.has(unit.category)?' / base':''}</small><small>${esc(unit.faction)}</small>${!unit.core_legal?'<small>Outside core rules</small>':''}<div class="force-add">${model.infantry.has(unit.category)?`<select aria-label="Squad for ${esc(unit.id)}" data-destination="${esc(unit.id)}">${squadOptions(unit.category,"",unit.rank.includes("Unique"))}</select>`:''}<button type="button" data-add="${esc(unit.id)}">${model.infantry.has(unit.category)?'Add infantry':'Add model'}</button></div></div></div>`).join("")||"<p>No matching units.</p>";
@@ -47,6 +52,10 @@
     $("force-name").value=force.name;
     $("force-size").value=force.game_size;
     $("force-faction").value=force.faction;
+    const factionFilter=$("force-filter-faction");
+    if(force.faction)factionFilter.value=force.faction;
+    else if(factionFilter.disabled)factionFilter.value="";
+    factionFilter.disabled=Boolean(force.faction);
     const result=model.validate(force);
     const selected=result.size, limits=selected.limits;
     $("force-totals").innerHTML=`<p class="force-points"><strong>${result.points.toLocaleString()}</strong> / ${selected.points_limit.toLocaleString()} points</p><p class="force-counts"><span>’Mechs ${result.counts.Mech} / ${limits.mechs_max}</span><span>Vehicles ${result.counts.Vehicle} / ${limits.vehicles_max}</span><span>Squads ${result.counts.squads} / ${limits.squads_max}</span><span>${result.counts.models} models</span></p>`;
@@ -76,6 +85,7 @@
   for(const [id,size] of Object.entries(model.config.sizes)) $("force-size").insertAdjacentHTML("beforeend",option(id,`${size.name} · ${size.points_limit.toLocaleString()} points`,force.game_size));
   $("force-size").addEventListener("change",()=>{force.game_size=$("force-size").value;change();message("");});
   for(const name of model.factions) $("force-faction").insertAdjacentHTML("beforeend",option(name,name,force.faction));
+  for(const name of model.factions) $("force-filter-faction").insertAdjacentHTML("beforeend",option(name,name,""));
   $("force-faction").addEventListener("change",()=>{force.faction=$("force-faction").value;page=0;change();message("");});
   $("force-filters").addEventListener("submit",event=>event.preventDefault());
   $("force-filters").addEventListener("input",()=>{page=0;renderResults();});

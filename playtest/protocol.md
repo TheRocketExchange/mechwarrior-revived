@@ -16,7 +16,7 @@ Use real bases and current dials. Reset damage and heat between exercises.
 | --- | --- |
 | The same conventional squad in the open, woods, fieldworks, and close combat from the rear | Hits, damage, survival, and whether the position is reachable |
 | Battle armor making the same close attacks | Its advantage against armor and shutdown targets; Piercing and critical hits |
-| Both infantry types defending woods, rubble, and fieldworks against shooting and close attacks | Conventional infantry ranged cover +3/+4; battle armor +2/+3. Fieldworks close defense +2/+1. Check equipment stacking, passive protection during Salvage, and unchanged exposure in the open |
+| Both infantry types defending woods, rubble, and fieldworks against shooting and close attacks | Infantry ranged cover +3/+4; battle armor +2/+3. Fieldworks close defense +2/+1. Check equipment stacking, passive protection during Salvage, and unchanged exposure in the open |
 | Fire while engaged with an enemy behind you, including at zero speed | Pivot without moving the center or breaking contact; no Assault needed; ranged Fire still cannot pivot |
 | Ordinary jumping Assault versus DFA against the same vehicle or ’Mech | Half-speed versus full-speed reach; DFA +2 defense/+2 damage; landing damage on a hit, miss, or critical miss; 2 total heat |
 | DFA on the last live click; a miss beside a surviving target; blocked landing; Jump lost on the dial | Finish target effects before landing damage; no heat after destruction; no displacement or reactive pivot; legal start and landing required |
@@ -81,7 +81,7 @@ Use [one log per game](playtest-log.md). Leave missing measurements as “unknow
 
 | Question | What to look for |
 | --- | --- |
-| Do infantry matter? | Conventional infantry should affect scoring, denial, screening, or assaults in at least one game of each pair where used. Review pairs where they do nothing |
+| Do infantry matter? | Infantry should affect scoring, denial, screening, or assaults in at least one game of each pair where used. Review pairs where they do nothing |
 | Does position matter? | Cover should help survival; exposed assaults should matter; frontal attacks on armor should remain weak |
 | Do vehicles and ’Mechs have jobs? | Record useful transport, fire support, movement, and objective play in each pair |
 | Do squads reduce waiting? | Count passes and activations after the opponent has finished. Review repeated rounds with 3 or more unanswered activations, or missions decided by holding infantry back solely to delay |

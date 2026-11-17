@@ -125,8 +125,8 @@ Each inch moved through difficult terrain costs 2 inches of movement; other grou
 | Terrain | Movement | Cover and sight |
 | --- | --- | --- |
 | Open ground or road | Normal | No cover |
-| Woods or rubble | Difficult for everyone | Ranged defense: +3 conventional infantry, +2 battle armor, +1 vehicles and ’Mechs |
-| Fieldworks | Infantry only; normal movement | Conventional infantry: +4 ranged defense and +2 close defense. Battle armor: +3 ranged defense and +1 close defense |
+| Woods or rubble | Difficult for everyone | Ranged defense: +3 infantry, +2 battle armor, +1 vehicles and ’Mechs |
+| Fieldworks | Infantry only; normal movement | Infantry: +4 ranged defense and +2 close defense. Battle armor: +3 ranged defense and +1 close defense |
 | Blocking building or rock | Impassable | Blocks direct line of sight |
 | Shallow water | Difficult, except for hover vehicles | No cover or extra cooling |
 
@@ -138,7 +138,7 @@ Intervening ’Mechs block direct sight. Vehicles also block it when neither att
 
 Never shoot at a friendly unit or an enemy touching a friendly unit, even with indirect fire.
 
-**Cover:** Use the target’s terrain, not terrain crossed by the shot. Take the single best cover bonus, up to +4 ranged defense. Equipment defense is separate. Woods and rubble give no close defense. Fieldworks give +2 close defense to conventional infantry and +1 to battle armor.
+**Cover:** Use the target’s terrain, not terrain crossed by the shot. Take the single best cover bonus, up to +4 ranged defense. Equipment defense is separate. Woods and rubble give no close defense. Fieldworks give +2 close defense to infantry and +1 to battle armor.
 
 ## 7 Combat
 
@@ -156,8 +156,8 @@ Read values and equipment when declaring an attack. Use them for that whole atta
 
 | Type | Benefit | Cost |
 | --- | --- | --- |
-| Ballistic | +1 damage against conventional infantry or battle armor with no terrain cover | −1 attack if you moved or turned before firing |
-| Energy | Piercing: ignore 1 point of armor | Firing ’Mechs gain 1 extra heat. Damage against conventional infantry is limited to 2 before armor |
+| Ballistic | +1 damage against infantry or battle armor with no terrain cover | −1 attack if you moved or turned before firing |
+| Energy | Piercing: ignore 1 point of armor | Firing ’Mechs gain 1 extra heat. Damage against infantry is limited to 2 before armor |
 | Rocket | Can fire indirectly through terrain and intervening bases | Fire action only. Indirect shots take −2 attack and −1 damage |
 
 For the Ballistic bonus, check the target’s cover before any equipment reduces or ignores it. Ballistic and Rocket shots add no extra weapon heat. Energy’s damage limit applies to all firers, including those that do not track heat.
@@ -198,14 +198,14 @@ Work out damage in this order:
 
 | Attack | Damage limit or bonus |
 | --- | --- |
-| Conventional infantry against a vehicle or ’Mech | At most 1 damage before armor |
-| Exposed close assault by conventional infantry | At most 2 before armor, with Piercing |
+| Infantry against a vehicle or ’Mech | At most 1 damage before armor |
+| Exposed close assault by infantry | At most 2 before armor, with Piercing |
 | Battle armor close attack against a vehicle or ’Mech | +1 damage and Piercing |
-| Energy shot against conventional infantry | At most 2 before armor |
+| Energy shot against infantry | At most 2 before armor |
 
 An infantry close assault is **exposed** if the attacker touches the target’s rear, the target is shutdown, or the attacker stands in woods, rubble, or fieldworks when attacking. Other attacks have no damage limit based on unit type. Energy does not heat the target automatically.
 
-**Example:** Conventional infantry with damage 3 hit an armored ’Mech’s open front. The limit of 1, then Armor 1, leaves no damage. Attacking from the rear raises the limit to 2 and adds Piercing: 2 damage. Battle armor with damage 2 deals 3 in close combat against that ’Mech, even from the front.
+**Example:** Infantry with damage 3 hit an armored ’Mech’s open front. The limit of 1, then Armor 1, leaves no damage. Attacking from the rear raises the limit to 2 and adds Piercing: 2 damage. Battle armor with damage 2 deals 3 in close combat against that ’Mech, even from the front.
 
 ### Death from Above
 
@@ -308,7 +308,7 @@ A ’Mech or vehicle uses one choice. Infantry combine conventional and battle a
 
 At **every size**, the rule of three applies across the whole force, each Unique catalog ID appears at most once, and at most one ’Mech may take one Rocket test substitute. Larger games do not reset these limits for separate detachments.
 
-Use ordinary or quad ’Mechs, ground vehicles, conventional infantry, and battle armor. Treat quads as ’Mechs. Identify battle armor by its name or catalog category, not its equipment colors.
+Use ordinary or quad ’Mechs, ground vehicles, infantry, and battle armor. Treat quads as ’Mechs. Identify battle armor by its name or catalog category, not its equipment colors.
 
 ### Choose a faction
 
@@ -326,7 +326,7 @@ A Unique figure is limited to one of its catalog ID in the whole force, even whe
 
 ### Organize infantry squads
 
-Each squad starts with two or three bases. Keep conventional infantry and battle armor in separate squads; members may have different ranks or families within that category. Record every member’s catalog ID and pay its points. Squads cannot split, merge, or exchange members during play. Casualties may leave a lone survivor.
+Each squad starts with two or three bases. Keep infantry and battle armor in separate squads; members may have different ranks or families within that category. Record every member’s catalog ID and pay its points. Squads cannot split, merge, or exchange members during play. Casualties may leave a lone survivor.
 
 ### Assign carriers, pilots, and weapons
 

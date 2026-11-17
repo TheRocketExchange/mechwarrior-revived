@@ -55,7 +55,7 @@ Choose one target and weapon unless named equipment permits more. Black Attack i
 
 **Ballistic:** +1 damage against uncovered infantry. Moving or turning gives −1 attack; Gunner removes it during Advance within half speed, counting terrain.
 
-**Energy:** Piercing; +1 heat for the firing ’Mech; damage against conventional infantry is limited to 2 before armor. No automatic target heat.
+**Energy:** Piercing; +1 heat for the firing ’Mech; damage against infantry is limited to 2 before armor. No automatic target heat.
 
 **Rocket:** Fire only. Indirect fire ignores blockers: −2 attack, −1 damage, no rear bonus. Keep arc, range, cover, and friendly-contact restrictions.
 
@@ -65,14 +65,14 @@ Weapon-type effects apply only to shooting.
 
 **Death from Above:** Declare before moving. Need blue speed, no Salvage, speed above zero, printed attack above zero, and primary damage above zero after heat. Jump some distance and land legally beside one enemy vehicle/’Mech, front arc touching; no other enemy contact. Target gets +2 defense. Deal primary damage +2; apply normal close modifiers, criticals, and armor. The +2 is outside the equipment/pilot cap. Take 1 unavoidable landing damage on a hit, or 2 on a miss or skipped attack after jumping; critical-miss damage is additional. Resolve target effects and landing damage before gaining 2 total heat if alive. No extra Jump heat, target pivot, displacement, or second attack. [Full DFA rule](core-rules.md#death-from-above).
 
-Against vehicles/’Mechs, conventional infantry deal at most 1 before armor. Exposed close assaults raise this to 2 with Piercing: rear contact, shutdown target, or attacker in woods/rubble/fieldworks. Battle armor gets +1 close damage and Piercing. Piercing ignores 1 armor; it does not add together.
+Against vehicles/’Mechs, infantry deal at most 1 before armor. Exposed close assaults raise this to 2 with Piercing: rear contact, shutdown target, or attacker in woods/rubble/fieldworks. Battle armor gets +1 close damage and Piercing. Piercing ignores 1 armor; it does not add together.
 
 Three bullet holes destroy a unit. Read new dials between attacks. Apply attacker heat or pushing damage last, including after a surviving critical miss.
 
 ## Terrain and heat
 
-- **Woods/rubble:** Each inch costs 2. Ranged cover: +3 conventional infantry, +2 battle armor, +1 vehicles and ’Mechs. No close defense.
-- **Fieldworks:** Infantry only; normal movement. Conventional infantry: +4 ranged and +2 close defense. Battle armor: +3 ranged and +1 close defense.
+- **Woods/rubble:** Each inch costs 2. Ranged cover: +3 infantry, +2 battle armor, +1 vehicles and ’Mechs. No close defense.
+- **Fieldworks:** Infantry only; normal movement. Infantry: +4 ranged and +2 close defense. Battle armor: +3 ranged and +1 close defense.
 - **Water:** Each inch costs 2, except hover. No cover or cooling.
 - **Blocking terrain:** Stops movement and direct sight.
 

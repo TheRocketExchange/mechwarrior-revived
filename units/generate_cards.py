@@ -165,12 +165,12 @@ def card(pdf, commands, images, unit, x, y, assignment=None):
         attack_range = "contact" if weapon["type"] == "M" else f"{weapon['min_range']}-{weapon['max_range']} in"
         text(commands, x+132, y+266-i*10, f"{weapon['slot'].title()}: {kind}  |  {attack_range}", 8, True)
     category = unit["category"]
-    example = {"Mech": "M1", "Vehicle": "V1", "Conventional Infantry": "C1a", "Battle Armor": "A1a"}.get(category, "T1")
+    example = {"Mech": "M1", "Vehicle": "V1", "Infantry": "C1a", "Battle Armor": "A1a"}.get(category, "T1")
     roster_label = f"Roster ID: {assignment['roster_id']} / {assignment['callsign']}" if assignment else f"Roster ID: __________  (e.g. {example})"
     text(commands, x+132, y+244, roster_label, 8)
     if category == "Mech":
         assignment_label = f"Pilot: {assignment['pilot_name']} / {assignment['pilot']}" if assignment else "Pilot: ____________________"
-    elif category in ("Conventional Infantry", "Battle Armor"):
+    elif category in ("Infantry", "Battle Armor"):
         assignment_label = f"Squad: {assignment['squad']}    Assigned carrier: None" if assignment else "Squad: ______    Assigned carrier: ______"
     elif category == "Vehicle":
         assignment_label = "Carrier: No    Assigned squad: None" if assignment else "Carrier: Yes / No    Assigned squad: ______"

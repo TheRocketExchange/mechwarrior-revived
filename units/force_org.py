@@ -3,7 +3,7 @@ from collections import Counter
 import math
 import re
 
-INFANTRY = {"Conventional Infantry", "Battle Armor"}
+INFANTRY = {"Infantry", "Battle Armor"}
 PILOTS = ("Gunner", "Skirmisher", "Brawler", "Engineer")
 DEFAULT_SIZE = "standard"
 
@@ -116,6 +116,6 @@ def validate_force(force, catalog, limit=None):
     require(all(group_types.get(key) in INFANTRY for key in passengers), "Each passenger must be an infantry squad on the roster")
     require(total <= limit, f"Force costs {total}, above the {limit}-point limit")
     return {"total": total, "groups": len(groups), "mechs": categories["Mech"],
-            "vehicles": categories["Vehicle"], "conventional": categories["Conventional Infantry"],
+            "vehicles": categories["Vehicle"], "conventional": categories["Infantry"],
             "battle_armor": categories["Battle Armor"], "squads": squads,
             "carriers": carriers, "escape": math.ceil(total * 0.3)}

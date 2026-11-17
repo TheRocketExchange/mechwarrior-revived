@@ -104,7 +104,7 @@ def shot(unit, click, weapon, target, moving=False, indirect=False, close=False,
     kind = weapon["type"]
     damage_color = color(click, weapon["slot"])
     is_flame = close and flamers and kind == "E" and damage_color == "gray"
-    if close and unit["category"] not in ("Mech", "Battle Armor", "Conventional Infantry") and not is_flame:
+    if close and unit["category"] not in ("Mech", "Battle Armor", "Infantry") and not is_flame:
         return 0.0
     if not close and (kind == "M" or (moving and kind in ("R", "A"))):
         return 0.0
@@ -129,7 +129,7 @@ def shot(unit, click, weapon, target, moving=False, indirect=False, close=False,
     attack += int(attack_color == "blue")
     if close and exposed:
         attack += 2
-    infantry = target["category"] in ("Conventional Infantry", "Battle Armor")
+    infantry = target["category"] in ("Infantry", "Battle Armor")
     larger = not infantry
     if not close:
         if kind == "B":
@@ -142,13 +142,13 @@ def shot(unit, click, weapon, target, moving=False, indirect=False, close=False,
                   or (close and kind == "M" and damage_color == "gray") or is_flame)
     damage += 2 if alpha else 0
     cap = None
-    if unit["category"] == "Conventional Infantry" and larger:
+    if unit["category"] == "Infantry" and larger:
         cap = 2 if close and exposed else 1
         piercing = max(piercing, int(close and exposed))
     elif unit["category"] == "Battle Armor" and larger and close:
         damage += 1
         piercing = max(piercing, 1)
-    if kind == "E" and not close and target["category"] == "Conventional Infantry":
+    if kind == "E" and not close and target["category"] == "Infantry":
         cap = 2
     result = expected_damage(attack, defense, max(0, damage), target["armor"], piercing, cap)
     if special and close and kind == "M" and damage_color == "red":
@@ -203,7 +203,7 @@ def offensive_rating(unit, click):
         indirect = output(indirect=True) if kind in ("R", "A") or (kind == "B" and tint == "black") else 0
         minimum = weapon["min_range"]
         reach = max(0.25, 1 + CONFIG["range_per_inch"] * weapon["max_range"] - CONFIG["minimum_range_cost"] * minimum)
-        arc = 360 if unit["category"] in ("Conventional Infantry", "Battle Armor") else unit["arc"]
+        arc = 360 if unit["category"] in ("Infantry", "Battle Armor") else unit["arc"]
         arc_factor = 1 + CONFIG["firing_arc_weight"] * (arc / 180 - 1)
         advance = math.ceil(number(click, "speed") * CONFIG["advance_speed_fraction"])
         moving_reach = (reach + CONFIG["range_per_inch"] * advance) * arc_factor
@@ -220,7 +220,7 @@ def offensive_rating(unit, click):
             choices.append(CONFIG["stationary_share"] * output(alpha=True) * reach)
     for weapon in unit["weapons"]:
         kind, tint = weapon["type"], color(click, weapon["slot"])
-        ordinary = unit["category"] in ("Mech", "Battle Armor", "Conventional Infantry") and (weapon["slot"] == "primary" or kind == "M")
+        ordinary = unit["category"] in ("Mech", "Battle Armor", "Infantry") and (weapon["slot"] == "primary" or kind == "M")
         flame = kind == "E" and tint == "gray"
         for use_flame in ([False] if ordinary else []) + ([True] if flame else []):
             values = []
@@ -255,7 +255,7 @@ def toughness(unit, click):
             defense_color = color(click, "defense")
             armor = 2 if defense_color == "black" or (defense_color == "red" and kind == "E") or (defense_color == "blue" and kind in ("B", "R")) else int(defense_color == "gray")
             equipment = int(kind != "close" and (defense_color == "green" or color(click, "speed") == "red" or (color(click, "speed") == "green" and in_cover)))
-            if unit["category"] == "Conventional Infantry":
+            if unit["category"] == "Infantry":
                 equipment = min(1, equipment + armor)
                 armor = 0
             if terrain_defense:

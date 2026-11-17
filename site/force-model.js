@@ -58,7 +58,7 @@ function createForceModel(catalog) {
       points += cost(group);
       counts.models += members.length;
       const category = members[0].category;
-      if (members.some(unit => unit.category !== category)) errors.push(`${group.id}: keep conventional infantry and battle armor in separate squads.`);
+      if (members.some(unit => unit.category !== category)) errors.push(`${group.id}: keep infantry and battle armor in separate squads.`);
       if (members.some(unit => !unit.core_legal)) errors.push(`${group.id}: contains a unit outside the core rules.`);
       for(const unit of members) if(selectedFaction && unit.faction!==selectedFaction) errors.push(`${group.id}: ${unit.id} belongs to ${unit.faction}, not ${selectedFaction}.`);
       if (infantry.has(category)) {
@@ -105,7 +105,7 @@ function createForceModel(catalog) {
     return {points, counts, errors, size:selected, escape: Math.ceil(points*.3)};
   }
   function newId(force, category) {
-    const prefix = {Mech:"M", Vehicle:"V", "Conventional Infantry":"C", "Battle Armor":"A"}[category] || "T";
+    const prefix = {Mech:"M", Vehicle:"V", "Infantry":"C", "Battle Armor":"A"}[category] || "T";
     let number=1;
     while (force.groups.some(group => group.id===prefix+number)) number++;
     return prefix+number;

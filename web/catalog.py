@@ -47,7 +47,7 @@ def build_catalog(output, write_page, search):
 <p>The PDF prints two cards per Letter page, with every combat-dial position, equipment color, and repair mark. ’Mech cards also include the full heat dial.</p>
 <details class="card-guide" id="reading-a-unit-card"><summary>Reading a unit card</summary>
 <ul><li><strong>Catalog ID</strong> identifies the exact release and variant, such as AOD108. Use it to find the same miniature in the catalog.</li>
-<li><strong>Roster ID</strong> is your own label for one figure: M1 for a ’Mech, V1 for a vehicle, C1a for a conventional infantry base, or A1a for battle armor. It helps distinguish identical figures.</li>
+<li><strong>Roster ID</strong> is your own label for one figure: M1 for a ’Mech, V1 for a vehicle, C1a for a infantry base, or A1a for battle armor. It helps distinguish identical figures.</li>
 <li><strong>Faction</strong> is the allegiance of this exact catalog figure. A single-faction force uses only figures with that faction; Mixed factions allows any combination.</li>
 <li><strong>Squad</strong> records the infantry group, such as C1. <strong>Assigned carrier</strong> records its transport, such as V1. On a vehicle card, mark whether it is a carrier and record its assigned squad. These are roster notes, not proof that the squad is currently aboard; leave unused fields blank.</li>
 <li><strong>Clicks</strong> is the damage needed to reach destruction from the starting position. It stays the same on the card; the current dial position tells you how much remains. Heat uses its own separate track.</li>

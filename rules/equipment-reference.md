@@ -48,7 +48,7 @@ An unengaged ’Mech with Jump may use [Death from Above](core-rules.md#death-fr
 
 Both actions stay still and require base contact. Neither unit may touch an enemy. You cannot target yourself or passengers. A ’Mech using either action gains 1 heat. Non-’Mechs leave readiness unchanged and cannot use either while Spent.
 
-Repair restores 1 combat click, stopping at Start or a black repair mark. If a repair mark is already showing, no repair is possible. Conventional infantry repair only conventional infantry; battle armor, vehicles, and ’Mechs repair those three types. Repair cannot restore a destroyed unit or cool heat.
+Repair restores 1 combat click, stopping at Start or a black repair mark. If a repair mark is already showing, no repair is possible. Infantry repair only infantry; battle armor, vehicles, and ’Mechs repair those three types. Repair cannot restore a destroyed unit or cool heat.
 
 Coolant Flush removes 2 heat, stopping at the green heat Start. It can restart a shutdown ’Mech, but does not remove its activation marker. Neither action needs a roll, clears readiness, or grants an activation.
 
@@ -71,7 +71,7 @@ Mark the captured unit as already activated this round. Keep its dial, heat, rea
 | Gray | Heavy Armor | Armor 1 against ranged and close attacks. |
 | Purple | Advanced Anti-Missile System | After armor, reduce Ballistic or Rocket damage to this unit or a friendly unit within 6 inches by 1. |
 
-Use only the best armor, up to 2. Ordinary Piercing ignores 1 armor; Armor Piercing equipment ignores all armor. Armor never reduces unavoidable damage. Conventional infantry replace any armor benefit with +1 defense against the same attack types.
+Use only the best armor, up to 2. Ordinary Piercing ignores 1 armor; Armor Piercing equipment ignores all armor. Armor never reduces unavoidable damage. Infantry replace any armor benefit with +1 defense against the same attack types.
 
 Only one anti-missile system may protect a target from each attack. It needs no sight, works after Piercing and armor, and can reduce damage to zero. It does not protect passengers separately while they are aboard or reduce close or unavoidable damage.
 

@@ -159,7 +159,7 @@ class ForceOrganizationChecks(unittest.TestCase):
     def test_each_size_enforces_budget_pilots_carriers_and_type_caps(self):
         # Cheap, distinct test units isolate force limits from catalog pricing.
         fixtures = {}
-        for category, source, prefix in (("Mech", "AOD108", "M"), ("Vehicle", "AOD050", "V"), ("Conventional Infantry", "D006", "C")):
+        for category, source, prefix in (("Mech", "AOD108", "M"), ("Vehicle", "AOD050", "V"), ("Infantry", "D006", "C")):
             for i in range(20):
                 unit = copy.deepcopy(UNITS[source])
                 unit.update(id=f"{prefix}{i}", name=f"Test {prefix}{i}", rank="Regular")
@@ -176,12 +176,12 @@ class ForceOrganizationChecks(unittest.TestCase):
             priced["M0"]["cost"]["points"] += 1
             with self.assertRaisesRegex(ValueError, "above"):
                 validate_force(force, priced)
-            for category, prefix, cap, pattern in (("Vehicle", "V", limits["vehicles_max"], "vehicles"), ("Conventional Infantry", "C", limits["squads_max"], "squads"), ("Mech", "M", limits["mechs_max"], "Mechs")):
+            for category, prefix, cap, pattern in (("Vehicle", "V", limits["vehicles_max"], "vehicles"), ("Infantry", "C", limits["squads_max"], "squads"), ("Mech", "M", limits["mechs_max"], "Mechs")):
                 changed = copy.deepcopy(force)
                 if category == "Mech":
                     changed["groups"] = []
                 for i in range(cap):
-                    group = {"id": f"{prefix}{i}", "members": [f"{prefix}{i}"] * (2 if category in ("Conventional Infantry",) else 1)}
+                    group = {"id": f"{prefix}{i}", "members": [f"{prefix}{i}"] * (2 if category in ("Infantry",) else 1)}
                     if category == "Mech":
                         group["pilot"] = PILOTS[i%4]
                     changed["groups"].append(group)
@@ -447,7 +447,7 @@ class PricingChecks(unittest.TestCase):
 
     def test_strong_opening_and_slower_degradation_are_worth_more(self):
         # Same values and average, different order: earlier power is worth more.
-        for category in ("Mech", "Vehicle", "Conventional Infantry", "Battle Armor"):
+        for category in ("Mech", "Vehicle", "Infantry", "Battle Armor"):
             opening = self.profile([4, 1, 1, 1, 1, 1], category=category)
             late = self.profile([1, 1, 1, 1, 1, 4], category=category)
             self.assertGreater(calculate(opening)["breakdown"]["raw"], calculate(late)["breakdown"]["raw"])
@@ -476,7 +476,7 @@ class PricingChecks(unittest.TestCase):
         with patch.dict(CONFIG, dial_start_weight=1, dial_end_weight=1):
             self.assertEqual(calculate(unit)["breakdown"]["raw"], preferred)
         # Even a weak last click adds survival and never removes earlier value.
-        for category in ("Mech", "Vehicle", "Conventional Infantry", "Battle Armor"):
+        for category in ("Mech", "Vehicle", "Infantry", "Battle Armor"):
             unit = self.profile([4, 3, 1], category=category)
             before = calculate(unit)["breakdown"]["raw"]
             tail = copy.deepcopy(unit["track"][-1])
@@ -524,7 +524,7 @@ class PricingChecks(unittest.TestCase):
             self.assertEqual(offensive_rating(unit, click), rocket)
 
     def test_readiness_only_applies_to_non_mechs(self):
-        for category in ("Vehicle", "Conventional Infantry", "Battle Armor", "Mech"):
+        for category in ("Vehicle", "Infantry", "Battle Armor", "Mech"):
             b = calculate(basic(category))["breakdown"]
             self.assertEqual(b["readiness_factor"] == 1, category == "Mech")
             if category != "Mech":
@@ -576,7 +576,7 @@ class PricingChecks(unittest.TestCase):
 
     def test_infantry_close_limits_and_armor(self):
         target = {"category":"Mech", "defense":18, "armor":1, "cover":0}
-        unit = basic("Conventional Infantry")
+        unit = basic("Infantry")
         click, weapon = unit["track"][0], unit["weapons"][0]
         self.assertEqual(shot(unit, click, weapon, target, close=True), 0)
         self.assertGreater(shot(unit, click, weapon, target, close=True, exposed=True), 0)
@@ -585,13 +585,13 @@ class PricingChecks(unittest.TestCase):
 
     def test_infantry_terrain_protection_is_priced_for_ranged_and_close_attacks(self):
         damage = lambda defense: expected_damage(8, defense, 3)
-        cases = (("Conventional Infantry", 21, 22, 20), ("Battle Armor", 20, 21, 19))
+        cases = (("Infantry", 21, 22, 20), ("Battle Armor", 20, 21, 19))
         for category, woods, fieldworks, close in cases:
             unit = basic(category)
             incoming = .8 * (.5*damage(18) + .35*damage(woods) + .15*damage(fieldworks)) + .2 * (.85*damage(18) + .15*damage(close))
             self.assertAlmostEqual(toughness(unit, unit["track"][0]), damage(18)/incoming)
             current = toughness(unit, unit["track"][0])
-            old_cover = {"Conventional Infantry":{"woods_ranged":2,"fieldworks_ranged":3,"fieldworks_close":1},
+            old_cover = {"Infantry":{"woods_ranged":2,"fieldworks_ranged":3,"fieldworks_close":1},
                          "Battle Armor":{"woods_ranged":1,"fieldworks_ranged":2,"fieldworks_close":0}}
             with patch.dict(CONFIG, infantry_terrain_defense=old_cover):
                 self.assertGreater(current, toughness(unit, unit["track"][0]))
@@ -605,7 +605,7 @@ class PricingChecks(unittest.TestCase):
     def test_fieldworks_close_protection_and_ranged_cover_interactions(self):
         unit = basic("Mech")
         click, weapon = unit["track"][0], unit["weapons"][0]
-        woods = {"category":"Conventional Infantry", "defense":21, "armor":0, "cover":3}
+        woods = {"category":"Infantry", "defense":21, "armor":0, "cover":3}
         fieldworks = dict(woods, defense=22, cover=4, close_cover=2)
         self.assertAlmostEqual(shot(unit, click, weapon, woods, close=True), expected_damage(8,18,3))
         self.assertAlmostEqual(shot(unit, click, weapon, fieldworks, close=True), expected_damage(8,20,3))
@@ -651,9 +651,9 @@ class PricingChecks(unittest.TestCase):
             changed[field]["value"] = 0
             self.assertEqual(shot(unit, changed, weapon, target, close=True, dfa=True), 0)
             self.assertEqual(dfa_rating(unit, changed), 0)
-        for category in ("Vehicle", "Battle Armor", "Conventional Infantry"):
+        for category in ("Vehicle", "Battle Armor", "Infantry"):
             self.assertFalse(dfa_eligible(dict(unit, category=category), click, weapon, target))
-        for category in ("Battle Armor", "Conventional Infantry"):
+        for category in ("Battle Armor", "Infantry"):
             self.assertEqual(shot(unit, click, weapon, dict(target, category=category), close=True, dfa=True), 0)
         self.assertFalse(dfa_eligible(unit, click, dict(weapon, slot="secondary"), target))
         click["speed"]["color"] = "white"

@@ -68,7 +68,7 @@ Record useful actions: taking or denying an objective, escaping, delivering troo
 | Transport boarding/unloading/destruction | | | |
 | Heat pressure, stress, shutdown, restart | | | |
 | Damaged dial/equipment change | | | |
-| Conventional infantry exposed assault | | | |
+| Infantry exposed assault | | | |
 | Battle armor assault | | | |
 | Gunner | | | |
 | Skirmisher | | | |
@@ -81,7 +81,7 @@ Record useful actions: taking or denying an objective, escaping, delivering troo
 
 ## After the return match
 
-- Where did conventional infantry help? Where were they ineffective?
+- Where did infantry help? Where were they ineffective?
 - Did anyone mistakenly give an ally an accuracy bonus?
 - Was transport useful? Did passengers get any unintended extra actions?
 - Did heat force pauses? Did different heat tracks feel different?

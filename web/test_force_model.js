@@ -95,7 +95,7 @@ test("zero Mechs allows vehicle-only, infantry-only, and mixed lists at every si
 
 test("size changes apply budget, type, carrier, and pilot caps without deleting models",()=>{
   const fixtures=[];
-  for(const [category,source,prefix] of [["Mech","AOD108","M"],["Vehicle","AOD050","V"],["Conventional Infantry","D006","C"]]) for(let i=0;i<20;i++)fixtures.push({...model.units.get(source),id:prefix+i,name:prefix+i,family:prefix+i,rank:"Regular",cost:{points:1},rocket_options:{}});
+  for(const [category,source,prefix] of [["Mech","AOD108","M"],["Vehicle","AOD050","V"],["Infantry","D006","C"]]) for(let i=0;i<20;i++)fixtures.push({...model.units.get(source),id:prefix+i,name:prefix+i,family:prefix+i,rank:"Regular",cost:{points:1},rocket_options:{}});
   const testModel=createForceModel({...catalog,units:fixtures});
   for(const id of Object.keys(model.config.sizes)) {
     const force=testModel.parse({game_size:id,groups:[]}), size=testModel.size(force), limits=size.limits;

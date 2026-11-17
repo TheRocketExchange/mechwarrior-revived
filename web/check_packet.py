@@ -66,9 +66,9 @@ rules_page = pages[(SITE / "rules.html").resolve()]
 terrain_table = rules_page.xpath('//*[@id="6-terrain-and-sight"]/following::table[1]')[0]
 terrain_rows = {row.xpath('./td')[0].text_content(): row.xpath('./td')[2].text_content() for row in terrain_table.xpath('.//tbody/tr')}
 infantry_cover = catalog["points_formula"]["infantry_terrain_defense"]
-conventional, armor = infantry_cover["Conventional Infantry"], infantry_cover["Battle Armor"]
-assert terrain_rows["Woods or rubble"] == f"Ranged defense: +{conventional['woods_ranged']} conventional infantry, +{armor['woods_ranged']} battle armor, +1 vehicles and ’Mechs"
-assert terrain_rows["Fieldworks"] == f"Conventional infantry: +{conventional['fieldworks_ranged']} ranged defense and +{conventional['fieldworks_close']} close defense. Battle armor: +{armor['fieldworks_ranged']} ranged defense and +{armor['fieldworks_close']} close defense"
+conventional, armor = infantry_cover["Infantry"], infantry_cover["Battle Armor"]
+assert terrain_rows["Woods or rubble"] == f"Ranged defense: +{conventional['woods_ranged']} infantry, +{armor['woods_ranged']} battle armor, +1 vehicles and ’Mechs"
+assert terrain_rows["Fieldworks"] == f"Infantry: +{conventional['fieldworks_ranged']} ranged defense and +{conventional['fieldworks_close']} close defense. Battle armor: +{armor['fieldworks_ranged']} ranged defense and +{armor['fieldworks_close']} close defense"
 sizes_table = rules_page.xpath('//*[@id="choose-the-battle-size"]/following::table[1]')[0]
 assert [[cell.text_content().strip() for cell in row.xpath('./td')] for row in sizes_table.xpath('.//tbody/tr')] == [[size["name"], f"{size['points_limit']:,}", f"{size['board_width']} × {size['board_depth']} inches"] for size in GAME_SIZES.values()]
 chart = rules_page.xpath('//*[@id="force-organization"]/following::table[1]')[0]

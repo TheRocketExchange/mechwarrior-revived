@@ -6,7 +6,7 @@ Revived is a modernized, fan-made take on MechWarrior: Dark Age, using existing 
 
 | Unit | Job | Weakness |
 | --- | --- | --- |
-| Conventional infantry | Hold cover and objectives; assault exposed armor | Vulnerable in the open; little damage against larger targets |
+| Infantry | Hold cover and objectives; assault exposed armor | Vulnerable in the open; little damage against larger targets |
 | Battle armor | Fight vehicles and ’Mechs up close | Must reach them; gains less from fieldworks |
 | Vehicles | Move and fire; carry infantry | Need Flamers or Bypass to fight close |
 | ’Mechs | Bring firepower where it is needed | Heat forces pauses; damage weakens the dial |
