@@ -19,11 +19,11 @@ def build_force_builder(output, write_page, search):
     write_page("builder.html", "Build a force", "Forces", "Your models / Your list", body,
                [("h2", "Your force", "force-summary-heading"), ("h2", "Roster", "force-roster-heading"),
                 ("h2", "Add models", "force-picker-heading")])
-    cards = '<p id="force-card-status" role="status">Preparing your unit cards…</p><div class="force-card-tools"><button id="print-force-cards" type="button">Print / Save as PDF</button><a href="builder.html">Back to the force builder</a></div><div id="force-card-output"></div><noscript><p>Enable JavaScript to generate the selected cards.</p></noscript>'
+    cards = '<p id="force-card-status" role="status">Preparing your army…</p><div class="force-card-tools"><label>Print format<select id="force-print-layout"><option value="cards">Unit cards</option><option value="dials">Dials only</option></select></label><button id="print-force-cards" type="button" disabled>Print / Save as PDF</button><a href="builder.html">Back to the force builder</a></div><div id="force-card-output"></div><noscript><p>Enable JavaScript to print your selected army, or use the <a href="downloads/revived-unit-cards.pdf">complete card PDF</a>.</p></noscript>'
     cards += assets + '<script src="force-cards.js" defer></script><link rel="stylesheet" href="force-cards.css">'
-    write_page("force-cards.html", "Your unit cards", "Forces", "Ready for the table", cards, [])
+    write_page("force-cards.html", "Print your army", "Forces", "Cards and full dials / Your models", cards, [])
     search.extend([
         {"title": "Build a force", "page": "Force builder", "url": "builder.html", "text": "Build an army list. Select Skirmish 600, Standard 1200, Large Battle 1800, or Grand Battle 2400 points. Choose models, infantry squads, pilots, carriers, and Rocket substitutes. Check points and the rule of three. Save and export your roster."},
-        {"title": "Print cards for your models", "page": "Force builder", "url": "builder.html", "text": "Generate full-dial unit cards for just the models in your army. Print or save as PDF with roster IDs and assignments filled in."},
+        {"title": "Print cards or dials for your army", "page": "Force builder", "url": "builder.html", "text": "Print unit cards or compact dials only for every model in your selected army, including separate infantry bases. Custom, saved, imported and draft lists work. Complete combat and heat tracks, roster IDs, pilot and carrier assignments. Print or save as PDF without an account."},
     ])
     return 2

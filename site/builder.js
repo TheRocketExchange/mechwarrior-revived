@@ -22,6 +22,13 @@
     try {localStorage.setItem(key,JSON.stringify(force)); saveFailed=false;}
     catch {saveFailed=true;}
     $("force-save").textContent=saveFailed?"Could not save. Export your list to keep it.":"Saved in this browser";
+    printLink();
+  }
+  function printLink() {
+    const link=$("force-cards"), hasModels=force.groups.length>0;
+    link.setAttribute("aria-disabled",String(!hasModels));
+    if(hasModels)link.href="force-cards.html#list="+encodeURIComponent(JSON.stringify(force));
+    else link.removeAttribute("href");
   }
   function option(value,label,selected) {return `<option value="${esc(value)}" ${value===selected?'selected':''}>${esc(label)}</option>`;}
   function squadOptions(category,selected="",unique=false) {
@@ -49,7 +56,7 @@
     $("force-checks").classList.toggle("force-valid",!result.errors.length);
     $("force-errors").innerHTML=result.errors.map(error=>`<li>${esc(error)}</li>`).join("");
     $("force-errors").hidden=!result.errors.length;
-    $("force-cards").disabled=!force.groups.length;
+    printLink();
     const squads=force.groups.filter(group=>model.infantry.has(model.units.get(group.members[0]).category));
     $("force-groups").innerHTML=force.groups.map(group=>{
       const unit=model.units.get(group.members[0]), isSquad=model.infantry.has(unit.category);
@@ -108,9 +115,6 @@
     const file=event.target.files[0];if(!file)return;
     try {if(file.size>1_000_000)throw new Error("Choose a list file smaller than 1 MB.");const imported=model.parse(JSON.parse(await file.text()));if(force.groups.length&&!confirm("Replace this list with the imported list? Export first to keep the current list."))return;force=imported;change();message("List imported.");}
     catch(error){message(`Could not import: ${error.message}`);}finally{event.target.value="";}
-  });
-  $("force-cards").addEventListener("click",()=>{
-    save();window.open("force-cards.html#list="+encodeURIComponent(JSON.stringify(force)),"_blank","noopener");
   });
   const params=new URLSearchParams(location.search), add=params.get("add"), sample=params.get("sample");
   if(sample)loadSample(sample);

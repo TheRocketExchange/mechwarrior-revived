@@ -225,7 +225,7 @@ def main():
     aids_body = '<p>References and printable cards for the table.</p>' + resource_rows([
         ("PACK", "dead-air.html", "Dead Air playtest pack", "Kestrel Watch versus Blackwire Recovery. Everything to prepare the starter matchup."),
         ("MAP", "first-contact.html#set-up-the-map", "Starter map & diagrams", "Measured 48 × 48 setup, movement, objective control, and pushing."),
-        ("LIST", "builder.html", "Cards for your army", "Build a list, then print only your models with their assignments filled in."),
+        ("LIST", "builder.html", "Print cards or dials for your army", "Choose photo cards or compact dial sheets, with full tracks and assignments for every model."),
         ("01", "turn.html", "Turn reference", "Round sequence, actions, attacks, and heat."),
         ("NEW", "readiness.html", "Readiness reference", "Ready, Committed, Spent: recovery, pushing, and a roster tracker."),
         ("PDF", "downloads/readiness-reference.pdf", "Print the readiness sheet", "US Letter · One-page reference and reusable tracker"),

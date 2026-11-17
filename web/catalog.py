@@ -43,7 +43,7 @@ def build_catalog(output, write_page, search):
     assets = '<link rel="stylesheet" href="catalog.css"><script src="catalog-data.js"></script><script src="catalog.js" defer></script>'
     body = f'''<p>Browse {len(catalog['units']):,} unit entries from the original clix releases, including five DropShip turret sections. Each datasheet has a source photo, combat dial, and <a href="points.html">points cost</a>, plus a heat track for ’Mechs.</p>
 <div class="catalog-tools"><a href="downloads/revived-unit-cards.pdf">Download all unit cards (PDF)</a><a href="downloads/unit-catalog.csv">Download the catalog (CSV)</a></div>
-<p><a href="builder.html">Build your own force and print cards for just your models.</a></p>
+<p><a href="builder.html">Build your own force and print unit cards or compact dial sheets for just your models.</a></p>
 <p>The PDF prints two cards per Letter page, with every combat-dial position, equipment color, and repair mark. ’Mech cards also include the full heat dial.</p>
 <details class="card-guide" id="reading-a-unit-card"><summary>Reading a unit card</summary>
 <ul><li><strong>Catalog ID</strong> identifies the exact release and variant, such as AOD108. Use it to find the same miniature in the catalog.</li>

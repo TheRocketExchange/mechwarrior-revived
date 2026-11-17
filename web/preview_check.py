@@ -9,7 +9,7 @@ import json
 import sys
 import time
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, parse_qs
 from urllib.request import build_opener, ProxyHandler
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -310,6 +310,26 @@ selected_text='\n'.join(page.extract_text() for page in selected_reader.pages)
 assert selected_text.count('Catalog ID:')==8
 assert selected_text.count('Grand Battle')==4
 assert all(label in selected_text for label in ('C1a','C1b','C1c','V1','Gunner','Rocket','HEAT DIAL','COMBAT DIAL','SD'))
+js("document.querySelector('#force-print-layout').value='dials';document.querySelector('#force-print-layout').dispatchEvent(new Event('change'))")
+assert js("document.querySelectorAll('.print-dial-card').length===8 && document.querySelectorAll('.dial-sheet').length===3 && !document.querySelector('#force-card-output img')")
+assert js("document.querySelector('[data-card-id=\"M1\"]').textContent.includes('Secondary: Rocket') && document.querySelector('[data-card-id=\"C1a\"]').textContent.includes('Assigned carrier: V1')")
+assert js("[...document.querySelectorAll('.print-dial-card')].every(card=>card.scrollHeight<=card.clientHeight+1 && (!card.querySelector('.pc-lower table') || card.querySelector('.pc-lower table').getBoundingClientRect().bottom<=card.querySelector('footer').getBoundingClientRect().top))"),'Compact dial content overlaps or clips'
+printout=call('Page.printToPDF',{'printBackground':False,'preferCSSPageSize':True,'paperWidth':8.5,'paperHeight':11})
+dials_pdf=QA/'selected-army-dials.pdf';dials_pdf.write_bytes(base64.b64decode(printout['data']))
+dials_reader=PdfReader(dials_pdf)
+assert len(dials_reader.pages)==3,len(dials_reader.pages)
+dials_text='\n'.join(page.extract_text() for page in dials_reader.pages)
+assert dials_text.count('Catalog ID:')==8 and dials_text.count('HEAT DIAL')==4
+assert all(label in dials_text for label in ('C1a','C1b','C1c','V1','Gunner','Rocket','COMBAT DIAL','SD','Stop'))
+call('Page.reload');wait("document.readyState==='complete' && document.querySelectorAll('.print-dial-card').length===8")
+assert js("document.querySelector('#force-print-layout').value==='dials'"),'Print format lost on reload'
+call('Emulation.setDeviceMetricsOverride',{'width':390,'height':844,'deviceScaleFactor':1,'mobile':True})
+assert js("document.documentElement.scrollWidth<=innerWidth"),'Dials page mobile overflow'
+screenshot('army-dials-mobile')
+call('Emulation.setDeviceMetricsOverride',{'width':1100,'height':1100,'deviceScaleFactor':1,'mobile':False})
+screenshot('army-dials-desktop')
+js("document.querySelector('#force-print-layout').value='cards';document.querySelector('#force-print-layout').dispatchEvent(new Event('change'))")
+assert js("document.querySelectorAll('.print-unit-card').length===8 && !document.querySelector('.print-dial-card') && document.querySelectorAll('.card-sheet').length===4")
 call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#list='+quote(json.dumps(zero_mech_force))})
 wait("document.title==='Armor and Infantry · Unit cards' && document.readyState==='complete' && document.querySelectorAll('.print-unit-card').length===5")
 assert js("!document.querySelector('#force-card-status').textContent.includes('Draft')")
@@ -360,6 +380,45 @@ wait("document.querySelector('.print-unit-card') && document.readyState==='compl
 assert js("document.querySelector('.pc-meta').textContent.includes('Faction: Spirit Cats') && document.querySelector('.card-sheet-label').textContent.includes('Spirit Cats')")
 assert js("document.querySelector('.pc-meta').getBoundingClientRect().bottom <= document.querySelector('.pc-profile').getBoundingClientRect().bottom+1"),'Faction metadata overlaps dial'
 screenshot('faction-unit-card')
+# Any catalog model can print, even in a draft list. Check the compact layout
+# and every combat/heat cell against its data, including long expansion dials.
+catalog_units=json.loads((ROOT/'units/catalog.json').read_text(encoding='utf-8'))['units']
+for offset in range(0,len(catalog_units),100):
+    batch=catalog_units[offset:offset+100]
+    force={'name':'Dial coverage','game_size':'grand','groups':[{'id':'U'+str(i),'members':[unit['id']],'pilot':'Gunner'} if unit['category']=='Mech' else {'id':'U'+str(i),'members':[unit['id']]} for i,unit in enumerate(batch)]}
+    call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#layout=dials&list='+quote(json.dumps(force))})
+    wait("document.readyState==='complete' && document.querySelectorAll('.print-dial-card').length==="+str(len(batch)))
+    issues=js("""(()=>{
+      const units=new Map(MW_CATALOG.units.map(u=>[u.id,u])),codes={red:'R',blue:'B',black:'K',gray:'Gy',green:'Gn',yellow:'Y',purple:'P'};
+      const text=(v={},heat=false)=>(v.shutdown?'SD':v.dead?'X':v.value==null?'—':heat&&v.value>0?'+'+v.value:String(v.value))+(!v.shutdown&&!v.dead?(codes[v.color]||''):'');
+      return [...document.querySelectorAll('.print-dial-card')].flatMap(card=>{
+        const unit=units.get(card.dataset.catalogId),errors=[],tables=card.querySelectorAll('.pc-dial');
+        if(card.scrollHeight>card.clientHeight+1 || (card.querySelector('.pc-lower table')&&card.querySelector('.pc-lower table').getBoundingClientRect().bottom>card.querySelector('footer').getBoundingClientRect().top))errors.push(unit.id+': layout');
+        for(const [index,track] of [unit.track,unit.heat].entries()) {
+          if(!track.length)continue;
+          const keys=index?['primary','secondary','speed'].filter(k=>track.some(c=>k in c)):unit.weapons.map(w=>w.slot).concat(['speed','attack','defense']);
+          const rows=tables[index].querySelectorAll('tbody tr');
+          keys.forEach((key,i)=>{const got=[...rows[i].querySelectorAll('td')].map(c=>c.textContent);const expected=track.map(c=>text(c[key],Boolean(index)));if(!index)expected.push('X');if(JSON.stringify(got)!==JSON.stringify(expected))errors.push(unit.id+': '+key);});
+          if(!index){const marks=[...rows[keys.length].querySelectorAll('td')].map(c=>c.textContent),expected=track.map((c,i)=>i===unit.start?'Start':c.markers?.repair?'Stop':'').concat(['End']);if(JSON.stringify(marks)!==JSON.stringify(expected))errors.push(unit.id+': marks');}
+        }
+        return errors;
+      });
+    })()""")
+    assert not issues,issues
+# Printing needs neither an account nor browser storage. The normal link embeds
+# the current list, including edits made after the last successful autosave.
+call('Page.addScriptToEvaluateOnNewDocument',{'source':"Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage unavailable')}});window.open=()=>{throw new Error('No scripted popups')};"})
+open_page('builder.html?sample=S1',"document.querySelectorAll('[data-roster-group]').length===5",clean_query=True)
+input_value('#force-name','Without storage')
+href=js("document.querySelector('#force-cards').href")
+assert js("document.querySelector('#force-cards').tagName==='A' && document.querySelector('#force-cards').getAttribute('aria-disabled')==='false'")
+assert json.loads(parse_qs(href.split('#',1)[1])['list'][0])['name']=='Without storage'
+call('Page.navigate',{'url':href})
+wait("document.querySelectorAll('.print-unit-card').length===7 && document.readyState==='complete'")
+js("document.querySelector('#force-print-layout').value='dials';document.querySelector('#force-print-layout').dispatchEvent(new Event('change'))")
+assert js("document.querySelectorAll('.print-dial-card').length===7 && !document.querySelector('#print-force-cards').disabled")
+js("window.print=()=>{window.printCalled=true};document.querySelector('#print-force-cards').click()")
+wait('window.printCalled===true')
 assert not exceptions,exceptions
 ws.close()
-print('Browser checks passed: catalog, dials, printing, mobile layouts, force building, assignments, saving, JSON export/import, invalid imports, and selected-card PDFs. No JavaScript exceptions.')
+print('Browser checks passed: catalog, full and compact army printing, all 1649 compact dials, PDF pagination, mobile layouts, custom/imported/draft lists, and printing without storage or scripted popups. No JavaScript exceptions.')

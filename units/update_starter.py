@@ -42,7 +42,7 @@ Neither vehicle is designated as a carrier, including the APC in Patrol B. Infan
 
 The catalog IDs specify the exact ranks and dials. If you lack a listed figure, use another legal 600-point Skirmish list, or agree to use clearly labeled stand-ins with these cards. Keep the armies within 12 points of each other when testing this matchup. Costs come from the shared formula and update on rebuild.
 
-To print: load the patrol, choose **Generate unit cards**, then **Print / Save as PDF**. Existing saved models are replaced only after you accept the builder’s prompt; export your list first to keep it.
+To print: load the patrol, choose **Print cards / dials**, select **Unit cards** or **Dials only**, then **Print / Save as PDF**. Existing saved models are replaced only after you accept the builder’s prompt; export your list first to keep it.
 """
     (ROOT / "playtest/starter-forces.md").write_text(text, encoding="utf-8")
     print(f"Starter patrols: {totals[0]} and {totals[1]} points; five groups each.")

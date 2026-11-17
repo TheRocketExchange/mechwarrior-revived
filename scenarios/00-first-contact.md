@@ -10,7 +10,7 @@ This is a first game using the normal rules. One objective and four rounds keep 
 
 [Dead Air: The Fight for Kestrel Relay](../playtest/dead-air.md) is a themed print pack for this scenario, with both patrols, assigned unit and pilot cards, the setup map, and a results sheet. It uses the rules and rosters below.
 
-Use the two [starter patrols](../playtest/starter-forces.md), with seven models and five activation groups each. [Load Patrol A](../site/builder.html?sample=S1) or [Patrol B](../site/builder.html?sample=S2) in the builder, then choose **Generate unit cards**. You can also bring your own legal [600-point Skirmish force](../rules/core-rules.md#force-organization).
+Use the two [starter patrols](../playtest/starter-forces.md), with seven models and five activation groups each. [Load Patrol A](../site/builder.html?sample=S1) or [Patrol B](../site/builder.html?sample=S2) in the builder, then choose **Print cards / dials**. You can also bring your own legal [600-point Skirmish force](../rules/core-rules.md#force-organization).
 
 The starter lists have infantry on foot and no Rocket substitutes. Keep the [turn reference](../rules/turn-reference.md), [equipment reference](../rules/equipment-reference.md), and [pilot cards](../pilots/pilot-cards.md) nearby. Set combat and heat dials to Start. Vehicles and squads begin Ready.
 
