@@ -137,7 +137,8 @@ def readiness():
     steps=[('1 · FIRE','Ready','Committed','No pushing damage',''),('2 · FIRE','Committed','Spent','1 damage per surviving base','after its action'),('3 · MOVE / HOLD','Spent','Ready','Recover; no attack','')]
     for i,(action,before,after,note,detail) in enumerate(steps):
         x=24+i*272;cx=x+124
-        body += [rect(x,154,248,266,'#e3ebf4','#a3b5cb'),rect(x,154,248,47,'#435f80'),text(cx,185,action,22,'middle','white','bold'),text(cx,245,before,23,'middle'),
+        body += [rect(x+3,158,248,266,'#aaa98c'),rect(x,154,248,266,'#d7dcc3',INK,'stroke-width="3"'),
+                 rect(x,154,248,47,'#4b6171',INK,'stroke-width="3"'),text(cx,185,action,22,'middle','#fff6d9','bold'),text(cx,245,before,23,'middle'),
                  line(cx,262,cx,299,BLUE,3,'marker-end="url(#move-arrow)"'),text(cx,337,after,25,'middle',RED if after=='Spent' else BLUE,'bold'),
                  text(cx,376,note,16,'middle'),text(cx,401,detail,16,'middle')]
     body += [text(28,467,'One vehicle or squad. Each step is a separate activation.',20),text(28,503,'Recover early from Committed to avoid pushing. ’Mechs use heat instead.',18)]
