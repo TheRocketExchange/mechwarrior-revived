@@ -17,6 +17,7 @@ from markdown_it import MarkdownIt
 from catalog import build_catalog
 from builder import build_force_builder
 from photography import banner_html, illustrate
+from maps import illustrate_maps
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site"
@@ -148,6 +149,7 @@ def resources_html(current):
 def write_page(filename, title, active, eyebrow, body, toc, tools="", next_page=None):
     template = (WEB / "shell.html").read_text(encoding="utf-8")
     body = illustrate(filename, body)
+    body = illustrate_maps(filename, body)
     next_html = ""
     if next_page:
         url, label = next_page
@@ -175,7 +177,7 @@ def resource_rows(items):
 def main():
     OUT.mkdir(exist_ok=True)
     (OUT / "downloads").mkdir(exist_ok=True)
-    for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css", "photography.css"):
+    for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css", "photography.css", "maps.js"):
         shutil.copyfile(WEB / asset, OUT / asset)
     (OUT / "fonts").mkdir(exist_ok=True)
     for font in (WEB / "fonts").iterdir():
@@ -190,11 +192,9 @@ def main():
         body, toc = ("", []) if filename == "index.html" else render_document(ROOT / source, filename, title)
         tools, next_page = "", None
         if filename == "dead-air.html":
-            body += '<link rel="stylesheet" href="diagrams.css">'
             tools = '<a class="small-button" href="downloads/dead-air-playtest-pack.pdf">Download playtest pack <span class="file-type">PDF</span></a>'
             next_page = ("first-contact.html", "First Contact rules and diagrams")
         elif filename == "first-contact.html":
-            body += '<link rel="stylesheet" href="diagrams.css">'
             tools = '<a class="small-button" href="diagrams/first-contact-map.svg">Open setup map <span aria-hidden="true">↗</span></a>'
             next_page = ("starter-forces.html", "Choose a starter patrol")
         elif filename == "rules.html":

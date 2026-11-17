@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="site.css">
   <link rel="stylesheet" href="dark-age.css">
   <link rel="stylesheet" href="photography.css">
+  <link rel="stylesheet" href="diagrams.css">
   <script src="search-index.js" defer></script>
   <script src="site.js" defer></script>
+  <script src="maps.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to the rules</a>
@@ -54,7 +56,7 @@
 <p>The starter lists have infantry on foot and no Rocket substitutes. Keep the <a href="turn.html">turn reference</a>, <a href="equipment.html">equipment reference</a>, and <a href="pilots.html">pilot cards</a> nearby. Set combat and heat dials to Start. Vehicles and squads begin Ready.</p>
 <h2 id="set-up-the-map">Set up the map</h2>
 <p>Use a <strong>48 × 48 inch</strong> table. The southwest corner is (0, 0); x runs east and y runs north. Each grid square below is <strong>6 inches</strong>. The circles and arrows in the teaching diagrams are examples, not extra terrain.</p>
-<p><a href="diagrams/first-contact-map.svg"><img src="diagrams/first-contact-map.svg" alt="First Contact setup map: deployment zones at the north and south edges, a central relay, two woods, two rubble patches, and two blocking structures." /></a></p>
+<figure class="battle-map" data-map-title="First Contact"><div class="battle-map-toolbar"><strong>First Contact</strong><div class="battle-map-tools"><button type="button" data-map-zoom aria-pressed="false" hidden>Enlarge</button><a href="diagrams/first-contact-map.svg" data-map-open target="_blank" rel="noopener">Open map ↗</a></div></div><div class="battle-map-viewport" tabindex="0" role="region" aria-label="First Contact diagram"><img src="diagrams/first-contact-map.svg" alt="First Contact setup map: deployment zones at the north and south edges, a central relay, two woods, two rubble patches, and two blocking structures." width="840" height="1200" loading="lazy" decoding="async"></div><figcaption><span data-map-size>48 × 48 inches · 600 points</span><span>Distances are in inches.</span></figcaption></figure>
 <p><em>Open the map for a full-size view or print it as a setup guide. It is not a table-sized play mat. The dashed ring marks the relay’s 3-inch control radius.</em></p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
 <thead>
@@ -145,16 +147,16 @@
 </tbody>
 </table></div>
 <h2 id="moving-and-shooting">Moving and shooting</h2>
-<p><a href="diagrams/movement-and-fire.svg"><img src="diagrams/movement-and-fire.svg" alt="For speed 8 without modifiers: Advance up to 4 inches and make one ranged attack; Move up to 8 without attacking; Rush up to 16 without attacking." /></a></p>
+<figure class="battle-map" data-map-title="Movement &amp; shooting"><div class="battle-map-toolbar"><strong>Movement &amp; shooting</strong><div class="battle-map-tools"><button type="button" data-map-zoom aria-pressed="false" hidden>Enlarge</button><a href="diagrams/movement-and-fire.svg" data-map-open target="_blank" rel="noopener">Open map ↗</a></div></div><div class="battle-map-viewport" tabindex="0" role="region" aria-label="Movement &amp; shooting diagram"><img src="diagrams/movement-and-fire.svg" alt="For speed 8 without modifiers: Advance up to 4 inches and make one ranged attack; Move up to 8 without attacking; Rush up to 16 without attacking." width="840" height="884" loading="lazy" decoding="async"></div><figcaption><span data-map-size>Speed 8 · 2-inch grid</span><span>Unit symbols mark centers, not base sizes.</span></figcaption></figure>
 <p>This example uses <strong>speed 8 with no heat or equipment modifiers</strong>. You may move less. Measure the route traveled and pay terrain costs. Other speeds use the same rules: halve and round up for Advance, full speed for Move, twice speed for Rush.</p>
 <p>Advance has no general attack penalty. A Ballistic shot after moving or turning has −1 recoil unless Gunner removes it. An Energy attack adds 1 extra ’Mech heat. Rockets shoot only with Fire. Check range, arc, and line of sight after moving; an Advance does not guarantee a legal shot.</p>
 <p>For a ’Mech, Advance costs 2 heat, Move 1, and Rush 1, plus the extra heat if it rolls an Energy attack. For vehicles and infantry, Advance commits or pushes; Move recovers; Rush leaves readiness unchanged and is not allowed while Spent.</p>
 <h2 id="holding-the-relay">Holding the relay</h2>
-<p><a href="diagrams/objective-control.svg"><img src="diagrams/objective-control.svg" alt="Two objective examples: a friendly center inside the three-inch ring with an enemy outside controls the relay; both sides inside make it contested." /></a></p>
+<figure class="battle-map" data-map-title="Objective control"><div class="battle-map-toolbar"><strong>Objective control</strong><div class="battle-map-tools"><button type="button" data-map-zoom aria-pressed="false" hidden>Enlarge</button><a href="diagrams/objective-control.svg" data-map-open target="_blank" rel="noopener">Open map ↗</a></div></div><div class="battle-map-viewport" tabindex="0" role="region" aria-label="Objective control diagram"><img src="diagrams/objective-control.svg" alt="Two objective examples: a friendly center inside the three-inch ring with an enemy outside controls the relay; both sides inside make it contested." width="840" height="800" loading="lazy" decoding="async"></div><figcaption><span data-map-size>3-inch control radius · 2-inch grid</span><span>Unit symbols mark centers, not base sizes.</span></figcaption></figure>
 <p>Check <strong>base centers</strong>, not base edges. A friendly base inside the ring and an enemy outside means you control the relay. If an enemy center is also inside, neither side scores, even if one side has more models there.</p>
 <p>Spent units can still control or contest. Shutdown ’Mechs and passengers cannot. A unit does not need to fire to help win the game.</p>
 <h2 id="pushing-or-recovering">Pushing or recovering</h2>
-<p><a href="diagrams/pushing-and-recovery.svg"><img src="diagrams/pushing-and-recovery.svg" alt="A vehicle or squad can Fire from Ready to Committed, Fire again to become Spent and take pushing damage, then Move or Hold to return to Ready." /></a></p>
+<figure class="battle-map" data-map-title="Pushing &amp; recovery"><div class="battle-map-toolbar"><strong>Pushing &amp; recovery</strong><div class="battle-map-tools"><button type="button" data-map-zoom aria-pressed="false" hidden>Enlarge</button><a href="diagrams/pushing-and-recovery.svg" data-map-open target="_blank" rel="noopener">Open map ↗</a></div></div><div class="battle-map-viewport" tabindex="0" role="region" aria-label="Pushing &amp; recovery diagram"><img src="diagrams/pushing-and-recovery.svg" alt="A vehicle or squad can Fire from Ready to Committed, Fire again to become Spent and take pushing damage, then Move or Hold to return to Ready." width="840" height="580" loading="lazy" decoding="async"></div><figcaption><span data-map-size>One activation per step</span><span>Vehicles and infantry squads.</span></figcaption></figure>
 <p>This example is for a <strong>vehicle or infantry squad</strong>, starting Ready. Each step happens on a separate activation. A first Fire commits it. A second Fire pushes: finish each base’s attack, then give each surviving base 1 unavoidable damage. It is now Spent and must recover on its next activation.</p>
 <p>You can recover early: <strong>Fire, then Move or Hold</strong> returns the group to Ready without pushing damage. Recovery does not repair the dial. Use Hold if engaged, or follow the normal Disengage rules. ’Mechs use heat instead of this readiness sequence.</p>
 <h2 id="your-first-four-rounds">Your first four rounds</h2>
@@ -169,7 +171,7 @@
 <h2 id="play-again">Play again</h2>
 <p>Keep the armies and terrain, swap deployment sides, and play another four rounds. Note whether the relay was reachable, when heat or pushing changed a decision, and how long the game took. The starter matchup has not yet been tested on the table.</p>
 <p>Next try <a href="seize-and-hold.html">Seize and Hold</a> for three objectives, six rounds, and more choices about where to commit your force.</p>
-<link rel="stylesheet" href="diagrams.css"></article>
+</article>
       <a class="next-page" href="starter-forces.html"><span>Continue reading<strong>Choose a starter patrol</strong></span><span aria-hidden="true">→</span></a>
       <div class="page-end"><span>MechWarrior Revived / Version 0.3</span><a href="#top">Back to top ↑</a></div>
     </main>

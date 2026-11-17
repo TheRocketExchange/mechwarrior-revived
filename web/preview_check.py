@@ -19,6 +19,7 @@ import websocket
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--port", type=int, default=9234)
 parser.add_argument("--builder-filters-only", action="store_true")
+parser.add_argument("--maps-only", action="store_true")
 args = parser.parse_args()
 
 opener=build_opener(ProxyHandler({}))
@@ -153,15 +154,67 @@ def check_builder_filters():
     print('Builder filters: points ranges and ordering, faction browsing, combined filters, pagination, existing infantry lists, and mobile layout passed.')
 
 
+def check_maps():
+    for width in (320,390,1440):
+        call('Emulation.setDeviceMetricsOverride',{'width':width,'height':1000,'deviceScaleFactor':1,'mobile':width<850})
+        for name in ('seize-and-hold','breakthrough','hold-the-station'):
+            open_page(name+'.html',"document.querySelector('[data-map-zoom]')?.hidden===false")
+            js("document.querySelector('.battle-map').scrollIntoView()")
+            wait("document.querySelector('.battle-map img').complete && document.querySelector('.battle-map img').naturalWidth>0")
+            assert js("document.documentElement.scrollWidth<=innerWidth"),(width,name)
+            original_width=js("document.querySelector('.battle-map img').getBoundingClientRect().width")
+            original_rows=js("[...document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows].map(row=>[...row.cells].map(cell=>cell.textContent))")
+            js("document.querySelector('[data-map-zoom]').click()")
+            assert js("document.querySelector('[data-map-zoom]').getAttribute('aria-pressed')==='true'")
+            assert js("document.querySelector('.battle-map img').getBoundingClientRect().width")>original_width
+            assert js("document.querySelector('.battle-map-viewport').scrollWidth>document.querySelector('.battle-map-viewport').clientWidth")
+            assert js("document.documentElement.scrollWidth<=innerWidth"),(width,name,'enlarged')
+            js(f"document.querySelector('[data-map-size-select]').value='diagrams/{name}-wide-map.svg';document.querySelector('[data-map-size-select]').dispatchEvent(new Event('change'))")
+            wait("document.querySelector('.battle-map img').complete && document.querySelector('.battle-map img').naturalWidth>0")
+            assert js("document.querySelector('[data-map-open]').href===document.querySelector('.battle-map img').src")
+            assert js("document.querySelector('[data-map-size]').textContent.startsWith('72') && document.querySelector('.battle-map img').alt.includes('72')")
+            assert js("document.querySelector('[data-map-table-label]').textContent.startsWith('72')")
+            assert js("[...document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows].map(row=>[...row.cells].map(cell=>cell.textContent))")==js("JSON.parse(document.querySelector('[data-map-coordinate-rows]').textContent)")
+            assert js("document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows.length")==len(original_rows)+4
+            call('Emulation.setEmulatedMedia',{'media':'print'})
+            assert js("getComputedStyle(document.querySelector('.battle-map-toolbar')).display==='none' && getComputedStyle(document.querySelector('.battle-map-viewport')).overflow==='visible'")
+            assert js("getComputedStyle(document.querySelector('.battle-map img')).minWidth==='0px'")
+            call('Emulation.setEmulatedMedia',{'media':''})
+            js("document.querySelector('[data-map-zoom]').click();document.querySelector('.battle-map').scrollIntoView()")
+            assert js("document.querySelector('[data-map-zoom]').getAttribute('aria-pressed')==='false'")
+            screenshot(f'map-viewer-{name}-{width}')
+            js(f"document.querySelector('[data-map-size-select]').value='diagrams/{name}-map.svg';document.querySelector('[data-map-size-select]').dispatchEvent(new Event('change'))")
+            wait("document.querySelector('.battle-map img').complete")
+            assert js("document.querySelector('[data-map-size]').textContent.startsWith('48')")
+            assert js("[...document.querySelector('[data-map-table-label]').closest('table').tBodies[0].rows].map(row=>[...row.cells].map(cell=>cell.textContent))")==original_rows
+        print(f'Map size selection, enlargement, print styles, and layout passed at {width} pixels.')
+    for name,count in [('first-contact',4),('dead-air',1),('rules',4),('readiness',1)]:
+        open_page(name+'.html',f"document.querySelectorAll('.battle-map').length==={count}")
+        js("document.querySelectorAll('.battle-map img').forEach(img=>img.loading='eager')")
+        wait("[...document.querySelectorAll('.battle-map img')].every(img=>img.complete&&img.naturalWidth>0)")
+    call('Emulation.setScriptExecutionDisabled',{'value':True})
+    open_page('breakthrough.html?test=no-map-js',"Boolean(document.querySelector('[data-map-wide]'))")
+    assert js("!document.querySelector('[data-map-wide]').hidden && document.querySelector('[data-map-zoom]').hidden && document.querySelector('.map-size-control').hidden")
+    call('Emulation.setScriptExecutionDisabled',{'value':False})
+    print('Starter and rules examples load offline; full-size and wide-map links remain available without JavaScript.')
+
+
 call('Page.enable')
 call('Runtime.enable')
+if args.maps_only:
+    check_maps()
+    assert not exceptions, exceptions
+    ws.close()
+    sys.exit(0)
 if args.builder_filters_only:
     check_builder_filters()
     assert not exceptions, exceptions
     ws.close()
     sys.exit(0)
+check_maps()
 call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceScaleFactor':1,'mobile':False})
 open_page('first-contact.html',"document.querySelectorAll('article img[src^=\"diagrams/\"]').length===4")
+js("document.querySelectorAll('article img[src^=\"diagrams/\"]').forEach(img=>img.loading='eager')")
 wait("[...document.querySelectorAll('article img[src^=\"diagrams/\"]')].every(img=>img.complete&&img.naturalWidth>0)")
 js("document.querySelector('article img[src^=\"diagrams/\"]').scrollIntoView()")
 screenshot('starter-map-desktop')
