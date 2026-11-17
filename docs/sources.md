@@ -27,7 +27,18 @@ The site's condensed type, heavy headings and pale field-sheet surfaces take the
 
 The site bundles **Russo One** for headings, **Roboto Condensed** for reading and controls, and **Orbitron** for the Revived wordmark and selected numbers. These are visual alternatives, not the original proprietary fonts. Each comes from Google Fonts under the SIL Open Font License, with the notices included in the download: [Russo One](https://github.com/google/fonts/blob/main/ofl/russoone/OFL.txt), [Roboto Condensed](https://github.com/google/fonts/blob/main/ofl/robotocondensed/OFL.txt), [Orbitron](https://github.com/google/fonts/blob/main/ofl/orbitron/OFL.txt). All three load locally so the offline rulebook keeps its typography.
 
-The banner and photographs throughout the rules use real MechWarrior clix miniatures from the credited WarrenBorn archive. Photographs retain their original models and bases; each links to the exact unit datasheet and its source record. The banner features Dereck Hasbani's Atlas (D115), Kendrick Fetladral's Mad Cat III (D113), and the Hatchetman (F084). Roster thumbnails show each member's exact variant, including mixed squads.
+## Battlefield photography
+
+The banner and flavor photographs show real tabletop battles using MechWarrior miniatures. Click a photograph to open the full frame; its credit links to the original report.
+
+| Source | Photographs |
+| --- | --- |
+| [Chicago Skirmish Wargames: Battle for Addicks](https://chicagoskirmish.blogspot.com/2012/05/battle-for-addicks-mech-attack-battle.html), report by Karl | Six views of MechWarrior clix figures around rocks, shelters, and a factory. The report uses rebased figures and Armor Grid: Mech Attack rules. The banner comes from this battle |
+| [The Penny Whistle: Mechwarrior Action on Proserpina](https://thepennywhistle.blogspot.com/2014/04/defilade-defilade-who-said-anything.html), posted by Gr33nw00d11 | Nine views of a city battlefield, advancing units, close fighting, and a smoke-marked wreck. The report uses adapted WW2 D6 rules |
+
+These are atmosphere photographs, not examples of Revived rules or the exact armies in our scenarios. Some figures have replacement bases. The original photographs are cached locally for offline reading; the page frames crop their display without altering the files. Credits, source links, original image URLs, and descriptions are recorded in `web/battle-photos/photos.json`. Rights remain with the original creators; these photographs are not offered under an open license.
+
+The catalog, army-builder thumbnails, and printable unit cards retain the WarrenBorn identification photos so each variant still has an exact visual reference.
 
 ## What carries over
 

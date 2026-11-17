@@ -179,6 +179,9 @@ def main():
     (OUT / "downloads").mkdir(exist_ok=True)
     for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css", "photography.css", "maps.js"):
         shutil.copyfile(WEB / asset, OUT / asset)
+    (OUT / "battle-photos").mkdir(exist_ok=True)
+    for photo in (WEB / "battle-photos").glob("*.jpg"):
+        shutil.copyfile(photo, OUT / "battle-photos" / photo.name)
     (OUT / "fonts").mkdir(exist_ok=True)
     for font in (WEB / "fonts").iterdir():
         if font.is_file():

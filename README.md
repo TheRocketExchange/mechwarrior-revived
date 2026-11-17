@@ -59,6 +59,8 @@ The [Pages workflow](.github/workflows/pages.yml) rebuilds and checks the packet
 
 Keep the cached records in `units/source/` and photos in `units/photos/` in the repository so builds work without fetching the archive. The generated site uses relative links. Temporary browser profiles and preview dependencies are excluded by `.gitignore`.
 
+Flavor images use real tabletop battle photographs from Chicago Skirmish Wargames and The Penny Whistle; see the [photography credits](https://therocketexchange.github.io/mechwarrior-revived/sources.html#battlefield-photography). Keep their originals and source manifest in `web/battle-photos/`. Identification photos for the catalog and cards remain in `units/photos/`.
+
 ## Editing the packet
 
 Run `python build.py` to rebuild costs, sample armies, card PDFs, the readiness PDF, and HTML from cached records. Install dependencies from [web requirements](web/requirements.txt) and [catalog requirements](units/requirements.txt).
