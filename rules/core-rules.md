@@ -18,6 +18,8 @@ For your first game, play [First Contact](../scenarios/00-first-contact.md) with
 
 If rules disagree, follow the scenario for deployment and victory, then any specific pilot or equipment rule, then the core rules.
 
+The examples below use only the modifiers they mention.
+
 ## 2 Prepare the table
 
 You need a table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use 48 × 48 inches for Skirmish or Standard games, and 72 × 48 for Large or Grand Battles; see [game sizes](#choose-the-battle-size). Use separate markers or the [readiness sheet](readiness-reference.md) for vehicles and squads. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Each [scenario](../scenarios/01-seize-and-hold.md) gives its terrain layout and deployment zones.
@@ -34,6 +36,8 @@ Deployment order does not decide who acts first.
 
 Groups with [Infiltrate](equipment-reference.md#speed) may deploy later and farther forward. All other deployment limits still apply.
 
+> **Example:** You win the side-choice roll and choose south. Your opponent places the first group. Roll initiative separately to decide who activates first.
+
 ## 3 Rounds and activation
 
 An **activation group** is one ’Mech, one vehicle, or one infantry squad. Each surviving group acts once per round.
@@ -44,7 +48,11 @@ An **activation group** is one ’Mech, one vehicle, or one infantry squad. Each
 
 Choose **one action for the whole squad**, then finish one base before starting the next. Each base uses its own speed, weapon, and target, and rolls its own attack. A base unable to carry out part of the action skips that part; it cannot choose a different action. Read the target’s new dial after every attack. Destroyed units cannot act. Recovery and regrouping have an exception for bases that must Disengage, described below.
 
+> **Example:** A three-base squad chooses Fire. Two members shoot different enemies; the third has no legal target and skips its shot. The whole squad has activated.
+
 **Passing:** You may pass only when you have fewer groups left to activate than your opponent. If you have none, you must pass. Count Spent groups, passengers, and shutdown ’Mechs: they can recover, Hold aboard, or Vent. Passing does not use a group’s activation or change readiness.
+
+> **Example:** You have two groups left and your opponent has four: you may pass. With two groups each, you must activate one.
 
 There is no automatic recovery or cooling at round end. If neither side has units left on the board or aboard carriers, score that round and use the scenario’s final result.
 
@@ -60,7 +68,13 @@ Each vehicle and each infantry squad has one readiness state. ’Mechs use heat 
 
 The second combat order is **pushing**. It need not happen in the very next round: readiness stays until the group recovers. Pay pushing damage even if a base misses, skips its attack, or has no legal target. A critical miss deals its own damage first; a surviving attacker still pays pushing damage. Stop at destruction and never transfer a casualty’s cost to another base.
 
+> **Example:** A vehicle Fires, Rushes next round, then Fires again. Rush left it Committed, so the second Fire pushes it and costs 1 damage afterward.
+
+> **Example:** A Committed vehicle Fires and rolls white 1/1. It takes 1 critical-miss damage, then 1 pushing damage if still alive. Armor stops neither.
+
 To **recover**, choose Move or Hold. After the group finishes, set it to Ready. Move uses full speed with no attack; Hold stays still. While engaged, use Hold or Disengage instead. In a recovering squad, each member may Move or Hold; an engaged member must Hold or Disengage. Keep the squad together. Disengage keeps its normal damage cost and half-speed limit.
+
+> **Example:** One member of a Spent squad Holds in enemy contact while the other two Move back into its chain. The squad becomes Ready; none of its damage is healed.
 
 A Spent group must recover on its next activation. Rush, Repair, Coolant Flush, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery never heals damage, grants another activation, or prevents a unit from contesting objectives. Black Attack means **Salvage**: that unit may only Move, Hold, Vent, or Disengage. See [equipment](equipment-reference.md#attack) for salvaged squad members and Command's linked activations.
 
@@ -70,9 +84,13 @@ At deployment and at the end of an activation, a squad must form one connected c
 
 If casualties or a destroyed carrier leave a squad split, it must **regroup** next activation, even if Spent. Each base may move up to its speed, Hold if already in place, or Disengage if touching an enemy. It cannot attack, repair, board, or score an exit. Rejoin the chain if possible; otherwise close the gaps as much as possible. Finishing this activation clears readiness, even if the gaps cannot all close; a squad still split must regroup again next time. No one takes damage just for being out of formation. A lone survivor always counts as together.
 
+> **Example:** A–B–C form a straight chain with 4 inches between neighbors. A and C may be 8 inches apart. If B is destroyed, the survivors must regroup next activation.
+
 ## 4 Actions
 
 Each group chooses one action per activation. **Speed** means its current printed speed plus any heat modifier, never less than zero. Round half speed up. Add movement bonuses from equipment after halving or doubling speed. You may move less than the allowance.
+
+> **Example:** Printed speed 7 and a −2 heat modifier give speed 5: Advance up to 3 inches, Move up to 5, or Rush up to 10, before terrain costs.
 
 | Action | What you do | ’Mech heat |
 | --- | --- | --- |
@@ -96,11 +114,15 @@ A ’Mech adds **1 extra heat** if it rolls an Energy attack. Add this to the ac
 
 You may check whether an action is possible before choosing it. If you declare an action you cannot finish, carry out the legal parts, lose any unavailable attack, and pay its heat or pushing cost. Readiness still changes.
 
+> **Example:** A ’Mech Advances but finds its target out of range. It makes no attack and still gains 2 action heat. It adds no Energy heat because it rolled no Energy attack.
+
 ## 5 Movement and facing
 
 Measure distances between base centers unless a rule says the bases must touch. Measure movement along the route taken. Your whole base must fit along that route: it cannot overlap another base, cross blocking terrain, or squeeze through a gap narrower than itself. This includes friendly bases.
 
 You may turn during any action that allows movement, even if you move no distance. **Before a close attack with Fire, you may pivot in place:** keep your base center fixed, keep all existing enemy contacts, and do not overlap other bases or illegal terrain. This needs no Assault action or extra heat. You cannot pivot before a ranged Fire attack, during Hold, Vent, or Repair, or in response to an enemy action.
+
+> **Example:** An enemy touches your ’Mech’s rear. If a legal pivot keeps that contact, Fire lets you turn and make a close attack. It does not let you turn for a ranged shot.
 
 Infantry can attack in any direction and have no rear arc. Vehicles and ’Mechs use their printed front and rear arcs. If a rear arc is missing, agree on a rear 90-degree arc before play. A line exactly on its boundary gets no rear bonus.
 
@@ -112,6 +134,8 @@ While engaged, you may Fire a close attack, Assault in place, attempt Bypass in 
 
 To **Disengage**, take 1 unavoidable damage before moving if any touching enemy is not shutdown. Pay once, however many enemies touch you. If destroyed, remove the unit. Otherwise move up to half speed, without touching a new enemy. A pilot or equipment may remove the damage cost. There is no damage cost if all touching enemies are shutdown.
 
+> **Example:** Two enemies touch a vehicle. Disengage costs it 1 damage in total. If its speed is still 8 afterward, it may move up to 4 inches and cannot attack.
+
 A unit with zero speed cannot change position. It may still pivot and make a close attack with Fire or Assault; if it has no legal attack, Hold or Vent instead.
 
 Stay on the board unless a scenario allows an exit. If the sculpts prevent bases from touching, agree where the bases would meet; use the bases, not overhanging models, for measurements.
@@ -121,6 +145,8 @@ Stay on the board unless a scenario allows an exit. If the sculpts prevent bases
 Mark each terrain area clearly. A unit is in terrain when its base center is inside or on the edge. Blocking terrain is different: no part of a base may overlap it.
 
 Each inch moved through difficult terrain costs 2 inches of movement; other ground costs 1. Do not round these distances. Ignore height, roofs, building damage, and deep water.
+
+> **Example:** A route crosses 2 inches of open ground and 1.5 inches of woods. It costs 2 + 3 = 5 inches of movement.
 
 | Terrain | Movement | Cover and sight |
 | --- | --- | --- |
@@ -134,11 +160,17 @@ Fieldworks are trenches or narrow ruins. Vehicles and ’Mechs may touch their b
 
 **Line of sight:** Draw a line between attacker and target centers. It must pass through the attacker’s front arc, unless the attacker is infantry. A line that crosses or just touches blocking terrain is blocked. Woods and rubble do not block sight.
 
+> **Example:** A shot clips the corner of a building’s marked footprint: direct fire is blocked. A gap between the scenery pieces on that footprint does not create a firing lane.
+
 Intervening ’Mechs block direct sight. Vehicles also block it when neither attacker nor target is a ’Mech. Infantry never block sight. Indirect Rocket fire ignores these blockers.
+
+> **Example:** Infantry standing between two ’Mechs do not block their shot. Another ’Mech standing on that same line does.
 
 Never shoot at a friendly unit or an enemy touching a friendly unit, even with indirect fire.
 
 **Cover:** Use the target’s terrain, not terrain crossed by the shot. Take the single best cover bonus, up to +4 ranged defense. Equipment defense is separate. Woods and rubble give no close defense. Fieldworks give +2 close defense to infantry and +1 to battle armor.
+
+> **Example:** Infantry with defense 17 and its center on a woods edge has ranged defense 20. If its center is outside the woods, a shot crossing those woods gives it no cover.
 
 ## 7 Combat
 
@@ -187,6 +219,10 @@ See the [weapon reference](weapon-reference.md) for labels and examples.
 
 Rear, shutdown, and Death from Above modifiers add together. There are no extra modifiers for range bands, a moving target, nearby allies, or squad size.
 
+> **Example:** Attack 8 + dice totaling 11 − 1 Ballistic recoil = 18. That hits defense 18, but misses defense 19.
+
+> **Example:** White 6/6 and a third die showing 1 still hit automatically and add 1 damage. White 1/1 still miss with a third die showing 6.
+
 ### Damage and infantry assaults
 
 Work out damage in this order:
@@ -206,6 +242,8 @@ Work out damage in this order:
 An infantry close assault is **exposed** if the attacker touches the target’s rear, the target is shutdown, or the attacker stands in woods, rubble, or fieldworks when attacking. Other attacks have no damage limit based on unit type. Energy does not heat the target automatically.
 
 **Example:** Infantry with damage 3 hit an armored ’Mech’s open front. The limit of 1, then Armor 1, leaves no damage. Attacking from the rear raises the limit to 2 and adds Piercing: 2 damage. Battle armor with damage 2 deals 3 in close combat against that ’Mech, even from the front.
+
+> **Example:** An Energy shot deals 3 damage against a vehicle with Armor 2 that applies to Energy. Piercing ignores 1 armor, leaving 2 damage. It adds no heat to the target.
 
 ### Death from Above
 
@@ -231,15 +269,23 @@ After an action, add its heat and any Energy or Jump heat together. Turn the hea
 
 Roll only once, even with several colored warnings. A number without a colored background does not trigger stress. Stress damage adds no heat. Cooling never causes a stress roll.
 
+> **Example:** A ’Mech Jumps during Advance and fires Energy: 2 action + 1 Jump + 1 Energy = 4 heat. Add it as one gain, then make one stress roll if a warning is showing and it is not shutdown.
+
 **Shutdown:** A ’Mech showing three shutdown symbols can only Vent. It cannot move, turn, attack, control or contest objectives, or use pilots other than Engineer. Passive defense equipment still works. Enemies get the shutdown defense modifier and exposed-assault benefit.
 
+> **Example:** Shutdown is two clicks away when a ’Mech gains 4 heat. Turn only those two clicks, stop at shutdown, and discard the rest. Do not roll for stress.
+
 **Cooling:** Hold cools 1. Vent cools the printed vent rating, at least 1; Engineer adds 1. Turn toward the green starting position and stop there. When the shutdown symbols disappear, the ’Mech restarts, but its activation is already spent. There is no extra cooling at round end.
+
+> **Example:** Vent rating 2 with Engineer cools 3 clicks. If that restarts the ’Mech, it still cannot take another action this round.
 
 ## 9 Transport
 
 Each carrier holds one whole infantry squad. No partial squads, mixed squads, vehicles, or ’Mechs may ride. Keep passengers beside the roster with their current dials and readiness. Carrier and squad always track readiness separately.
 
 Passengers may Hold or Disembark on their squad’s activation. Hold clears their readiness. A Spent squad must Hold before it can unload on a later activation. Boarding, unloading, and forced evacuation never clear readiness. Passengers cannot attack, repair, be targeted, use equipment, or control objectives while aboard. The carrier follows its own action and readiness rules.
+
+> **Example:** A Ready carrier has Spent passengers. The squad Holds aboard and becomes Ready. The carrier may act separately; the squad must wait for a later activation to unload.
 
 ### Embark
 
@@ -251,17 +297,23 @@ Activate the squad. Each base may move up to its speed without attacking. To boa
 
 Remove the squad and mark it activated. If any condition fails, the bases stay where they finished moving and their activation is spent. The carrier may take its own activation before or after boarding.
 
+> **Example:** Two squad members reach the carrier, but the third ends 4 inches from its center. Nobody boards; all three stay on the table and the squad has acted.
+
 ### Disembark
 
 Activate the passenger squad. Its carrier must not touch an enemy. Place the whole squad within 3 inches of the carrier’s center, in legal terrain, in its 4-inch chain, and outside enemy contact.
 
 This uses the squad’s activation: no further move, attack, or boarding. If the whole squad cannot fit, it stays aboard; the failed Disembark still uses its activation and leaves readiness unchanged. The carrier’s activation is unaffected.
 
+> **Example:** Only two of three passengers can fit legally beside the carrier. All three remain aboard, with the squad’s activation spent.
+
 ### Carrier destroyed
 
 Finish the attack, then give each passenger 1 unavoidable damage. Remove casualties and the carrier. Place survivors within 3 inches of the carrier’s former center, in legal terrain and outside enemy contact; you may use the space the carrier occupied.
 
 Save as many bases as can fit. Remove any that cannot be placed. Mark the surviving squad activated, even if it had not acted, and keep its readiness. If it is split, it must regroup next round. Leave no wreck.
+
+> **Example:** Three passengers take 1 damage each when their carrier is destroyed. One dies; only one of the two survivors can be placed legally. That one survives, already activated. The other is removed.
 
 A squad cannot board and unload in the same round or gain another activation when its carrier is destroyed. In Breakthrough, passengers exit with their carrier and score their own points once.
 
@@ -270,6 +322,8 @@ A squad cannot board and unload in the same round or gain another activation whe
 You control an objective when at least one of your base centers is within 3 inches and no enemy base center is. If both sides are present, it is **contested** and neither controls it.
 
 Shutdown ’Mechs, passengers, and units that have left the board do not count. Spent and engaged units, and units with zero attack or damage, still count. Squad members may contest different sites if they keep their 4-inch chain. Moving away gives up control.
+
+> **Example:** Your Spent infantry is within 3 inches of a relay beside an enemy shutdown ’Mech. Your infantry controls it. If an active enemy enters the area, it becomes contested regardless of numbers.
 
 The scenario sets when to score, how the game ends, and how to handle ties. Destroying units earns no points unless the scenario says so. Read the victory conditions before deployment.
 
@@ -304,6 +358,8 @@ Choose the same size in the [force builder](../site/builder.html). It checks the
 
 These are upper limits, with no required unit types. You can field only vehicles, only infantry, or any mix, including a force with no ’Mechs. The ’Mech limit counts only ’Mechs; vehicles and infantry have their own limits.
 
+> **Example:** A Skirmish force may have no ’Mechs, two vehicles, and three infantry squads, provided their combined points stay at or below 600 and the other limits are met.
+
 A ’Mech or vehicle uses one choice. Infantry combine conventional and battle armor squads, with 2–3 bases per squad. Carriers are designated vehicles already in the force; they add no points or vehicle slots. Every ’Mech must have one pilot, included in its cost.
 
 At **every size**, the rule of three applies across the whole force, each Unique catalog ID appears at most once, and at most one ’Mech may take one Rocket test substitute. Larger games do not reset these limits for separate detachments.
@@ -313,6 +369,8 @@ Use ordinary or quad ’Mechs, ground vehicles, infantry, and battle armor. Trea
 ### Choose a faction
 
 Choose **Mixed factions** or one faction in the builder. A single-faction army uses only models with that exact faction on their profiles, including every infantry base and carrier. Mercenary and Gunslinger are their own factions, not automatic allies. You may field mixed armies if you prefer. Factions do not change points, pilots, or force limits. Captures during play do not change whether your starting roster was legal.
+
+> **Example:** A Spirit Cats force cannot include a Mercenary carrier. Choose Mixed factions to use both; neither model’s points change.
 
 Leave out aircraft, artillery-only and aquatic-only units, colossal ’Mechs, DropShips, and units that need expansion rules. An artillery-marked ground vehicle with ordinary ranges may be used only by prior agreement; it still occupies a vehicle slot and gets no artillery attack.
 
@@ -327,6 +385,8 @@ A Unique figure is limited to one of its catalog ID in the whole force, even whe
 ### Organize infantry squads
 
 Each squad starts with two or three bases. Keep infantry and battle armor in separate squads; members may have different ranks or families within that category. Record every member’s catalog ID and pay its points. Squads cannot split, merge, or exchange members during play. Casualties may leave a lone survivor.
+
+> **Example:** Three infantry bases costing 20 points each form one 60-point squad. They use one squad slot, have three dials, and activate together.
 
 ### Assign carriers, pilots, and weapons
 

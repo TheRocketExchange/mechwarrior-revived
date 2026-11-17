@@ -33,6 +33,8 @@ jobs:
         run: python units/test_catalog.py
       - name: Check force builder
         run: node web/test_force_model.js
+      - name: Check scenario terrain
+        run: python scenarios/check_layouts.py
       - name: Check generated packet
         run: python web/check_packet.py
       - name: Check themed playtest pack

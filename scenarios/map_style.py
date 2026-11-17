@@ -72,7 +72,7 @@ class Board:
     def __init__(self, width, depth, left, top, scale, grid=6, axes=True):
         self.width, self.depth, self.left, self.top, self.scale = width, depth, left, top, scale
         self.grid, self.axes = grid, axes
-        self.zones, self.features, self.overlay = [], [], []
+        self.zones, self.features, self.overlay, self.labels = [], [], [], []
 
     def x(self, value): return self.left + value*self.scale
     def y(self, value): return self.top + (self.depth-value)*self.scale
@@ -89,6 +89,7 @@ class Board:
         # Dimension arrows supply the limits on scenario maps.
         label_y = self.y((low+high)/2)
         if high-low>8: label_y=self.y(high-1.8)
+        if 'label_y' in zone: label_y=self.y(zone['label_y'])
         self.overlay.append(badge(self.x(self.width/2), label_y+3, zone['name'], PAPER,color,15))
 
     def terrain(self, feature):
@@ -104,7 +105,7 @@ class Board:
                               rect(px+w*.3,py+h*.52,w*.35,h*.22,'#58666b',INK,'stroke-width="2"')]
             for part in (.58,.65,.72):
                 self.features.append(line(px+w*.34,py+h*part,px+w*.61,py+h*part,'#a3b0ac',1.5))
-        self.features.append(badge(px+w/2,py+15,ident,size=12,width=max(26,min(w-4,38))))
+        self.labels.append(badge(px+w/2,py+15,ident,size=12,width=max(26,min(w-4,38))))
 
     def objective(self, objective):
         x,y=self.x(objective['x']),self.y(objective['y'])
@@ -135,7 +136,7 @@ class Board:
         if kind!='move': extra+=' stroke-dasharray="8 5"'
         self.overlay.append(line(self.x(start[0]),self.y(start[1]),self.x(end[0]),self.y(end[1]),color,4,extra))
 
-    def render(self):
+    def render(self, show_terrain_labels=True):
         out=[rect(self.left+4,self.top+5,self.width*self.scale,self.depth*self.scale,'#aaa98c'),
              rect(self.left,self.top,self.width*self.scale,self.depth*self.scale,'url(#ground)',INK,
                   f'data-board-width="{self.width}" data-board-depth="{self.depth}" data-scale="{self.scale}" stroke-width="3"')]+self.zones
@@ -146,7 +147,7 @@ class Board:
             out.append(line(self.left,self.y(value),self.x(self.width),self.y(value),GRID,1,'opacity=".5"'))
             if self.axes: out.append(text(self.left-14,self.y(value)+5,value,15,'end',MUTED))
         out.append(rect(self.left,self.top,self.width*self.scale,self.depth*self.scale,'none',INK,'stroke-width="3"'))
-        return out+self.features+self.overlay
+        return out+self.features+self.overlay+(self.labels if show_terrain_labels else [])
 
 
 def terrain_key(x,y,kinds):

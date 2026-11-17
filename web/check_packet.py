@@ -134,7 +134,7 @@ for name, layout in layouts.items():
         assert math.isclose(float(board.get('height')),48*scale,abs_tol=.001)
         expected_terrain = [dict(t,x=t['x']+(12 if wide else 0)) for t in layout['terrain']]
         shapes = svg.xpath('//*[@data-terrain]')
-        assert len(shapes)==len(expected_terrain)+(4 if wide else 0)
+        assert len(shapes)==len(expected_terrain)+(6 if wide else 0)
         for terrain in expected_terrain:
             shape=svg.xpath('//*[@data-terrain=$id]',id=terrain['id'])[0]
             expected=[left+terrain['x']*scale,top+(48-terrain['y']-terrain['depth'])*scale,terrain['width']*scale,terrain['depth']*scale]
@@ -144,7 +144,7 @@ for name, layout in layouts.items():
             original_ids={t['id'] for t in layout['terrain']}
             added=[s for s in shapes if s.get('data-terrain') not in original_ids]
             actual={(s.get('data-kind'),round((float(s.get('x'))-left)/scale),round(48-(float(s.get('y'))-top+float(s.get('height')))/scale),round(float(s.get('width'))/scale),round(float(s.get('height'))/scale)) for s in added}
-            assert actual=={('woods',3,18,6,8),('woods',63,18,6,8),('rubble',3,30,6,6),('rubble',63,30,6,6)},name
+            assert actual=={('blocking',3,12,6,6),('blocking',63,12,6,6),('blocking',3,30,6,6),('blocking',63,30,6,6),('woods',3,22,6,4),('woods',63,22,6,4)},name
         assert len(svg.xpath('//*[@data-objective]'))==len(layout['objectives'])
         for obj in layout['objectives']:
             ring=svg.xpath('//*[@data-objective=$id]',id=obj['id'])[0]

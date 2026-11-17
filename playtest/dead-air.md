@@ -53,4 +53,4 @@ Keep the [core rules](../rules/core-rules.md) and [equipment reference](../rules
 
 Keep your force, swap north and south, and reset all dials and markers. Use the same PDF for both games. Record the score, time, vehicle and squad orders, decisions changed by heat or pushing, and rules that needed rereading. Save proposed rule and points changes until both games are finished.
 
-Pack 1 · Rules 0.3 · Points 0.3-alpha-5 · Snapshot `d024a14d19`. The snapshot identifies the rules and roster data used to build this copy. No tabletop results have been recorded for this matchup.
+Pack 1 · Rules 0.3 · Points 0.3-alpha-5 · Snapshot `24df62b3a3`. The snapshot identifies the rules and roster data used to build this copy. No tabletop results have been recorded for this matchup.

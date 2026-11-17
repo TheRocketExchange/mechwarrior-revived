@@ -10,6 +10,8 @@ Agree on a [game size](../rules/core-rules.md#choose-the-battle-size), then plac
 
 [![Seize and Hold setup map with measured terrain placement and deployment zones.](diagrams/seize-and-hold-map.svg)](diagrams/seize-and-hold-map.svg)
 
+Staggered relay buildings screen the advance from both edges. The central site stays exposed; the outer sites offer different kinds of infantry cover. Keep the marked blocking footprints even if your scenery is smaller.
+
 Deploy with bases entirely inside the north or south zone shown on the map. Use the normal side-choice and alternating deployment rules. Choose sides after placing terrain; leave the center objective in open ground. Infiltrate follows its equipment rule after ordinary deployment.
 
 Vehicles and ’Mechs can contest the western site from outside the fieldworks if their centers are within 3 inches. They cannot enter the fieldworks.
@@ -17,6 +19,8 @@ Vehicles and ’Mechs can contest the western site from outside the fieldworks i
 ## Score and win
 
 At the end of rounds **2–6**, score 1 point for each objective you control. Contested objectives score nothing. Round 1 scores nothing. There are 15 points available across both players.
+
+> **Example:** You hold two sites and the third is contested at the end of round 2. You score 2; your opponent scores 0. Holding those same two next round scores another 2.
 
 After round 6, the higher score wins. Equal scores are a draw; kills do not break ties.
 

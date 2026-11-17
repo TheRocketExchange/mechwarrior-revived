@@ -56,3 +56,5 @@ Cover still affects the attack roll. Compare moving and stationary fire:
 | Advance after moving | −1 attack; Gunner can remove it within half speed | No movement accuracy penalty; 3 total ’Mech heat | Cannot shoot |
 | Fire | 1 ’Mech heat | 2 ’Mech heat | 1 ’Mech heat; indirect fire takes −2 attack |
 | Target behind blocking terrain | Cannot shoot | Cannot shoot | Indirect fire, if arc, range, and target are legal |
+
+> **Indirect fire:** A Rocket weapon with attack 8 and damage 3 Fires over a building. Dice totaling 12 give an attack total of 18 after the −2 penalty. A hit deals 2 before armor. The building is ignored; the target’s cover still applies.

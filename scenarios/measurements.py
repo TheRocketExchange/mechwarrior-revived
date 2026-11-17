@@ -14,6 +14,7 @@ def placement_dimensions(terrain, objectives, width, depth=48, zones=()):
     for zone in zones:
         cy = (zone['low']+zone['high'])/2
         if zone['high']-zone['low']>8: cy=zone['high']-1.8
+        cy=zone.get('label_y',cy)
         labels.append((width/2-4,cy-1,width/2+4,cy+1))
 
     def overlap(a, b):

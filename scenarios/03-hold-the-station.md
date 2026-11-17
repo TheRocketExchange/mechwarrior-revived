@@ -10,6 +10,8 @@ Agree on a [game size](../rules/core-rules.md#choose-the-battle-size), then plac
 
 [![Hold the Station setup map with measured terrain placement and deployment zones.](diagrams/hold-the-station-map.svg)](diagrams/hold-the-station-map.svg)
 
+Two staggered lines of buildings shelter the approach. The station blocks sight between the two access sites. Keep the marked blocking footprints even if your scenery is smaller.
+
 The defender deploys first, then the attacker. Keep each base entirely inside its marked zone. Keep squads together and use legal terrain; vehicles and ’Mechs cannot enter fieldworks or the station. Infiltrate follows its equipment rule after ordinary deployment.
 
 The attacker chooses who acts first in round 1. Roll initiative normally afterward. There are no reserves.
@@ -22,6 +24,8 @@ At each round end, check both access objectives using the core control rules.
 - If either is contested, uncontrolled, or held by the defender, reset the counter to 0.
 
 The attacker wins at **2 consecutive round ends** with both sites held. Otherwise the defender wins at the end of round 6. First taking both sites in round 6 is too late.
+
+> **Example:** The attacker holds both sites after round 3: counter 1. One is contested after round 4, resetting it to 0. Holding both after rounds 5 and 6 then wins the game.
 
 Passengers and shutdown ’Mechs do not contest. Entering the attacker’s deployment zone gives the defender no special victory.
 

@@ -3,31 +3,47 @@
   "game_size": "skirmish",
   "board": {"width": 48, "depth": 48},
   "rounds": 4,
-  "scoring_rounds": [2, 3, 4],
+  "scoring_rounds": [
+    2,
+    3,
+    4
+  ],
   "objective": {"name": "Relay", "x": 24, "y": 24, "radius": 3},
   "deployment": {"south": [0, 8], "north": [40, 48]},
   "terrain": [
-    {"id": "W1", "name": "Southwest woods", "kind": "woods", "x": 12, "y": 16, "width": 6, "depth": 6},
-    {"id": "W2", "name": "Northeast woods", "kind": "woods", "x": 30, "y": 26, "width": 6, "depth": 6},
-    {"id": "R1", "name": "Southeast rubble", "kind": "rubble", "x": 30, "y": 16, "width": 6, "depth": 6},
-    {"id": "R2", "name": "Northwest rubble", "kind": "rubble", "x": 12, "y": 26, "width": 6, "depth": 6},
-    {"id": "B1", "name": "West blocking structure", "kind": "blocking", "x": 4, "y": 20, "width": 6, "depth": 8},
-    {"id": "B2", "name": "East blocking structure", "kind": "blocking", "x": 38, "y": 20, "width": 6, "depth": 8}
+    {"id": "W1", "name": "Southwest woods", "kind": "woods", "x": 6, "y": 10, "width": 10, "depth": 7},
+    {"id": "W2", "name": "Northeast woods", "kind": "woods", "x": 32, "y": 31, "width": 10, "depth": 7},
+    {"id": "R1", "name": "Southeast rubble", "kind": "rubble", "x": 32, "y": 10, "width": 10, "depth": 7},
+    {"id": "R2", "name": "Northwest rubble", "kind": "rubble", "x": 6, "y": 31, "width": 10, "depth": 7},
+    {"id": "B1", "name": "West blocking structure", "kind": "blocking", "x": 5, "y": 21, "width": 10, "depth": 6},
+    {"id": "B2", "name": "East blocking structure", "kind": "blocking", "x": 33, "y": 21, "width": 10, "depth": 6},
+    {"id": "B3", "name": "South blocking structure", "kind": "blocking", "x": 20, "y": 10, "width": 8, "depth": 8},
+    {"id": "B4", "name": "North blocking structure", "kind": "blocking", "x": 20, "y": 30, "width": 8, "depth": 8}
   ],
   "forces": [
-    {"id": "S1", "name": "First Contact — Patrol A", "game_size": "skirmish", "groups": [
-      {"id": "M1", "members": ["AOD106"], "pilot": "Gunner"},
-      {"id": "M2", "members": ["AOD104"], "pilot": "Brawler"},
-      {"id": "M3", "members": ["AOD112"], "pilot": "Engineer"},
-      {"id": "V1", "members": ["AOD050"]},
-      {"id": "C1", "members": ["D006", "D006", "D006"]}
-    ]},
-    {"id": "S2", "name": "First Contact — Patrol B", "game_size": "skirmish", "groups": [
-      {"id": "M1", "members": ["AOD107"], "pilot": "Gunner"},
-      {"id": "M2", "members": ["AOD102"], "pilot": "Brawler"},
-      {"id": "M3", "members": ["AOD110"], "pilot": "Engineer"},
-      {"id": "V1", "members": ["AOD040"]},
-      {"id": "C1", "members": ["D006", "D006", "D006"]}
-    ]}
+    {
+      "id": "S1",
+      "name": "First Contact — Patrol A",
+      "game_size": "skirmish",
+      "groups": [
+        {"id": "M1", "members": ["AOD106"], "pilot": "Gunner"},
+        {"id": "M2", "members": ["AOD104"], "pilot": "Brawler"},
+        {"id": "M3", "members": ["AOD112"], "pilot": "Engineer"},
+        {"id": "V1", "members": ["AOD050"]},
+        {"id": "C1", "members": ["D006", "D006", "D006"]}
+      ]
+    },
+    {
+      "id": "S2",
+      "name": "First Contact — Patrol B",
+      "game_size": "skirmish",
+      "groups": [
+        {"id": "M1", "members": ["AOD107"], "pilot": "Gunner"},
+        {"id": "M2", "members": ["AOD102"], "pilot": "Brawler"},
+        {"id": "M3", "members": ["AOD110"], "pilot": "Engineer"},
+        {"id": "V1", "members": ["AOD040"]},
+        {"id": "C1", "members": ["D006", "D006", "D006"]}
+      ]
+    }
   ]
 }

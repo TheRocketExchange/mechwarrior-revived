@@ -10,6 +10,8 @@ Agree on a [game size](../rules/core-rules.md#choose-the-battle-size), then plac
 
 [![Breakthrough setup map with measured terrain placement and deployment zones.](diagrams/breakthrough-map.svg)](diagrams/breakthrough-map.svg)
 
+The southern depots give the attacker places to rally before crossing the center. Staggered checkpoints break the defenderâ€™s sightlines without sealing the exit. Keep the marked blocking footprints even if your scenery is smaller.
+
 The defender deploys first, then the attacker. Keep each base entirely inside its marked zone. Keep squads together and use legal terrain. Infiltrate follows its equipment rule after ordinary deployment.
 
 The attacker chooses who acts first in round 1. Roll initiative normally afterward. The whole north edge is the exit.
@@ -23,6 +25,10 @@ An unengaged attacker may leave with Move, Advance, or Rush, using that actionâ€
 Remove escaped units permanently and count their points once, using the cost recorded before deployment. Passengers leave with their carrier and add their points, even if their squad has already acted. Destroyed units score nothing.
 
 A squad leaving on foot must get every survivor across with the same action in the same activation. Declare the exit before moving. If any member cannot make it, none leaves; choose a normal squad action instead. A split squad must spend an activation regrouping first; it cannot exit during that activation.
+
+> **Example:** An army starts at 590 points, so its escape target is 177. A 70-point carrier leaves with 45 points of passengers: count 115 escaped points, once.
+
+> **Example:** Two squad members could clear the edge, but the third cannot. None exits this activation; choose a normal squad action instead.
 
 ## Win
 

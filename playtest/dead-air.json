@@ -38,6 +38,8 @@
     "R1": "Collapsed loading yard",
     "R2": "Ruined crew quarters",
     "B1": "Ore-processing block",
-    "B2": "Sealed power house"
+    "B2": "Sealed power house",
+    "B3": "Southern service hall",
+    "B4": "Northern service hall"
   }
 }

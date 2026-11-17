@@ -1,51 +1,80 @@
 {
   "seize-and-hold": {
-    "title": "Seize and Hold", "number": "01", "rounds": 6,
+    "title": "Seize and Hold",
+    "number": "01",
+    "rounds": 6,
     "source": "01-seize-and-hold.md",
-    "deployment": [{"id":"south","name":"SOUTH","low":0,"high":6,"side":"blue"},{"id":"north","name":"NORTH","low":42,"high":48,"side":"red"}],
-    "objectives": [{"id":"O1","name":"West objective","x":10,"y":24},{"id":"O2","name":"Central objective","x":24,"y":24},{"id":"O3","name":"East objective","x":38,"y":24}],
+    "deployment": [
+      {"id": "south", "name": "SOUTH", "low": 0, "high": 6, "side": "blue"},
+      {"id": "north", "name": "NORTH", "low": 42, "high": 48, "side": "red"}
+    ],
+    "objectives": [
+      {"id": "O1", "name": "West objective", "x": 10, "y": 24},
+      {"id": "O2", "name": "Central objective", "x": 24, "y": 24},
+      {"id": "O3", "name": "East objective", "x": 38, "y": 24}
+    ],
     "terrain": [
-      {"id":"F1","name":"West fieldworks","kind":"fieldworks","x":7,"y":21,"width":3,"depth":6},
-      {"id":"W1","name":"East woods","kind":"woods","x":35,"y":21,"width":6,"depth":6},
-      {"id":"W2","name":"Southern woods","kind":"woods","x":15,"y":11,"width":6,"depth":6},
-      {"id":"W3","name":"Northern woods","kind":"woods","x":27,"y":31,"width":6,"depth":6},
-      {"id":"B1","name":"Southwest blocking structure","kind":"blocking","x":5,"y":11,"width":6,"depth":6},
-      {"id":"B2","name":"Northeast blocking structure","kind":"blocking","x":37,"y":31,"width":6,"depth":6},
-      {"id":"R1","name":"Southeast rubble","kind":"rubble","x":31,"y":13,"width":6,"depth":6},
-      {"id":"R2","name":"Northwest rubble","kind":"rubble","x":11,"y":29,"width":6,"depth":6}
+      {"id": "F1", "name": "West fieldworks", "kind": "fieldworks", "x": 7, "y": 21, "width": 3, "depth": 6},
+      {"id": "W1", "name": "East woods", "kind": "woods", "x": 35, "y": 21, "width": 6, "depth": 6},
+      {"id": "W2", "name": "Southern woods", "kind": "woods", "x": 35, "y": 10, "width": 8, "depth": 7},
+      {"id": "W3", "name": "Northern woods", "kind": "woods", "x": 5, "y": 31, "width": 8, "depth": 7},
+      {"id": "B1", "name": "Southwest blocking structure", "kind": "blocking", "x": 5, "y": 10, "width": 10, "depth": 7},
+      {"id": "B2", "name": "Northeast blocking structure", "kind": "blocking", "x": 33, "y": 31, "width": 10, "depth": 7},
+      {"id": "B3", "name": "South relay building", "kind": "blocking", "x": 23, "y": 10, "width": 8, "depth": 7},
+      {"id": "B4", "name": "North relay building", "kind": "blocking", "x": 17, "y": 31, "width": 8, "depth": 7}
     ],
     "note": "Score held sites at the end of rounds 2–6."
   },
   "breakthrough": {
-    "title": "Breakthrough", "number": "02", "rounds": 8,
-    "source": "02-breakthrough.md", "exit": "north",
-    "deployment": [{"id":"attacker","name":"ATTACKER","low":0,"high":6,"side":"blue"},{"id":"defender","name":"DEFENDER","low":30,"high":42,"side":"red"}],
+    "title": "Breakthrough",
+    "number": "02",
+    "rounds": 8,
+    "source": "02-breakthrough.md",
+    "exit": "north",
+    "deployment": [
+      {"id": "attacker", "name": "ATTACKER", "low": 0, "high": 6, "side": "blue"},
+      {"id": "defender", "name": "DEFENDER", "low": 30, "high": 42, "side": "red", "label_y": 36}
+    ],
     "objectives": [],
     "terrain": [
-      {"id":"W1","name":"Western woods","kind":"woods","x":5,"y":18,"width":8,"depth":8},
-      {"id":"W2","name":"Eastern woods","kind":"woods","x":35,"y":18,"width":8,"depth":8},
-      {"id":"R1","name":"Western rubble","kind":"rubble","x":14,"y":29,"width":6,"depth":6},
-      {"id":"R2","name":"Eastern rubble","kind":"rubble","x":28,"y":29,"width":6,"depth":6},
-      {"id":"B1","name":"Central blocking structure","kind":"blocking","x":21,"y":20,"width":6,"depth":6},
-      {"id":"F1","name":"Defender’s western fieldworks","kind":"fieldworks","x":5,"y":33,"width":6,"depth":6},
-      {"id":"F2","name":"Defender’s eastern fieldworks","kind":"fieldworks","x":37,"y":33,"width":6,"depth":6}
+      {"id": "W1", "name": "Western woods", "kind": "woods", "x": 5, "y": 21, "width": 8, "depth": 4},
+      {"id": "W2", "name": "Eastern woods", "kind": "woods", "x": 35, "y": 21, "width": 8, "depth": 8},
+      {"id": "R1", "name": "Northern rubble", "kind": "rubble", "x": 20, "y": 39, "width": 8, "depth": 6},
+      {"id": "R2", "name": "Southern rubble", "kind": "rubble", "x": 20, "y": 9, "width": 8, "depth": 7},
+      {"id": "B1", "name": "Central blocking structure", "kind": "blocking", "x": 20, "y": 20, "width": 8, "depth": 8},
+      {"id": "B2", "name": "Southwest depot", "kind": "blocking", "x": 5, "y": 10, "width": 10, "depth": 7},
+      {"id": "B3", "name": "Southeast depot", "kind": "blocking", "x": 33, "y": 10, "width": 10, "depth": 7},
+      {"id": "B4", "name": "West checkpoint", "kind": "blocking", "x": 8, "y": 29, "width": 8, "depth": 6},
+      {"id": "B5", "name": "East checkpoint", "kind": "blocking", "x": 32, "y": 33, "width": 8, "depth": 6},
+      {"id": "F1", "name": "Western fieldworks", "kind": "fieldworks", "x": 1, "y": 29, "width": 3, "depth": 6},
+      {"id": "F2", "name": "Eastern fieldworks", "kind": "fieldworks", "x": 44, "y": 33, "width": 3, "depth": 6}
     ],
     "note": "Escape across the full north edge; use the scenario’s points target."
   },
   "hold-the-station": {
-    "title": "Hold the Station", "number": "03", "rounds": 6,
+    "title": "Hold the Station",
+    "number": "03",
+    "rounds": 6,
     "source": "03-hold-the-station.md",
-    "deployment": [{"id":"attacker","name":"ATTACKER","low":0,"high":8,"side":"blue"},{"id":"defender","name":"DEFENDER","low":30,"high":48,"side":"red"}],
-    "objectives": [{"id":"O1","name":"West access objective","x":15,"y":35},{"id":"O2","name":"East access objective","x":33,"y":35}],
+    "deployment": [
+      {"id": "attacker", "name": "ATTACKER", "low": 0, "high": 8, "side": "blue"},
+      {"id": "defender", "name": "DEFENDER", "low": 30, "high": 48, "side": "red"}
+    ],
+    "objectives": [
+      {"id": "O1", "name": "West access objective", "x": 15, "y": 35},
+      {"id": "O2", "name": "East access objective", "x": 33, "y": 35}
+    ],
     "terrain": [
-      {"id":"B1","name":"Station building, blocking","kind":"blocking","x":20,"y":32,"width":8,"depth":8},
-      {"id":"F1","name":"West fieldworks","kind":"fieldworks","x":12,"y":32,"width":3,"depth":6},
-      {"id":"R1","name":"East rubble","kind":"rubble","x":30,"y":32,"width":6,"depth":6},
-      {"id":"W1","name":"Western approach woods","kind":"woods","x":9,"y":17,"width":8,"depth":8},
-      {"id":"W2","name":"Eastern approach woods","kind":"woods","x":31,"y":17,"width":8,"depth":8},
-      {"id":"B2","name":"Central blocking structure","kind":"blocking","x":21,"y":18,"width":6,"depth":6},
-      {"id":"R2","name":"West flank rubble","kind":"rubble","x":3,"y":27,"width":6,"depth":6},
-      {"id":"R3","name":"East flank rubble","kind":"rubble","x":39,"y":27,"width":6,"depth":6}
+      {"id": "B1", "name": "Station building, blocking", "kind": "blocking", "x": 20, "y": 34, "width": 8, "depth": 8},
+      {"id": "F1", "name": "West fieldworks", "kind": "fieldworks", "x": 12, "y": 32, "width": 3, "depth": 6},
+      {"id": "R1", "name": "East rubble", "kind": "rubble", "x": 32, "y": 32, "width": 6, "depth": 6},
+      {"id": "W1", "name": "West station woods", "kind": "woods", "x": 4, "y": 32, "width": 4, "depth": 8},
+      {"id": "W2", "name": "East station woods", "kind": "woods", "x": 42, "y": 32, "width": 4, "depth": 8},
+      {"id": "B2", "name": "Central blocking structure", "kind": "blocking", "x": 20, "y": 12, "width": 8, "depth": 6},
+      {"id": "B3", "name": "Southwest warehouse", "kind": "blocking", "x": 4, "y": 12, "width": 10, "depth": 6},
+      {"id": "B4", "name": "Southeast warehouse", "kind": "blocking", "x": 34, "y": 12, "width": 10, "depth": 6},
+      {"id": "B5", "name": "West service building", "kind": "blocking", "x": 8, "y": 22, "width": 10, "depth": 6},
+      {"id": "B6", "name": "East service building", "kind": "blocking", "x": 30, "y": 22, "width": 10, "depth": 6}
     ],
     "note": "Attacker: hold both access sites at two consecutive round ends."
   }

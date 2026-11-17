@@ -25,10 +25,12 @@ def layouts():
 def wider(layout):
     result = copy.deepcopy(layout)
     for item in result['terrain']+result['objectives']: item['x'] += 12
-    for kind,prefix,y,depth in [('woods','W',18,8),('rubble','R',30,6)]:
+    for kind,prefix,y,depth,label in [('blocking','B',12,6,'south block'),
+                                     ('blocking','B',30,6,'north block'),
+                                     ('woods','W',22,4,'woods')]:
         number = max([int(t['id'][1:]) for t in result['terrain'] if t['id'].startswith(prefix)],default=0)
         for i,(side,x) in enumerate([('West',3),('East',63)],1):
-            result['terrain'].append(dict(id=f'{prefix}{number+i}', name=f'{side} outer {kind}', kind=kind, x=x, y=y, width=6, depth=depth))
+            result['terrain'].append(dict(id=f'{prefix}{number+i}', name=f'{side} outer {label}', kind=kind, x=x, y=y, width=6, depth=depth))
     return result
 
 
@@ -56,13 +58,14 @@ def map_diagram(slug, data, wide=False):
     for zone in data['deployment']: board.zone(zone)
     for feature in data['terrain']: board.terrain(feature)
     for objective in data['objectives']: board.objective(objective)
-    body=board.render()
+    body=board.render(show_terrain_labels=False)
     for d in placement_dimensions(data['terrain'],data['objectives'],board_width,zones=data['deployment']):
         body += dimension(board,d['id'],**{k:v for k,v in d.items() if k!='id'})
     for t in data['terrain']:
         body += [text(board.x(t['x']+t['width']/2),board.y(t['y'])-7,
                       f'{t["width"]}×{t["depth"]}',12,'middle',weight='bold',
                       extra=f'data-footprint="{t["id"]}" paint-order="stroke" stroke="#eee9d8" stroke-width="4" stroke-linejoin="round"')]
+    body += board.labels
     # Board size and deployment depth live outside the terrain drawing.
     body += dimension(board,'board','x',0,board_width,48+2.2)
     body += dimension(board,'board','y',0,48,-4.5)

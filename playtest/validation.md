@@ -1,6 +1,6 @@
 # Checks so far
 
-Version 0.3 · November 16, 2026
+Version 0.3 · November 17, 2026
 
 The checks below cover written rules, arithmetic, and generated files. **No tabletop games have been recorded.** Balance, play time, and fit with a wider collection still need testing.
 
@@ -11,7 +11,8 @@ The checks below cover written rules, arithmetic, and generated files. **No tabl
 | Packet contents | Core rules, references, First Contact starter, three full missions, two starter patrols, three Standard sample armies, pilots, game log, playtest plan, and point-adjustment table are present |
 | Starter scenario | Four rounds with one relay; scoring in rounds 2–4 gives three available points. Patrols A/B cost 594/590 points, each with seven models in five groups. Both pass Skirmish limits. Symmetric terrain, clear control area, source coordinates, and measured map geometry are checked |
 | Dead Air pack | Sixteen Letter pages collect the unchanged starter matchup with a fictional relay-station briefing, measured map, both rosters, quick references, fourteen photo cards with complete dials and assignments, six named pilot cards, and a one-page results sheet. All pages rendered and visually inspected. PDF values, factions, photos, assignments and pilot text match the source data. Both downloadable lists imported successfully in the browser at 594/590 points; the page and builder fit a 390-pixel viewport |
-| Maps and teaching diagrams | Seven measured maps cover all four scenarios, including 72 × 48 layouts for the three full missions. Placement arrows, footprint sizes, deployment bands, and objective rings match the source data; wider maps shift the original layout by 12 inches and add the four specified flank features. Measurements appear on the diagrams, without separate coordinate tables. Five examples share the same terrain patterns, markers, and arrows: movement and shooting, difficult-ground movement cost, line of sight, objective control, and pushing/recovery. SVGs have accessible titles and descriptions and work offline. Enlargement, size selection, and print styles pass browser checks at 320, 390, and 1,440 pixels; direct map links also work without JavaScript. The printable starter map uses the same placement arrows |
+| Maps and teaching diagrams | Seven measured maps cover all four scenarios, including 72 × 48 layouts for the three full missions. Placement arrows, footprint sizes, deployment bands, and objective rings match the source data; wider maps shift the original layout by 12 inches and add four blocking buildings and two woods. Measurements appear on the diagrams, without separate coordinate tables. Five diagrams cover movement and shooting, difficult-ground movement cost, line of sight, objective control, and pushing/recovery. SVGs have accessible titles and descriptions and work offline. Enlargement, size selection, and print styles pass browser checks at 320, 390, and 1,440 pixels; direct map links also work without JavaScript. The printable starter map uses the same placement arrows |
+| Short rules examples | Worked cases accompany activation, passing, pushing, squad chains, movement, close pivots, cover, attacks, damage, heat, transport, objectives, and force limits. Equipment and pilot examples cover timing, bonus caps, support, capture, and extra attacks. Each scenario includes a scoring or escape example. Examples use the existing rules and omit modifiers they do not mention |
 | Earlier material | Compared Age of Destruction and the downloaded scenario handbook; source notes identify both |
 | Army totals | H: 1,192 points / 15 groups. B: 1,192 / 17. I: 1,196 / 19. The totals differ by 4 points. Each has two carriers and follows the force chart |
 | Force organization | All three rosters pass automated checks for unit-type caps, 2–3-base squads, repeated families, Unique IDs, pilots, carriers, passenger assignments, Rocket substitutions, and points. Mixed squads count toward every family they contain |
@@ -41,7 +42,7 @@ The checks below cover written rules, arithmetic, and generated files. **No tabl
 | Pilot layout | The PDF was independently rendered and visually checked; ability text, name fields, and reminders fit |
 | Fieldworks objectives | Objectives sit on the edge. A 3-inch-diameter large base can stay outside and within control range |
 | Handbook identity | Local file: 116 pages, v2.1, Mike “Rimoran” McCarrig, December 15, 2020. File hash is in the source notes |
-| HTML | 28 offline pages and 1,799 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, game-size charts, SVG assets, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads |
+| HTML | 28 offline pages and 1,800 search entries. Local links, anchors, IDs, headings, PDF offsets and page sizes, roster costs, unit-family data, game-size charts, SVG assets, and JavaScript syntax checked. README Pages links resolve to generated pages, anchors, or downloads |
 | Dark Age presentation | Locally bundled Russo One, Roboto Condensed and Orbitron load offline; license notices are included. All 28 pages and navigation fit 320-, 390- and 1,440-pixel viewports. Exact catalog thumbnails appear in every roster row, including each member of a mixed squad, and open the matching datasheet. Home, rules and mobile roster visually reviewed. Full-card, compact-dial and datasheet printing still pass pagination and content checks |
 | Browser | Isolated headless Chrome checks passed for catalog search, filters, photos, paging, dials, Rocket pricing, readiness, and missing units. Click-value curves and contribution tables match the catalog. Catalog, rules, readiness, unit cards, long dials, pricing details, and the force builder fit a 390-pixel viewport without page overflow |
 | Datasheet printing | Both a 14-click ’Mech and the 23-click longest dial print on one Letter page with complete combat and heat tracks. Independently rendered and visually checked |
@@ -85,6 +86,26 @@ The hit percentages isolate cover; they do not predict how a whole battle will p
 | Seize and Hold return game | Each army changes edge, whoever controls it |
 | Hold the Station defender is wiped out | Attacker still needs both sites for two consecutive round ends |
 
+## Terrain review
+
+The November 17 layouts add or reposition blocking buildings to interrupt long firing lanes. First Contact and Seize and Hold have rotationally matched blocking terrain. Breakthrough has sheltered staging areas and staggered checkpoints; Hold the Station has two lines of buildings before the access sites. Wider tables have solid cover on both new flanks.
+
+The geometry check requires at least **4 inches between terrain footprints**, no overlaps, and routes for a **3-inch round base** from each deployment zone into control range of every objective. It also checks broad access to the north edge. These are layout checks, not new movement rules; use each model’s actual base during play.
+
+The table compares clear direct sightlines with revision `bd8240e`, before these terrain changes. The check samples legal large-base centers on a 2-inch grid: firers in the northern deployment zone, targets in the first 16 inches beyond the southern zone, stopping at the enemy zone. For each range, it reports the fraction of eligible pairs without a blocking footprint between them.
+
+| Scenario | Clear lines at 24 inches, before → after | Clear lines at 36 inches, before → after |
+| --- | --- | --- |
+| First Contact | 95.6% → 46.1% | 78.3% → 24.6% |
+| Seize and Hold | 81.3% → 45.8% | 82.3% → 34.2% |
+| Seize and Hold, wide | 88.3% → 45.5% | 83.0% → 41.7% |
+| Breakthrough | 76.3% → 37.8% | 71.2% → 26.6% |
+| Breakthrough, wide | 87.7% → 41.3% | 85.3% → 30.2% |
+| Hold the Station | 92.0% → 44.6% | 66.4% → 30.0% |
+| Hold the Station, wide | 96.3% → 52.6% | 82.2% → 38.1% |
+
+This is a sightline sample, **not a hit chance or balance result**. It ignores facing, other units, cover bonuses, movement costs, and indirect fire. Legal sample positions change with the terrain. The automated guard rejects a layout above 60% clear lines at the 24-inch test range; that threshold is a design check, not a validated balance target. Table tests still need to check approach times, crowded gaps, infantry protection, and the advantage gained by indirect weapons.
+
 ## Still to check
 
 Run the short exercises and eighteen-game plan, then a pair with other chassis from your collection. Check archive dials against the bases and record weapon labels or Rocket substitutes. The pricing model and force limits are starting estimates; automated checks do not establish game balance.
@@ -93,4 +114,4 @@ The PDFs have not been physically printed. Print one sheet at 100% to check card
 
 Browser print settings vary. Use 100% scale and enable background graphics; the color letters also identify equipment in black-and-white prints.
 
-Repeat the checks with `python units/test_catalog.py`, `node web/test_force_model.js`, then `python web/check_packet.py` after rebuilding. Optional browser checks use `web/preview_check.py --port 9234` with a separate Chrome debugging profile and `websocket-client`.
+Repeat the checks with `python units/test_catalog.py`, `node web/test_force_model.js`, `python scenarios/check_layouts.py`, then `python web/check_packet.py` after rebuilding. Optional browser checks use `web/preview_check.py --port 9234` with a separate Chrome debugging profile and `websocket-client`.

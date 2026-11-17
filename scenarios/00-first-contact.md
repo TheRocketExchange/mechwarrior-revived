@@ -18,11 +18,13 @@ The starter lists have infantry on foot and no Rocket substitutes. Keep the [tur
 
 Place terrain and the relay as shown on the map. The later diagrams show examples of play.
 
-[![First Contact setup map: deployment zones at the north and south edges, a central relay, two woods, two rubble patches, and two blocking structures.](diagrams/first-contact-map.svg)](diagrams/first-contact-map.svg)
+[![First Contact setup map: opposing deployment zones, a central relay, two woods, two rubble patches, and four blocking structures.](diagrams/first-contact-map.svg)](diagrams/first-contact-map.svg)
 
 *Open the map for a full-size view or print it as a setup guide. It is not a table-sized play mat. The dashed ring marks the relay’s 3-inch control radius.*
 
 Mark terrain edges with paper or felt if you do not have scenery. Everything outside those footprints is open ground. The relay marker is a point, not a building or an obstacle; leave its control area open. Use the normal terrain rules for woods, rubble, and blocking structures.
+
+The buildings screen both approaches to the relay. Use the gaps to advance, then choose when to leave shelter and contest the open center. Keep the marked footprints even if your scenery is smaller.
 
 Roll one die each, rerolling ties. The winner chooses north or south. The other player deploys one group first; alternate until both patrols are placed. Keep each entire base inside its zone, and infantry in their 4-inch chain. Either patrol can take either side. Infiltrate follows its equipment rule after ordinary deployment.
 
@@ -33,6 +35,8 @@ At the start of every round, roll initiative normally. Alternate group activatio
 At the end of **rounds 2, 3, and 4**, score **1 point** if you control the relay. You control it when at least one of your base centers is within **3 inches** and no enemy base center is. If both sides are inside, it is contested and neither scores. Round 1 scores nothing.
 
 After round 4, the higher score wins. Equal scores are a draw. Kills do not score or break ties. There are **3 points available across both players**. Wiping out a patrol does not end play; if neither side has units left, use the core early-ending rule.
+
+> **Example:** South controls the relay after rounds 2 and 3; round 4 is contested. South wins 2–0, even if North destroyed more models.
 
 | Round | South score | North score |
 | --- | --- | --- |

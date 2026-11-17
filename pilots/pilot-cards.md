@@ -17,4 +17,12 @@ Abilities work whenever their conditions are met; there are no use counters. The
 
 Gunner’s limit covers an ordinary half-speed Advance, including a Jump within that allowance. Gunner removes recoil, not cover or heat, and cannot let Rockets fire during Advance. No pilot adds an attack or activation. Skirmisher, Evade, and Jump Jets waive the same Disengage damage; they do not stack, and Grapple overrides them.
 
+> **Gunner:** At speed 8, an Advance through 2 inches of woods costs the full 4-inch allowance. Gunner removes Ballistic recoil from the following shot.
+
+> **Skirmisher:** A ’Mech leaves ordinary enemy contact without damage, then moves up to half speed. Against active Grapple it pays the normal 1 damage.
+
+> **Brawler:** Damage 3 becomes 4 against an enemy vehicle’s rear. If Brawling also applies, the shared +1 cap keeps the damage at 4.
+
+> **Engineer:** Vent rating 2 cools 3 clicks. If the ’Mech is only two clicks from Start, it stops there.
+
 Use these cards without original pilots, gear, or advancement rules. Record their effects before changing the shared pilot allowance in the [points formula](../rules/points.md).

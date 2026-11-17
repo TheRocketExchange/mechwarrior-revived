@@ -340,7 +340,8 @@ class StarterScenarioChecks(unittest.TestCase):
         self.assertLessEqual(max(totals)-min(totals), 12)
         self.assertEqual(scenario["deployment"], {"south": [0,8], "north": [40,48]})
         terrain = scenario["terrain"]
-        self.assertEqual(len({t["id"] for t in terrain}), 6)
+        self.assertEqual(len({t["id"] for t in terrain}), 8)
+        self.assertEqual(sum(t['kind']=='blocking' for t in terrain), 4)
         for t in terrain:
             self.assertTrue(0 <= t["x"] < t["x"]+t["width"] <= 48)
             self.assertTrue(8 < t["y"] < t["y"]+t["depth"] < 40)
