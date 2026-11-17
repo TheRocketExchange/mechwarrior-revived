@@ -172,8 +172,12 @@ def resource_rows(items):
 def main():
     OUT.mkdir(exist_ok=True)
     (OUT / "downloads").mkdir(exist_ok=True)
-    for asset in ("site.css", "site.js", "diagrams.css"):
+    for asset in ("site.css", "site.js", "diagrams.css", "dark-age.css"):
         shutil.copyfile(WEB / asset, OUT / asset)
+    (OUT / "fonts").mkdir(exist_ok=True)
+    for font in (WEB / "fonts").iterdir():
+        if font.is_file():
+            shutil.copyfile(font, OUT / "fonts" / font.name)
     for path in DOWNLOADS:
         shutil.copyfile(ROOT / path, OUT / "downloads" / Path(path).name)
     (OUT / "diagrams").mkdir(exist_ok=True)

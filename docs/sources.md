@@ -21,6 +21,14 @@ The hosted rulebooks are official game texts. The handbook combines archived sce
 
 The local handbook is 2,040,496 bytes. Its SHA-256 is `3E0822C0C44E61CE1F16AAFEB2C5A744232AD9475771912508528319DC03DC99`. The public file has not been compared byte for byte.
 
+## Visual references and fonts
+
+The site's condensed type, heavy headings and pale field-sheet surfaces take their cues from the [original Dark Age rulebook](https://cf.sarna.net/docs/products/mwda/rule_book.pdf). The angular panels, metallic borders and red accents also draw on the [Age of Destruction equipment sheet](https://www.warrenborn.com/Files/Rules/MWAD_SEC_lo.pdf). The navigation retains the influence of [NetEA](https://www.net-armageddon.org/).
+
+The site bundles **Russo One** for headings, **Roboto Condensed** for reading and controls, and **Orbitron** for the Revived wordmark and selected numbers. These are visual alternatives, not the original proprietary fonts. Each comes from Google Fonts under the SIL Open Font License, with the notices included in the download: [Russo One](https://github.com/google/fonts/blob/main/ofl/russoone/OFL.txt), [Roboto Condensed](https://github.com/google/fonts/blob/main/ofl/robotocondensed/OFL.txt), [Orbitron](https://github.com/google/fonts/blob/main/ofl/orbitron/OFL.txt). All three load locally so the offline rulebook keeps its typography.
+
+Roster thumbnails use the same credited catalog photographs as the unit datasheets. Every squad member shows its own exact variant, including mixed squads.
+
 ## What carries over
 
 Use current dial values and printed ranges. Roll three dice plus attack against defense. The two white dice decide critical hits and misses. See Dark Age pp. 14–19.

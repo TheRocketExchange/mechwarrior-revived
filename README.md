@@ -49,7 +49,7 @@ Points value every click as a complete profile. Early strength carries more weig
 | [Breakthrough](https://therocketexchange.github.io/mechwarrior-revived/breakthrough.html) | [Points adjustments](https://therocketexchange.github.io/mechwarrior-revived/downloads/adjustments.csv) |
 | [Hold the Station](https://therocketexchange.github.io/mechwarrior-revived/hold-the-station.html) | [Checks so far](https://therocketexchange.github.io/mechwarrior-revived/validation.html) |
 
-All [game aids and downloads](https://therocketexchange.github.io/mechwarrior-revived/aids.html) are collected on the site. For offline play, download this repository and open [site/index.html](site/index.html). Search, printing, and card downloads also work locally. The navigation is inspired by [NetEA](https://www.net-armageddon.org/).
+All [game aids and downloads](https://therocketexchange.github.io/mechwarrior-revived/aids.html) are collected on the site. For offline play, download this repository and open [site/index.html](site/index.html). Search, printing, card downloads, and bundled fonts also work locally. The site's type and panel styling draw on the original MW:DA rulebook and equipment printouts; its navigation retains the influence of [NetEA](https://www.net-armageddon.org/). See [design sources and font credits](https://therocketexchange.github.io/mechwarrior-revived/sources.html#visual-references-and-fonts).
 
 ## GitHub Pages
 

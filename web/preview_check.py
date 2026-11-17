@@ -258,6 +258,14 @@ screenshot('builder-desktop')
 call('Emulation.setDeviceMetricsOverride',{'width':390,'height':844,'deviceScaleFactor':1,'mobile':True})
 assert js("document.documentElement.scrollWidth <= innerWidth"),'Builder mobile overflow'
 screenshot('builder-mobile')
+js("document.querySelector('#force-roster-heading').scrollIntoView()")
+wait("[...document.querySelectorAll('.force-member-preview img')].slice(0,2).every(img=>img.complete&&img.naturalWidth>0)")
+assert js("[...document.querySelectorAll('.force-member-preview')].every(link=>{const id=new URL(link.href).searchParams.get('id'),unit=MW_CATALOG.units.find(u=>u.id===id),img=link.querySelector('img');return img.getAttribute('src')===unit.photo&&img.alt===unit.name+' miniature'&&img.getBoundingClientRect().width>=68;})"),'Roster thumbnail does not match its exact model'
+assert js("[...document.querySelectorAll('[data-roster-group=\"C1\"] .force-member-preview img')].map(img=>img.getAttribute('src'))")==['photos/D006.jpg','photos/D006.jpg','photos/D009.jpg'],'Mixed squad photos incorrect'
+screenshot('dark-age-roster-mixed-mobile')
+call('Emulation.setDeviceMetricsOverride',{'width':320,'height':844,'deviceScaleFactor':1,'mobile':True})
+assert js("document.documentElement.scrollWidth<=innerWidth"),'Narrow roster overflow'
+assert js("[...document.querySelectorAll('.force-member-preview,.force-member-actions')].every(el=>el.getBoundingClientRect().right<=innerWidth)"),'Roster controls clipped'
 call('Emulation.setDeviceMetricsOverride',{'width':1440,'height':1100,'deviceScaleFactor':1,'mobile':False})
 downloads=QA/'full-dial'
 downloads.mkdir(exist_ok=True)
@@ -387,7 +395,7 @@ for offset in range(0,len(catalog_units),100):
     batch=catalog_units[offset:offset+100]
     force={'name':'Dial coverage','game_size':'grand','groups':[{'id':'U'+str(i),'members':[unit['id']],'pilot':'Gunner'} if unit['category']=='Mech' else {'id':'U'+str(i),'members':[unit['id']]} for i,unit in enumerate(batch)]}
     call('Page.navigate',{'url':(ROOT/'site/force-cards.html').as_uri()+'#layout=dials&list='+quote(json.dumps(force))})
-    wait("document.readyState==='complete' && document.querySelectorAll('.print-dial-card').length==="+str(len(batch)))
+    wait("document.readyState==='complete' && typeof window.MW_CATALOG!=='undefined' && document.querySelectorAll('.print-dial-card').length==="+str(len(batch))+" && document.querySelector('.print-dial-card')?.dataset.catalogId==="+json.dumps(batch[0]['id']))
     issues=js("""(()=>{
       const units=new Map(MW_CATALOG.units.map(u=>[u.id,u])),codes={red:'R',blue:'B',black:'K',gray:'Gy',green:'Gn',yellow:'Y',purple:'P'};
       const text=(v={},heat=false)=>(v.shutdown?'SD':v.dead?'X':v.value==null?'—':heat&&v.value>0?'+'+v.value:String(v.value))+(!v.shutdown&&!v.dead?(codes[v.color]||''):'');

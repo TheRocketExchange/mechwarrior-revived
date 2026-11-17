@@ -20,6 +20,14 @@ units = {u["id"]:u for u in catalog["units"]}
 pages = {path.resolve():html.fromstring(path.read_text(encoding="utf-8")) for path in SITE.glob("*.html")}
 errors = []
 
+# The presentation remains self-contained offline, including licensed fonts.
+for font in (ROOT / "web/fonts").iterdir():
+    if font.is_file():
+        assert (SITE / "fonts" / font.name).read_bytes() == font.read_bytes(), font.name
+for font_path in re.findall(r'url\("([^\"]+)"\)', (SITE / "dark-age.css").read_text(encoding="utf-8")):
+    assert (SITE / font_path).is_file(), font_path
+assert all(page.xpath('//link[@href="dark-age.css"]') for page in pages.values())
+
 
 def check_link(source, link):
     parts = urlsplit(link)

@@ -1,0 +1,63 @@
+/* Dark Age rulebook typography and equipment-sheet panel treatment.
+   Fonts are bundled locally with their SIL Open Font License notices. */
+@font-face{font-family:"Roboto Condensed";src:url("fonts/RobotoCondensed-Regular.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"Russo One";src:url("fonts/RussoOne-Regular.ttf") format("truetype");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"Orbitron";src:url("fonts/Orbitron-Regular.ttf") format("truetype");font-style:normal;font-weight:400 900;font-display:swap}
+:root{
+  --ink:#252b28;--muted:#59615c;--paper:#f5f6f1;--ground:#e3e7e1;
+  --line:#bdc6be;--accent:#982e24;--dark:#222b28;--olive:#475b49;
+  --sans:"Roboto Condensed","Arial Narrow",Arial,sans-serif;
+  --serif:"Roboto Condensed","Arial Narrow",Arial,sans-serif;
+  --display:"Russo One","Arial Black",sans-serif;
+  --technical:"Orbitron","Arial Black",sans-serif;
+}
+body{background:#d9dfd8;background-image:repeating-linear-gradient(115deg,#ffffff12 0 1px,transparent 1px 6px);font-size:17px}
+:focus-visible{outline-color:#b43d2b}
+.masthead{border-top:5px solid #8f3026;border-bottom:1px solid #101814;background:linear-gradient(115deg,#17211d,#39453d 70%,#232c27);box-shadow:inset 0 -5px #a4ada3,inset 0 -7px #131c17}
+.masthead::after{right:-30px;top:-45px;height:260px;width:40%;opacity:.13;background-image:linear-gradient(transparent 18px,#cdd7ca 19px,transparent 20px),linear-gradient(90deg,transparent 18px,#cdd7ca 19px,transparent 20px);background-size:40px 40px;transform:skewX(-25deg)}
+.masthead::before{content:"";position:absolute;right:32px;bottom:15px;width:130px;height:5px;background:repeating-linear-gradient(135deg,#adb69f 0 9px,transparent 9px 17px);opacity:.65}
+.masthead-inner{padding-top:25px;padding-bottom:30px}
+.brand{gap:18px;min-width:0}.insignia{color:#b5c0af;width:66px;height:76px;filter:drop-shadow(1px 2px 0 #111b15)}
+.wordmark>span{font-family:var(--display);font-size:38px;font-weight:400;letter-spacing:-.015em;color:#e6e8dd;text-shadow:0 2px 0 #111b15,1px 0 #8c998a}
+.wordmark strong{font-family:var(--technical);font-size:27px;font-weight:800;letter-spacing:.26em;margin-top:8px;color:#ec8a70;text-shadow:0 2px 0 #181e18}
+.edition-label{font-family:var(--technical);font-size:10px;letter-spacing:.07em}.status-dot{background:#d8745b}.masthead-note{font-size:14px;color:#d1d7cc}
+.nav-band{background:linear-gradient(#e9ece5,#cbd3c9);border-top:1px solid #f4f5f0;border-bottom:3px solid #6f7b70;box-shadow:0 2px 0 #ffffff80}
+.nav-inner{gap:20px}.primary-nav{gap:0}.primary-nav a{padding:14px 19px 12px;border-inline-end:1px solid #aab4aa;font:700 15px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#303e33;position:relative}
+.primary-nav a:first-child{border-inline-start:1px solid #aab4aa}.primary-nav a:hover{background:#f5f6f099}.primary-nav a[aria-current]{background:#f5f6f1;border-bottom-color:var(--accent);color:var(--accent)}
+.search-trigger{font-weight:600;font-size:14px;color:#303e33}.search-trigger kbd{border-color:#8a998b}
+.page-layout{background:var(--paper);border-inline:1px solid #adb7ad;box-shadow:0 8px 28px #1c2c2012;padding-top:35px;gap:46px}
+.sidebar-edition{border-top:3px solid #6c7b6b;padding-top:13px}.sidebar-edition strong{font:400 17px/1.3 var(--display);margin:8px 0}.sidebar-edition>span:last-child{font-size:12px}
+.section-label,.eyebrow{font-size:12px;letter-spacing:.09em}.toc-panel summary{font-size:12px;color:#48594a}.contents a{font-size:14px;padding:6px 9px}.contents .level-h3 a{font-size:13px;color:#5e6c5d}.contents a.active{background:#e2e7de;border-left:3px solid var(--accent)}
+.side-resources>a{font-size:14px;padding:5px 0}.side-resources h2{font-size:12px}.download-link{background:linear-gradient(135deg,#e3e8dd,#f7f7f1);border:1px solid #aeb9ab;border-bottom:3px solid #899880;font-size:13px}.download-link small{font-size:11px}
+.page-heading{position:relative;padding-top:7px}.page-heading::before{content:"";position:absolute;left:0;top:0;width:50px;height:3px;background:var(--accent)}
+.eyebrow{margin-top:10px;margin-bottom:9px}h1{font-family:var(--display);font-size:39px;line-height:1.16;font-weight:400;letter-spacing:-.02em;margin-bottom:20px;text-wrap:balance}
+.page-toolbar{border-bottom:3px double #9da99b;padding-bottom:15px}.version-tag{font:700 11px var(--sans);color:#43553f;background:#e5eade;border-color:#afbaa7;padding:5px 9px}.small-button,.print-button{font:600 13px var(--sans)}.file-type{border-color:#95a28e;font-size:10px;color:#4f5d48}
+.rule-content{font-family:var(--sans);font-size:18px;line-height:1.65}.rule-content>p:first-child{font-size:17px;color:#465543}.rule-content p{margin:17px 0}.rule-content strong{font-weight:750}
+.rule-content>h2{font:400 22px/1.3 var(--display);letter-spacing:0;background:linear-gradient(100deg,#dde3d8,#eef1e8);border-top:1px solid #fdfdf9;border-bottom:2px solid #909e89;box-shadow:inset 4px 0 var(--accent);padding:12px 16px;margin:34px 0 16px}
+.rule-content h3{font-family:var(--sans);font-size:21px;font-weight:800;letter-spacing:.01em}.rule-content blockquote{background:#e9ede3;border-color:#6d805d}.rule-content .lead{font-family:var(--display);font-weight:400;font-size:25px!important;line-height:1.45;letter-spacing:0}
+.table-scroll{border:1px solid #a1afa0;border-top:3px solid #586c53;box-shadow:0 2px 0 #dfe4da}.rule-content table{font-size:14px;line-height:1.5}.rule-content th{background:#dce3d5;color:#263724;font-size:13px;font-weight:750;border-color:#aab8a2}.rule-content td{border-color:#d4ddce;color:#303c2b}.rule-content td:first-child{color:#33422e}.rule-content tbody tr:nth-child(even){background:#eaf0e3}
+.resource-list{border-top:0}.resource-row{padding:20px 16px;margin-bottom:10px;gap:18px;background:linear-gradient(115deg,#fff,#edf0e6);border:1px solid #aeb9a4;border-left:4px solid #566e48;box-shadow:inset 0 1px white,0 2px 0 #d5ddcf}.resource-number{font:700 11px/1.4 var(--technical);color:var(--accent);min-width:46px;margin-top:4px}.resource-row strong{font:400 20px/1.4 var(--display)}.resource-description{font-size:15px;line-height:1.45;color:#55634b}.resource-arrow{font-family:var(--sans);font-weight:700}.resource-row:hover{border-left-color:var(--accent);background:white}.edition-note{background:#e5ebdc;border:1px solid #afbea1;border-left:4px solid #61794e;font-size:15px}
+.next-page{border-top-color:#6d815c}.next-page strong{font-family:var(--display);font-size:22px}.page-end{font-size:12px}.site-footer{background:#cbd4c3;border-top:3px solid #5a6d4e;color:#4d5d41;font-size:13px}.footer-brand{font-family:var(--display);letter-spacing:.03em;font-size:14px}.footer-links a{color:#394d2c}
+.search-dialog{background:var(--paper);border:1px solid #7a8c6b;border-top:5px solid var(--accent);box-shadow:0 16px 50px #0e1b0b70}.search-heading h2{font-family:var(--display);font-size:24px}.search-result strong{font-size:17px}.search-result p{font-size:15px}.search-result span,.search-status,.search-hint{font-size:12px}#rule-search{font-size:18px}
+/* App controls share the field-sheet frame; dial equipment keeps its own colors. */
+.rule-content .force-toolbar,.rule-content .unit-filters{background:linear-gradient(120deg,#dfe5d7,#eef1e7);border:1px solid #a7b599;border-top:4px solid #596f49;box-shadow:inset 0 1px white}
+.rule-content .force-group{background:#fafbf7;border:1px solid #b5c1a8;border-top:3px solid #7d9068;box-shadow:0 2px 0 #e0e6d6}
+.rule-content .force-group-heading{padding-bottom:5px}.rule-content .force-group-heading>strong{font-family:var(--technical);font-size:13px;line-height:1.5;color:var(--accent)}
+.rule-content .force-summary{border-block:3px double #96a985}.rule-content .force-points strong{font-family:var(--technical);font-size:32px}.rule-content .force-counts{font-size:14px}.rule-content .force-save-note{font-size:13px}.rule-content .force-group-heading button{font-size:12px}.rule-content .force-empty{font-size:17px}
+.rule-content .unit-tile{border-color:#acb9a0;box-shadow:0 2px 0 #d7dfcf}.rule-content .unit-tile:hover{border-color:var(--accent)}.rule-content .unit-tile h2{font-family:var(--sans);font-size:20px;font-weight:800}.rule-content .unit-tile-body{background:linear-gradient(#fff,#f0f3e9)}.rule-content .unit-id{font-size:12px}.rule-content .unit-category{font-family:var(--sans);font-size:12px}.rule-content .unit-tile-bottom{font-size:11px}.rule-content .unit-points{font-family:var(--technical);font-size:22px}.rule-content .cost-curve{background:#e5ebdc;border-color:#afbd9f}
+.rule-content .force-card-tools label{font-size:14px}.rule-content .force-card-tools select,.rule-content .force-card-tools button{font-size:16px;min-height:44px}
+@media(min-width:1400px){.rule-content{font-size:19px}.rule-content table{font-size:15px}}
+@media(max-width:1100px){.primary-nav a{padding-inline:13px}.wordmark>span{font-size:33px}.wordmark strong{font-size:24px}.page-layout{gap:30px}h1{font-size:35px}}
+@media(max-width:740px){
+  body{background:var(--paper)}.masthead-inner{padding:20px 18px 25px}.brand{gap:12px}.insignia{width:45px;height:56px;flex-shrink:0}.wordmark>span{font-size:clamp(20px,6.1vw,30px);letter-spacing:-.025em}.wordmark strong{font-size:20px;letter-spacing:.24em;margin-top:6px}.masthead::before{right:18px;width:72px;bottom:13px;height:3px}
+  .nav-inner{padding:0;gap:0;display:block}.primary-nav{display:grid;grid-template-columns:.75fr .75fr .85fr 1.15fr 1.1fr 1.4fr;gap:0;overflow:visible;white-space:normal}.primary-nav a{font-size:11px;letter-spacing:0;text-align:center;padding:14px 2px 11px;min-width:0;display:flex;align-items:center;justify-content:center}.primary-nav a:first-child{border-left:0}.primary-nav a:last-child{border-right:0}.search-trigger{margin:0;padding:8px 18px;font-size:13px;width:100%;min-height:38px;background:#eef1e5;border-top:1px solid #b2bea5}
+  .page-layout{border:0;box-shadow:none;padding:22px 16px 35px;gap:19px}.toc-panel{background:#e6eddd;border:1px solid #a9b99a;border-left:3px solid #6c8355}.toc-panel summary{font-size:12px}.contents a{font-size:14px}.contents .level-h3 a{font-size:13px}.contents{columns:1}
+  h1{font-size:31px;line-height:1.18}.eyebrow{font-size:11px}.page-heading::before{width:36px}.page-toolbar{gap:10px}.page-actions{gap:12px}.small-button,.print-button{font-size:12px;min-height:30px}.rule-content{font-size:18px;line-height:1.65}.rule-content>h2{font-size:20px;padding:10px 13px}.rule-content h3{font-size:20px}.rule-content table{font-size:14px}.rule-content th{font-size:13px}.rule-content .lead{font-size:23px!important}
+  .resource-row{padding:16px 12px;gap:12px}.resource-row strong{font-size:18px}.resource-number{font-size:9px;min-width:36px}.resource-description{font-size:14px}.resource-arrow{font-size:20px}.edition-note{padding:15px;font-size:15px}.page-end{font-size:11px}.site-footer{padding:25px 18px}
+  .rule-content .unit-tile h2{font-size:18px}.rule-content .unit-id{font-size:11px}.rule-content .unit-points{font-size:20px}.rule-content .unit-category{font-size:12px}.search-dialog{padding:18px}.search-heading h2{font-size:21px}
+}
+@media(max-width:360px){.primary-nav a{font-size:10px}.wordmark>span{font-size:20px}.wordmark strong{font-size:18px}.brand{gap:9px}.page-layout{padding-inline:12px}h1{font-size:28px}.resource-row{gap:8px}.resource-row strong{font-size:16px}}
+/* Keep paper output light and retain the measured card/dial layouts. */
+@media print{
+  body{background:white;font-family:Arial,sans-serif}.page-layout{background:white;border:0;box-shadow:none;padding:0}.page-heading::before{display:none}h1{font-family:var(--display);font-size:25pt}.rule-content{font-family:Arial,sans-serif}.rule-content>h2{font:700 16pt/1.3 Arial,sans-serif;background:none;box-shadow:none;border-top:0;border-bottom:1px solid #777;padding:3mm 0}.rule-content h3{font-size:12pt}.rule-content .lead{font-size:18pt!important}.table-scroll{box-shadow:none;border-color:#aaa}.rule-content table{font-size:8pt}.rule-content th{font-size:8pt;background:#eee}.resource-row,.edition-note{background:white;box-shadow:none}.resource-row strong{font-family:Arial,sans-serif;font-size:12pt}.resource-description{font-size:9pt;color:black}.rule-content .force-group{background:white;box-shadow:none;border-color:#aaa}.rule-content .force-group-heading>strong{font:700 9pt Arial,sans-serif}.rule-content .unit-tile-body{background:white}.rule-content .unit-tile{box-shadow:none}.rule-content .unit-tile h2{font:700 12pt Arial,sans-serif}
+}
