@@ -5,7 +5,7 @@ Version 0.3 · Keep the [readiness sheet](readiness-reference.md), [equipment sh
 ## Each round
 
 1. Clear activation markers only; keep readiness and heat. Roll one die each; reroll ties. Winner chooses who acts first.
-2. Alternate one ’Mech, vehicle, or squad. Choose one action for the group; finish squad members separately, with their own targets and rolls.
+2. Alternate one ’Mech, vehicle, or squad. Vehicles and squads choose one action; ’Mechs may take two. Finish squad members separately, with their own targets and rolls.
 3. Pass only with fewer groups left than your opponent. Pass automatically with none.
 4. After everyone acts, score the scenario and check for victory. No round-end cooling.
 
@@ -23,20 +23,22 @@ Rush, Repair, Coolant Flush, Embark, and Disembark do not change readiness and a
 
 Speed = printed speed plus heat, at least zero. Round half speed up, then add equipment bonuses.
 
-| Action | What you do | ’Mech heat |
+| Action | What you do | Base ’Mech heat |
 | --- | --- | --- |
-| Fire | Stay in place; ranged or close attack; may pivot for close | +1 |
-| Advance | Move up to half speed; ranged attack | +2 |
-| Move | Move up to speed; no attack; non-’Mechs recover | +1 |
-| Rush | Move up to twice speed; no attack | +1 |
+| Fire | Stay in place; ranged or close attack; may pivot for close | 0 |
+| Advance | Move up to half speed; ranged attack | +1 |
+| Move | Move up to speed; no attack; non-’Mechs recover | 0 |
+| Rush | Move up to twice speed; no attack; whole activation | +1 |
 | Assault | Infantry/’Mech: move up to half speed; close attack | +1 |
-| Death from Above | Unengaged ’Mech with Jump: jump up to speed; one close attack against a vehicle/’Mech | +2 total |
+| Death from Above | Unengaged ’Mech with Jump: jump up to speed; one close attack against a vehicle/’Mech | +2 including Jump |
 | Disengage | Take 1 unavoidable damage; move up to half speed; no attack | +1 |
-| Hold | Stay still; no attack; non-’Mechs recover | Cool 1 |
-| Vent | Stay still; no attack | Cool vent rating, at least 1 |
+| Hold | Stay still; no attack; whole activation; non-’Mechs recover | Cool 1 |
+| Vent | Stay still; no attack; whole activation | Cool vent rating, at least 1 |
 | Repair | Green Attack: heal 1 friendly click | +1 |
 | Coolant Flush | Purple Attack: remove 2 friendly heat | +1 |
 | Bypass | Red Attack: attempt to take over a crippled enemy; half-speed move | +1 |
+
+**Second action:** A ’Mech may repeat an action. Finish the first action, including heat and stress, then read its new dials. Add **1 heat** to the second action. Rush, Hold, and Vent use the whole activation and cannot be combined with another action. Shutdown or destruction ends the activation.
 
 Movement actions allow turning. Fire also allows a pivot before a close attack: keep the base center fixed and retain enemy contacts, with no overlap. This works at zero speed. Ranged Fire, Hold, Vent, Repair, and Coolant Flush do not allow turning; never pivot in response to an enemy action. In contact, use close Fire, Assault in place, Hold, Vent, or Disengage. Vehicles need Flamers or Bypass to fight close. Disengage causes no damage if every touching enemy is shutdown.
 
@@ -53,17 +55,17 @@ Choose one target and weapon unless named equipment permits more. Black Attack i
 - Equipment: at most +1 attack and +1 defense.
 - Advance: no extra attack penalty.
 
-**Ballistic:** +1 damage against uncovered infantry. Moving or turning gives −1 attack; Gunner removes it during Advance within half speed, counting terrain.
+**Ballistic:** +1 damage against uncovered infantry. Any earlier movement or turning in this activation gives −1 attack, including Move then Fire. Gunner removes it during Advance within that action’s half-speed allowance, counting terrain.
 
 **Energy:** Piercing; +1 heat for the firing ’Mech; damage against infantry is limited to 2 before armor. No automatic target heat.
 
-**Rocket:** Fire only. Indirect fire ignores blockers: −2 attack, −1 damage, no rear bonus. Keep arc, range, cover, and friendly-contact restrictions.
+**Rocket:** Fire only; keep position and facing unchanged for the whole activation, before and after firing. Indirect fire ignores blockers: −2 attack, −1 damage, no rear bonus. Keep arc, range, cover, and friendly-contact restrictions.
 
 Weapon-type effects apply only to shooting.
 
 **Damage:** Printed value + heat → weapon effect → equipment/pilot bonus (maximum +1), battle armor bonus, DFA +2, critical bonus → damage limits → armor after Piercing. Then apply anti-missile protection and Agility. Armor is at most 2; ordinary Piercing ignores 1, Armor Piercing equipment ignores all. Damage may be zero.
 
-**Death from Above:** Declare before moving. Need blue speed, no Salvage, speed above zero, printed attack above zero, and primary damage above zero after heat. Jump some distance and land legally beside one enemy vehicle/’Mech, front arc touching; no other enemy contact. Target gets +2 defense. Deal primary damage +2; apply normal close modifiers, criticals, and armor. The +2 is outside the equipment/pilot cap. Take 1 unavoidable landing damage on a hit, or 2 on a miss or skipped attack after jumping; critical-miss damage is additional. Resolve target effects and landing damage before gaining 2 total heat if alive. No extra Jump heat, target pivot, displacement, or second attack. [Full DFA rule](core-rules.md#death-from-above).
+**Death from Above:** Declare before moving. Need blue speed, no Salvage, speed above zero, printed attack above zero, and primary damage above zero after heat. Jump some distance and land legally beside one enemy vehicle/’Mech, front arc touching; no other enemy contact. Target gets +2 defense. Deal primary damage +2; apply normal close modifiers, criticals, and armor. The +2 is outside the equipment/pilot cap. Take 1 unavoidable landing damage on a hit, or 2 on a miss or skipped attack after jumping; critical-miss damage is additional. Resolve target effects and landing damage before gaining 2 heat if alive, plus 1 if DFA is the second action. No extra Jump heat, target pivot, displacement, or extra attack within DFA. A legal second action may follow a first-action DFA. [Full DFA rule](core-rules.md#death-from-above).
 
 Against vehicles/’Mechs, infantry deal at most 1 before armor. Exposed close assaults raise this to 2 with Piercing: rear contact, shutdown target, or attacker in woods/rubble/fieldworks. Battle armor gets +1 close damage and Piercing. Piercing ignores 1 armor; it does not add together.
 
@@ -78,9 +80,9 @@ Three bullet holes destroy a unit. Read new dials between attacks. Apply attacke
 
 Use only the best cover bonus, up to +4 ranged defense. Equipment defense is separate.
 
-Apply printed heat modifiers. After gaining heat, a colored warning other than green/white means one stress roll: on 1, take 1 unavoidable damage. No roll while cooling or shutdown.
+Apply printed heat modifiers. Add base action heat, weapon/equipment heat, and +1 for a second action as one gain. With no heat gain, make no stress roll. After gaining heat, a colored warning other than green/white means one stress roll: on 1, take 1 unavoidable damage. No roll while cooling or shutdown.
 
-Stop heating at shutdown. Only Vent is allowed; the ’Mech cannot contest objectives. Cooling past shutdown restarts it without another activation.
+Stop heating at shutdown; the activation ends immediately. Only Vent is allowed; the ’Mech cannot contest objectives. Cooling past shutdown restarts it, but Vent has spent the whole activation.
 
 ## Transport and objectives
 

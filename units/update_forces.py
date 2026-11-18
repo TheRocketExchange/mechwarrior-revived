@@ -80,7 +80,7 @@ V1 starts with C1 aboard; V2 starts with A1. All other squads start on foot. Pas
 
 ## What to try
 
-- **H:** Use the eight ’Mechs to pressure several sites; protect the three infantry squads.
+- **H:** Use the six ’Mechs to pressure several sites; protect the three infantry squads.
 - **B:** Use vehicle fire and the two carried squads to take positions.
 - **I:** Test whether nine infantry squads can hold ground with fewer ’Mechs, and whether the extra groups slow the game.
 

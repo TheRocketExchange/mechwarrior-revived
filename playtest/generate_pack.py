@@ -200,23 +200,23 @@ def roster_page(c):
 
 def round_page(c):
     page(c,"Field reference","Use the current dial / Read new values after damage / Full rules take precedence")
-    y=para(c,"<b>Each round:</b> Clear only activation markers. Roll D6 each, reroll ties; winner chooses who acts first. Alternate one group at a time. Pass only if you have fewer unactivated groups, or none. Each group acts once. Keep heat and readiness between rounds; there is no round-end cooling.",36,664,size=9.5,leading=13)-12
-    rows=[["Order", "Movement and attack", "'Mech heat"]]
+    y=para(c,"<b>Each round:</b> Clear only activation markers. Roll D6 each, reroll ties; winner chooses who acts first. Alternate one group at a time. Pass only if you have fewer unactivated groups, or none. Each group activates once. Vehicles/squads choose one action; 'Mechs may take two, resolving each fully. Keep heat and readiness between rounds; there is no round-end cooling.",36,664,size=9.5,leading=13)-12
+    rows=[["Order", "Movement and attack", "Base heat"]]
     rows += [list(row) for row in [
-        ("Fire","Stay still; ranged or close attack. May pivot for close.","+1"),
-        ("Advance","Half speed, rounded up; one ranged attack.","+2"),
-        ("Move","Full speed; no attack. Non-'Mechs recover.","+1"),
-        ("Rush","Twice speed; no attack. Forbidden while Spent.","+1"),
+        ("Fire","Stay still; ranged or close attack. May pivot for close.","0"),
+        ("Advance","Half speed, rounded up; one ranged attack.","+1"),
+        ("Move","Full speed; no attack. Non-'Mechs recover.","0"),
+        ("Rush","Twice speed; whole activation. Forbidden while Spent.","+1"),
         ("Assault","Infantry/'Mech: half speed; close attack.","+1"),
         ("Disengage","Take 1 unavoidable damage; half speed; no attack.","+1"),
-        ("Hold / Vent","Stay still. Hold cools 1; Vent cools vent rating (min. 1).","Cool"),
-        ("Repair / Bypass","Need the matching Attack color; see next page.","+1"),
-        ("Death from Above","Jump Jets 'Mech; special close attack. See page 6.","+2 total"),
+        ("Hold / Vent","Whole activation. Hold cools 1; Vent cools rating (min. 1).","Cool"),
+        ("Bypass","Need red Attack; see next page.","+1"),
+        ("Death from Above","Jump Jets 'Mech; special close attack. See page 6.","+2 incl. Jump"),
     ]]
     y=table(c,rows,y,[95,372,73],font=8)-15
     y=note(c,"Vehicles and infantry","Fire, Advance, Assault or Bypass: <b>Ready - Committed - Spent.</b> On the second combat order, each surviving base takes 1 unavoidable damage after its own action, even if it misses or skips its attack. Spent must recover next activation. Move or Hold clears readiness; engaged bases Hold or Disengage. Rush and Repair leave readiness unchanged and are forbidden while Spent. C1 chooses one order; resolve its bases separately, ending in a 4-inch chain. Split squads must regroup without attacking.",y)
     y=note(c,"Attacks","Check arc, sight and range. <b>Three dice + Attack + modifiers must reach Defense.</b> White 6/6 always hits, +1 damage. White 1/1 always misses and deals 1 unavoidable damage to the attacker. Rear: +2 Attack; shutdown target: -2 Defense. Equipment gives at most +1 Attack / +1 Defense. Fire can pivot for close combat while keeping the center and contacts; ranged Fire cannot turn. Vehicles need special equipment to fight close.",y)
-    y=note(c,"Heat","Apply printed heat modifiers to speed and damage. Add action heat, +1 for an Energy shot and +1 for Jump. Pulse adds another +1 if a second shot is rolled. After each heat gain, roll one stress die if a non-green/white warning is showing and not shutdown; on 1, take 1 damage. Stop at shutdown: only Vent, no objective control. Engineer improves Vent by 1. Stop cooling at Start.",y)
+    y=note(c,"Heat","Apply printed heat modifiers to speed and damage. Rush, Hold and Vent use the whole activation. Other actions may repeat. Read new dials between actions. Add <b>+1 heat for the second action</b>, plus base heat, Energy (+1) and Jump (+1). Pulse adds another +1 if a second shot is rolled. After each heat gain, roll one stress die if a non-green/white warning is showing and not shutdown; on 1, take 1 damage. Shutdown ends the activation: only Vent next time, no objective control. Engineer improves Vent by 1. Stop cooling at Start.",y)
     para(c,"<b>Terrain:</b> Woods/rubble cost 2 inches per inch traveled. Ranged cover: +3 infantry, +2 battle armor, +1 vehicles/'Mechs; no close bonus. Blocking terrain stops movement and direct sight. Keep the relay's control area open. Use the rules for terrain sight and friendly contact when checking shots.",36,y+3,size=9.5,leading=13)
     c.showPage()
 
@@ -229,23 +229,23 @@ def equipment_pages(c):
         ("Blue Speed / Jump Jets","May ignore bases and terrain along a Jump route, but must land with the whole base in legal space. No Rush, no landing in fieldworks for a 'Mech or vehicle. Use the action's normal movement allowance. A jumping 'Mech gains 1 extra heat; DFA already includes it. Jump Jets also waive Disengage damage when walking. Grapple overrides free Disengage if encountered in other games."),
         ("Blue Attack / Improved Targeting","+1 Attack for ranged or close attacks, including Bypass. Total equipment attack bonus cannot exceed +1."),
         ("Black Attack / Salvage","Only Move, Hold, Vent or Disengage; no attacks or active support. May still contest unless shutdown. A salvaged squad member skips an illegal shared order and stays still, but still takes pushing damage. Passive protection remains."),
-        ("Green Attack / Repair","Stay still in friendly base contact; neither unit may touch an enemy. Restore 1 combat click, stopping at Start or a black repair mark. A mark already showing prevents repair. No self-repair, passengers, destroyed units or heat repair. Infantry repair only their own type; other core types repair battle armor, vehicles or 'Mechs. No roll. Non-'Mechs keep readiness and cannot Repair while Spent; a 'Mech gains 1 heat."),
-        ("Red Attack / Bypass","Need positive printed Attack, but no damage value. Choose an empty enemy vehicle/'Mech in Salvage, or a shutdown 'Mech; it cannot touch another unit friendly to its owner. Move up to half speed into front-arc contact, or pivot in contact. Roll a normal close attack with rear, shutdown and defense modifiers. A hit captures instead of damaging; critical hits add nothing, critical misses still hurt the attacker. This is a combat order for readiness, or +1 'Mech heat, plus Jump if used."),
+        ("Gray Speed / Infiltrate","If every member shows Infiltrate at Start, the group may deploy after ordinary groups, up to 4 inches beyond its zone. Alternate infiltrating groups, starting with the first deploying player. Keep bases at least 8 inches from enemies, outside their zone, and in legal terrain. Loaded carriers cannot infiltrate. Gaining Infiltrate later grants no extra deployment."),
+        ("Red Attack / Bypass","Need positive printed Attack, but no damage value. Choose an empty enemy vehicle/'Mech in Salvage, or a shutdown 'Mech; it cannot touch another unit friendly to its owner. Move up to half speed into front-arc contact, or pivot in contact. Roll a normal close attack with rear, shutdown and defense modifiers. A hit captures instead of damaging; critical hits add nothing, critical misses still hurt the attacker. This is a combat order for readiness, or +1 'Mech heat, plus Jump if used and +1 if it is the second action."),
         ("After a capture","Keep the target's dial, heat, readiness and pilot; mark it already activated this round. From next round it is a separate group for its new controller. Existing contacts remain until Disengage. It can contest for its new owner. Starting roster limits do not change; First Contact has no casualty points."),
-        ("Green Defense / Decoy; Gray Defense / Heavy Armor","Decoy gives +1 ranged defense in or out of cover. Heavy Armor reduces ranged and close damage by 1. Armor never reduces unavoidable damage. Ordinary Piercing ignores 1 armor; Armor Piercing equipment ignores all."),
+        ("Green Defense / Decoy","+1 ranged defense in or out of cover. Equipment defense bonuses together stop at +1; terrain cover is separate."),
     ]
     for title,body in notes: y=note(c,title,body,y)
     c.showPage()
     page(c,"Equipment / Weapons and close combat","Damage colors follow the printed weapon type, even during a close attack")
     y=664
     notes=[
-        ("Ballistic and Energy","Ballistic shots gain +1 damage against uncovered infantry. Moving or turning gives -1 Attack recoil; Gunner waives it during Advance within half-speed movement cost. Energy shots have Piercing, add 1 heat to a firing 'Mech, and deal at most 2 damage to infantry before armor. These weapon effects apply only to shooting. There are no Rockets in these lists."),
-        ("Red Ballistic damage / Armor Piercing","Ranged attacks with this weapon ignore all armor. It does not add close Piercing when the same damage value is used in contact."),
-        ("Gray Ballistic damage / Point Defense System","A touching friendly unit may use the donor's printed Defense if higher, then apply its own equipment and modifiers. Do not borrow the donor's armor or a Defense value it borrowed from someone else. Passengers cannot provide or receive this benefit."),
-        ("Red Energy damage / Pulse","After a ranged hit, may shoot the same surviving legal target once more with the same weapon at -2 Attack. Read both new dials; the attacker must survive and still show Pulse. No second shot on an initial miss, and no chain. Pay action and ordinary Energy heat once, plus 1 extra heat if the second roll is made. Resolve critical-miss damage after each roll."),
+        ("Ballistic and Energy","Ballistic shots gain +1 damage against uncovered infantry. Any earlier movement or turn in this activation gives -1 Attack recoil; Gunner waives it during Advance within half-speed movement cost. Energy shots have Piercing, add 1 heat to a firing 'Mech, and deal at most 2 damage to infantry before armor. These weapon effects apply only to shooting. There are no Rockets in these lists."),
+        ("Red Melee damage / Hand-to-Hand Weapon","Before rolling, may replace printed damage with one D6 on a hit. Then apply heat and normal damage modifiers. You still need positive printed damage before making the attack."),
+        ("Gray Melee damage / Brawling","+1 close damage, including DFA. This shares the +1 damage limit with Brawler and other flat equipment/pilot bonuses."),
+        ("Red Energy damage / Pulse","After a ranged hit, may shoot the same surviving legal target once more with the same weapon at -2 Attack. Read both new dials; the attacker must survive and still show Pulse. No second shot on an initial miss, and no chain. These are extra rolls within one action. Pay action and ordinary Energy heat once, plus 1 for Pulse if its second roll is made. Resolve critical-miss damage after each roll."),
         ("Green Melee damage / Full Strike","With Fire or Assault, may attack every enemy touching your front arc with this weapon. Roll once; compare against each target separately. Resolve targets in your chosen order using the values/equipment read before the roll. Pay critical-miss damage only once. No other extra-attack effect and no DFA."),
         ("Death from Above / Hatchetmen only in this pack","Start unengaged, with blue Speed, no Salvage, positive speed and printed Attack, and positive primary damage after heat. Declare the target first: an enemy vehicle or 'Mech. Jump some distance, up to full current speed, into legal front-arc contact beside it, touching no other enemy. No fieldworks landing. One close attack: target gets +2 Defense; your primary damage gets +2, outside the equipment/pilot cap. Apply normal rear, shutdown, critical, close and armor rules; no ranged effects or Full Strike."),
-        ("Pay for the landing","After resolving the target's effects, take 1 unavoidable damage on a hit (even zero damage), or 2 on a miss or skipped attack after jumping. Critical-miss damage is additional. If still alive, gain 2 heat total, including Jump. No second attack, displacement or target pivot."),
+        ("Pay for the landing","After resolving the target's effects, take 1 unavoidable damage on a hit (even zero damage), or 2 on a miss or skipped attack after jumping. Critical-miss damage is additional. If alive, gain 2 heat including Jump, plus 1 if this was the second action. No extra attack within DFA, displacement or target pivot. A legal second action may follow a first-action DFA."),
         ("Infantry and damage limits","Against vehicles/'Mechs, infantry deal at most 1 before armor. An exposed close assault raises this to 2 with Piercing: rear contact, a shutdown target, or an attacker in woods/rubble/fieldworks. Flat equipment and pilot damage bonuses together cap at +1. Critical and DFA bonuses are separate. Apply damage limits, then armor after Piercing. Three bullet holes destroy a model."),
     ]
     for title,body in notes: y=note(c,title,body,y)
@@ -306,7 +306,7 @@ def results_page(c):
     rows += [[str(n),"","No scoring" if n==1 else "","No scoring" if n==1 else "",""] for n in range(1,5)]
     rows += [["Total", "", "", "", "Winner / Draw:"]]
     y=table(c,rows,y,[46,58,85,95,256],heights=[28]+[20]*5,font=8.5)-17
-    y=para(c,"<b>Orders:</b> Write the actual order each round (Fire, Advance, Move, Hold, etc.). Mark a push with P, a useful recovery move with *, and a destroyed group with X.",36,y,size=9,leading=12)-9
+    y=para(c,"<b>Orders:</b> Write the action(s) each round (Move/Fire, Advance, Vent, etc.). Mark a push with P, a useful recovery move with *, and a destroyed group with X.",36,y,size=9,leading=12)-9
     y=table(c,[["Group", "Round 1", "Round 2", "Round 3", "Round 4"],*[ [name,"","","",""] for name in ("Watch V1","Watch C1","Blackwire V1","Blackwire C1")]],y,[140,100,100,100,100],heights=[22]*5,font=9)-20
     for prompt in [
         "A decision changed by heat, pushing, recovery or loss of equipment:",

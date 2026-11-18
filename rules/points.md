@@ -1,6 +1,6 @@
 # Points
 
-Version 0.3 · Formula 0.3-alpha-5
+Version 0.3 · Formula 0.3-alpha-6
 
 Build armies with the **points** shown in the [unit catalog](../site/units.html). Pay per base, including every member of a squad.
 
@@ -48,9 +48,11 @@ Each datasheet has a “How the points are calculated” section with a profile-
 
 **Firepower** checks all 216 dice results, including white-dice criticals. Its target mix is 25% Armor-1 vehicles, 15% Armor-2 vehicles, 20% unarmored ’Mechs, 10% open infantry, 15% infantry in woods with +3 cover, and 15% battle armor in the open. It weighs stationary fire at 65% and moving fire at 35%. Recoil, Energy heat, Rocket restrictions, damage limits, and Piercing all apply. Fieldworks improve infantry's Toughness estimate; the offensive mix does not include them.
 
-Range adds 0.025 per maximum-range inch and subtracts 0.025 per minimum-range inch. Moving fire adds half-speed Advance reach, rounded up. Jump Jets does not add distance. Wider arcs get a small bonus. Indirect access, including Streak Missiles, adds 15% of its expected damage. Close attacks use a 0.4 reach allowance, split between front and rear attacks. The best attack counts fully; a different second choice adds 15% for flexibility.
+Range adds 0.025 per maximum-range inch and subtracts 0.025 per minimum-range inch. Vehicles and infantry add half-speed Advance reach, rounded up. ’Mechs compare Advance, Move then Fire, Advance then Fire, Fire then Advance, two Advances, and Fire then Move. Each shot uses its own reach and recoil. Jump Jets does not add distance. Wider arcs get a small bonus. Indirect access, including Streak Missiles, adds 15% of its expected damage. Close attacks use a 0.4 reach allowance, split between front and rear attacks. The best attack counts fully; a different second choice adds 15% for flexibility.
 
-For ’Mechs, a 24-action Fire/Vent or Advance/Vent calculation uses the actual heat track and vent rating. Heat damage modifiers and a small stress allowance reduce output. Pulse, Rapid Strike, and PPC Capacitor include their extra heat; the calculator can decline an optional ability if ordinary fire performs better. Alpha Strike is an alternative attack whose heat schedule goes straight to shutdown after firing.
+For ’Mechs, a **24-activation calculation** chooses one action, two actions, or a whole activation spent Venting, using the actual heat track and vent rating. Move and Fire have 0 base heat; Advance has 1; a second action adds 1. Each action reads its current heat modifiers before attacking, then gains heat. Shutdown prevents a second action. Heat modifiers and a small stress allowance adjust output. The model preserves printed heat bonuses as well as penalties.
+
+Pulse, Rapid Strike, and PPC Capacitor include their extra heat; the calculator can decline an optional ability if ordinary fire performs better. Alpha Strike goes straight to shutdown after one attack. Rockets have no moving-fire option. Rush still moves at most twice speed and uses the whole activation, so the basic mobility allowance is unchanged.
 
 ### Equipment costs
 
@@ -69,22 +71,22 @@ Equipment is valued on the clicks where it appears, using its weapon-specific id
 | Homing Beacon / TSEMP / Flamer heat / Grapple | 0.25 / 0.25 / 0.2 / 0.1 Support while usable |
 | Point Defense | 0.3 Support per 2 printed defense above 16; no allowance at 16 or below |
 
-Support and extra-target rates are shared estimates of opportunity, not guaranteed damage or extra actions. Duplicate systems on one unit do not stack their Support allowance. Playtests should record actual use before changing these common weights.
+For ’Mechs, active Repair, Coolant Flush, Bypass, Homing Beacon, TSEMP, and Flamer allowances also use their heat-limited action rate. Command and passive protection do not gain a second-action multiplier. Support and extra-target rates are shared estimates of opportunity, not guaranteed damage or extra actions. Duplicate systems on one unit do not stack their Support allowance. Playtests should record actual use before changing these common weights.
 
-**Death from Above** adds an attack allowance only on non-Salvage ’Mech clicks with blue speed, positive speed and attack, and positive primary damage. It uses the same target mix and equal front/rear weighting, with no DFA against infantry. Expected damage includes +2 target defense, +2 primary damage, legal equipment, criticals, and armor, without Rapid Strike or Full Strike. Subtract expected landing damage—1 on a hit or 2 on a miss—and count no negative result. Value each self-damage click as one enemy damage click for this estimate. Multiply by the 2-heat output factor, reach of **0.4 + 0.025 × speed**, and **0.25 availability**. Add this as an occasional attack option, since it requires an unengaged start.
+**Death from Above** adds an attack allowance only on non-Salvage ’Mech clicks with blue speed, positive speed and attack, and positive primary damage. It uses the same target mix and equal front/rear weighting, with no DFA against infantry. Expected damage includes +2 target defense, +2 primary damage, legal equipment, criticals, and armor, without Rapid Strike or Full Strike. Subtract expected landing damage—1 on a hit or 2 on a miss—and count no negative result. Value each self-damage click as one enemy damage click for this estimate. Multiply by the heat output factor for a 2-heat action (plus 1 if second), reach of **0.4 + 0.025 × speed**, and **0.25 availability**. Add this as an occasional attack option, since it requires an unengaged start.
 
 For **vehicles and infantry**, a separate 24-action calculation chooses between attacking and recovering. A first attack commits the unit. A second attacks at its current values, then pushes it one click down its actual combat dial. Spent units must recover, and destruction ends their output. Salvage cannot attack or push through to another click. The calculation can recover early to preserve a good click. It starts Ready at each click in turn and uses the result per action to price that click.
 
 Some dials improve after taking damage. To price a particular click, this readiness estimate caps later attacks at that click’s firepower. Later improvements still add value on their own clicks; they are not also charged to earlier, weaker ones. This is a pricing convention and does not limit attacks during play.
 
-Datasheets show firepower before readiness, a **readiness multiplier**, and the firepower used in the price. These summary ratings are weighted by click weight and toughness, matching the contributions above. This estimates sustained output; the multiplier is not a fixed discount. ’Mechs use heat instead. Both models use 24 actions, but neither predicts a whole battle.
+Datasheets show firepower before readiness, a **readiness multiplier**, and the firepower used in the price. These summary ratings are weighted by click weight and toughness, matching the contributions above. This estimates sustained output; the multiplier is not a fixed discount. ’Mechs use heat instead. Both models use 24 activations, but neither predicts a whole battle.
 
 ## Special cases
 
 - A Rocket test substitute uses the alternate cost on its datasheet. Record that cost before deployment and keep it for the return game.
 - Carriers use the allowance for the chosen [game size](core-rules.md#force-organization). Designation adds no separate charge in this version.
 - Aircraft, artillery-only units, DropShip turrets, and other excluded types still get catalog costs. Those estimates use the same model, but do not make them legal in a core game. Special flight, artillery, and DropShip rules are not priced here.
-- Repair stops, exact base size, pivoting, heat-related movement loss, mission layouts, squad coordination, and pilot combinations are not fully modeled. Support uses allowances rather than simulating captures, linked activations, or an army's need for repair and cooling. Extra attacks assume the target survives and retains its reference defense; heat schedules conservatively charge the second-roll heat on each use. Readiness excludes enemy attacks, repairs, and critical-miss self-damage. DFA subtracts landing damage but not lost future output or critical-miss self-damage. Click weights express an early-strength preference, not measured survival odds.
+- Repair stops, exact base size, pivoting, heat-related movement loss, mission layouts, squad coordination, and pilot combinations are not fully modeled. Support uses allowances rather than simulating captures, linked activations, or an army's need for repair and cooling. Extra attacks assume the target survives and retains its reference defense; heat schedules conservatively charge the second-roll heat on each use. Readiness excludes enemy attacks, repairs, and critical-miss self-damage. DFA subtracts landing damage but not lost future output or critical-miss self-damage; its availability allowance estimates the difficulty of finding legal landings. The heat model prices repeated attack choices, not every mixed-weapon or support sequence. Click weights express an early-strength preference, not measured survival odds.
 
 ## Changing costs
 

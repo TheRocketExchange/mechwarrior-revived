@@ -18,15 +18,17 @@ Use real bases and current dials. Reset damage and heat between exercises.
 | Battle armor making the same close attacks | Its advantage against armor and shutdown targets; Piercing and critical hits |
 | Both infantry types defending woods, rubble, and fieldworks against shooting and close attacks | Infantry ranged cover +3/+4; battle armor +2/+3. Fieldworks close defense +2/+1. Check equipment stacking, passive protection during Salvage, and unchanged exposure in the open |
 | Fire while engaged with an enemy behind you, including at zero speed | Pivot without moving the center or breaking contact; no Assault needed; ranged Fire still cannot pivot |
-| Ordinary jumping Assault versus DFA against the same vehicle or ’Mech | Half-speed versus full-speed reach; DFA +2 defense/+2 damage; landing damage on a hit, miss, or critical miss; 2 total heat |
+| Ordinary jumping Assault versus DFA against the same vehicle or ’Mech | Half-speed versus full-speed reach; DFA +2 defense/+2 damage; landing damage on a hit, miss, or critical miss; 2 base heat, plus 1 if second |
 | DFA on the last live click; a miss beside a surviving target; blocked landing; Jump lost on the dial | Finish target effects before landing damage; no heat after destruction; no displacement or reactive pivot; legal start and landing required |
 | Two rounds with six infantry in two-base squads, then three-base squads | Passes, waiting time, and how long a squad takes |
 | Board then move; move then unload; destroy a loaded carrier before and after passengers act; block the unloading area | Placement, losses, and whether anyone accidentally gets an extra action |
-| Repeated Advance with two different heat tracks, then Vent from shutdown | Heat modifiers, stress rolls, and restart timing |
+| One Energy Fire per round, two Energy Fires, Move then Fire, and repeated Advance on two different heat tracks | Read heat after each action; count shots before penalties and shutdown. Compare cooling frequency and useful actions |
+| First action reaches shutdown; Vent restarts a shutdown ’Mech | Shutdown ends the activation; Vent uses the whole next activation |
+| Move then Rocket Fire; Rocket Fire then Move; two Rushes | All forbidden. Rockets stay stationary for the whole activation; Rush uses the whole activation |
 | Damage through an equipment change, then attack again; Repair to a black mark | Use the new equipment on the next attack; never repair past the mark |
 | Each pilot, including Brawler with damage equipment and Engineer during shutdown | Whether the benefit works and is counted only once |
 | Each weapon against open infantry, covered infantry, armor, and targets behind buildings | Recoil, heat, damage limits, and direct versus indirect fire |
-| Fire versus Advance; Gunner just within and just beyond half speed, counting terrain | No general Advance penalty; Ballistic −1 recoil unless Gunner applies; Energy Advance costs 3 heat; Rockets cannot Advance-fire |
+| Fire versus Advance; Gunner just within and just beyond half speed, counting terrain | No general Advance penalty; Ballistic −1 recoil unless Gunner applies; first-action Energy Advance costs 2 heat; Rockets cannot Advance-fire |
 
 Record how Rocket weapons were identified or marked as substitutes.
 
@@ -34,9 +36,11 @@ Record how Rocket weapons were identified or marked as substitutes.
 
 Before the full matrix, use one matchup and map for the four cases in the [combat-rhythm examples](../docs/combat-rhythm.md): v0.2, readiness only, half-speed Advance only, and full v0.3. Start with the current legal sample lists and play a return game for each case. Keep the exact figures, pilots, squad membership, terrain, and role pairings; do not add models to spend new cheaper prices yet. Calculate these figures’ costs with the archived v0.2 formula and use those same totals and Breakthrough thresholds across the four cases. Keep the current force limits in every case so changes in army organization do not affect this comparison.
 
+Keep the current two-action ’Mech allowance and lighter heat costs in all four cases, so the comparison isolates readiness and Advance movement. These are controlled order variants, not full reproductions of the archived rules.
+
 Cases that introduce readiness also introduce Move and its recovery, passenger, and exit rules. The movement-only case adds Move without readiness. In full v0.3, squads also use a common order. Log situations where that changes choices; if needed, repeat full v0.3 with separate squad orders to measure coordination on its own.
 
-Then rebuild to the v0.3 limit using the new costs and repeat the v0.2/v0.3 comparison, with each edition’s own roster totals and escape threshold. This separates the rule changes from the extra models a new price may buy. Keep a single formula version within each game and return pair.
+Then rebuild to the limit using current costs and repeat cases A and D with the same rebuilt rosters and escape thresholds. This separates the rule changes from the extra models a new price may buy. Keep a single formula version within each game and return pair.
 
 Use these additional short exercises before the first v0.3 game:
 
@@ -83,6 +87,7 @@ Use [one log per game](playtest-log.md). Leave missing measurements as “unknow
 | --- | --- |
 | Do infantry matter? | Infantry should affect scoring, denial, screening, or assaults in at least one game of each pair where used. Review pairs where they do nothing |
 | Does position matter? | Cover should help survival; exposed assaults should matter; frontal attacks on armor should remain weak |
+| Can ’Mechs stay active without ignoring heat? | Record single/double-action choices, shots before penalties, Vent activations, and unexpected shutdowns. Check whether repeated Ballistic fire or double close attacks dominate |
 | Do vehicles and ’Mechs have jobs? | Record useful transport, fire support, movement, and objective play in each pair |
 | Do squads reduce waiting? | Count passes and activations after the opponent has finished. Review repeated rounds with 3 or more unanswered activations, or missions decided by holding infantry back solely to delay |
 | Is the game a reasonable length? | For Standard games, aim for median play time of 120 minutes or less and review games over 150 minutes. Record other sizes separately. Review waits longer than 5 minutes at any size |

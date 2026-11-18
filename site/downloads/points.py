@@ -45,19 +45,31 @@ def color(click, key):
     return click.get(key, {}).get("color", "white")
 
 
-def heat_output_factor(unit, weapon_type, slot="primary", action_heat=1, shutdown_after=False):
-    """Best Fire/Vent schedule over a fixed horizon, using the actual heat track."""
+def heat_output_factor(unit, weapon_type, slot="primary", action_heat=None, shutdown_after=False):
+    """Best one/two-action or full-activation Vent schedule on the actual heat dial."""
     if unit["category"] != "Mech" or not unit["heat"]:
         return 1.0
+    if action_heat is None:
+        action_heat = CONFIG["mech_action_heat"]["Fire"]
+    gain = action_heat + int(weapon_type == "E")
+    first = (1.0, gain, shutdown_after)
+    patterns = [(first,)]
+    if CONFIG["mech_actions_per_activation"] == 2 and not shutdown_after:
+        patterns.append((first, (1.0, gain + CONFIG["mech_second_action_heat"], False)))
+    return heat_pattern_output(unit, slot, tuple(patterns))
+
+
+def heat_pattern_output(unit, slot, patterns):
+    """Price legal action sequences; each step has output, heat gain, and forced shutdown."""
     track = tuple((click.get(slot, {}).get("value") or 0,
                    any(cell["shutdown"] for cell in click.values()),
                    any(cell["color"] not in ("white", "green") for cell in click.values())) for click in unit["heat"])
-    return _heat_factor(track, max(1, unit["vent"]), action_heat + int(weapon_type == "E"), shutdown_after,
-                        CONFIG["heat_rounds"], CONFIG["heat_damage_reference"], CONFIG["stress_output_factor"])
+    return _heat_schedule(track, max(1, unit["vent"]), patterns, CONFIG["heat_rounds"],
+                          CONFIG["heat_damage_reference"], CONFIG["stress_output_factor"])
 
 
 @lru_cache(maxsize=None)
-def _heat_factor(track, vent, gain, shutdown_after, horizon, reference, stress):
+def _heat_schedule(track, vent, patterns, horizon, reference, stress):
     shutdown = next((i for i, row in enumerate(track) if row[1]), len(track))
     if shutdown <= 0:
         return 0.0
@@ -68,13 +80,42 @@ def _heat_factor(track, vent, gain, shutdown_after, horizon, reference, stress):
         cool = best(rounds - 1, max(0, level - vent))
         if level >= shutdown:
             return cool
-        modifier, _, warned = track[level]
-        damage_factor = max(0.0, 1 + modifier / reference)
-        if warned:
-            damage_factor *= stress
-        fire = damage_factor + best(rounds - 1, shutdown if shutdown_after else min(shutdown, level + gain))
-        return max(cool, fire)
+        result = cool
+        for pattern in patterns:
+            current, output = level, 0.0
+            for value, gain, forced_shutdown in pattern:
+                if current >= shutdown:
+                    break
+                modifier, _, warned = track[current]
+                damage_factor = max(0.0, 1 + modifier / reference)
+                if warned:
+                    damage_factor *= stress
+                output += value * damage_factor
+                current = shutdown if forced_shutdown else min(shutdown, current + gain)
+            result = max(result, output + best(rounds - 1, current))
+        return result
     return best(horizon, 0) / horizon
+
+
+def moving_mech_output(unit, weapon, stationary, moving, reach, advance_reach, full_reach, extra_heat):
+    """Movement and shooting sequences, with recoil and reach priced per shot."""
+    if weapon["type"] in ("R", "A"):
+        return 0.0
+    heat = CONFIG["mech_action_heat"]
+    weapon_heat = int(weapon["type"] == "E") + extra_heat
+    fire, advance = heat["Fire"] + weapon_heat, heat["Advance"] + weapon_heat
+    second = CONFIG["mech_second_action_heat"]
+    step = (moving * advance_reach, advance, False)
+    patterns = [(step,)]
+    if CONFIG["mech_actions_per_activation"] == 2:
+        patterns.extend([
+            ((0.0, heat["Move"], False), (moving * full_reach, fire + second, False)),
+            (step, (moving * advance_reach, fire + second, False)),
+            ((stationary * reach, fire, False), (moving * advance_reach, advance + second, False)),
+            (step, (moving * (2 * advance_reach - reach), advance + second, False)),
+            ((stationary * reach, fire, False), (0.0, heat["Move"] + second, False)),
+        ])
+    return heat_pattern_output(unit, weapon["slot"], tuple(patterns))
 
 
 def dfa_eligible(unit, click, weapon, target):
@@ -196,10 +237,11 @@ def offensive_rating(unit, click):
             values = []
             for special in (False, True):
                 damage = sum(target["weight"] * shot(unit, click, weapon, target, moving=moving, indirect=indirect, special=special, alpha=alpha) for target in CONFIG["targets"])
-                heat = heat_output_factor(unit, kind, weapon["slot"], action_heat=1 + int(moving) + (extra_heat if special else 0), shutdown_after=alpha)
+                action = "Advance" if moving else "Fire"
+                heat = heat_output_factor(unit, kind, weapon["slot"], action_heat=CONFIG["mech_action_heat"][action] + (extra_heat if special else 0), shutdown_after=alpha)
                 values.append(damage * heat)
             return max(values)
-        normal, mobile = output(), output(moving=True)
+        normal = output()
         indirect = output(indirect=True) if kind in ("R", "A") or (kind == "B" and tint == "black") else 0
         minimum = weapon["min_range"]
         reach = max(0.25, 1 + CONFIG["range_per_inch"] * weapon["max_range"] - CONFIG["minimum_range_cost"] * minimum)
@@ -207,14 +249,25 @@ def offensive_rating(unit, click):
         arc_factor = 1 + CONFIG["firing_arc_weight"] * (arc / 180 - 1)
         advance = math.ceil(number(click, "speed") * CONFIG["advance_speed_fraction"])
         moving_reach = (reach + CONFIG["range_per_inch"] * advance) * arc_factor
+        full_reach = (reach + CONFIG["range_per_inch"] * max(0, number(click, "speed"))) * arc_factor
         reach *= arc_factor
+        if unit["category"] == "Mech" and unit["heat"]:
+            mobile_choices = []
+            for special in (False, True):
+                stationary_damage = sum(t["weight"] * shot(unit, click, weapon, t, special=special) for t in CONFIG["targets"])
+                moving_damage = sum(t["weight"] * shot(unit, click, weapon, t, moving=True, special=special) for t in CONFIG["targets"])
+                mobile_choices.append(moving_mech_output(unit, weapon, stationary_damage, moving_damage,
+                                                       reach, moving_reach, full_reach, extra_heat if special else 0))
+            mobile = max(mobile_choices)
+        else:
+            mobile = output(moving=True) * moving_reach
         signature = (kind, number(click,weapon["slot"]), tint, minimum, weapon["max_range"], normal, mobile, indirect)
         if signature in seen:
             continue
         seen.add(signature)
         value = ((CONFIG["stationary_share"] * normal
                   + CONFIG["indirect_access_weight"] * indirect) * reach
-                 + CONFIG["moving_share"] * mobile * moving_reach)
+                 + CONFIG["moving_share"] * mobile)
         choices.append(value)
         if kind == "E" and tint == "black" and unit["category"] == "Mech" and unit["heat"]:
             choices.append(CONFIG["stationary_share"] * output(alpha=True) * reach)
@@ -228,7 +281,7 @@ def offensive_rating(unit, click):
                 value = sum(target["weight"] * (shot(unit, click, weapon, target, close=True, special=special, flamers=use_flame) + shot(unit, click, weapon, target, close=True, exposed=True, special=special, flamers=use_flame)) / 2 for target in CONFIG["targets"])
                 if special and kind == "M" and tint == "green":
                     value *= 1 + CONFIG["full_strike_extra_target_share"]
-                heat = heat_output_factor(unit, "M", weapon["slot"], action_heat=1 + int(special and kind == "M" and tint == "blue"))
+                heat = heat_output_factor(unit, "M", weapon["slot"], action_heat=CONFIG["mech_action_heat"]["Fire"] + int(special and kind == "M" and tint == "blue"))
                 values.append(value * CONFIG["close_reach_factor"] * heat)
             choices.append(max(values))
     choices.sort(reverse=True)
@@ -325,6 +378,9 @@ def support_rating(unit, click):
     support = CONFIG["attack_support"].get(tint, 0)
     if tint == "red" and number(click, "attack") <= 0:
         support = 0
+    if tint in ("green", "purple", "red") and unit["category"] == "Mech":
+        action = {"green": "Repair", "purple": "Coolant Flush", "red": "Bypass"}[tint]
+        support *= heat_output_factor(unit, "M", None, action_heat=CONFIG["mech_action_heat"][action])
     if color(click, "defense") == "purple":
         support += CONFIG["ams_ally_support"]
     # Duplicate systems offer no stacking benefit on one unit.
@@ -338,7 +394,8 @@ def support_rating(unit, click):
         if number(click, "attack") > 0:
             for kind, shade, weight in (("B", "green", "homing_support"), ("E", "green", "tsemp_support"), ("E", "gray", "flamer_heat_support")):
                 if (kind, shade) in usable:
-                    support += CONFIG[weight]
+                    heat_kind = "E" if shade == "green" and kind == "E" else "M"
+                    support += CONFIG[weight] * heat_output_factor(unit, heat_kind, None)
     return support
 
 

@@ -8,7 +8,7 @@ These are shorter Revived rules for the original named abilities, including purp
 
 Abilities apply while showing. Read equipment before each attack and keep it for that attack. A second attack reads the new dials. An ability is optional unless it is Salvage. Passive protection still works during Salvage or shutdown; shutdown prevents active abilities and Grapple.
 
-The examples below use only the modifiers they mention.
+The examples below use only the modifiers they mention. Heat totals assume a first action; add 1 heat if it is the ’Mech’s second action. Pulse and Rapid Strike make extra attacks within an action; they do not use up or grant another action.
 
 ## Speed
 
@@ -35,7 +35,7 @@ The examples below use only the modifiers they mention.
 
 Blue speed grants Jump to any unit. Ignore bases and terrain along the route, but your whole base must fit where you land. Vehicles and ’Mechs cannot land in fieldworks. Jump cannot be used with Rush. Other actions keep their usual movement allowance; Jump grants no extra distance.
 
-A ’Mech gains 1 extra heat when it Jumps. Death from Above already includes that heat in its total of 2. Infantry and vehicles ignore heat. Jump Jets and Evade waive Disengage damage even when you walk; Grapple overrides that benefit.
+A ’Mech gains 1 extra heat when it Jumps. Death from Above already includes Jump in its base cost of 2. Infantry and vehicles ignore heat. Jump Jets and Evade waive Disengage damage even when you walk; Grapple overrides that benefit.
 
 An unengaged ’Mech with Jump may use [Death from Above](core-rules.md#death-from-above). An ordinary jumping Assault uses half speed, with no DFA damage bonus or landing damage.
 
@@ -58,13 +58,13 @@ An unengaged ’Mech with Jump may use [Death from Above](core-rules.md#death-fr
 
 > **Salvage:** A Committed squad Fires. Its salvaged member makes no attack but still takes 1 pushing damage after skipping its action, if alive.
 
-**Command:** After this group finishes its activation, one friendly, unactivated group within 6 inches of the commander may activate immediately. Then the opponent takes their turn. Every base of the chosen group must be within 6 inches. Both groups spend their normal activation; Command grants no second activation and cannot chain. The commander must be on the battlefield, not shutdown, and still show Command. Spent groups must still recover. One use per army per round, however many commanders it has.
+**Command:** After this group finishes its whole activation, including any second ’Mech action, one friendly, unactivated group within 6 inches of the commander may activate immediately. Then the opponent takes their turn. Every base of the chosen group must be within 6 inches. Both groups spend their normal activation; Command grants no second activation and cannot chain. The commander must be on the battlefield, not shutdown, and still show Command. Spent groups must still recover. One use per army per round, however many commanders it has.
 
 > **Command:** Your commander acts, then links a nearby Spent vehicle. The vehicle immediately Moves or Holds to recover, using its normal activation. Your opponent acts next.
 
 ### Repair and Coolant Flush
 
-Both actions stay still and require base contact. Neither unit may touch an enemy. You cannot target yourself or passengers. A ’Mech using either action gains 1 heat. Non-’Mechs leave readiness unchanged and cannot use either while Spent.
+Both actions stay still and require base contact. Neither unit may touch an enemy. You cannot target yourself or passengers. A ’Mech using either action gains 1 heat, plus 1 if it is its second action. Non-’Mechs leave readiness unchanged and cannot use either while Spent.
 
 Repair restores 1 combat click, stopping at Start or a black repair mark. If a repair mark is already showing, no repair is possible. Infantry repair only infantry; battle armor, vehicles, and ’Mechs repair those three types. Repair cannot restore a destroyed unit or cool heat.
 
@@ -78,7 +78,7 @@ Coolant Flush removes 2 heat, stopping at the green heat Start. It can restart a
 
 Choose an enemy vehicle or ’Mech showing Salvage, or a shutdown ’Mech. It must carry no passengers and must not touch another unit friendly to its owner. The attacker needs Bypass and printed attack above zero, but needs no damage value. Any unit type may attempt it.
 
-Move up to half speed and finish in front-arc contact, or pivot in existing contact. Make one close attack using normal attack, rear, shutdown, and defense modifiers. On a hit, deal no damage: take control of the target. A critical hit gives no extra effect; a critical miss still deals 1 unavoidable damage to the attacker. Bypass is a combat order for readiness, or costs a ’Mech 1 heat, plus Jump heat if used.
+Move up to half speed and finish in front-arc contact, or pivot in existing contact. Make one close attack using normal attack, rear, shutdown, and defense modifiers. On a hit, deal no damage: take control of the target. A critical hit gives no extra effect; a critical miss still deals 1 unavoidable damage to the attacker. Bypass is a combat order for readiness, or costs a ’Mech 1 heat, plus Jump heat if used and 1 if it is its second action.
 
 Mark the captured unit as already activated this round. Keep its dial, heat, readiness, and pilot; next round it is a separate group in its new army. It cannot immediately attack its former allies. Existing contacts remain until someone Disengages. Capture does not change either starting roster, force limits, or escape quota. For casualty scoring, a captured unit counts as lost by its original owner while enemy-controlled, or if later destroyed; count its points only once. If recaptured, it stops counting as lost until lost again. It contests and scores objectives for its current controller.
 
@@ -151,13 +151,13 @@ TSEMP changes Ready to Committed or Committed to Spent; Spent stays Spent. It ca
 
 Pulse's second attack uses the same weapon and requires a surviving, legal target and attacker. Read their new dials; loss of Pulse after the first attack prevents the second. It cannot trigger another Pulse. Pay action heat once and ordinary Energy heat once for the whole action, plus 1 for the second roll. Resolve critical-miss damage after each roll. A miss on the first attack grants no second attack.
 
-> **Pulse:** A ’Mech Fires with attack 8 and hits. If the target remains legal, its second shot uses attack 6 and the target’s new dial. Two rolls cost 3 heat total: Fire, Energy, and Pulse.
+> **Pulse:** A ’Mech Fires with attack 8 and hits. If the target remains legal, its second shot uses attack 6 and the target’s new dial. Two rolls cost 2 heat: 1 Energy + 1 Pulse. Fire has no base heat.
 
 Grapple works while its Energy damage color is showing, even when using another weapon. It never increases Disengage damage beyond the usual 1 and does not operate while the grappler is shutdown or in Salvage. Multiple grapplers do not stack.
 
 > **Grapple:** A Skirmisher disengages from an active grappler. It still takes 1 damage; even two grapplers would not increase that cost.
 
-Alpha Strike requires a functioning heat dial and is declared before rolling. Use damage at the current heat position; its +2 is outside the equipment/pilot bonus limit. Resolve the attack and any critical-miss damage, then turn the surviving attacker to its first shutdown position, even on a miss. This replaces all heat from that action. It gives no extra shot. A unit already shutdown cannot use it.
+Alpha Strike requires a functioning heat dial and is declared before rolling. Use damage at the current heat position; its +2 is outside the equipment/pilot bonus limit. Resolve the attack and any critical-miss damage, then turn the surviving attacker to its first shutdown position, even on a miss. This replaces all heat from that action and ends the activation. It gives no extra shot. A unit already shutdown cannot use it.
 
 > **Alpha Strike:** Damage 3 after heat becomes 5 before other modifiers. Whether the shot hits or misses, the surviving attacker shuts down instead of adding normal action and weapon heat.
 
@@ -165,7 +165,7 @@ Flamers may be used with Fire or Assault. Against a ’Mech, a hit deals only 2 
 
 > **Flamers:** A vehicle hits a ’Mech in close combat. The target gains 2 heat and takes no combat-dial damage. The vehicle still commits or pushes for its Fire order.
 
-> **PPC Capacitor:** A ’Mech with damage 3 uses the capacitor with Fire. It shoots at damage 4 and gains 3 heat: 1 Fire + 1 Energy + 1 capacitor.
+> **PPC Capacitor:** A ’Mech with damage 3 uses the capacitor with Fire. It shoots at damage 4 and gains 2 heat: 1 Energy + 1 capacitor. Fire has no base heat.
 
 ## Melee damage
 
@@ -185,7 +185,7 @@ Full Strike uses the same weapon against every target. Apply each target's modif
 
 Rapid Strike follows Pulse's second-attack rules, without its −2 attack penalty or Energy heat. It cannot repeat itself or be used with DFA. Hand-to-Hand Weapon still requires a positive printed damage value before the attack. Agility is passive while showing on a Melee weapon, even if another weapon is used; it never limits pushing, landing, or other unavoidable damage.
 
-> **Rapid Strike:** A ’Mech hits with close Fire at attack 8. Its second attack also uses 8 if its dial is unchanged. Making that second roll costs 2 total heat: 1 Fire + 1 Rapid Strike.
+> **Rapid Strike:** A ’Mech hits with close Fire at attack 8. Its second attack also uses 8 if its dial is unchanged. Making that second roll costs 1 heat for Rapid Strike. Fire has no base heat.
 
 > **Hand-to-Hand Weapon:** You declare replacement damage, hit, and roll a 5. A −1 heat modifier reduces that to 4 before the remaining damage modifiers and armor.
 

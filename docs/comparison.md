@@ -15,9 +15,9 @@ Revived uses alternating activations and fixed infantry squads whose members rol
 | Activations | One order per 150 build points each player turn | Alternate groups; every group acts once per round |
 | Infantry | Temporary formations | Fixed squads of 2–3 bases share one order; each keeps its own targets, rolls, and damage |
 | Formation shooting | Eligible supporters add +2 each to the main attacker | Each base rolls its own attack; no ally accuracy bonus |
-| Move and attack | ’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty | Half-speed Advance shooting, with −1 only for Ballistic recoil. Move travels full speed without an attack. Infantry and ’Mechs Assault at half speed. Close Fire allows an in-place pivot; Jump ’Mechs may use full-speed DFA |
+| Move and attack | ’Mech assault permits half-speed shooting or full-speed close combat, with extra heat and a defense penalty | ’Mechs may take two actions, adding 1 heat for the second. Half-speed Advance shooting, with −1 only for Ballistic recoil. Move travels full speed without an attack. Infantry and ’Mechs Assault at half speed. Close Fire allows an in-place pivot; Jump ’Mechs may use full-speed DFA |
 | Pushing and recovery | Non-’Mechs normally take pushing damage for a second order token and cannot take orders with two tokens; a turn without an order clears tokens | Combat orders commit, then push. Move or Hold recovers. Spent units must recover; they still contest and count for passes |
-| Heat | Printed profiles, pushing, cooling, and heat effects | Printed tracks and numeric modifiers, heat per action, one stress rule for colored warnings |
+| Heat | Printed profiles, pushing, cooling, and heat effects | Printed tracks and numeric modifiers. Move/Fire 0 base heat; Advance/Assault/Rush 1; second action +1. Energy/Jump add heat; Hold/Vent spend the whole activation cooling |
 | Transport | Boarding and unloading use carrier movement; passengers are lost when it is destroyed | Squad spends its activation; carrier acts separately. Passengers may survive a destroyed carrier |
 | Victory | Win a majority of three conditions: elimination, battlefield control, and enemy deployment zone | Each scenario sets one mission and its scoring |
 | Pilots | Purchased cards modify ’Mechs | Four roles; one pilot allowance included in each ’Mech’s cost; no advancement |
@@ -47,7 +47,7 @@ SC-001 Escape the City (p. 104) still uses normal victory rules. Despite its tit
 
 ## Choices for Revived
 
-Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Version 0.3 adds pushing, recovery, half-speed Advance, and a common squad order. See the [worked examples](combat-rhythm.md) for their effects and the test comparison.
+Keep alternating activations, separate infantry attacks, squads, printed attack dice, and printed heat tracks. Version 0.3 adds pushing, recovery, half-speed Advance, and a common squad order. ’Mechs may take two actions, with extra heat for the second. See the [worked examples](combat-rhythm.md) for their effects and the test comparison.
 
 The first missions test holding ground, escaping, and capturing a station. Score at round end so both players can respond. Old “per turn” effects need care: under alternating activations, they could trigger far more often.
 

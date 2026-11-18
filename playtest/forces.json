@@ -30,33 +30,19 @@
         {
           "id": "M4",
           "members": [
-            "AOD093"
-          ],
-          "pilot": "Engineer"
-        },
-        {
-          "id": "M5",
-          "members": [
             "AOD106"
           ],
           "pilot": "Gunner"
         },
         {
-          "id": "M6",
-          "members": [
-            "AOD094"
-          ],
-          "pilot": "Skirmisher"
-        },
-        {
-          "id": "M7",
+          "id": "M5",
           "members": [
             "AOD082"
           ],
           "pilot": "Brawler"
         },
         {
-          "id": "M8",
+          "id": "M6",
           "members": [
             "AOD082"
           ],
@@ -148,20 +134,6 @@
           "pilot": "Engineer"
         },
         {
-          "id": "M5",
-          "members": [
-            "AOD082"
-          ],
-          "pilot": "Gunner"
-        },
-        {
-          "id": "M6",
-          "members": [
-            "AOD082"
-          ],
-          "pilot": "Skirmisher"
-        },
-        {
           "id": "V1",
           "members": [
             "AOD052"
@@ -180,7 +152,7 @@
         {
           "id": "V3",
           "members": [
-            "AOD050"
+            "AOD052"
           ]
         },
         {
@@ -267,13 +239,6 @@
             "AOD082"
           ],
           "pilot": "Brawler"
-        },
-        {
-          "id": "M4",
-          "members": [
-            "AOD093"
-          ],
-          "pilot": "Engineer"
         },
         {
           "id": "V1",

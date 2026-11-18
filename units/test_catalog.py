@@ -10,7 +10,7 @@ from unittest.mock import patch
 from PIL import Image
 
 from parse_catalog import parse_unit
-from points import CONFIG, calculate, dfa_eligible, dfa_landing_risk, dfa_rating, dial_weights, expected_damage, heat_output_factor, offensive_rating, readiness_output, readiness_profile, shot, toughness
+from points import CONFIG, _heat_schedule, calculate, dfa_eligible, dfa_landing_risk, dfa_rating, dial_weights, expected_damage, heat_output_factor, moving_mech_output, offensive_rating, readiness_output, readiness_profile, shot, toughness
 from readiness import Readiness, order, finish_action
 from force_org import DEFAULT_SIZE, GAME_SIZES, INFANTRY, PILOTS, unit_family, validate_force
 
@@ -97,7 +97,7 @@ class ForceOrganizationChecks(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "faction"):
                 validate_force(dict(force, faction=invalid), UNITS)
 
-    def force(self, mechs=("AOD108", "AOD112", "AOD096", "AOD104")):
+    def force(self, mechs=("AOD108", "AOD082", "AOD096", "AOD104")):
         return {"groups": [{"id": f"M{i+1}", "members": [key], "pilot": PILOTS[i % 4]}
                            for i, key in enumerate(mechs)]}
 
@@ -135,7 +135,7 @@ class ForceOrganizationChecks(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Rule of three"):
                 validate_force(repeated, UNITS)
             for count in (1, 2, 3):
-                small = self.force(("AOD108", "AOD112", "AOD096")[:count])
+                small = self.force(("AOD108", "AOD082", "AOD096")[:count])
                 small["game_size"] = key
                 self.assertEqual(validate_force(small, UNITS)["mechs"], count)
         legacy = self.force()
@@ -212,7 +212,7 @@ class ForceOrganizationChecks(unittest.TestCase):
     def test_sample_forces_are_legal_and_close(self):
         roster = json.loads((ROOT.parent / "playtest/forces.json").read_text(encoding="utf-8"))
         results = [validate_force(f, UNITS, roster["limit"]) for f in roster["forces"]]
-        self.assertEqual([r["mechs"] for r in results], [8, 6, 4])
+        self.assertEqual([r["mechs"] for r in results], [6, 4, 3])
         self.assertEqual([r["squads"] for r in results], [3, 5, 9])
         self.assertTrue(all(r["carriers"] == 2 for r in results))
         self.assertLessEqual(max(r["total"] for r in results) - min(r["total"] for r in results), roster["limit"] * .02)
@@ -352,6 +352,61 @@ class StarterScenarioChecks(unittest.TestCase):
 
 
 class PricingChecks(unittest.TestCase):
+    def test_heat_schedule_matches_enumerated_sequences(self):
+        # Independently enumerate entire activation plans, including cooling.
+        track = ((0, False, False), (1, False, False), (-1, False, True), (0, True, False))
+        patterns = (((1., 1, False),), ((1., 1, False), (1., 2, False)))
+        choices = (None,) + patterns
+        best = 0
+        for plan in itertools.product(choices, repeat=4):
+            heat, output = 0, 0.
+            for activation in plan:
+                if activation is None:
+                    heat = max(0, heat - 2)
+                elif heat < 3:
+                    for value, gain, forced in activation:
+                        if heat == 3:
+                            break
+                        modifier, _, warned = track[heat]
+                        output += value * max(0, 1 + modifier / 3) * (.95 if warned else 1)
+                        heat = 3 if forced else min(3, heat + gain)
+            best = max(best, output)
+        self.assertAlmostEqual(_heat_schedule(track, 2, patterns, 4, 3, .95), best / 4)
+
+    def test_second_action_reads_heat_and_shutdown_ends_activation(self):
+        track = ((0, False, False), (-1, False, False), (0, True, False))
+        double = (((1., 1, False), (1., 2, False)),)
+        self.assertAlmostEqual(_heat_schedule(track, 2, double, 1, 3, 1), 1 + 2/3)
+        first_shuts_down = (((1., 2, False), (1., 3, False)),)
+        self.assertEqual(_heat_schedule(track, 2, first_shuts_down, 1, 3, 1), 1)
+        # Vent spends the next activation. It cannot restart and attack at once.
+        self.assertEqual(_heat_schedule(track, 2, first_shuts_down, 2, 3, 1), .5)
+        self.assertAlmostEqual(_heat_schedule(track, 2, first_shuts_down, 3, 3, 1), 2/3)
+
+    def test_lighter_heat_and_second_actions_affect_only_mechs(self):
+        mech = copy.deepcopy(UNITS['AOD108'])
+        two = calculate(mech)
+        non_mechs = [UNITS[key] for key in ('AOD050', 'D006', 'AOD030')]
+        unchanged = [calculate(u) for u in non_mechs]
+        with patch.dict(CONFIG, mech_actions_per_activation=1):
+            self.assertLess(calculate(mech)['points'], two['points'])
+            self.assertEqual([calculate(u) for u in non_mechs], unchanged)
+        with patch.dict(CONFIG, heat_rounds=1):
+            self.assertEqual(heat_output_factor(mech, 'E'), 2)
+            self.assertEqual(heat_output_factor(mech, 'B'), 2)
+            self.assertEqual(heat_output_factor(mech, 'E', shutdown_after=True), 1)
+        with patch.dict(CONFIG, mech_second_action_heat=20, heat_rounds=2):
+            # Best plan saves the shutdown burst for the last activation: 1 + 2 shots.
+            self.assertEqual(heat_output_factor(mech, 'E'), 1.5)
+
+    def test_rocket_has_no_mobile_two_action_option(self):
+        mech = copy.deepcopy(UNITS['AOD108'])
+        weapon = dict(mech['weapons'][0], type='R')
+        self.assertEqual(moving_mech_output(mech, weapon, 3, 3, 1.3, 1.4, 1.5, 0), 0)
+        weapon['type'] = 'B'
+        with patch.dict(CONFIG, heat_rounds=1):
+            self.assertAlmostEqual(moving_mech_output(mech, weapon, 3, 2, 1.3, 1.4, 1.5, 0), 3*1.3+2*1.4)
+
     def test_original_equipment_identities_and_salvage(self):
         names = json.loads((ROOT / "equipment.json").read_text())
         self.assertEqual([names["attack"][c] for c in ("green", "gray", "black")], ["Repair", "Command", "Salvage"])

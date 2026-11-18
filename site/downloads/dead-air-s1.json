@@ -20,14 +20,14 @@
     {
       "id": "M3",
       "members": [
-        "AOD112"
+        "AOD082"
       ],
       "pilot": "Engineer"
     },
     {
       "id": "V1",
       "members": [
-        "AOD050"
+        "AOD041"
       ]
     },
     {
@@ -41,5 +41,5 @@
   ],
   "version": 1,
   "faction": "",
-  "formula_version": "0.3-alpha-5"
+  "formula_version": "0.3-alpha-6"
 }

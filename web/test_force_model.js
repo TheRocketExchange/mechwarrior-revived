@@ -7,7 +7,7 @@ const samples=JSON.parse(fs.readFileSync(path.join(root,"playtest/forces.json"),
 const model=createForceModel(catalog);
 let tests=0;
 function test(name,fn){fn();tests++;console.log("PASS",name);}
-function base(){return model.parse({name:"Test",groups:["AOD108","AOD112","AOD096","AOD104"].map((id,i)=>({id:"M"+(i+1),members:[id],pilot:model.config.pilots[i]}))});}
+function base(){return model.parse({name:"Test",groups:["AOD108","AOD082","AOD096","AOD104"].map((id,i)=>({id:"M"+(i+1),members:[id],pilot:model.config.pilots[i]}))});}
 function fails(force,pattern){assert(model.validate(force).errors.some(message=>pattern.test(message)),JSON.stringify(model.validate(force)));}
 test("sample lists agree with catalog prices and limits",()=>{
   for(const sample of samples.forces){const force=model.parse(sample),result=model.validate(force);assert.deepEqual(result.errors,[]);assert.equal(result.points,sample.groups.flatMap(group=>group.members).reduce((sum,id)=>sum+model.units.get(id).cost.points,0));assert.equal(model.cards(force).length,result.counts.models);}

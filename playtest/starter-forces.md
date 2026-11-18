@@ -1,6 +1,6 @@
 # Starter patrols
 
-For [First Contact](../scenarios/00-first-contact.md) · Skirmish, 600-point limit · Formula 0.3-alpha-5
+For [First Contact](../scenarios/00-first-contact.md) · Skirmish, 600-point limit · Formula 0.3-alpha-6
 
 Each patrol has three ’Mechs, one vehicle, and one three-base infantry squad. Each has five activation groups: M1, M2, M3, V1, and C1. Label the infantry C1a, C1b, and C1c; they keep separate dials but share an order.
 
@@ -9,31 +9,31 @@ Choose one patrol each. Both may deploy on either side. Their totals are close, 
 
 ## Patrol A
 
-**594 points · 7 models · 5 activation groups.**
+**592 points · 7 models · 5 activation groups.**
 
 [Load Patrol A in the builder](../site/builder.html?sample=S1) to print its unit cards or change models.
 
 | Roster ID | Model and catalog ID | Bases | Points | Pilot |
 | --- | --- | ---: | ---: | --- |
-| M1 | [Dasher II · AOD106](../site/unit.html?id=AOD106) · Veteran | 1 | 116 | Gunner |
-| M2 | [Hatchetman · AOD104](../site/unit.html?id=AOD104) · Elite | 1 | 156 | Brawler |
-| M3 | [Ursa · AOD112](../site/unit.html?id=AOD112) · Elite | 1 | 191 | Engineer |
-| V1 | [Zibler Fast Strike Tank · AOD050](../site/unit.html?id=AOD050) · Veteran | 1 | 89 | — |
+| M1 | [Dasher II · AOD106](../site/unit.html?id=AOD106) · Veteran | 1 | 160 | Gunner |
+| M2 | [Hatchetman · AOD104](../site/unit.html?id=AOD104) · Elite | 1 | 260 | Brawler |
+| M3 | [Mongoose · AOD082](../site/unit.html?id=AOD082) · Veteran | 1 | 98 | Engineer |
+| V1 | [Hadur Fast Support Vehicle · AOD041](../site/unit.html?id=AOD041) · Green | 1 | 32 | — |
 | C1 | [Standard Foot · D006](../site/unit.html?id=D006) · Elite | 3 | 42 | — |
 
 
 ## Patrol B
 
-**590 points · 7 models · 5 activation groups.**
+**597 points · 7 models · 5 activation groups.**
 
 [Load Patrol B in the builder](../site/builder.html?sample=S2) to print its unit cards or change models.
 
 | Roster ID | Model and catalog ID | Bases | Points | Pilot |
 | --- | --- | ---: | ---: | --- |
-| M1 | [Dasher II · AOD107](../site/unit.html?id=AOD107) · Veteran | 1 | 124 | Gunner |
-| M2 | [Hatchetman · AOD102](../site/unit.html?id=AOD102) · Veteran | 1 | 164 | Brawler |
-| M3 | [Ursa · AOD110](../site/unit.html?id=AOD110) · Veteran | 1 | 193 | Engineer |
-| V1 | [JI2A1 Attack APC · AOD040](../site/unit.html?id=AOD040) · Elite | 1 | 67 | — |
+| M1 | [Dasher II · AOD106](../site/unit.html?id=AOD106) · Veteran | 1 | 160 | Gunner |
+| M2 | [Hatchetman · AOD104](../site/unit.html?id=AOD104) · Elite | 1 | 260 | Brawler |
+| M3 | [Mongoose · AOD081](../site/unit.html?id=AOD081) · Green | 1 | 112 | Engineer |
+| V1 | [Saxon APC · AOD056](../site/unit.html?id=AOD056) · Veteran | 1 | 23 | — |
 | C1 | [Standard Foot · D006](../site/unit.html?id=D006) · Elite | 3 | 42 | — |
 
 

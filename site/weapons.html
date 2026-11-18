@@ -65,7 +65,7 @@
 <tr>
 <td>Ballistic</td>
 <td>+1 damage against infantry or battle armor with no terrain cover</td>
-<td>−1 attack if you moved or turned before firing</td>
+<td>−1 attack if you moved or turned earlier in this activation</td>
 </tr>
 <tr>
 <td>Energy</td>
@@ -75,13 +75,13 @@
 <tr>
 <td>Rocket</td>
 <td>Can shoot indirectly through blocking terrain and intervening bases</td>
-<td>Fire action only. Indirect shots take −2 attack and −1 damage</td>
+<td>Stationary for the whole activation; Fire only. Indirect shots take −2 attack and −1 damage</td>
 </tr>
 </tbody>
 </table></div>
-<p><strong>Ballistic:</strong> Check the target’s terrain cover before equipment reduces or ignores it. Advance adds no extra accuracy penalty. Gunner removes recoil during Advance if movement costs no more than half speed, rounded up; count difficult terrain.</p>
+<p><strong>Ballistic:</strong> Move then Fire still takes recoil. Gunner checks the movement cost of that Advance only. Check the target’s terrain cover before equipment reduces or ignores it. Advance adds no extra accuracy penalty. Gunner removes recoil during Advance if movement costs no more than half speed, rounded up; count difficult terrain.</p>
 <p><strong>Energy:</strong> The heat cost applies only to ’Mechs. The infantry damage limit applies to every firer. Energy does not heat its target automatically.</p>
-<p><strong>Rocket:</strong> Includes both missiles and rockets. Declare direct or indirect fire before rolling. Direct shots use normal sight rules. Indirect shots ignore blockers, but keep the printed ranges, front arc, and target’s cover. They get no rear bonus.</p>
+<p><strong>Rocket:</strong> Includes both missiles and rockets. Keep the same position and facing for the whole activation. You cannot move or turn before or after firing Rockets, even with a second action. Declare direct or indirect fire before rolling. Direct shots use normal sight rules. Indirect shots ignore blockers, but keep the printed ranges, front arc, and target’s cover. They get no rear bonus.</p>
 <p>You cannot shoot while engaged or at an enemy touching a friendly unit, even indirectly. Ordinary Rockets hit one target without a spotter, scatter roll, or blast. Named equipment can add effects: Anti-Personnel hits nearby infantry, Streak Missiles offers guided fire, and Electronic Camouflage blocks indirect fire and Streak. No pilot or equipment allows Rockets to fire during Advance.</p>
 <h2 id="label-your-weapons">Label your weapons</h2>
 <p>The original symbols show Energy, Ballistic, and Melee. There is no separate Rocket symbol. Before deployment:</p>
@@ -95,7 +95,7 @@
 <h2 id="damage-and-heat">Damage and heat</h2><figure class="rule-photo"><a class="battle-photo-link" href="battle-photos/burning-wreck.jpg" style="--photo-position:50% 50%"><img src="battle-photos/burning-wreck.jpg" alt="A red smoke marker over a damaged MechWarrior miniature beside smaller units and a model building." width="1600" height="900" decoding="async" loading="lazy"></a><figcaption><span>A burning wreck marks the fight.</span><a class="" href="https://thepennywhistle.blogspot.com/2014/04/defilade-defilade-who-said-anything.html" aria-label="Photo: The Penny Whistle">Photo: The Penny Whistle</a></figcaption></figure>
 <p>Add heat modifiers to printed damage, then apply the weapon bonus or penalty. Add equipment and pilot bonuses (at most +1 combined), battle armor’s close bonus, and critical damage. Apply damage limits, then armor. Damage may be zero. Extra sources of Piercing do not add together.</p>
 <p>Blue defense gives Armor 2 against Ballistic and Rocket shots; red gives Armor 2 against Energy. Ordinary Piercing ignores 1 armor; red Ballistic/Rocket damage (Armor Piercing) ignores all armor. Equipment colors keep their original weapon-specific identities: use the <a href="equipment.html">equipment reference</a>.</p>
-<p>Add Energy heat only when you roll the attack, including a miss or critical miss if the attacker survives. Add it to the action heat and make at most one stress check. Skipping an Advance shot still costs the action’s heat, but no Energy heat. Pulse adds one more heat if its second roll is made, paying ordinary Energy heat only once for the action. PPC Capacitor adds 1 heat when used. Alpha Strike replaces the action's heating with shutdown.</p>
+<p>Add Energy heat only when you roll the attack, including a miss or critical miss if the attacker survives. Add it to the action heat and the second-action surcharge, if any. Make at most one stress check for that action. Skipping an Advance shot still costs the action’s heat, but no Energy heat. Pulse adds one more heat if its second roll is made, paying ordinary Energy heat only once for the action. PPC Capacitor adds 1 heat when used. Alpha Strike replaces the action's heating with shutdown and ends the activation.</p>
 <h2 id="examples">Examples</h2>
 <p>These damage examples use a vehicle or ’Mech with damage 3, no other bonuses or heat penalties, and a normal hit.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
@@ -128,7 +128,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>Cover still affects the attack roll. Compare moving and stationary fire:</p>
+<p>Cover still affects the attack roll. These heat totals are for a first action, without Jump or other equipment. A second action adds 1 heat:</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>
 <thead>
 <tr>
@@ -142,14 +142,14 @@
 <tr>
 <td>Advance after moving</td>
 <td>−1 attack; Gunner can remove it within half speed</td>
-<td>No movement accuracy penalty; 3 total ’Mech heat</td>
+<td>No movement accuracy penalty; 2 ’Mech heat</td>
 <td>Cannot shoot</td>
 </tr>
 <tr>
 <td>Fire</td>
+<td>0 ’Mech heat</td>
 <td>1 ’Mech heat</td>
-<td>2 ’Mech heat</td>
-<td>1 ’Mech heat; indirect fire takes −2 attack</td>
+<td>0 ’Mech heat; indirect fire takes −2 attack</td>
 </tr>
 <tr>
 <td>Target behind blocking terrain</td>

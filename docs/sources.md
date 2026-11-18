@@ -43,7 +43,9 @@ Use current dial values and printed ranges. Roll three dice plus attack against 
 
 Terrain bonuses, damage limits, heat timing, transports, pilots, and scoring in this packet are new Revived rules.
 
-Death from Above retains Dark Age’s Jump requirement, unengaged start, non-infantry target, +2 target defense, +2 damage, and 1/2 landing damage on a hit/miss. Revived treats it as a close attack with its own action and 2 total heat; its normal equipment and armor apply. It grants no reactive pivot. Use the [Revived rule](../rules/core-rules.md#death-from-above), not the original timing or equipment exceptions.
+Dark Age charges 1 heat for pushing a ’Mech (p. 11) and running (p. 13); Energy hits heat the target (p. 17). Age of Destruction also charges 1 for pushing (p. 21) and Assault (p. 27). Revived keeps ordinary Move and Fire at 0 base heat, but charges for a second action in the same activation. That two-action allowance is new. Energy heat still goes to the firer in Revived, and cooling requires a whole activation.
+
+Death from Above retains Dark Age’s Jump requirement, unengaged start, non-infantry target, +2 target defense, +2 damage, and 1/2 landing damage on a hit/miss. Revived treats it as a close attack with its own action and 2 base heat, plus 1 if it is the second action; its normal equipment and armor apply. It grants no reactive pivot. Use the [Revived rule](../rules/core-rules.md#death-from-above), not the original timing or equipment exceptions.
 
 ## Using older figures
 

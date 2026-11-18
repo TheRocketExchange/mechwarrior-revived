@@ -12,7 +12,7 @@ For six days, the valley has heard nothing but static. Kestrel Relay is the last
 
 The settlements pooled their remaining machines and hired whoever would answer. Get a crew onto the relay and keep the channel open. The valley needs a way to call for help, and your patrol is all it can afford to send.
 
-**594 points · 7 models · 5 activation groups.** Uses the existing Patrol A roster, with callsigns and named pilots.
+**592 points · 7 models · 5 activation groups.** Uses the existing Patrol A roster, with callsigns and named pilots.
 
 [Load Patrol A in the builder](../site/builder.html?sample=S1) · [Download the themed list](dead-air-s1.json)
 
@@ -20,7 +20,7 @@ The settlements pooled their remaining machines and hired whoever would answer. 
 
 Your employer claims the relay under an old salvage contract. Secure the site before the local militia can bring it online. The transmitter must survive; the people defending it are a problem your employer has left to you.
 
-**590 points · 7 models · 5 activation groups.** Uses the existing Patrol B roster, with callsigns and named pilots.
+**597 points · 7 models · 5 activation groups.** Uses the existing Patrol B roster, with callsigns and named pilots.
 
 [Load Patrol B in the builder](../site/builder.html?sample=S2) · [Download the themed list](dead-air-s2.json)
 
@@ -53,4 +53,4 @@ Keep the [core rules](../rules/core-rules.md) and [equipment reference](../rules
 
 Keep your force, swap north and south, and reset all dials and markers. Use the same PDF for both games. Record the score, time, vehicle and squad orders, decisions changed by heat or pushing, and rules that needed rereading. Save proposed rule and points changes until both games are finished.
 
-Pack 1 · Rules 0.3 · Points 0.3-alpha-5 · Snapshot `4e829ed732`. The snapshot identifies the rules and roster data used to build this copy. No tabletop results have been recorded for this matchup.
+Pack 1 · Rules 0.3 · Points 0.3-alpha-6 · Snapshot `282f4fcc78`. The snapshot identifies the rules and roster data used to build this copy. No tabletop results have been recorded for this matchup.

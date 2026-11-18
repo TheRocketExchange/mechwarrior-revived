@@ -30,7 +30,8 @@ Attacks keep the original three dice and white-dice critical results. See the [s
 | Each base attacks separately, without ally accuracy bonuses | Let infantry earn their place through their own actions |
 | Infantry gain stronger ranged cover; fieldworks also protect against close attacks | Make infantry positions harder to clear while leaving open ground dangerous |
 | Infantry close assaults against exposed armor | Make terrain and timing matter |
-| Heat comes from actions; Hold and Vent cool | Fit heat to alternating activations |
+| ’Mechs may take two actions; the second adds 1 heat. Move and Fire have no base heat | Allow movement and bursts of fire without making every ordinary action costly |
+| Rush, Hold, and Vent use the whole activation; shutdown ends it | Keep cooling and long moves as choices that give up attacking |
 | Printed heat modifiers and one stress roll for colored warnings | Keep different heat tracks with fewer lookups |
 | Original equipment identities with shorter effects and separate weapon tables | Keep repair crews, commanders, jump units, armor, and weapons recognizable |
 | Ballistic recoil, Energy heat, and stationary Rocket fire | Give each weapon a strength and a cost |
@@ -47,7 +48,7 @@ There are no campaigns, pilot levels, custom units, or expansion rules in this v
 
 Every unit still activates each round, but vehicles and infantry now need recovery. Check whether pushing creates useful urgent attacks and whether Move lets recovery serve the mission. Cheaper support units may increase army size. Cheap squads may still let a player delay important activations. Check cover, transport survival, and two- versus three-base squads.
 
-The [combat examples](combat-rhythm.md) explain the expected effects and the four-case comparison. Equipment now retains its original identity. Test Command timing, Bypass captures, extra attacks, and support opportunities before tuning their common point allowances. Expanded original heat effects and more pilot abilities belong in a later pass.
+The [combat examples](combat-rhythm.md) explain the expected effects and the four-case comparison. Equipment now retains its original identity. Test two-action bursts, cooling frequency, Command timing, Bypass captures, extra attacks, and support opportunities before tuning their common point allowances. Expanded original heat effects and more pilot abilities belong in a later pass.
 
 The shared points formula is a starting estimate. The sample armies use several chassis and follow the Standard force limits. Test other chassis and heat tracks too, then adjust the shared weights if results show a consistent problem. Games at 600, 1,200, 1,800, and 2,400 points have their own unit, carrier, and pilot limits. The rule of three stays fixed. Larger tables gain width while retaining the 48-inch depth, so mission travel distances stay the same. Test each size’s force variety, activation counts, flank use, and play time.
 

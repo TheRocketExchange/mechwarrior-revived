@@ -54,7 +54,11 @@ This example uses **speed 8 with no heat or equipment modifiers**. You may move 
 
 Advance has no general attack penalty. A Ballistic shot after moving or turning has −1 recoil unless Gunner removes it. An Energy attack adds 1 extra ’Mech heat. Rockets shoot only with Fire. Check range, arc, and line of sight after moving; an Advance does not guarantee a legal shot.
 
-For a ’Mech, Advance costs 2 heat, Move 1, and Rush 1, plus the extra heat if it rolls an Energy attack. For vehicles and infantry, Advance commits or pushes; Move recovers; Rush leaves readiness unchanged and is not allowed while Spent.
+A ’Mech may take two actions in its activation. Move and Fire have no base heat; Advance, Assault, and Rush cost 1. The second action adds 1 heat, and each action that fires Energy adds 1. Rush, Hold, and Vent use the whole activation.
+
+> **Two actions:** A speed-8 ’Mech Moves up to 8 inches, then Fires Energy. It gains 2 heat: 1 for Energy and 1 for its second action. If it Advances only, it moves up to 4 inches and gains 2 heat for the same shot. Two Advances can make two shots, but generate 5 heat with Energy—enough to shut down most ’Mechs from cold.
+
+For vehicles and infantry, Advance commits or pushes; Move recovers; Rush leaves readiness unchanged and is not allowed while Spent.
 
 ## Holding the relay
 

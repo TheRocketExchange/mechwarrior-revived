@@ -1,5 +1,8 @@
 {
-  "version": "0.3-alpha-5",
+  "version": "0.3-alpha-6",
+  "mech_actions_per_activation": 2,
+  "mech_second_action_heat": 1,
+  "mech_action_heat": {"Fire": 0, "Move": 0, "Advance": 1, "Assault": 1, "Rush": 1, "Disengage": 1, "Repair": 1, "Coolant Flush": 1, "Bypass": 1, "Death from Above": 2},
   "dial_start_weight": 1.5,
   "dial_end_weight": 0.5,
   "scale": 1.6,

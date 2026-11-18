@@ -63,6 +63,13 @@ assert published["force_organization"]["sizes"] == GAME_SIZES
 assert published["force_organization"]["default_size"] == DEFAULT_SIZE
 # Check the written force chart against the data used by both validators.
 rules_page = pages[(SITE / "rules.html").resolve()]
+# Action costs in the player-facing table must match the pricing model.
+action_table = rules_page.xpath('//*[@id="4-actions"]/following::table[1]')[0]
+action_rows = {row.xpath('./td')[0].text_content(): row.xpath('./td')[2].text_content() for row in action_table.xpath('.//tbody/tr')}
+for action, heat in catalog['points_formula']['mech_action_heat'].items():
+    expected = f'+{heat}' if heat else '0'
+    assert action_rows[action].split(',')[0] == expected, (action, action_rows[action])
+assert rules_page.xpath('//*[@id="second-actions"]')
 terrain_table = rules_page.xpath('//*[@id="6-terrain-and-sight"]/following::table[1]')[0]
 terrain_rows = {row.xpath('./td')[0].text_content(): row.xpath('./td')[2].text_content() for row in terrain_table.xpath('.//tbody/tr')}
 infantry_cover = catalog["points_formula"]["infantry_terrain_defense"]

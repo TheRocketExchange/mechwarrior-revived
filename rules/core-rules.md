@@ -10,7 +10,7 @@ Combat dials record damage as the battle unfolds, while heat and pushing make ea
 
 Two players fight over a battlefield of terrain and objectives. Choose a scenario: it tells you where to deploy, what you are trying to achieve, and when the battle ends. Destroying the enemy helps, but the mission decides the winner.
 
-You take turns activating one ’Mech, vehicle, or infantry squad. Move into position, fire, assault, or recover. Every surviving group acts once per round, so your opponent can respond before you move your whole army.
+You take turns activating one ’Mech, vehicle, or infantry squad. Move into position, fire, assault, or recover. A ’Mech can take two actions in its activation, gaining extra heat for the second. Every surviving group activates once per round.
 
 Each miniature is one **unit**, also called a **base**. Infantry move in fixed squads but keep their own dials and attack rolls. A squad activates together; each ’Mech and vehicle activates on its own. Damage turns a combat dial toward destruction and may change its speed, weapons, or defenses. ’Mechs also track heat. Vehicles and squads track readiness, taking damage if they push for a second combat action before recovering.
 
@@ -88,33 +88,51 @@ If casualties or a destroyed carrier leave a squad split, it must **regroup** ne
 
 ## 4 Actions
 
-Each group chooses one action per activation. **Speed** means its current printed speed plus any heat modifier, never less than zero. Round half speed up. Add movement bonuses from equipment after halving or doubling speed. You may move less than the allowance.
+Vehicles and squads choose one action per activation. A ’Mech may take **up to two actions**, resolving one completely before choosing the next. It may repeat an action unless that action uses the whole activation.
+
+**Speed** means its current printed speed plus any heat modifier, never less than zero. Round half speed up. Add movement bonuses from equipment after halving or doubling speed. You may move less than the allowance. Read speed and equipment again before a second action.
 
 > **Example:** Printed speed 7 and a −2 heat modifier give speed 5: Advance up to 3 inches, Move up to 5, or Rush up to 10, before terrain costs.
 
-| Action | What you do | ’Mech heat |
+| Action | What you do | Base ’Mech heat |
 | --- | --- | --- |
-| Fire | Stay in place; make one ranged or close attack; may pivot before a close attack | +1 |
-| Advance | Move up to half speed, then make one ranged attack | +2 |
-| Move | Move up to your speed; no attack; non-’Mechs recover | +1 |
-| Rush | Move up to twice your speed; no attack | +1 |
+| Fire | Stay in place; make one ranged or close attack; may pivot before a close attack | 0 |
+| Advance | Move up to half speed, then make one ranged attack | +1 |
+| Move | Move up to your speed; no attack; non-’Mechs recover | 0 |
+| Rush | Move up to twice your speed; no attack; whole activation | +1 |
 | Assault | Infantry or ’Mech: move up to half speed, then make one close attack | +1 |
-| Death from Above | ’Mech with Jump: jump up to speed; make one risky close attack against a vehicle or ’Mech | +2 total |
+| Death from Above | ’Mech with Jump: jump up to speed; make one risky close attack against a vehicle or ’Mech | +2, including Jump |
 | Disengage | Leave enemy contact; move up to half speed; no attack | +1 |
-| Hold | Stay still; no attack; non-’Mechs recover | Cool 1 |
-| Vent | ’Mech: stay still; cool by your printed vent rating, at least 1 | Cooling only |
+| Hold | Stay still; no attack; whole activation; non-’Mechs recover | Cool 1 |
+| Vent | ’Mech: stay still; cool by your printed vent rating, at least 1; whole activation | Cooling only |
 | Repair | Green Attack: stay still and repair one friendly unit | +1 |
 | Coolant Flush | Purple Attack: stay still and remove 2 heat from a friendly ’Mech | +1 |
 | Bypass | Red Attack: move up to half speed and attempt to take over a crippled enemy | +1 |
 | Embark or Disembark | Board or leave a carrier with the whole squad; see Transport | None |
 
-Advance has no attack penalty of its own. Moving or turning before a Ballistic shot causes −1 attack for recoil. Gunner removes it if movement costs no more than half speed, rounded up; equipment may allow an Advance beyond that limit. Rockets can shoot only with Fire.
+### Second actions
 
-A ’Mech adds **1 extra heat** if it rolls an Energy attack. Add this to the action heat, even on a miss. Pay the action’s heat even if you skip a shot or cannot make it; add no Energy heat without a roll. Destroyed ’Mechs take no further heat.
+A ’Mech’s **second action adds 1 heat** to that action’s normal cost. Finish the first action, including its heat, stress roll, and damage, before choosing the second. Use the new dial values. Both actions belong to one activation; mark the ’Mech activated after it finishes.
+
+**Rush, Hold, and Vent use the whole activation.** Choose one of these alone. They cannot follow or precede another action. Reaching shutdown or destruction ends the activation immediately. A ’Mech that restarts by Venting cannot act again that round.
+
+> **Example:** A ’Mech Moves, then Fires a Ballistic weapon. Move and Fire each have 0 base heat; the second action adds 1, for 1 heat in all. The shot has −1 attack for recoil.
+
+> **Example:** A ’Mech Fires Energy twice. The first action adds 1 Energy heat; the second adds 1 Energy heat and 1 second-action heat. Total: 3 heat. Read the heat dial before the second shot.
+
+> **Example:** A ’Mech is one click from shutdown. Its first Energy shot shuts it down, ending its activation. It cannot take a second shot or Vent until its next activation.
+
+Fire makes an attack from your current position for 0 base heat. Assault costs 1 because it combines movement and a close attack in one action. Either can pivot for close combat. Advance and Assault leave a second action available; Move then Fire spends both actions to travel farther and attack once.
+
+Advance has no attack penalty of its own. Moving or turning earlier in the activation causes **−1 attack for Ballistic recoil**, including on a later Fire action. Gunner removes it during an Advance if that Advance’s movement costs no more than half speed, rounded up; equipment may allow an Advance beyond that limit.
+
+Rockets can shoot only with Fire, and the firer must keep the same position and facing for its **whole activation**. Moving or turning prevents Rocket fire later in the activation; after firing Rockets, it cannot move or turn.
+
+A ’Mech adds **1 extra heat per action** if it rolls an Energy ranged attack. Add this to the action heat and any second-action heat, even on a miss. Pay the action’s heat even if you skip a shot or cannot make it; add no Energy heat without a roll. Destroyed ’Mechs take no further heat. Pulse and Rapid Strike add attacks within an action; they do not use the ’Mech’s other action.
 
 You may check whether an action is possible before choosing it. If you declare an action you cannot finish, carry out the legal parts, lose any unavailable attack, and pay its heat or pushing cost. Readiness still changes.
 
-> **Example:** A ’Mech Advances but finds its target out of range. It makes no attack and still gains 2 action heat. It adds no Energy heat because it rolled no Energy attack.
+> **Example:** A ’Mech Advances as its first action but finds its target out of range. It makes no attack and still gains 1 heat. It adds no Energy heat because it rolled no Energy attack.
 
 ## 5 Movement and facing
 
@@ -252,30 +270,32 @@ A ’Mech with **Jump Jets (blue speed)** may leap onto an enemy vehicle or ’M
 1. **Declare DFA and its target before moving.** Jump up to your current speed, ignoring bases and terrain along the route. Move some distance and land legally, with your front arc touching the target and no other enemy. Place your base beside the target, never on top of it. You cannot land in fieldworks.
 2. **Make one close attack.** The target gets **+2 defense** for this attack. Use your primary damage with **+2 damage** on a hit. Normal rear, shutdown, close equipment, pilot, critical, and armor rules apply. The +2 damage is separate from the equipment/pilot limit. Ranged weapon effects do not apply.
 3. **Pay for the landing.** After resolving the attack and any heat dealt to the target, take **1 unavoidable damage on a hit or 2 on a miss**. This is additional to critical-miss damage: white 1/1 can cost 3 damage in all. A hit that deals zero damage still uses the hit cost. Skipping the attack after jumping uses the miss cost.
-4. **If still alive, gain 2 heat total.** This includes Jump heat; do not add it again. Stop at destruction if the landing damage destroys you. There is no extra attack, target pivot, or displacement. Surviving units stay where they landed, even on a miss.
+4. **If still alive, gain 2 heat, plus 1 if this is your second action.** The base 2 includes Jump heat; do not add it again. Stop at destruction if the landing damage destroys you. DFA grants no extra attack, target pivot, or displacement. Surviving units stay where they landed, even on a miss.
 
-**Example:** A speed-8 ’Mech jumps 6 inches into a vehicle’s front. Attack 8 plus a dice total of 12 reaches its defense 18 + 2, so it hits. Primary damage 3 becomes 5; Armor 1 reduces that to 4. The attacker takes 1 unavoidable damage, then gains 2 heat if it survives. On a miss, the target takes no damage and the attacker takes 2 landing damage instead.
+DFA uses one action. If it was the first, a surviving ’Mech that is not shutdown may take its second action normally. Enemy contact still limits its choices.
+
+**Example:** As its first action, a speed-8 ’Mech jumps 6 inches into a vehicle’s front. Attack 8 plus a dice total of 12 reaches its defense 18 + 2, so it hits. Primary damage 3 becomes 5; Armor 1 reduces that to 4. The attacker takes 1 unavoidable damage, then gains 2 heat if it survives. On a miss, the target takes no damage and the attacker takes 2 landing damage instead.
 
 ## 8 Heat
 
 ’Mechs use their printed heat tracks. Apply the printed speed and damage modifiers to the matching values, never below zero. Use the rules here instead of the original named heat-color effects. Infantry and vehicles ignore heat.
 
-After an action, add its heat and any Energy or Jump heat together. Turn the heat dial one click at a time. Stop at the first position showing three shutdown symbols and discard excess heat. Never wrap around to cold.
+After each action, add its base heat, any Energy or Jump heat, equipment heat, and **1 heat if it was the second action**. Turn the heat dial one click at a time. Stop at the first position showing three shutdown symbols and discard excess heat. Shutdown ends the activation. Never wrap around to cold.
 
 **Stress:** After each complete heat gain, check the dial. If the ’Mech is not shutdown and any heat background is colored other than green or plain white, roll one die:
 
 - **1:** Take 1 unavoidable combat-dial damage.
 - **2–6:** No effect.
 
-Roll only once, even with several colored warnings. A number without a colored background does not trigger stress. Stress damage adds no heat. Cooling never causes a stress roll.
+Roll only once per heat gain, even with several colored warnings. An action that gains no heat causes no stress roll. A number without a colored background does not trigger stress. Stress damage adds no heat. Cooling never causes a stress roll.
 
-> **Example:** A ’Mech Jumps during Advance and fires Energy: 2 action + 1 Jump + 1 Energy = 4 heat. Add it as one gain, then make one stress roll if a warning is showing and it is not shutdown.
+> **Example:** A ’Mech Jumps during its first Advance and fires Energy: 1 action + 1 Jump + 1 Energy = 3 heat. Add it as one gain, then make one stress roll if a warning is showing and it is not shutdown. The same Advance as a second action would cost 4 heat.
 
 **Shutdown:** A ’Mech showing three shutdown symbols can only Vent. It cannot move, turn, attack, control or contest objectives, or use pilots other than Engineer. Passive defense equipment still works. Enemies get the shutdown defense modifier and exposed-assault benefit.
 
 > **Example:** Shutdown is two clicks away when a ’Mech gains 4 heat. Turn only those two clicks, stop at shutdown, and discard the rest. Do not roll for stress.
 
-**Cooling:** Hold cools 1. Vent cools the printed vent rating, at least 1; Engineer adds 1. Turn toward the green starting position and stop there. When the shutdown symbols disappear, the ’Mech restarts, but its activation is already spent. There is no extra cooling at round end.
+**Cooling:** Hold cools 1. Vent cools the printed vent rating, at least 1; Engineer adds 1. Either uses the whole activation and gains no second-action heat. Turn toward the green starting position and stop there. When the shutdown symbols disappear, the ’Mech restarts, but its activation is already spent. There is no extra cooling at round end.
 
 > **Example:** Vent rating 2 with Engineer cools 3 clicks. If that restarts the ’Mech, it still cannot take another action this round.
 

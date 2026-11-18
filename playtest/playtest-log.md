@@ -57,6 +57,10 @@ For the v0.3 comparison, record case A/B/C/D, fixed-model or repriced armies, an
 | --- | --- | --- | --- | --- |
 | | | | | |
 
+| ’Mech / round | First action / heat afterward | Second action / heat afterward | Cooling / shutdown | Did heat prevent useful play? |
+| --- | --- | --- | --- | --- |
+| | | | | |
+
 Record useful actions: taking or denying an objective, escaping, delivering troops, removing a threat, or blocking a needed route. Include units that helped without dealing damage.
 
 | Unit/squad | Category | Open / cover / assault | What happened / round | Damage or casualties | Survived? |

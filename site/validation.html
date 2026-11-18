@@ -67,11 +67,11 @@
 </tr>
 <tr>
 <td>Starter scenario</td>
-<td>Four rounds with one relay; scoring in rounds 2–4 gives three available points. Patrols A/B cost 594/590 points, each with seven models in five groups. Both pass Skirmish limits. Symmetric terrain, clear control area, source coordinates, and measured map geometry are checked</td>
+<td>Four rounds with one relay; scoring in rounds 2–4 gives three available points. Patrols A/B cost 592/597 points, each with seven models in five groups. Both pass Skirmish limits. Symmetric terrain, clear control area, source coordinates, and measured map geometry are checked</td>
 </tr>
 <tr>
 <td>Dead Air pack</td>
-<td>Sixteen Letter pages collect the unchanged starter matchup with a fictional relay-station briefing, measured map, both rosters, quick references, fourteen photo cards with complete dials and assignments, six named pilot cards, and a one-page results sheet. All pages rendered and visually inspected. PDF values, factions, photos, assignments and pilot text match the source data. Both downloadable lists imported successfully in the browser at 594/590 points; the page and builder fit a 390-pixel viewport</td>
+<td>Sixteen Letter pages collect the revised starter matchup with a fictional relay-station briefing, measured map, both rosters, quick references, fourteen photo cards with complete dials and assignments, six named pilot cards, and a one-page results sheet. All pages rendered and visually inspected. PDF values, factions, photos, assignments and pilot text match the source data. Both downloadable lists imported successfully in the browser at 592/597 points; the page and builder fit a 390-pixel viewport</td>
 </tr>
 <tr>
 <td>Maps and teaching diagrams</td>
@@ -87,7 +87,7 @@
 </tr>
 <tr>
 <td>Army totals</td>
-<td>H: 1,192 points / 15 groups. B: 1,192 / 17. I: 1,196 / 19. The totals differ by 4 points. Each has two carriers and follows the force chart</td>
+<td>H: 1,187 points / 13 groups. B: 1,193 / 15. I: 1,187 / 18. The totals differ by 6 points. Each has two carriers and follows the force chart</td>
 </tr>
 <tr>
 <td>Force organization</td>
@@ -99,7 +99,7 @@
 </tr>
 <tr>
 <td>Breakthrough targets</td>
-<td>30% rounded up: H 358, B 358, I 359</td>
+<td>30% rounded up: H 357, B 358, I 357</td>
 </tr>
 <tr>
 <td>Catalog coverage</td>
@@ -123,11 +123,15 @@
 </tr>
 <tr>
 <td>Points</td>
-<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-5. Each complete click is priced separately, with weights from 1.5 to 0.5. Eligible Jump clicks include a DFA allowance after landing risk and heat. Infantry Toughness includes stronger woods and fieldworks protection. Faction, name, and rarity do not affect pricing</td>
+<td>Every cost and Rocket substitute reproduces from formula 0.3-alpha-6. Each complete click is priced separately, with weights from 1.5 to 0.5. Eligible Jump clicks include a DFA allowance after landing risk and heat. Infantry Toughness includes stronger woods and fieldworks protection. Faction, name, and rarity do not affect pricing</td>
 </tr>
 <tr>
 <td>Automated tests</td>
-<td>Forty-seven tests cover starter patrols and map geometry, all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, infantry terrain defense, DFA, and legal and illegal rosters at all four sizes. Dial checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness optimizer independently</td>
+<td>Fifty-one tests cover starter patrols and map geometry, all catalog prices and Rocket alternatives, full dials, stat increases, criticals, weapons, heat, source parsing, photos, readiness, infantry terrain defense, DFA, and legal and illegal rosters at all four sizes. Dial checks cover early strength, degradation order, defense on the same click as firepower, weight normalization, weak tail clicks, and later improvements. Short schedules were also exhaustively enumerated to check the readiness and heat optimizers independently</td>
+</tr>
+<tr>
+<td>Two-action ’Mechs</td>
+<td>The heat optimizer checks one/two-action sequences, full-activation cooling, modifiers before the second attack, shutdown ending an activation, and Alpha Strike. Mobile fire includes Move/Fire and two Advances; Rockets have no mobile option. All 751 ’Mech entries were repriced; non-’Mech points stayed unchanged. The written action table is checked against formula inputs. These are model and rules checks, not battle results</td>
 </tr>
 <tr>
 <td>Restored equipment</td>
@@ -159,7 +163,7 @@
 </tr>
 <tr>
 <td>Close pivots and DFA</td>
-<td>Fire may pivot for a close attack while keeping center and contacts fixed. DFA uses full speed with Jump, +2 target defense, +2 primary damage, 1/2 landing damage, and 2 total heat. Blue-speed catalog ’Mechs can Jump and use DFA; the original equipment card confirms the color. The formula checks legal profiles, all 216 rolls, armor, rear attacks, landing risk, heat, and current-click eligibility; tabletop balance is untested</td>
+<td>Fire may pivot for a close attack while keeping center and contacts fixed. DFA uses full speed with Jump, +2 target defense, +2 primary damage, 1/2 landing damage, and 2 base heat, plus 1 if it is the second action. Blue-speed catalog ’Mechs can Jump and use DFA; the original equipment card confirms the color. The formula checks legal profiles, all 216 rolls, armor, rear attacks, landing risk, heat, and current-click eligibility; tabletop balance is untested</td>
 </tr>
 <tr>
 <td>Weapon examples</td>
@@ -167,7 +171,7 @@
 </tr>
 <tr>
 <td>Weapon limits</td>
-<td>Energy criticals still obey the infantry damage limit. Energy Fire/Advance give 2/3 ’Mech heat. Rockets cannot Advance-fire</td>
+<td>Energy criticals still obey the infantry damage limit. First-action Energy Fire/Advance give 1/2 ’Mech heat. A second action adds 1. Rockets keep position and facing unchanged for the whole activation</td>
 </tr>
 <tr>
 <td>Moving fire</td>
@@ -331,7 +335,7 @@
 </tr>
 <tr>
 <td>DFA hits with attack 8 plus dice 12 against defense 18</td>
-<td>Meets defense 20; primary damage 3 becomes 5, or 4 through Armor 1; attacker pays 1 landing damage then 2 total heat if alive</td>
+<td>Meets defense 20; primary damage 3 becomes 5, or 4 through Armor 1; attacker pays 1 landing damage then 2 base heat if alive, plus 1 if it is the second action</td>
 </tr>
 <tr>
 <td>DFA misses or rolls white 1/1</td>
