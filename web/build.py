@@ -26,7 +26,7 @@ MD = MarkdownIt("commonmark", {"html": False}).enable("table")
 
 # Source, output, display title, primary navigation, eyebrow.
 PAGES = [
-    ("README.md", "index.html", "MechWarrior Revived", "Home", "Rules for your clix collection"),
+    ("README.md", "index.html", "Welcome to MechWarrior Revived", "Home", ""),
     ("rules/core-rules.md", "rules.html", "Core rules", "Rules", "Rules / 01"),
     ("rules/weapon-reference.md", "weapons.html", "Weapon reference", "Rules", "Rules / 02"),
     ("rules/equipment-reference.md", "equipment.html", "Equipment reference", "Rules", "Rules / 03"),
@@ -91,6 +91,16 @@ def render_document(source, output, title):
     # The template supplies the document title; keep every remaining source block.
     if tokens and tokens[0].type == "heading_open" and tokens[0].tag == "h1":
         tokens = tokens[3:]
+    if len(tokens) >= 3 and tokens[0].type == "paragraph_open":
+        intro = tokens[1]
+        if re.match(r"Version \d", intro.content):
+            tokens[0].attrSet("class", "document-meta")
+        else:
+            # Keep scenario size and round limits prominent; the edition is in the footer.
+            content = re.sub(r" · Version \d+(?:\.\d+)*$", "", intro.content)
+            if content != intro.content:
+                intro.content = content
+                intro.children = MD.parseInline(content)[0].children
     toc, ids = [], set()
     current = {"title": title, "page": title, "url": output, "text": ""}
     SEARCH.append(current)
@@ -218,7 +228,7 @@ def main():
                 ("02", "builder.html", "Army builder", "Choose models, check your list, and print cards for your army."),
                 ("03", "units.html", "Unit catalog", "Photos, full dials, printable cards, and points."),
                 ("04", "aids.html", "Play aids", "Quick references and printable pilot cards."),
-            ]) + '<div class="edition-note"><strong>Playtest edition</strong><p>The rules are ready to try. Balance at each size and the Standard game’s two-hour play target still need testing.</p></div>'
+            ])
             SEARCH.append({"title": title, "page": title, "url": filename, "text": re.sub(r"<[^>]+>", " ", body)})
         write_page(filename, title, active, eyebrow, body, toc, tools, next_page)
 
