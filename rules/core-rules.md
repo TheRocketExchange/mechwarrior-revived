@@ -2,155 +2,129 @@
 
 Version 0.3 · Playtest rules
 
-MechWarrior Revived is a modernized, fan-made take on **MechWarrior: Dark Age**, played with your existing **MW:DA clix figures and their combat dials**. Command BattleMechs, armored vehicles, and infantry in the BattleTech universe, fighting to seize ground, break through enemy lines, or hold a vital position.
-
-Combat dials record damage as the battle unfolds, while heat and pushing make each extra attack a decision.
+MechWarrior Revived is a modernized, fan-made take on **MechWarrior: Dark Age**, played with your existing **MW:DA clix figures and their combat dials**. Two players command armies of BattleMechs, vehicles, and infantry.
 
 ## 1 How the game works
 
-Two players fight over a battlefield of terrain and objectives. Destroying the enemy helps, but the mission decides the winner.
+You take turns moving and fighting with your models. Position matters: terrain protects your troops, and taking ground can matter more than destroying the enemy.
 
-You take turns activating one ’Mech, vehicle, or infantry squad. Move into position, fire, assault, or recover. A ’Mech can take two actions in its activation, gaining extra heat for the second. Every surviving group activates once per round.
+### Models and bases
 
-Each miniature is one **unit**, also called a **base**. Infantry move in fixed squads but keep their own dials and attack rolls. A squad activates together; each ’Mech and vehicle activates on its own. Damage turns a combat dial toward destruction and may change its speed, weapons, or defenses. ’Mechs also track heat. Vehicles and squads track readiness, taking damage if they push for a second combat action before recovering.
+Each miniature is one **unit**. Its **base** is the plastic stand beneath it. Measure from the base, not the sculpt.
 
-If rules disagree, follow the scenario for deployment and victory, then any specific pilot or equipment rule, then the core rules.
+- **’Mechs** are walking war machines. Each acts on its own.
+- **Vehicles** include tanks and other ground vehicles. Each acts on its own.
+- **Infantry** act in squads of two or three bases. Battle armor represents troops in powered suits and forms separate squads.
 
-The examples below use only the modifiers they mention.
+Squad members keep their own dials. Sharing a squad does not combine their weapons or damage.
 
-## 2 Prepare the table
+### Reading the combat dial
 
-You need a table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use 48 × 48 inches for Skirmish or Standard games, and 72 × 48 for Large or Grand Battles; see [game sizes](#choose-the-battle-size). Use separate markers or the [readiness sheet](readiness-reference.md) for vehicles and squads. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Terrain layouts and deployment zones depend on the mission.
+Use the numbers currently showing in the base’s window:
 
-Set combat dials to their starting marks and heat dials to their green starting positions. All vehicles and squads start Ready. If a dial is jammed, use a written copy of its track. Agree on terrain boundaries and unclear colors before deploying.
+| Value | What it tells you |
+| --- | --- |
+| Speed | How far the model can move, in inches |
+| Attack | The number added to an attack roll |
+| Defense | The total an enemy must reach to hit this model |
+| Damage | How many clicks a normal hit can cause |
 
-Unless the scenario says otherwise:
+Weapons also have printed ranges. Colored backgrounds identify special equipment.
 
-1. Roll one die each and reroll ties. The higher roller chooses north or south.
-2. The other player places a group first. Alternate until both armies are deployed. A carrier and its starting passengers are one placement.
-3. Keep each base entirely inside its deployment zone, in terrain it can enter. Keep squads together and choose each unit’s facing.
+Each point of damage turns the combat dial one click toward destruction. The new position may change the model’s values or equipment. Always use what is showing now. Three bullet holes mean the model is destroyed.
 
-Deployment order does not decide who acts first.
+> **Example:** A tank takes 2 damage. Turn its combat dial two clicks, then use the values at that position for its next action.
 
-Groups with [Infiltrate](equipment-reference.md#speed) may deploy later and farther forward. All other deployment limits still apply.
+## 2 What you need
 
-> **Example:** You win the side-choice roll and choose south. Your opponent places the first group. Roll initiative separately to decide who activates first.
+You need your models, terrain, a ruler or tape measure marked in inches, and **three six-sided dice: two white and one other color**.
+
+Use markers to show which models or squads have acted, plus extra markers for vehicles and infantry. Keep the round and score on paper. Some missions need objective markers.
+
+The table dimensions depend on the [game size](#choose-the-battle-size). Force building and deployment come after the play rules below.
 
 ## 3 Rounds and activation
 
-An **activation group** is one ’Mech, one vehicle, or one infantry squad. Each surviving group acts once per round.
+A **round** gives each surviving part of both armies one chance to act. During the round, players alternate **activations**.
 
-1. Remove activation markers; keep readiness and heat. Roll one die each and reroll ties. The winner chooses who goes first.
+An **activation group** is one ’Mech, one vehicle, or one infantry squad. Activating a group means choosing what it does, resolving its actions, and marking it as finished for the round.
+
+1. Remove activation markers. Roll one die each and reroll ties. The winner chooses who goes first.
 2. Take turns activating one group that has not acted. Mark it when finished.
-3. Once every group has acted, score the scenario, check for victory, and begin the next round.
+3. Once every group has acted, score the scenario and check for victory. Begin the next round if the game continues.
 
-Choose **one action for the whole squad**, then finish one base before starting the next. Each base uses its own speed, weapon, and target, and rolls its own attack. A base unable to carry out part of the action skips that part; it cannot choose a different action. Read the target’s new dial after every attack. Destroyed units cannot act. Recovery and regrouping have an exception for bases that must Disengage, described below.
+Clearing activation markers does not reset other markers or dials.
 
-> **Example:** A three-base squad chooses Fire. Two members shoot different enemies; the third has no legal target and skips its shot. The whole squad has activated.
+> **Example:** You activate a ’Mech. Your opponent activates a tank. You then choose another ’Mech, a vehicle, or a squad that has not acted yet.
 
-**Passing:** You may pass only when you have fewer groups left to activate than your opponent. If you have none, you must pass. Count Spent groups, passengers, and shutdown ’Mechs: they can recover, Hold aboard, or Vent. Passing does not use a group’s activation or change readiness.
+### Squad activations
+
+A squad chooses one action together. Finish each member separately, using its own speed, target, and attack roll. Mark the squad finished after all its members have acted.
+
+### Passing
+
+You may pass only when you have fewer groups left to activate than your opponent. If you have none, you must pass. Count every unactivated group, including passengers and groups that cannot attack. Passing spends no activation and changes no markers or dials.
 
 > **Example:** You have two groups left and your opponent has four: you may pass. With two groups each, you must activate one.
 
-There is no automatic recovery or cooling at round end. If neither side has units left on the board or aboard carriers, score that round and use the scenario’s final result.
-
-### Readiness and pushing
-
-Each vehicle and each infantry squad has one readiness state. ’Mechs use heat instead.
-
-| Before a Fire, Advance, Assault, or Bypass order | After declaring it | Cost |
-| --- | --- | --- |
-| Ready | Committed | None |
-| Committed | Spent | Each surviving base takes 1 unavoidable damage after finishing its action |
-| Spent | Must recover | No combat order allowed |
-
-The second combat order is **pushing**. It need not happen in the very next round: readiness stays until the group recovers. Pay pushing damage even if a base misses, skips its attack, or has no legal target. A critical miss deals its own damage first; a surviving attacker still pays pushing damage. Stop at destruction and never transfer a casualty’s cost to another base.
-
-> **Example:** A vehicle Fires, Rushes next round, then Fires again. Rush left it Committed, so the second Fire pushes it and costs 1 damage afterward.
-
-> **Example:** A Committed vehicle Fires and rolls white 1/1. It takes 1 critical-miss damage, then 1 pushing damage if still alive. Armor stops neither.
-
-To **recover**, choose Move or Hold. After the group finishes, set it to Ready. Move uses full speed with no attack; Hold stays still. While engaged, use Hold or Disengage instead. In a recovering squad, each member may Move or Hold; an engaged member must Hold or Disengage. Keep the squad together. Disengage keeps its normal damage cost and half-speed limit.
-
-> **Example:** One member of a Spent squad Holds in enemy contact while the other two Move back into its chain. The squad becomes Ready; none of its damage is healed.
-
-A Spent group must recover on its next activation. Rush, Repair, Coolant Flush, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery never heals damage, grants another activation, or prevents a unit from contesting objectives. Black Attack means **Salvage**: that unit may only Move, Hold, Vent, or Disengage. See [equipment](equipment-reference.md#attack) for salvaged squad members and Command's linked activations.
-
-### Keeping squads together
-
-At deployment and at the end of an activation, a squad must form one connected chain. Neighboring base centers can be no more than 4 inches apart. Bases may move out of that chain while the squad is acting, but must finish together.
-
-If casualties or a destroyed carrier leave a squad split, it must **regroup** next activation, even if Spent. Each base may move up to its speed, Hold if already in place, or Disengage if touching an enemy. It cannot attack, repair, board, or score an exit. Rejoin the chain if possible; otherwise close the gaps as much as possible. Finishing this activation clears readiness, even if the gaps cannot all close; a squad still split must regroup again next time. No one takes damage just for being out of formation. A lone survivor always counts as together.
-
-> **Example:** A–B–C form a straight chain with 4 inches between neighbors. A and C may be 8 inches apart. If B is destroyed, the survivors must regroup next activation.
-
 ## 4 Actions
 
-Vehicles and squads choose one action per activation. A ’Mech may take **up to two actions**, resolving one completely before choosing the next. It may repeat an action unless that action uses the whole activation.
+An **action** is what a group does during its activation. Vehicles and squads choose one. A ’Mech may take **up to two**, finishing the first completely before choosing the second.
 
-**Speed** means its current printed speed plus any heat modifier, never less than zero. Round half speed up. Add movement bonuses from equipment after halving or doubling speed. You may move less than the allowance. Read speed and equipment again before a second action.
+### Everyday actions
 
-> **Example:** Printed speed 7 and a −2 heat modifier give speed 5: Advance up to 3 inches, Move up to 5, or Rush up to 10, before terrain costs.
+A ranged attack shoots at a target. A close attack fights an enemy touching your base.
 
-| Action | What you do | Base ’Mech heat |
-| --- | --- | --- |
-| Fire | Stay in place; make one ranged or close attack; may pivot before a close attack | 0 |
-| Advance | Move up to half speed, then make one ranged attack | +1 |
-| Move | Move up to your speed; no attack; non-’Mechs recover | 0 |
-| Rush | Move up to twice your speed; no attack; whole activation | +1 |
-| Assault | Infantry or ’Mech: move up to half speed, then make one close attack | +1 |
-| Death from Above | ’Mech with Jump: jump up to speed; make one risky close attack against a vehicle or ’Mech | +2, including Jump |
-| Disengage | Leave enemy contact; move up to half speed; no attack | +1 |
-| Hold | Stay still; no attack; whole activation; non-’Mechs recover | Cool 1 |
-| Vent | ’Mech: stay still; cool by your printed vent rating, at least 1; whole activation | Cooling only |
-| Repair | Green Attack: stay still and repair one friendly unit | +1 |
-| Coolant Flush | Purple Attack: stay still and remove 2 heat from a friendly ’Mech | +1 |
-| Bypass | Red Attack: move up to half speed and attempt to take over a crippled enemy | +1 |
-| Embark or Disembark | Board or leave a carrier with the whole squad; see Transport | None |
+| Action | What you do |
+| --- | --- |
+| Move | Move up to your speed; do not attack |
+| Fire | Stay in place and make one ranged or close attack; may pivot for close combat |
+| Advance | Move up to half speed, then make one ranged attack |
+| Assault | Infantry or ’Mech: move up to half speed, then make one close attack |
+| Rush | Move up to twice your speed; no attack; uses the whole activation |
+| Hold | Stay still; no attack; uses the whole activation |
 
-### Second actions
+Use current speed, including any heat modifier, never less than zero. Halve or double it for the action, rounding half speed up. Then add any movement bonuses. You may move less than the allowance. Read speed and equipment again before each action.
 
-A ’Mech’s **second action adds 1 heat** to that action’s normal cost. Finish the first action, including its heat, stress roll, and damage, before choosing the second. Use the new dial values. Both actions belong to one activation; mark the ’Mech activated after it finishes.
+> **Example:** At speed 7, Move allows 7 inches, Advance allows 4, and Rush allows 14, before terrain costs or equipment bonuses.
 
-**Rush, Hold, and Vent use the whole activation.** Choose one of these alone. They cannot follow or precede another action. Reaching shutdown or destruction ends the activation immediately. A ’Mech that restarts by Venting cannot act again that round.
+[![Move, Advance, and Rush compared at speed 8.](../scenarios/diagrams/movement-and-fire.svg)](../scenarios/diagrams/movement-and-fire.svg)
 
-> **Example:** A ’Mech Moves, then Fires a Ballistic weapon. Move and Fire each have 0 base heat; the second action adds 1, for 1 heat in all. The shot has −1 attack for recoil.
+Advance and Assault combine movement and an attack in one action. A ’Mech can follow either with another action. Move then Fire spends both actions to travel farther and attack once.
 
-> **Example:** A ’Mech Fires Energy twice. The first action adds 1 Energy heat; the second adds 1 Energy heat and 1 second-action heat. Total: 3 heat. Read the heat dial before the second shot.
+A ’Mech may repeat an action, but Rush and Hold cannot be combined with another action. Its second action adds **1 heat**; see [Heat](#8-heat) for action costs and cooling. Move and Hold let vehicles and squads [recover](#readiness-and-pushing).
 
-> **Example:** A ’Mech is one click from shutdown. Its first Energy shot shuts it down, ending its activation. It cannot take a second shot or Vent until its next activation.
+### Other actions
 
-Fire makes an attack from your current position for 0 base heat. Assault costs 1 because it combines movement and a close attack in one action. Either can pivot for close combat. Advance and Assault leave a second action available; Move then Fire spends both actions to travel farther and attack once.
+Use [Disengage](#enemy-contact) to leave enemy contact, or [Vent](#cooling) to cool a ’Mech. Equipment, jump attacks, and transports have their own actions, described with those rules.
 
-Advance has no attack penalty of its own. Moving or turning earlier in the activation causes **−1 attack for Ballistic recoil**, including on a later Fire action. Gunner removes it during an Advance if that Advance’s movement costs no more than half speed, rounded up; equipment may allow an Advance beyond that limit.
+You may check whether an action is possible before choosing it. If you declare an action you cannot finish, carry out the legal parts and lose any unavailable attack. Its [heat](#8-heat) or [readiness and pushing](#readiness-and-pushing) costs still apply.
 
-Rockets can shoot only with Fire, and the firer must keep the same position and facing for its **whole activation**. Moving or turning prevents Rocket fire later in the activation; after firing Rockets, it cannot move or turn.
-
-A ’Mech adds **1 extra heat per action** if it rolls an Energy ranged attack. Add this to the action heat and any second-action heat, even on a miss. Pay the action’s heat even if you skip a shot or cannot make it; add no Energy heat without a roll. Destroyed ’Mechs take no further heat. Pulse and Rapid Strike add attacks within an action; they do not use the ’Mech’s other action.
-
-You may check whether an action is possible before choosing it. If you declare an action you cannot finish, carry out the legal parts, lose any unavailable attack, and pay its heat or pushing cost. Readiness still changes.
-
-> **Example:** A ’Mech Advances as its first action but finds its target out of range. It makes no attack and still gains 1 heat. It adds no Energy heat because it rolled no Energy attack.
+> **Example:** A tank Advances toward an enemy but ends beyond its weapon’s range. It stays where it moved and loses the shot.
 
 ## 5 Movement and facing
 
 Measure distances between base centers unless a rule says the bases must touch. Measure movement along the route taken. Your whole base must fit along that route: it cannot overlap another base, cross blocking terrain, or squeeze through a gap narrower than itself. This includes friendly bases.
 
+### Turning and facing
+
+Vehicles and ’Mechs have **front and rear arcs** marked around their bases. These show which direction they face. Infantry can attack in any direction and have no rear arc. If a rear arc is missing, agree on a rear 90-degree arc before play. A line exactly on its boundary gets no rear bonus.
+
 You may turn during any action that allows movement, even if you move no distance. **Before a close attack with Fire, you may pivot in place:** keep your base center fixed, keep all existing enemy contacts, and do not overlap other bases or illegal terrain. This needs no Assault action or extra heat. You cannot pivot before a ranged Fire attack, during Hold, Vent, or Repair, or in response to an enemy action.
 
 > **Example:** An enemy touches your ’Mech’s rear. If a legal pivot keeps that contact, Fire lets you turn and make a close attack. It does not let you turn for a ranged shot.
-
-Infantry can attack in any direction and have no rear arc. Vehicles and ’Mechs use their printed front and rear arcs. If a rear arc is missing, agree on a rear 90-degree arc before play. A line exactly on its boundary gets no rear bonus.
 
 ### Enemy contact
 
 Stop when your base touches an enemy. You are now **engaged**.
 
-While engaged, you may Fire a close attack, Assault in place, attempt Bypass in place, Hold, Vent, or Disengage, subject to equipment, readiness, or shutdown limits. Fire, Assault, and Bypass may pivot to face the enemy, but cannot move away. Vehicles can make close attacks only with Flamers or Bypass. You cannot shoot, repair, use Coolant Flush, Move, Advance, Rush, use Death from Above, board, or unload normally while engaged. In a recovering squad, engaged members may Hold or Disengage while the others Move or Hold.
+While engaged, you may make a close attack with Fire or Assault in place, Hold, Vent, or Disengage, subject to equipment, readiness, or shutdown limits. Fire and Assault may pivot to face the enemy, but cannot move away. To leave contact, use Disengage.
 
 To **Disengage**, take 1 unavoidable damage before moving if any touching enemy is not shutdown. Pay once, however many enemies touch you. If destroyed, remove the unit. Otherwise move up to half speed, without touching a new enemy. A pilot or equipment may remove the damage cost. There is no damage cost if all touching enemies are shutdown.
 
 > **Example:** Two enemies touch a vehicle. Disengage costs it 1 damage in total. If its speed is still 8 afterward, it may move up to 4 inches and cannot attack.
+
+No other movement or ranged attack is allowed while engaged. Repair, Coolant Flush, boarding, and unloading are also forbidden. Bypass may be attempted in place, including a pivot. Vehicles need Flamers or Bypass to fight close. In a recovering squad, engaged members may Hold or Disengage while the others Move or Hold.
 
 A unit with zero speed cannot change position. It may still pivot and make a close attack with Fire or Assault; if it has no legal attack, Hold or Vent instead.
 
@@ -163,6 +137,8 @@ Mark each terrain area clearly. A unit is in terrain when its base center is ins
 Each inch moved through difficult terrain costs 2 inches of movement; other ground costs 1. Do not round these distances. Ignore height, roofs, building damage, and deep water.
 
 > **Example:** A route crosses 2 inches of open ground and 1.5 inches of woods. It costs 2 + 3 = 5 inches of movement.
+
+[![A route through woods costs more movement than the same distance over open ground.](../scenarios/diagrams/terrain-movement.svg)](../scenarios/diagrams/terrain-movement.svg)
 
 | Terrain | Movement | Cover and sight |
 | --- | --- | --- |
@@ -188,9 +164,19 @@ Never shoot at a friendly unit or an enemy touching a friendly unit, even with i
 
 > **Example:** Infantry with defense 17 and its center on a woods edge has ranged defense 20. If its center is outside the woods, a shot crossing those woods gives it no cover.
 
+[![A clear shot into woods and a shot blocked by a building.](../scenarios/diagrams/terrain-and-sight.svg)](../scenarios/diagrams/terrain-and-sight.svg)
+
 ## 7 Combat
 
-Each base makes its own attacks. Normally an attack has one enemy target and one roll; ignore extra target symbols. Named equipment can grant an extra attack, affect nearby enemies, or support a friendly unit. [Bypass](equipment-reference.md#bypass) is the only way to capture a unit. There are no combined attacks, ordinary spotting bonuses, reaction shots, rams, or charge damage.
+An attack is a roll to see whether one model hits an enemy. A **ranged attack** shoots at a target within the weapon’s range. A **close attack** fights an enemy touching your base.
+
+**Roll all three dice and add your Attack. Equal or beat the target’s Defense to hit.** A normal hit causes the weapon’s Damage, adjusted for armor and other effects.
+
+> **Example:** Your Attack is 8 and the dice total 11. Your total of 19 hits Defense 18. With Damage 3 and no other modifiers or armor, the target takes three clicks.
+
+### Choosing a target and weapon
+
+Each base attacks separately. Normally an attack has one enemy target and one roll; ignore extra target symbols.
 
 For a ranged attack, choose one printed damage value and its matching range and weapon type. A target exactly at minimum or maximum range is in range. Melee weapons cannot shoot.
 
@@ -199,20 +185,6 @@ For a close attack, infantry use their damage value. ’Mechs use primary damage
 You need printed attack above zero and damage above zero after heat to attack, and cannot attack in Salvage. Bypass needs positive attack but no damage value. A unit with zero attack or damage may still move, carry troops, and contest objectives.
 
 Read values and equipment when declaring an attack. Use them for that whole attack, then read the dials again for the next one.
-
-### Ranged weapon types
-
-| Type | Benefit | Cost |
-| --- | --- | --- |
-| Ballistic | +1 damage against infantry or battle armor with no terrain cover | −1 attack if you moved or turned before firing |
-| Energy | Piercing: ignore 1 point of armor | Firing ’Mechs gain 1 extra heat. Damage against infantry is limited to 2 before armor |
-| Rocket | Can fire indirectly through terrain and intervening bases | Fire action only. Indirect shots take −2 attack and −1 damage |
-
-For the Ballistic bonus, check the target’s cover before any equipment reduces or ignores it. Ballistic and Rocket shots add no extra weapon heat. Energy’s damage limit applies to all firers, including those that do not track heat.
-
-Declare a Rocket shot direct or indirect before rolling. Direct shots follow normal sight rules. Indirect shots ignore blockers, but still need the correct arc and range. The attacker must be unengaged, and the target cannot touch a friendly unit. Keep the target’s cover; indirect fire gets no rear bonus. It needs no spotter and hits only one target.
-
-See the [weapon reference](weapon-reference.md) for labels and examples.
 
 ### Attack sequence
 
@@ -239,6 +211,24 @@ Rear, shutdown, and Death from Above modifiers add together. There are no extra 
 
 > **Example:** White 6/6 and a third die showing 1 still hit automatically and add 1 damage. White 1/1 still miss with a third die showing 6.
 
+### Ranged weapon types
+
+| Type | Benefit | Cost |
+| --- | --- | --- |
+| Ballistic | +1 damage against infantry or battle armor with no terrain cover | −1 attack if you moved or turned before firing |
+| Energy | Piercing: ignore 1 point of armor | Firing ’Mechs gain 1 extra heat. Damage against infantry is limited to 2 before armor |
+| Rocket | Can fire indirectly through terrain and intervening bases | Fire action only. Indirect shots take −2 attack and −1 damage |
+
+For the Ballistic bonus, check the target’s cover before any equipment reduces or ignores it. Ballistic and Rocket shots add no extra weapon heat. Energy’s damage limit applies to all firers, including those that do not track heat.
+
+Declare a Rocket shot direct or indirect before rolling. Direct shots follow normal sight rules. Indirect shots ignore blockers, but still need the correct arc and range. The attacker must be unengaged, and the target cannot touch a friendly unit. Keep the target’s cover; indirect fire gets no rear bonus. It needs no spotter and hits only one target.
+
+See the [weapon reference](weapon-reference.md) for labels and examples.
+
+Advance has no attack penalty of its own. Moving or turning earlier in the activation causes **−1 attack for Ballistic recoil**, including on a later Fire action. Gunner removes it during an Advance if that Advance’s movement costs no more than half speed, rounded up; equipment may allow an Advance beyond that limit.
+
+Rockets can shoot only with Fire, and the firer must keep the same position and facing for its **whole activation**. Moving or turning prevents Rocket fire later in the activation; after firing Rockets, it cannot move or turn.
+
 ### Damage and infantry assaults
 
 Work out damage in this order:
@@ -261,6 +251,12 @@ An infantry close assault is **exposed** if the attacker touches the target’s 
 
 > **Example:** An Energy shot deals 3 damage against a vehicle with Armor 2 that applies to Energy. Piercing ignores 1 armor, leaving 2 damage. It adds no heat to the target.
 
+### Equipment actions
+
+Named equipment can grant an extra attack, affect nearby enemies, or support a friendly unit. [Bypass](equipment-reference.md#bypass) is the only way to capture a unit. There are no combined attacks, ordinary spotting bonuses, reaction shots, rams, or charge damage.
+
+Colored Attack values can grant **Repair** (restore a friendly combat click), **Coolant Flush** (remove friendly ’Mech heat), or **Bypass** (capture a crippled enemy). Use the conditions and limits in the [equipment reference](equipment-reference.md#attack).
+
 ### Death from Above
 
 A ’Mech with **Jump Jets (blue speed)** may leap onto an enemy vehicle or ’Mech. It must start its activation unengaged and not in Salvage, with speed above zero, printed attack above zero, and primary damage above zero after heat. Infantry and vehicles cannot make this attack; infantry cannot be its target. DFA always has one target and one attack: Full Strike and Rapid Strike do not apply.
@@ -276,9 +272,48 @@ DFA uses one action. If it was the first, a surviving ’Mech that is not shutdo
 
 ## 8 Heat
 
+Heat measures the strain on a ’Mech. Track it on the separate heat dial, starting at the green position. Heating moves that dial toward penalties and, eventually, shutdown. Cooling moves it back toward Start.
+
 ’Mechs use their printed heat tracks. Apply the printed speed and damage modifiers to the matching values, never below zero. Use the rules here instead of the original named heat-color effects. Infantry and vehicles ignore heat.
 
+> **Example:** Printed speed 7 and a −2 heat modifier give speed 5: Advance up to 3 inches, Move up to 5, or Rush up to 10, before terrain costs.
+
+### Action heat
+
+| Action | Base ’Mech heat |
+| --- | --- |
+| Move | 0 |
+| Fire | 0 |
+| Advance | +1 |
+| Assault | +1 |
+| Rush | +1 |
+| Disengage | +1 |
+| Repair | +1 |
+| Coolant Flush | +1 |
+| Bypass | +1 |
+| Death from Above | +2, including Jump |
+
+Hold and Vent cool instead of heating. Energy shooting, Jump, and some equipment add heat to these base costs.
+
+A ’Mech adds **1 extra heat per action** if it rolls an Energy ranged attack. Add this to the action heat and any second-action heat, even on a miss. Pay the action’s heat even if you skip a shot or cannot make it; add no Energy heat without a roll. Destroyed ’Mechs take no further heat. Pulse and Rapid Strike add attacks within an action; they do not use the ’Mech’s other action.
+
+> **Example:** A ’Mech Advances as its first action but finds its target out of range. It makes no attack and still gains 1 heat. It adds no Energy heat because it rolled no Energy attack.
+
+### Second actions
+
+A ’Mech’s **second action adds 1 heat** to that action’s normal cost. Finish the first action, including its heat, stress roll, and damage, before choosing the second. Use the new dial values. Both actions belong to one activation; mark the ’Mech activated after it finishes.
+
+**Rush, Hold, and Vent use the whole activation.** Choose one of these alone. They cannot follow or precede another action. Reaching shutdown or destruction ends the activation immediately. A ’Mech that restarts by Venting cannot act again that round.
+
+> **Example:** A ’Mech Moves, then Fires a Ballistic weapon. Move and Fire each have 0 base heat; the second action adds 1, for 1 heat in all. The shot has −1 attack for recoil.
+
+> **Example:** A ’Mech Fires Energy twice. The first action adds 1 Energy heat; the second adds 1 Energy heat and 1 second-action heat. Total: 3 heat. Read the heat dial before the second shot.
+
+> **Example:** A ’Mech is one click from shutdown. Its first Energy shot shuts it down, ending its activation. It cannot take a second shot or Vent until its next activation.
+
 After each action, add its base heat, any Energy or Jump heat, equipment heat, and **1 heat if it was the second action**. Turn the heat dial one click at a time. Stop at the first position showing three shutdown symbols and discard excess heat. Shutdown ends the activation. Never wrap around to cold.
+
+### Heat warnings
 
 **Stress:** After each complete heat gain, check the dial. If the ’Mech is not shutdown and any heat background is colored other than green or plain white, roll one die:
 
@@ -289,15 +324,57 @@ Roll only once per heat gain, even with several colored warnings. An action that
 
 > **Example:** A ’Mech Jumps during its first Advance and fires Energy: 1 action + 1 Jump + 1 Energy = 3 heat. Add it as one gain, then make one stress roll if a warning is showing and it is not shutdown. The same Advance as a second action would cost 4 heat.
 
-**Shutdown:** A ’Mech showing three shutdown symbols can only Vent. It cannot move, turn, attack, control or contest objectives, or use pilots other than Engineer. Passive defense equipment still works. Enemies get the shutdown defense modifier and exposed-assault benefit.
+### Shutdown
+
+A ’Mech showing three shutdown symbols can only Vent. It cannot move, turn, attack, control or contest objectives, or use pilots other than Engineer. Passive defense equipment still works. Enemies get the shutdown defense modifier and exposed-assault benefit.
 
 > **Example:** Shutdown is two clicks away when a ’Mech gains 4 heat. Turn only those two clicks, stop at shutdown, and discard the rest. Do not roll for stress.
 
-**Cooling:** Hold cools 1. Vent cools the printed vent rating, at least 1; Engineer adds 1. Either uses the whole activation and gains no second-action heat. Turn toward the green starting position and stop there. When the shutdown symbols disappear, the ’Mech restarts, but its activation is already spent. There is no extra cooling at round end.
+### Cooling
+
+Hold cools 1. Vent cools the printed vent rating, at least 1; Engineer adds 1. Either uses the whole activation and gains no second-action heat. Turn toward the green starting position and stop there. When the shutdown symbols disappear, the ’Mech restarts, but its activation is already spent. There is no extra cooling at round end.
 
 > **Example:** Vent rating 2 with Engineer cools 3 clicks. If that restarts the ’Mech, it still cannot take another action this round.
 
-## 9 Transport
+## 9 Vehicles and infantry
+
+### Readiness and pushing
+
+Each vehicle and each infantry squad starts **Ready**. Its readiness shows whether it can fight again or needs to recover. ’Mechs use heat instead.
+
+| Before a Fire, Advance, Assault, or Bypass order | After declaring it | Cost |
+| --- | --- | --- |
+| Ready | Committed | None |
+| Committed | Spent | Each surviving base takes 1 unavoidable damage after finishing its action |
+| Spent | Must recover | No combat order allowed |
+
+The second combat order is **pushing**. It need not happen in the very next round: readiness stays until the group recovers. Pay pushing damage even if a base misses, skips its attack, or has no legal target. A critical miss deals its own damage first; a surviving attacker still pays pushing damage. Stop at destruction and never transfer a casualty’s cost to another base.
+
+> **Example:** A vehicle Fires, Rushes next round, then Fires again. Rush left it Committed, so the second Fire pushes it and costs 1 damage afterward.
+
+> **Example:** A Committed vehicle Fires and rolls white 1/1. It takes 1 critical-miss damage, then 1 pushing damage if still alive. Armor stops neither.
+
+To **recover**, choose Move or Hold. After the group finishes, set it to Ready. Move uses full speed with no attack; Hold stays still. While engaged, use Hold or Disengage instead. In a recovering squad, each member may Move or Hold; an engaged member must Hold or Disengage. Keep the squad together. Disengage keeps its normal damage cost and half-speed limit.
+
+> **Example:** One member of a Spent squad Holds in enemy contact while the other two Move back into its chain. The squad becomes Ready; none of its damage is healed.
+
+A Spent group must recover on its next activation. Rush, Repair, Coolant Flush, Embark, and Disembark leave readiness unchanged and are forbidden while Spent. Recovery never heals damage, grants another activation, or prevents a unit from contesting objectives. Black Attack means **Salvage**: that unit may only Move, Hold, Vent, or Disengage. See [equipment](equipment-reference.md#attack) for salvaged squad members and Command's linked activations.
+
+### Squad orders
+
+Choose **one action for the whole squad**, then finish one base before starting the next. Each base uses its own speed, weapon, and target, and rolls its own attack. A base unable to carry out part of the action skips that part; it cannot choose a different action. Read the target’s new dial after every attack. Destroyed units cannot act. Recovery and regrouping have an exception for bases that must Disengage, described below.
+
+> **Example:** A three-base squad chooses Fire. Two members shoot different enemies; the third has no legal target and skips its shot. The whole squad has activated.
+
+### Keeping squads together
+
+At deployment and at the end of an activation, a squad must form one connected chain. Neighboring base centers can be no more than 4 inches apart. Bases may move out of that chain while the squad is acting, but must finish together.
+
+If casualties or a destroyed carrier leave a squad split, it must **regroup** next activation, even if Spent. Each base may move up to its speed, Hold if already in place, or Disengage if touching an enemy. It cannot attack, repair, board, or score an exit. Rejoin the chain if possible; otherwise close the gaps as much as possible. Finishing this activation clears readiness, even if the gaps cannot all close; a squad still split must regroup again next time. No one takes damage just for being out of formation. A lone survivor always counts as together.
+
+> **Example:** A–B–C form a straight chain with 4 inches between neighbors. A and C may be 8 inches apart. If B is destroyed, the survivors must regroup next activation.
+
+## 10 Transport
 
 Each carrier holds one whole infantry squad. No partial squads, mixed squads, vehicles, or ’Mechs may ride. Keep passengers beside the roster with their current dials and readiness. Carrier and squad always track readiness separately.
 
@@ -335,7 +412,7 @@ Save as many bases as can fit. Remove any that cannot be placed. Mark the surviv
 
 A squad cannot board and unload in the same round or gain another activation when its carrier is destroyed. In Breakthrough, passengers exit with their carrier and score their own points once.
 
-## 10 Objectives and victory
+## 11 Objectives and victory
 
 You control an objective when at least one of your base centers is within 3 inches and no enemy base center is. If both sides are present, it is **contested** and neither controls it.
 
@@ -343,11 +420,15 @@ Shutdown ’Mechs, passengers, and units that have left the board do not count. 
 
 > **Example:** Your Spent infantry is within 3 inches of a relay beside an enemy shutdown ’Mech. Your infantry controls it. If an active enemy enters the area, it becomes contested regardless of numbers.
 
+[![One army controls the relay; both armies in range make it contested.](../scenarios/diagrams/objective-control.svg)](../scenarios/diagrams/objective-control.svg)
+
 The scenario sets when to score, how the game ends, and how to handle ties. Destroying units earns no points unless the scenario says so. Read the victory conditions before deployment.
 
 If you run out of time, finish the round only if both players can. Otherwise record an unfinished game and the last fully scored round. Record concessions as concessions, not completed games.
 
-## 11 Build your force
+If neither side has units left on the board or aboard carriers, score that round and use the scenario’s final result.
+
+## 12 Build your force
 
 ### Choose the battle size
 
@@ -424,8 +505,26 @@ The three full missions have two setup maps: **48 × 48 inches** for Skirmish or
 
 Keep objective counts, control distances, round limits, and scoring unchanged. Breakthrough still requires 30% of the attacker’s actual starting points, rounded up. The table stays 48 inches deep so movement and escape distances do not grow with army size. These size limits and wider layouts are playtest starting points; record crowded deployments, unused flanks, and time per round.
 
-## 12 Scenarios
+## 13 Scenarios
 
 Once you have chosen your forces, agree on a [scenario](../site/scenarios.html). It sets deployment, objectives, round limits, and victory conditions.
 
 [First Contact](../scenarios/00-first-contact.md) is a 600-point battle with one relay and four rounds. Its two [starter patrols](../playtest/starter-forces.md) come with printable cards. The other scenarios support all four game sizes.
+
+### Deployment
+
+Set combat dials to their starting marks and heat dials to their green starting positions. All vehicles and squads start Ready. If a dial is jammed, use a written copy of its track. Agree on terrain boundaries and unclear colors before deploying.
+
+Unless the scenario says otherwise:
+
+1. Roll one die each and reroll ties. The higher roller chooses north or south.
+2. The other player places a group first. Alternate until both armies are deployed. A carrier and its starting passengers are one placement.
+3. Keep each base entirely inside its deployment zone, in terrain it can enter. Keep squads together and choose each unit’s facing.
+
+Deployment order does not decide who acts first.
+
+Groups with [Infiltrate](equipment-reference.md#speed) may deploy later and farther forward. All other deployment limits still apply.
+
+> **Example:** You win the side-choice roll and choose south. Your opponent places the first group. Roll initiative separately to decide who activates first.
+
+If rules disagree, follow the scenario for deployment and victory, then any specific pilot or equipment rule, then the core rules. Examples use only the modifiers they mention.

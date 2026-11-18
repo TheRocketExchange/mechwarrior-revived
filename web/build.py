@@ -58,6 +58,13 @@ DOWNLOADS = ["rules/readiness-reference.pdf", "pilots/revived-pilot-cards.pdf", 
              "units/points-config.json", "units/points.py", "units/readiness.py",
              "playtest/dead-air-playtest-pack.pdf", "playtest/dead-air-s1.json", "playtest/dead-air-s2.json"]
 SEARCH = []
+ANCHOR_ALIASES = {"rules.html": {
+    "2-prepare-the-table": "2-what-you-need",
+    "9-transport": "10-transport",
+    "10-objectives-and-victory": "11-objectives-and-victory",
+    "11-build-your-force": "12-build-your-force",
+    "12-scenarios": "13-scenarios",
+}}
 
 
 def slug(value):
@@ -125,6 +132,11 @@ def render_document(source, output, title):
             elif child.type == "image":
                 child.attrSet("src", rewrite_link(child.attrGet("src"), source))
     rendered = MD.renderer.render(tokens, MD.options, {})
+    for old, new in ANCHOR_ALIASES.get(output, {}).items():
+        marker = f'<h2 id="{new}">'
+        if marker not in rendered:
+            raise ValueError(f'Missing anchor destination: {output}#{new}')
+        rendered = rendered.replace(marker, f'<span id="{old}" aria-hidden="true"></span>'+marker, 1)
     # Keyboard users can scroll wide tables without scrolling the whole page.
     rendered = rendered.replace("<table>", '<div class="table-scroll" tabindex="0" role="region" aria-label="Rules table"><table>')
     rendered = rendered.replace("</table>", "</table></div>")
@@ -238,7 +250,7 @@ def main():
         ("01", "seize-and-hold.html", "Seize and Hold", "6 rounds · Three relay sites · Next step after First Contact"),
         ("02", "breakthrough.html", "Breakthrough", "8 rounds · Attacker versus defender · Escape through the north edge"),
         ("03", "hold-the-station.html", "Hold the Station", "6 rounds · Attacker versus defender · Capture both access sites"),
-    ]) + '<p>Use the <a href="rules.html#10-objectives-and-victory">core rules</a> to check who controls each objective. The scenario tells you when to score and how to win.</p>'
+    ]) + '<p>Use the <a href="rules.html#11-objectives-and-victory">core rules</a> to check who controls each objective. The scenario tells you when to score and how to win.</p>'
     write_page("scenarios.html", "Scenarios", "Scenarios", "Mission selection", scenario_body, [])
     aids_body = '<p>References and printable cards for the table.</p>' + resource_rows([
         ("PACK", "dead-air.html", "Dead Air playtest pack", "Kestrel Watch versus Blackwire Recovery. Everything to prepare the starter matchup."),

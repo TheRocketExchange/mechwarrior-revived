@@ -59,10 +59,6 @@ def illustrate_maps(filename, body):
     body=re.sub(r'<p><a href="diagrams/([^"/]+)\.svg"><img src="diagrams/\1\.svg" alt="([^"]*)"[^>]*></a></p>',
                 lambda match:viewer(match[1],unescape(match[2]),wide=match[1] in
                     ('seize-and-hold-map','breakthrough-map','hold-the-station-map')),body)
-    if filename=='rules.html':
-        for anchor,stem in [('5-movement-and-facing','movement-and-fire'),('6-terrain-and-sight','terrain-movement'),
-                            ('7-combat','terrain-and-sight'),('11-build-your-force','objective-control')]:
-            body=before_heading(body,anchor,viewer(stem))
-    elif filename=='readiness.html':
+    if filename=='readiness.html':
         body=before_heading(body,'recovery',viewer('pushing-and-recovery'))
     return body
