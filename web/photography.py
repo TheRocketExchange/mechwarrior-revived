@@ -12,7 +12,7 @@ PHOTOS = {
     "rules.html": [
         ("3-rounds-and-activation", "factory-battlefield"),
         ("7-combat", "close-quarters"),
-        ("12-build-your-force", "spirit-cat-line"),
+        ("11-build-your-force", "spirit-cat-line"),
     ],
     "equipment.html": [("defense", "factory-defense")],
 }

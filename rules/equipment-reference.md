@@ -201,4 +201,4 @@ No equipment removes Ballistic recoil or allows Rockets to shoot during Advance.
 
 ## Heat colors
 
-Apply printed heat modifiers to speed and the matching damage. Revived still uses its simpler heat warnings, not the original named heat failures: after gaining heat, if a warning other than green or white is showing, roll once. On 1, take 1 unavoidable damage. Do not roll while cooling or shutdown. Three shutdown symbols allow only Vent until cooling removes them. See the [heat rules](core-rules.md#8-heat).
+Apply printed heat modifiers to speed and the matching damage. Revived still uses its simpler heat warnings, not the original named heat failures: after gaining heat, if a warning other than green or white is showing, roll once. On 1, take 1 unavoidable damage. Do not roll while cooling or shutdown. Three shutdown symbols allow only Vent until cooling removes them. See the [heat rules](core-rules.md#heat).
