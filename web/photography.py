@@ -6,39 +6,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BANNER = "rocky-approach"
-SCENARIO_PAGES = {'scenarios.html', 'first-contact.html', 'dead-air.html',
-                  'seize-and-hold.html', 'breakthrough.html', 'hold-the-station.html'}
 
 # These show other games using MechWarrior figures, not Revived rules or exact rosters.
 PHOTOS = {
     "rules.html": [
-        ("1-how-the-game-works", "city-column"),
-        ("2-prepare-the-table", "city-table"),
         ("3-rounds-and-activation", "factory-battlefield"),
-        ("4-actions", "rocky-approach"),
-        ("5-movement-and-facing", "street-patrol"),
-        ("6-terrain-and-sight", "factory-defense"),
         ("7-combat", "close-quarters"),
-        ("8-heat", "burning-wreck"),
-        ("9-transport", "armor-in-the-streets"),
-        ("10-objectives-and-victory", "last-approach"),
         ("11-build-your-force", "spirit-cat-line"),
     ],
-    "weapons.html": [("three-weapon-types", "city-column"), ("damage-and-heat", "burning-wreck")],
-    "equipment.html": [
-        ("speed", "rocky-approach"), ("attack", "corner-fight"),
-        ("defense", "factory-defense"), ("ballistic-and-rocket-damage", "battle-line"),
-        ("energy-damage", "heavy-metal"), ("melee-damage", "close-quarters"),
-        ("heat-colors", "burning-wreck"),
-    ],
-    "points.html": [("dial-weighting", "factory-pressure")],
-    "turn.html": [("each-round", "factory-battlefield"), ("attacks", "corner-fight")],
-    "readiness.html": [("recovery", "battle-line")],
-    "pilots.html": [(None, "heavy-metal")],
-    "forces.html": [(None, "spirit-cat-line")],
-    "starter-forces.html": [(None, "street-patrol")],
-    "combat-rhythm.html": [(None, "corner-fight")],
-    "aids.html": [(None, "city-table")],
+    "equipment.html": [("defense", "factory-defense")],
 }
 
 
@@ -66,7 +42,7 @@ def credit(photo_id, css_class=""):
 
 
 def banner_html(filename):
-    if filename in SCENARIO_PAGES:
+    if filename != "index.html":
         return ''
     return ('<div class="masthead-photography">' + photo_link(BANNER, banner=True)
             + credit(BANNER, 'masthead-photo-credit') + '</div>')

@@ -8,13 +8,11 @@ Combat dials record damage as the battle unfolds, while heat and pushing make ea
 
 ## 1 How the game works
 
-Two players fight over a battlefield of terrain and objectives. Choose a scenario: it tells you where to deploy, what you are trying to achieve, and when the battle ends. Destroying the enemy helps, but the mission decides the winner.
+Two players fight over a battlefield of terrain and objectives. Destroying the enemy helps, but the mission decides the winner.
 
 You take turns activating one ’Mech, vehicle, or infantry squad. Move into position, fire, assault, or recover. A ’Mech can take two actions in its activation, gaining extra heat for the second. Every surviving group activates once per round.
 
 Each miniature is one **unit**, also called a **base**. Infantry move in fixed squads but keep their own dials and attack rolls. A squad activates together; each ’Mech and vehicle activates on its own. Damage turns a combat dial toward destruction and may change its speed, weapons, or defenses. ’Mechs also track heat. Vehicles and squads track readiness, taking damage if they push for a second combat action before recovering.
-
-For your first game, play [First Contact](../scenarios/00-first-contact.md) with the two [starter patrols](../playtest/starter-forces.md). It has a measured map, teaching diagrams, one objective, and four rounds. To select your own units, use [Build your force](#11-build-your-force) after the play rules.
 
 If rules disagree, follow the scenario for deployment and victory, then any specific pilot or equipment rule, then the core rules.
 
@@ -22,7 +20,7 @@ The examples below use only the modifiers they mention.
 
 ## 2 Prepare the table
 
-You need a table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use 48 × 48 inches for Skirmish or Standard games, and 72 × 48 for Large or Grand Battles; see [game sizes](#choose-the-battle-size). Use separate markers or the [readiness sheet](readiness-reference.md) for vehicles and squads. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Each [scenario](../scenarios/01-seize-and-hold.md) gives its terrain layout and deployment zones.
+You need a table, rulers, terrain, objective markers, pilot cards, and a marker for each group that has acted. Use 48 × 48 inches for Skirmish or Standard games, and 72 × 48 for Large or Grand Battles; see [game sizes](#choose-the-battle-size). Use separate markers or the [readiness sheet](readiness-reference.md) for vehicles and squads. Use three six-sided dice: two white and one other color. Keep the round and score on paper. Terrain layouts and deployment zones depend on the mission.
 
 Set combat dials to their starting marks and heat dials to their green starting positions. All vehicles and squads start Ready. If a dial is jammed, use a written copy of its track. Agree on terrain boundaries and unclear colors before deploying.
 
@@ -425,3 +423,9 @@ Before deployment, exchange rosters and check the game size, points total, unit-
 The three full missions have two setup maps: **48 × 48 inches** for Skirmish or Standard, and **72 × 48 inches** for Large or Grand Battles. Select the table size on the scenario page. The wider maps include terrain for the new flanks; all placement measurements are on the diagrams. First Contact uses its own starter map.
 
 Keep objective counts, control distances, round limits, and scoring unchanged. Breakthrough still requires 30% of the attacker’s actual starting points, rounded up. The table stays 48 inches deep so movement and escape distances do not grow with army size. These size limits and wider layouts are playtest starting points; record crowded deployments, unused flanks, and time per round.
+
+## 12 Scenarios
+
+Once you have chosen your forces, agree on a [scenario](../site/scenarios.html). It sets deployment, objectives, round limits, and victory conditions.
+
+[First Contact](../scenarios/00-first-contact.md) is a 600-point battle with one relay and four rounds. Its two [starter patrols](../playtest/starter-forces.md) come with printable cards. The other scenarios support all four game sizes.

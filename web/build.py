@@ -37,7 +37,7 @@ PAGES = [
     ("playtest/sample-forces.md", "forces.html", "Sample forces", "Forces", "Build your force"),
     ("playtest/starter-forces.md", "starter-forces.html", "Starter patrols", "Forces", "First Contact / Two patrols"),
     ("playtest/dead-air.md", "dead-air.html", "Dead Air", "Scenarios", "The Fight for Kestrel Relay / Starter pack"),
-    ("scenarios/00-first-contact.md", "first-contact.html", "First Contact", "Scenarios", "Start here / First battle"),
+    ("scenarios/00-first-contact.md", "first-contact.html", "First Contact", "Scenarios", "Scenarios / First battle"),
     ("scenarios/01-seize-and-hold.md", "seize-and-hold.html", "Seize and Hold", "Scenarios", "Mission / 01"),
     ("scenarios/02-breakthrough.md", "breakthrough.html", "Breakthrough", "Scenarios", "Mission / 02"),
     ("scenarios/03-hold-the-station.md", "hold-the-station.html", "Hold the Station", "Scenarios", "Mission / 03"),
@@ -51,7 +51,7 @@ PAGES = [
 ]
 SOURCE_URL = {(ROOT / p[0]).resolve(): p[1] for p in PAGES}
 NAV = [("Rules", "rules.html"), ("Units", "units.html"), ("Forces", "builder.html"),
-       ("Scenarios", "scenarios.html"), ("Game aids", "aids.html"),
+       ("Game aids", "aids.html"), ("Scenarios", "scenarios.html"),
        ("Development", "design.html")]
 DOWNLOADS = ["rules/readiness-reference.pdf", "pilots/revived-pilot-cards.pdf", "pilots/revived-pilot-cards-preview.png",
              "playtest/sample-forces.csv", "playtest/adjustments.csv", "units/revived-unit-cards.pdf",
@@ -219,15 +219,15 @@ def main():
             next_page = ("pilots.html", "Choose your pilots")
         elif filename == "pilots.html":
             tools = '<a class="small-button" href="downloads/revived-pilot-cards.pdf">Printable cards <span class="file-type">PDF</span></a>'
-            next_page = ("first-contact.html", "Your first scenario")
+            next_page = ("builder.html", "Army builder")
             body += '<figure class="pilot-preview"><a href="downloads/revived-pilot-cards.pdf"><img src="downloads/revived-pilot-cards-preview.png" alt="Four printable Revived pilot cards: Gunner, Skirmisher, Brawler, and Engineer" loading="lazy" width="1224" height="1584"></a><figcaption>Four roles. Print the PDF at 100% on US Letter paper.</figcaption></figure>'
         elif filename == "index.html":
             body = '<p class="lead">Fan made modernized rules for MechWarrior: Dark Age.</p>' + resource_rows([
-                ("START", "first-contact.html", "Quick start", "First Contact · Two starter patrols · Setup map and teaching diagrams."),
                 ("01", "rules.html", "Core rules", "Learn how a battle unfolds, from movement and combat to victory."),
                 ("02", "builder.html", "Army builder", "Choose models, check your list, and print cards for your army."),
                 ("03", "units.html", "Unit catalog", "Photos, full dials, printable cards, and points."),
                 ("04", "aids.html", "Play aids", "Quick references and printable pilot cards."),
+                ("05", "scenarios.html", "Scenarios", "Mission maps, objectives, and victory conditions."),
             ])
             SEARCH.append({"title": title, "page": title, "url": filename, "text": re.sub(r"<[^>]+>", " ", body)})
         write_page(filename, title, active, eyebrow, body, toc, tools, next_page)

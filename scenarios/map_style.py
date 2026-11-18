@@ -1,7 +1,7 @@
 """Flash-era strategy-game art for measured battlefields and worked examples.
 
-Board coordinates are inches from the southwest corner. Terrain footprints
-are exact; textures, labels and token symbols carry no additional rules.
+Board coordinates are inches from the southwest corner. Woods have curved
+edges inside their measured bounds; textures and tokens add no obstacles.
 """
 from html import escape
 
@@ -21,6 +21,30 @@ def text(x, y, value, size=18, anchor="start", fill=INK, weight="normal", extra=
 
 def rect(x, y, w, h, fill, stroke="none", extra=""):
     return f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" fill="{fill}" stroke="{stroke}" {extra}/>'
+
+
+def woods_curves(x, y, width, height):
+    """Shared SVG/PDF outline. Opposite halves match under a half-turn.
+
+    The middle horizontal crossing spans the full width, preserving the
+    measured four-inch woodland segment in the movement example.
+    """
+    upper = [(0, .39, .09, .39, .07, .30),
+             (.02, .18, .18, .08, .29, .13),
+             (.36, .17, .37, 0, .5, 0),
+             (.63, 0, .65, .12, .74, .10),
+             (.88, .04, .99, .16, .93, .29),
+             (.90, .38, 1, .41, 1, .5)]
+    curves = upper + [tuple(1-value for value in curve) for curve in upper]
+    return [tuple((x + value*width) if i % 2 == 0 else (y + value*height)
+                  for i, value in enumerate(curve)) for curve in curves]
+
+
+def woods_shape(width, height):
+    path = f'M0 {height/2:g}' + ''.join(
+        'C' + ' '.join(f'{value:g}' for value in curve)
+        for curve in woods_curves(0, 0, width, height)) + 'Z'
+    return f'<path d="{path}" fill="url(#woods)" stroke="{TERRAIN["woods"][1]}" stroke-width="2.5" stroke-linejoin="round"/>'
 
 
 def line(x1, y1, x2, y2, color=MUTED, width=2, extra=""):
@@ -96,8 +120,14 @@ class Board:
         kind, ident = feature['kind'], feature['id']
         px, py = self.x(feature['x']), self.y(feature['y']+feature['depth'])
         w,h = feature['width']*self.scale, feature['depth']*self.scale
-        self.features.append(rect(px,py,w,h,f'url(#{kind})',TERRAIN[kind][1],
-                                  f'stroke-width="2.5" data-terrain="{ident}" data-kind="{kind}"'))
+        if kind == 'woods':
+            self.features.append(f'<svg x="{px:g}" y="{py:g}" width="{w:g}" height="{h:g}" '
+                                 f'viewBox="0 0 {w:g} {h:g}" overflow="visible" '
+                                 f'data-terrain="{ident}" data-kind="woods">'
+                                 + woods_shape(w, h) + '</svg>')
+        else:
+            self.features.append(rect(px,py,w,h,f'url(#{kind})',TERRAIN[kind][1],
+                                      f'stroke-width="2.5" data-terrain="{ident}" data-kind="{kind}"'))
         if kind=='blocking' and min(w,h)>24:
             self.features += [rect(px+6,py+8,w-10,h-11,'#596568'),
                               rect(px+4,py+4,w-12,h-12,'#a4afac',INK,'stroke-width="2.5"'),
@@ -156,7 +186,7 @@ def terrain_key(x,y,kinds):
     for i,kind in enumerate(kinds):
         px=x+(i%4)*180;py=y+(i//4)*42
         tw,th=tiles[kind]
-        out += [f'<svg x="{px:g}" y="{py:g}" width="32" height="25" viewBox="0 0 {tw} {th}" preserveAspectRatio="none">'
-                +rect(0,0,tw,th,f'url(#{kind})')+'</svg>',
-                rect(px,py,32,25,'none',TERRAIN[kind][1],'stroke-width="2"'),text(px+43,py+18,TERRAIN[kind][2],17)]
+        out += [f'<svg x="{px:g}" y="{py:g}" width="32" height="25" viewBox="0 0 {tw} {th}" preserveAspectRatio="none" overflow="visible">'
+                +(woods_shape(tw,th) if kind=='woods' else rect(0,0,tw,th,f'url(#{kind})',TERRAIN[kind][1],'stroke-width="2"'))+'</svg>',
+                text(px+43,py+18,TERRAIN[kind][2],17)]
     return out

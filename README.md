@@ -10,17 +10,6 @@ The rules include scenarios, photo datasheets, and printable game aids. [Named e
 
 **Version 0.3 is ready for playtesting.** Balance at each size and the roughly two-hour target for Standard games still need testing. The [worked examples](https://therocketexchange.github.io/mechwarrior-revived/combat-rhythm.html) explain pushing, recovery, and moving fire. The [v0.2 tag](https://github.com/TheRocketExchange/mechwarrior-revived/tree/v0.2) preserves the previous edition.
 
-## Your first game
-
-**[Dead Air: The Fight for Kestrel Relay](https://therocketexchange.github.io/mechwarrior-revived/dead-air.html)** packages the first game as a fight between Kestrel Watch and Blackwire Recovery. [Download the playtest pack](https://therocketexchange.github.io/mechwarrior-revived/downloads/dead-air-playtest-pack.pdf): two ready-made patrols, fourteen photo cards with full dials, six assigned pilot cards, a measured map, field references, and a one-page results sheet. The story uses the existing First Contact rules and starter lists.
-
-1. Read [how the game works](https://therocketexchange.github.io/mechwarrior-revived/rules.html#1-how-the-game-works), then choose one of the two [starter patrols](https://therocketexchange.github.io/mechwarrior-revived/starter-forces.html). Each has seven models and loads into the builder for card printing.
-2. Play [First Contact](https://therocketexchange.github.io/mechwarrior-revived/first-contact.html): a 600-point starter with four rounds and one relay. Use its [setup map](https://therocketexchange.github.io/mechwarrior-revived/diagrams/first-contact-map.svg) and diagrams for movement, objective control, and pushing.
-3. Keep the [turn reference](https://therocketexchange.github.io/mechwarrior-revived/turn.html), [readiness sheet](https://therocketexchange.github.io/mechwarrior-revived/readiness.html), [equipment sheet](https://therocketexchange.github.io/mechwarrior-revived/equipment.html), and [pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) nearby.
-4. Record the game in the [playtest log](https://therocketexchange.github.io/mechwarrior-revived/log.html), then play again with sides reversed.
-
-Use the rules in this packet. Original abilities, formations, pilots, gear, and expansion rules apply only where restated here.
-
 ## Build your own force
 
 Once you know the basics, [choose a game size](https://therocketexchange.github.io/mechwarrior-revived/rules.html#choose-the-battle-size): **Skirmish (600), Standard (1,200), Large Battle (1,800), or Grand Battle (2,400 points per side)**. Each has a [force chart](https://therocketexchange.github.io/mechwarrior-revived/rules.html#force-organization) with upper limits for ’Mechs, vehicles, squads, pilots, and carriers. No unit type is required; you can field zero ’Mechs. The rule of three applies at every size. Larger games use a 72 × 48 inch battlefield; the smaller two use 48 × 48.
@@ -50,6 +39,17 @@ Points value every click as a complete profile. Early strength carries more weig
 | [Hold the Station](https://therocketexchange.github.io/mechwarrior-revived/hold-the-station.html) | [Checks so far](https://therocketexchange.github.io/mechwarrior-revived/validation.html) |
 
 All [game aids and downloads](https://therocketexchange.github.io/mechwarrior-revived/aids.html) are collected on the site. For offline play, download this repository and open [site/index.html](site/index.html). Search, printing, card downloads, and bundled fonts also work locally. The site's type and panel styling draw on the original MW:DA rulebook and equipment printouts; its navigation retains the influence of [NetEA](https://www.net-armageddon.org/). See [design sources and font credits](https://therocketexchange.github.io/mechwarrior-revived/sources.html#visual-references-and-fonts).
+
+## Scenarios
+
+**[Dead Air: The Fight for Kestrel Relay](https://therocketexchange.github.io/mechwarrior-revived/dead-air.html)** packages the first game as a fight between Kestrel Watch and Blackwire Recovery. [Download the playtest pack](https://therocketexchange.github.io/mechwarrior-revived/downloads/dead-air-playtest-pack.pdf): two ready-made patrols, fourteen photo cards with full dials, six assigned pilot cards, a measured map, field references, and a one-page results sheet. The story uses the existing First Contact rules and starter lists.
+
+1. Read [how the game works](https://therocketexchange.github.io/mechwarrior-revived/rules.html#1-how-the-game-works), then choose one of the two [starter patrols](https://therocketexchange.github.io/mechwarrior-revived/starter-forces.html). Each has seven models and loads into the builder for card printing.
+2. Play [First Contact](https://therocketexchange.github.io/mechwarrior-revived/first-contact.html): a 600-point starter with four rounds and one relay. Use its [setup map](https://therocketexchange.github.io/mechwarrior-revived/diagrams/first-contact-map.svg) and diagrams for movement, objective control, and pushing.
+3. Keep the [turn reference](https://therocketexchange.github.io/mechwarrior-revived/turn.html), [readiness sheet](https://therocketexchange.github.io/mechwarrior-revived/readiness.html), [equipment sheet](https://therocketexchange.github.io/mechwarrior-revived/equipment.html), and [pilot cards](https://therocketexchange.github.io/mechwarrior-revived/pilots.html) nearby.
+4. Record the game in the [playtest log](https://therocketexchange.github.io/mechwarrior-revived/log.html), then play again with sides reversed.
+
+Use the rules in this packet. Original abilities, formations, pilots, gear, and expansion rules apply only where restated here.
 
 ## GitHub Pages
 

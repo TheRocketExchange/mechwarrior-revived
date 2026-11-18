@@ -81,7 +81,7 @@ def map_diagram(slug, data, wide=False):
              f'<path d="M{compass-5} 154L{compass} 145L{compass+5} 154Z" fill="#243448"/>']
     y=board.y(0)+56
     body += [text(84,y,'Arrows: distance to edge or point. All measurements in inches.',16),
-             text(84,y+24,'Terrain labels: width × depth.',16,fill=MUTED)]
+             text(84,y+24,'Terrain labels: overall width × depth.',16,fill=MUTED)]
     body += terrain_key(62,y+47,[kind for kind in TERRAIN if any(t['kind']==kind for t in data['terrain'])])
     y+=102
     if data['objectives']:
@@ -92,7 +92,7 @@ def map_diagram(slug, data, wide=False):
         xx=62+(i%2)*(canvas_width-100)/2; yy=y+(i//2)*24
         body += [text(xx,yy,ident,14,weight='bold'),text(xx+35,yy,name,14,fill=MUTED)]
     y+=((len(keys)+1)//2)*24+17
-    body += [text(62,y,data['note'],16),text(62,y+26,'Terrain borders are exact. Patterns do not add obstacles.',15,fill=MUTED)]
+    body += [text(62,y,data['note'],16),text(62,y+26,'Follow the drawn terrain edges. Tree symbols do not add obstacles.',15,fill=MUTED)]
     filename=slug+('-wide' if wide else '')+'-map.svg'
     save(OUT/filename,data['title'],f'{board_width} × 48 inches  /  6-inch grid  /  {data["rounds"]} rounds',body,canvas_width,y+90,
          f'{data["title"]} measured battlefield. North is up. Arrows measure terrain edges and objective centers from table edges. Terrain labels give width by depth in inches. '+data['note'],

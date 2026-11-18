@@ -22,6 +22,7 @@ import generate_cards as cards
 from force_org import validate_force
 sys.path.insert(0, str(ROOT / 'scenarios'))
 from measurements import placement_dimensions
+from map_style import woods_curves
 
 OUT = ROOT / "playtest"
 BASE = "https://therocketexchange.github.io/mechwarrior-revived/"
@@ -133,12 +134,17 @@ def map_page(c):
     for t in SCENARIO["terrain"]:
         x, y, w, h = x0+t["x"]*scale, y0+t["y"]*scale, t["width"]*scale, t["depth"]*scale
         c.setFillColor(colors.HexColor(palette[t["kind"]])); c.setStrokeColor(MUTED)
-        c.rect(x, y, w, h, fill=1, stroke=1)
+        if t['kind'] == 'woods':
+            shape = c.beginPath(); shape.moveTo(x, y+h/2)
+            for curve in woods_curves(x, y+h, w, -h): shape.curveTo(*curve)
+            shape.close(); c.drawPath(shape, fill=1, stroke=1)
+        else:
+            c.rect(x, y, w, h, fill=1, stroke=1)
         if t["kind"] == "blocking":
             c.line(x, y, x+w, y+h); c.line(x+w, y, x, y+h)
         elif t["kind"] == "woods":
-            for dx in (9, w-10):
-                p=c.beginPath(); p.moveTo(x+dx-4, y+9); p.lineTo(x+dx, y+17); p.lineTo(x+dx+4, y+9); p.close(); c.drawPath(p)
+            for dx in (w*.3, w*.7):
+                p=c.beginPath(); p.moveTo(x+dx-4, y+h*.4); p.lineTo(x+dx, y+h*.4+8); p.lineTo(x+dx+4, y+h*.4); p.close(); c.drawPath(p)
         else:
             c.setDash(2, 3); c.line(x+5, y+8, x+w-5, y+8); c.setDash()
         c.setFillColor(INK); c.setFont("Helvetica-Bold", 10); c.drawCentredString(x+w/2, y+h-12, t["id"])
@@ -174,11 +180,11 @@ def map_page(c):
     for d in placement_dimensions(SCENARIO['terrain'],[dict(obj,id='O1')],48,zones=zones):dimension(**d)
     dimension('x',0,48,49.2);dimension('y',0,48,-2.5)
     dimension('y',0,8,50);dimension('y',40,48,50)
-    label(c,'All measurements in inches. Terrain labels: width x depth.',36,176,8)
+    label(c,'All measurements in inches. Terrain labels: overall width x depth.',36,176,8)
     label(c,'W = woods / R = rubble / B = blocking / Dashed ring = 3-inch control radius',36,161,8)
     for i,t in enumerate(SCENARIO['terrain']):
         label(c,f"{t['id']} / {THEME['terrain_names'][t['id']]}",36+(i%2)*270,145-(i//2)*12,8,MUTED)
-    para(c, "Everything outside the terrain footprints is open. The relay adds no cover or obstacle.<br/><b>Deploy:</b> Roll D6 each, reroll ties. Winner chooses an edge; the other player deploys a group first. Alternate groups, whole bases inside the zones. Keep C1's centers in a 4-inch chain. Infiltrate follows its normal rule if present; neither patrol has it.", 36, 104, size=8.5, leading=11)
+    para(c, "Everything outside the drawn terrain edges is open. The relay adds no cover or obstacle.<br/><b>Deploy:</b> Roll D6 each, reroll ties. Winner chooses an edge; the other player deploys a group first. Alternate groups, whole bases inside the zones. Keep C1's centers in a 4-inch chain. Infiltrate follows its normal rule when showing at Start.", 36, 104, size=8.5, leading=11)
     c.showPage()
 
 

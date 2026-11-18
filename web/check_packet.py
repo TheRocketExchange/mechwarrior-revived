@@ -112,7 +112,7 @@ assert set(pages[(SITE / "builder.html").resolve()].xpath('//*[@id="force-sample
 starter_page = pages[(SITE / "first-contact.html").resolve()]
 assert len(starter_page.xpath('//img[starts-with(@src,"diagrams/")]')) == 4
 assert not starter_page.xpath('//*[@data-map-table-label]')
-assert pages[(SITE/'index.html').resolve()].xpath('//a[@class="resource-row"]//strong/text()') == ['Quick start','Core rules','Army builder','Unit catalog','Play aids']
+assert pages[(SITE/'index.html').resolve()].xpath('//a[@class="resource-row"]//strong/text()') == ['Core rules','Army builder','Unit catalog','Play aids','Scenarios']
 for name in ('scenarios','first-contact','dead-air','seize-and-hold','breakthrough','hold-the-station'):
     page=pages[(SITE/(name+'.html')).resolve()]
     assert not page.xpath('//img[starts-with(@src,"battle-photos/")]'), name
