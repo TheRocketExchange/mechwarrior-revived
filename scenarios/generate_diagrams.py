@@ -183,13 +183,39 @@ def readiness():
          'First Fire changes Ready to Committed. A second Fire changes Committed to Spent and each surviving base takes one pushing damage after acting. Move or Hold recovers to Ready. Recovering early avoids pushing.', 'EXAMPLE 05  /  READINESS')
 
 
+def smoke_generator():
+    board=Board(24,12,96,166,27,grid=2,axes=False)
+    cx,cy=board.x(12),board.y(6)
+    board.features.append(circle(cx,cy,3*board.scale,'#b8bfc0',INK,
+        'fill-opacity=".9" stroke-width="2" data-smoke-radius="3"'))
+    for dx,dy,r in [(-.9,.9,1.1),(.9,.6,1.1),(-.7,-.8,1.2),(.9,-.9,.9)]:
+        board.features.append(circle(board.x(12+dx),board.y(6+dy),r*board.scale,'#d2d6d0','none','opacity=".65"'))
+    board.objective(dict(id='GENERATOR',x=12,y=6,radius=3))
+    board.arrow((3,4),(21,4),'sight')
+    board.unit(3,4,'M1',facing=90,radius=.7)
+    board.unit(21,4,'M2',side='red',facing=270,radius=.7)
+    board.unit(11,7,'I1',radius=.55)
+    x,y=board.x(12),board.y(4)
+    board.overlay += [line(x-8,y-8,x+8,y+8,RED,4),line(x-8,y+8,x+8,y-8,RED,4),
+                     badge(x,board.y(1.5),'DIRECT FIRE BLOCKED',color=RED,size=16)]
+    body=board.render()+dimension(board,'smoke-radius','x',12,15,6,label=(13.5,6.5))
+    body += [text(96,535,'I1 operated the generator. Smoke fills the 3-inch ring.',20,weight='bold'),
+             text(96,572,'M1 cannot shoot M2 through the cloud. M2 cannot shoot I1 inside it.',17),
+             text(96,605,'Movement, close attacks, and indirect Rockets still work normally.',17),
+             text(96,638,'Remove smoke at the start of the next round, after this round’s scoring.',17),
+             text(96,678,'Assume range and facing are legal. M = ’Mech; I = infantry. Grid = 2 inches.',16,fill=MUTED)]
+    save(OUT/'smoke-generator.svg','Smoke generator','Operate the site to screen its approaches',body,840,752,
+         'Infantry I1 has operated a generator, filling its three-inch radius with smoke. A direct shot from M1 to M2 crosses the cloud and is blocked. Shots into the cloud are also blocked. Movement, close attacks, and indirect Rocket fire are unaffected. Smoke clears at the start of the next round.',
+         'EXAMPLE 06  /  SPECIAL TERRAIN')
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     for slug,data in layouts().items():
         map_diagram(slug,data)
         if slug!='first-contact': map_diagram(slug,wider(data),True)
-    movement();objective_control();terrain_sight();terrain_movement();readiness()
-    print('Generated 7 measured scenario maps and 5 teaching diagrams in the shared battlefield style.')
+    movement();objective_control();terrain_sight();terrain_movement();readiness();smoke_generator()
+    print('Generated 7 measured scenario maps and 6 teaching diagrams in the shared battlefield style.')
 
 
 if __name__=='__main__': main()

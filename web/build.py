@@ -30,6 +30,7 @@ PAGES = [
     ("rules/core-rules.md", "rules.html", "Core rules", "Rules", "Rules / 01"),
     ("rules/weapon-reference.md", "weapons.html", "Weapon reference", "Rules", "Rules / 02"),
     ("rules/equipment-reference.md", "equipment.html", "Equipment reference", "Rules", "Rules / 03"),
+    ("scenarios/special-terrain.md", "special-terrain.html", "Special terrain", "Rules", "Scenario rules / Terrain"),
     ("rules/points.md", "points.html", "Points", "Rules", "Building armies"),
     ("rules/turn-reference.md", "turn.html", "Turn reference", "Game aids", "At the table / 01"),
     ("rules/readiness-reference.md", "readiness.html", "Readiness reference", "Game aids", "At the table / Readiness"),
@@ -166,7 +167,8 @@ def resources_html(current):
              ("equipment.html", "Equipment colors"), ("turn.html", "Turn reference"),
              ("readiness.html", "Readiness reference"),
              ("pilots.html", "Pilot cards"), ("units.html", "Unit cards"), ("builder.html", "Army builder"),
-             ("points.html", "Points"), ("scenarios.html", "Scenarios")]
+             ("points.html", "Points"), ("scenarios.html", "Scenarios"),
+             ("special-terrain.html", "Special terrain")]
     return "".join(f'<a href="{url}"' + (' aria-current="page"' if url == current else "")
                    + f'>{label}<span aria-hidden="true">↗</span></a>' for url, label in links)
 
@@ -234,6 +236,8 @@ def main():
             next_page = ("equipment.html", "Equipment colors")
         elif filename == "equipment.html":
             next_page = ("pilots.html", "Choose your pilots")
+        elif filename == "special-terrain.html":
+            next_page = ("seize-and-hold.html#live-sites-optional", "Seize and Hold: Live sites")
         elif filename == "pilots.html":
             tools = '<a class="small-button" href="downloads/revived-pilot-cards.pdf">Printable cards <span class="file-type">PDF</span></a>'
             next_page = ("builder.html", "Army builder")
@@ -255,6 +259,7 @@ def main():
         ("01", "seize-and-hold.html", "Seize and Hold", "6 rounds · Three relay sites · Next step after First Contact"),
         ("02", "breakthrough.html", "Breakthrough", "8 rounds · Attacker versus defender · Escape through the north edge"),
         ("03", "hold-the-station.html", "Hold the Station", "6 rounds · Attacker versus defender · Capture both access sites"),
+        ("TERRAIN", "special-terrain.html", "Special terrain", "Optional uplinks, smoke generators, and coolant stations · Operate action"),
     ]) + '<p>Use the <a href="rules.html#10-objectives-and-victory">core rules</a> to check who controls each objective. The scenario tells you when to score and how to win.</p>'
     write_page("scenarios.html", "Scenarios", "Scenarios", "Mission selection", scenario_body, [])
     aids_body = '<p>References and printable cards for the table.</p>' + resource_rows([

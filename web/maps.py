@@ -15,6 +15,7 @@ LABELS = {
     'pushing-and-recovery': ('Pushing & recovery', 'One activation per step'),
     'terrain-and-sight': ('Terrain & sight', 'Clear and blocked sight lines · 2-inch grid'),
     'terrain-movement': ('Moving through woods', '12 inches traveled · 16 inches of movement'),
+    'smoke-generator': ('Smoke generator', '3-inch smoke radius · 2-inch grid'),
 }
 
 
